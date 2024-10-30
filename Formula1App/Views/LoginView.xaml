@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+             x:Class="Formula1App.Views.LoginView"
+             Title="LoginView"
+             x:DataType="viewmodel:LoginViewModel">
+    <VerticalStackLayout Padding="10" BackgroundColor="#f7f4f1">
+        <Label
+        HorizontalOptions="Center"
+        Padding="5"
+        FontAttributes="Bold"
+        FontFamily="Consolas"
+        FontSize="30"
+        Text="Sign In"
+        TextColor="Black" />
+
+        <Label FontFamily="Consolas" Text="Username" />
+        <Frame
+        Margin="0,10,0,0"
+        Padding="3"
+        CornerRadius="10">
+            <Entry
+            x:Name="Username"
+            Margin="5,0,0,0"
+            FontSize="18"
+            Placeholder="Username"
+            
+            Text="{Binding Username}" />
+        </Frame>
+        <Label FontFamily="Consolas" Text="Password" />
+        <Frame
+        Margin="0,10,0,0"
+        Padding="3"
+        CornerRadius="10">
+            <Entry
+            x:Name="Password"
+            Margin="5,0,0,0"
+            FontSize="18"
+            IsPassword="True"
+            Placeholder="Password"
+            Text="{Binding Password}" />
+        </Frame>
+        <Button
+        x:Name="LoginButton"
+        Margin="0,20,0,0"
+        Command="{Binding LoginCommand}"
+        HorizontalOptions="FillAndExpand"
+        Text="Login"
+        BackgroundColor="#E11900"
+        VerticalOptions="CenterAndExpand" />
+
+        <StackLayout Margin="0,20,0,0" HorizontalOptions="Center">
+            <Label Text="Don't have an account yet?" />
+            <Label
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Text="Register"
+            TextColor="#E11900">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToRegisterCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
