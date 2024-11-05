@@ -9,7 +9,7 @@ namespace Formula1App
         {
             InitializeComponent();
 
-            MainPage = new LoginView(loginViewModel);
+            MainPage = new AppShell();
         }
     }
 }

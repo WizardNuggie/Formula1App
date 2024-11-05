@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              x:Class="Formula1App.Views.LoginView"
-             Title="LoginView"
              x:DataType="viewmodel:LoginViewModel">
     <VerticalStackLayout Padding="10" BackgroundColor="#f7f4f1">
         <Label

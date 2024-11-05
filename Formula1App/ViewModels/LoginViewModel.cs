@@ -38,9 +38,6 @@ namespace Formula1App.ViewModels
                 }
             }
         }
-        public LoginViewModel()
-        {
-
-        }
+        public LoginViewModel() { }
     }
 }
