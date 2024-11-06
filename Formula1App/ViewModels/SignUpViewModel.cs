@@ -10,7 +10,7 @@ namespace Formula1App.ViewModels
     public class SignUpViewModel:ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
-        public ICommand SignUpCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
         private string username;
         public string Username
@@ -28,8 +28,34 @@ namespace Formula1App.ViewModels
             get => password;
             set
             {
-                    password = value;
-                    OnPropertyChanged(nameof(Password));
+                password = value;
+                PassError = "";
+                OnPropertyChanged(nameof(Password));
+                if (string.IsNullOrEmpty(password))
+                {
+                    PassError = "";
+                }
+                else
+                {
+                    if (password != null)
+                    {
+                        bool IsPasswordOk = IsValidPassword(password);
+                        if (!IsPasswordOk)
+                        {
+                            PassError = "The password must contain at least 4 characters";
+                        }
+                    }
+                }
+            }
+        }
+        private string passError;
+        public string PassError
+        {
+            get { return passError; }
+            set
+            {
+                passError = value;
+                OnPropertyChanged(nameof(PassError));
             }
         }
         private string email;
@@ -49,7 +75,28 @@ namespace Formula1App.ViewModels
             set
             {
                     name = value;
+                    NameError = "";
                     OnPropertyChanged(nameof(Name));
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        if (char.IsDigit(Name[0]))
+                        {
+                            NameError = "A name cannot start with a number";
+                            OnPropertyChanged(nameof(Name));
+                        }
+                    }
+                    else
+                        NameError = "";
+            }
+        }
+        private string nameError;
+        public string NameError
+        {
+            get { return nameError; }
+            set
+            {
+                nameError = value;
+                OnPropertyChanged(nameof(NameError)); 
             }
         }
         private string favDriver;
@@ -82,7 +129,19 @@ namespace Formula1App.ViewModels
                     OnPropertyChanged(nameof(Bday));
             }
         }
+        private bool IsValidPassword(string pass)
+        {
+            int sum = 0;
+            foreach (char c in pass)
+            {
+                sum++;
+            }
+            return sum >= 4;
+        }
 
-        public SignUpViewModel() { }
+        public SignUpViewModel(IServiceProvider sp)
+        {
+            this.serviceProvider = sp;
+        }
     }
 }

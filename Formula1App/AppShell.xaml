@@ -6,6 +6,6 @@
     xmlns:local="clr-namespace:Formula1App.Views">
     
     <ShellContent
-        ContentTemplate="{DataTemplate local:LoginView}"
-        Route="Login"/>
+        ContentTemplate="{DataTemplate local:SignUpView}"
+        Route="Register"/>
 </Shell>

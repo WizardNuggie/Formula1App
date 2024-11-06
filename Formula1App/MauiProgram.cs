@@ -18,6 +18,8 @@ namespace Formula1App
                 });
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<SignUpView>();
+            builder.Services.AddSingleton<SignUpViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

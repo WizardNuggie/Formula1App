@@ -10,6 +10,7 @@ namespace Formula1App
 
             #region Routing
             Routing.RegisterRoute("Login", typeof(LoginView));
+            Routing.RegisterRoute("Register", typeof(SignUpView));
             #endregion
         }
     }

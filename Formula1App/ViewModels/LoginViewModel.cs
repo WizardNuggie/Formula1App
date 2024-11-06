@@ -38,6 +38,9 @@ namespace Formula1App.ViewModels
                 }
             }
         }
-        public LoginViewModel() { }
+        public LoginViewModel(IServiceProvider sp)
+        {
+            this.serviceProvider = sp;
+        }
     }
 }

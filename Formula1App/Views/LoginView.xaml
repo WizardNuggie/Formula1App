@@ -24,7 +24,6 @@
             Margin="5,0,0,0"
             FontSize="18"
             Placeholder="Username"
-            
             Text="{Binding Username}" />
         </Frame>
         <Label FontFamily="Consolas" Text="Password" />
