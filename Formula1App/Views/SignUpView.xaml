@@ -10,20 +10,34 @@
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always">
 
-            <Grid ColumnDefinitions="*,1.5*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+            <Grid ColumnDefinitions="*,2.5*" RowDefinitions="1.5*,*,0.5*,*,0.5*,*,*,*,*,*,*,*,*,*,*">
+                <Label
+                    HorizontalOptions="Center"
+                    Grid.ColumnSpan="2"
+                    Padding="5"
+                    FontAttributes="Bold"
+                    FontFamily="Consolas"
+                    FontSize="30"
+                    Text="Register"
+                    TextColor="Black" />
 
                 <Label
                     x:Name="name_lbl"
                     Grid.Column="0"
-                    Margin="2"
+                    Grid.Row="1"
+                    Margin="20"
                     Text="Name" />
 
                 <Entry
                     Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalOptions="Start"
+                    WidthRequest="240"
                     Placeholder="Enter name"
-                    Text="{Binding Name, Mode=TwoWay}" />
+                    Text="{Binding Name}" />
 
                 <Label
+                    IsVisible="{Binding IsNameErr}"
                     Grid.Row="2"
                     Grid.ColumnSpan="2"
                     Margin="2"
@@ -35,33 +49,36 @@
                 <Label
                     x:Name="email_lbl"
                     Grid.Row="3"
-                    Margin="2"
+                    Margin="20"
                     Text="Email" />
 
                 <Entry
                     Grid.Row="3"
                     Grid.Column="1"
+                    HorizontalOptions="Start"
+                    WidthRequest="240"
                     Keyboard="Email"
                     Placeholder="Enter email"
-                    Text="{Binding Email, Mode=TwoWay}" />
+                    Text="{Binding Email}" />
 
                 <Label
                     x:Name="password_lbl"
-                    Grid.Row="4"
-                    Margin="15"
+                    Grid.Row="5"
+                    Margin="20"
                     Text="Password" />
                 <Entry
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="1"
-                    Keyboard="Chat"
+                    HorizontalOptions="Start"
+                    WidthRequest="240"
                     Placeholder="Enter password"
-                    Text="{Binding Password, Mode=TwoWay}" />
+                    Text="{Binding Password}" />
 
                 <Label
                     Grid.Row="5"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="Center"
-                    Text="{Binding PassError, Mode=TwoWay}"
+                    Text="{Binding PassError}"
                     TextColor="red" />
 
                 <Button

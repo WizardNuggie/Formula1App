@@ -76,7 +76,6 @@ namespace Formula1App.ViewModels
             {
                     name = value;
                     NameError = "";
-                    OnPropertyChanged(nameof(Name));
                     if (!string.IsNullOrEmpty(Name))
                     {
                         if (char.IsDigit(Name[0]))
@@ -87,6 +86,7 @@ namespace Formula1App.ViewModels
                     }
                     else
                         NameError = "";
+                    OnPropertyChanged(nameof(Name));
             }
         }
         private string nameError;
@@ -127,6 +127,30 @@ namespace Formula1App.ViewModels
             {
                     bday = value;
                     OnPropertyChanged(nameof(Bday));
+            }
+        }
+        private bool isNameErr;
+        public bool IsNameErr
+        {
+            get => isNameErr;
+            set
+            {
+                if (NameError != "" || NameError != null)
+                    IsNameErr = true;
+                else
+                    IsNameErr = false;
+                isNameErr = value;
+                OnPropertyChanged(nameof(IsNameErr));
+            }
+        }
+        private bool isPassErr;
+        public bool IsPassErr
+        {
+            get => isPassErr;
+            set
+            {
+                isPassErr = value;
+                OnPropertyChanged(nameof(IsPassErr));
             }
         }
         private bool IsValidPassword(string pass)

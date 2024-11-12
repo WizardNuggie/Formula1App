@@ -5,7 +5,7 @@ namespace Formula1App
 {
     public partial class App : Application
     {
-        public App(LoginViewModel loginViewModel)
+        public App()
         {
             InitializeComponent();
 
