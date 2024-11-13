@@ -76,17 +76,17 @@ namespace Formula1App.ViewModels
             {
                     name = value;
                     NameError = "";
+                    OnPropertyChanged(nameof(Name));
                     if (!string.IsNullOrEmpty(Name))
                     {
-                        if (char.IsDigit(Name[0]))
+                        if (!(Name[0] >= 'a' && Name[0] <= 'z') && !(Name[0] >= 'A' && Name[0] <= 'Z'))
                         {
-                            NameError = "A name cannot start with a number";
+                            NameError = "A name has to start with a letter";
                             OnPropertyChanged(nameof(Name));
                         }
                     }
                     else
                         NameError = "";
-                    OnPropertyChanged(nameof(Name));
             }
         }
         private string nameError;
@@ -96,7 +96,11 @@ namespace Formula1App.ViewModels
             set
             {
                 nameError = value;
-                OnPropertyChanged(nameof(NameError)); 
+                if (NameError != "" || NameError != null)
+                    IsNameErr = true;
+                else
+                    IsNameErr = false;
+                OnPropertyChanged(nameof(NameError));
             }
         }
         private string favDriver;
@@ -135,10 +139,6 @@ namespace Formula1App.ViewModels
             get => isNameErr;
             set
             {
-                if (NameError != "" || NameError != null)
-                    IsNameErr = true;
-                else
-                    IsNameErr = false;
                 isNameErr = value;
                 OnPropertyChanged(nameof(IsNameErr));
             }
