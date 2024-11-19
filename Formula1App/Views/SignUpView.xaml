@@ -10,10 +10,9 @@
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always">
 
-            <Grid ColumnDefinitions="*,2.5*" RowDefinitions="1.5*,*,0.5*,*,0.5*,*,*,*,*,*,*,*,*,*,*">
+            <Grid ColumnDefinitions="*,0.4*" RowDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
                 <Label
                     HorizontalOptions="Center"
-                    Grid.ColumnSpan="2"
                     Padding="5"
                     FontAttributes="Bold"
                     FontFamily="Consolas"
@@ -23,25 +22,31 @@
 
                 <Label
                     x:Name="name_lbl"
-                    Grid.Column="0"
                     Grid.Row="1"
-                    Margin="20"
+                    Margin="20,20,0,0"
                     Text="Name" />
-
-                <Entry
-                    Grid.Column="1"
-                    Grid.Row="1"
+                <Frame
+                    Padding="3"
+                    WidthRequest="250"
+                    HorizontalOptions="Start"
+                    Margin="20,0,0,10"
+                    CornerRadius="10"
+                    Grid.Row="2">
+                    <Entry
+                    Grid.Row="2"
                     HorizontalOptions="Start"
                     WidthRequest="240"
                     Placeholder="Enter name"
                     Text="{Binding Name}" />
+                </Frame>
 
                 <Label
                     IsVisible="{Binding IsNameErr}"
+                    Grid.Column="1"
                     Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Margin="2"
+                    Margin="4"
                     HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     Text="{Binding NameError}"
                     TextColor="Red" />
 
@@ -49,40 +54,84 @@
                 <Label
                     x:Name="email_lbl"
                     Grid.Row="3"
-                    Margin="20"
+                    Margin="20,20,0,0"
                     Text="Email" />
-
-                <Entry
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    HorizontalOptions="Start"
-                    WidthRequest="240"
-                    Keyboard="Email"
-                    Placeholder="Enter email"
-                    Text="{Binding Email}" />
+                
+                <Frame
+                        Padding="3"
+                        WidthRequest="250"
+                        HorizontalOptions="Start"
+                        Margin="20,0,0,10"
+                        CornerRadius="10"
+                        Grid.Row="4">
+                    <Entry
+                        Grid.Row="4"
+                        WidthRequest="240"
+                        HorizontalOptions="Start"
+                        Keyboard="Email"
+                        Placeholder="Enter email"
+                        Text="{Binding Email}" />
+                </Frame>
 
                 <Label
+    x:Name="username_lbl"
+    Grid.Row="5"
+    Margin="20,20,0,0"
+    Text="Username" />
+                <Frame
+    Padding="3"
+    WidthRequest="250"
+    HorizontalOptions="Start"
+    Margin="20,0,0,10"
+    CornerRadius="10"
+    Grid.Row="6">
+                    <Entry
+    Grid.Row="6"
+    HorizontalOptions="Start"
+    WidthRequest="240"
+    Placeholder="Enter username"
+    Text="{Binding Username}" />
+                </Frame>
+                
+                <Label
                     x:Name="password_lbl"
-                    Grid.Row="5"
-                    Margin="20"
+                    Grid.Row="7"
+                    Margin="20,20,0,0"
                     Text="Password" />
-                <Entry
-                    Grid.Row="5"
-                    Grid.Column="1"
+                <Frame
+                    Padding="3"
+                    WidthRequest="250"
+                    HorizontalOptions="Start"
+                    Margin="20,0,0,10"
+                    CornerRadius="10"
+                    Grid.Row="8">
+                    <Entry
+                    Grid.Row="8"
                     HorizontalOptions="Start"
                     WidthRequest="240"
                     Placeholder="Enter password"
                     Text="{Binding Password}" />
+                </Frame>
 
                 <Label
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
+                    IsVisible="{Binding IsPassErr}"
+                    Grid.Column="1"
+                    Grid.Row="8"
                     HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     Text="{Binding PassError}"
+                    Margin="4"
                     TextColor="red" />
 
+                <Picker
+                    >
+                    
+                </Picker>
+
+
+
                 <Button
-                    Grid.Row="10"
+                    Grid.Row="15"
                     Grid.ColumnSpan="2"
                     Command="{Binding RegisterCommand}"
                     Text="Register"/>

@@ -1,6 +1,7 @@
 ﻿using Formula1App.Views;
 using Formula1App.ViewModels;
 using Microsoft.Extensions.Logging;
+using Formula1App.Services;
 
 namespace Formula1App
 {
@@ -20,6 +21,7 @@ namespace Formula1App
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpView>();
             builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddSingleton<F1Service>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

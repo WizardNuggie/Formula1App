@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Formula1App.Services;
+using Java.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,8 @@ namespace Formula1App.ViewModels
     public class SignUpViewModel:ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
+        private readonly F1Service service;
+        
         public ICommand RegisterCommand { get; set; }
 
         private string username;
@@ -55,6 +59,10 @@ namespace Formula1App.ViewModels
             set
             {
                 passError = value;
+                if (PassError != "" || PassError != null)
+                    IsPassErr = true;
+                else
+                    IsPassErr = false;
                 OnPropertyChanged(nameof(PassError));
             }
         }
@@ -79,9 +87,10 @@ namespace Formula1App.ViewModels
                     OnPropertyChanged(nameof(Name));
                     if (!string.IsNullOrEmpty(Name))
                     {
-                        if (!(Name[0] >= 'a' && Name[0] <= 'z') && !(Name[0] >= 'A' && Name[0] <= 'Z'))
+                    foreach(char c in Name)
+                        if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z'))
                         {
-                            NameError = "A name has to start with a letter";
+                            NameError = "A name can only contain letters";
                             OnPropertyChanged(nameof(Name));
                         }
                     }
@@ -163,9 +172,12 @@ namespace Formula1App.ViewModels
             return sum >= 4;
         }
 
-        public SignUpViewModel(IServiceProvider sp)
+        public SignUpViewModel(IServiceProvider sp, F1Service s)
         {
             this.serviceProvider = sp;
+            this.service = s;
         }
+
+        public //continue list of drivers and constructors
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Formula1App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Formula1App.ViewModels
     public class LoginViewModel:ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
+        private readonly F1Service service;
         public ICommand LoginCommand { get; set; }
         public ICommand ToRegisterCommand { get; set; }
         
@@ -38,9 +40,10 @@ namespace Formula1App.ViewModels
                 }
             }
         }
-        public LoginViewModel(IServiceProvider sp)
+        public LoginViewModel(IServiceProvider sp, F1Service s)
         {
             this.serviceProvider = sp;
+            this.service = s;
         }
     }
 }
