@@ -1,7 +1,8 @@
-﻿using Formula1App.Services;
-using Java.Util;
+﻿using Formula1App.Models;
+using Formula1App.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -171,13 +172,35 @@ namespace Formula1App.ViewModels
             }
             return sum >= 4;
         }
-
+        public List<MyDriver> Drivers { get; private set; }
+        public List<Constructor> Constructors { get; private set; }
+        private MyDriver selectedDriver;
+        public MyDriver SelectedDriver
+        {
+            get => selectedDriver;
+            set
+            {
+                selectedDriver = value;
+                OnPropertyChanged(nameof(SelectedDriver));
+            }
+        }
         public SignUpViewModel(IServiceProvider sp, F1Service s)
         {
             this.serviceProvider = sp;
             this.service = s;
+            Drivers = new();
+            Constructors = new();
+            GetDrivers();
+            GetConstructors();
+        }
+        private async void GetDrivers()
+        {
+            Drivers = await service.GetCurrDriversAsync();
         }
 
-        public //continue list of drivers and constructors
+        private async void GetConstructors()
+        {
+            Constructors = await service.GetCurrConstructorsAsync();
+        }
     }
 }

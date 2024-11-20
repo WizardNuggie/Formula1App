@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             x:Class="Formula1App.Views.SignUpView"
-             x:DataType="viewmodel:SignUpViewModel">
+<ContentPage
+    x:Class="Formula1App.Views.SignUpView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    xmlns:model="clr-namespace:Formula1App.Models"
+    x:DataType="viewmodel:SignUpViewModel">
     <StackLayout VerticalOptions="FillAndExpand">
         <ScrollView
+            x:Name="scrlview"
             HorizontalScrollBarVisibility="Always"
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always">
 
             <Grid ColumnDefinitions="*,0.4*" RowDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
                 <Label
-                    HorizontalOptions="Center"
                     Padding="5"
                     FontAttributes="Bold"
                     FontFamily="Consolas"
                     FontSize="30"
+                    HorizontalOptions="Center"
                     Text="Register"
                     TextColor="Black" />
 
@@ -26,29 +29,29 @@
                     Margin="20,20,0,0"
                     Text="Name" />
                 <Frame
-                    Padding="3"
-                    WidthRequest="250"
-                    HorizontalOptions="Start"
-                    Margin="20,0,0,10"
-                    CornerRadius="10"
-                    Grid.Row="2">
-                    <Entry
                     Grid.Row="2"
+                    Margin="20,0,0,10"
+                    Padding="3"
+                    CornerRadius="10"
                     HorizontalOptions="Start"
-                    WidthRequest="240"
-                    Placeholder="Enter name"
-                    Text="{Binding Name}" />
+                    WidthRequest="250">
+                    <Entry
+                        Grid.Row="2"
+                        HorizontalOptions="Start"
+                        Placeholder="Enter name"
+                        Text="{Binding Name}"
+                        WidthRequest="240" />
                 </Frame>
 
                 <Label
-                    IsVisible="{Binding IsNameErr}"
-                    Grid.Column="1"
                     Grid.Row="2"
+                    Grid.Column="1"
                     Margin="4"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"
+                    IsVisible="{Binding IsNameErr}"
                     Text="{Binding NameError}"
-                    TextColor="Red" />
+                    TextColor="Red"
+                    VerticalOptions="Center" />
 
 
                 <Label
@@ -56,86 +59,102 @@
                     Grid.Row="3"
                     Margin="20,20,0,0"
                     Text="Email" />
-                
+
                 <Frame
-                        Padding="3"
-                        WidthRequest="250"
-                        HorizontalOptions="Start"
-                        Margin="20,0,0,10"
-                        CornerRadius="10"
-                        Grid.Row="4">
+                    Grid.Row="4"
+                    Margin="20,0,0,10"
+                    Padding="3"
+                    CornerRadius="10"
+                    HorizontalOptions="Start"
+                    WidthRequest="250">
                     <Entry
                         Grid.Row="4"
-                        WidthRequest="240"
                         HorizontalOptions="Start"
                         Keyboard="Email"
                         Placeholder="Enter email"
-                        Text="{Binding Email}" />
+                        Text="{Binding Email}"
+                        WidthRequest="240" />
                 </Frame>
 
                 <Label
-    x:Name="username_lbl"
-    Grid.Row="5"
-    Margin="20,20,0,0"
-    Text="Username" />
+                    x:Name="username_lbl"
+                    Grid.Row="5"
+                    Margin="20,20,0,0"
+                    Text="Username" />
                 <Frame
-    Padding="3"
-    WidthRequest="250"
-    HorizontalOptions="Start"
-    Margin="20,0,0,10"
-    CornerRadius="10"
-    Grid.Row="6">
+                    Grid.Row="6"
+                    Margin="20,0,0,10"
+                    Padding="3"
+                    CornerRadius="10"
+                    HorizontalOptions="Start"
+                    WidthRequest="250">
                     <Entry
-    Grid.Row="6"
-    HorizontalOptions="Start"
-    WidthRequest="240"
-    Placeholder="Enter username"
-    Text="{Binding Username}" />
+                        Grid.Row="6"
+                        HorizontalOptions="Start"
+                        Placeholder="Enter username"
+                        Text="{Binding Username}"
+                        WidthRequest="240" />
                 </Frame>
-                
+
                 <Label
                     x:Name="password_lbl"
                     Grid.Row="7"
                     Margin="20,20,0,0"
                     Text="Password" />
                 <Frame
-                    Padding="3"
-                    WidthRequest="250"
-                    HorizontalOptions="Start"
-                    Margin="20,0,0,10"
-                    CornerRadius="10"
-                    Grid.Row="8">
-                    <Entry
                     Grid.Row="8"
+                    Margin="20,0,0,10"
+                    Padding="3"
+                    CornerRadius="10"
                     HorizontalOptions="Start"
-                    WidthRequest="240"
-                    Placeholder="Enter password"
-                    Text="{Binding Password}" />
+                    WidthRequest="250">
+                    <Entry
+                        Grid.Row="8"
+                        HorizontalOptions="Start"
+                        Placeholder="Enter password"
+                        Text="{Binding Password}"
+                        WidthRequest="240" />
                 </Frame>
 
                 <Label
-                    IsVisible="{Binding IsPassErr}"
-                    Grid.Column="1"
                     Grid.Row="8"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="{Binding PassError}"
+                    Grid.Column="1"
                     Margin="4"
-                    TextColor="red" />
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsPassErr}"
+                    Text="{Binding PassError}"
+                    TextColor="red"
+                    VerticalOptions="Center" />
 
-                <Picker
-                    >
-                    
-                </Picker>
+                <Label
+                    x:Name="driver_lbl"
+                    Grid.Row="9"
+                    Margin="20,20,0,0"
+                    Text="Favorite Driver"/>
 
-
+                <Frame
+                    Grid.Row="10"
+                    Margin="20,0,0,10"
+                    Padding="3"
+                    CornerRadius="10"
+                    HorizontalOptions="Start"
+                    WidthRequest="250">
+                    <Picker
+                    x:DataType="model:MyDriver"
+                    HeightRequest="50"
+                    ItemsSource="{Binding BindingContext.Drivers, Source={x:Reference scrlview}}"
+                    ItemDisplayBinding="{Binding FullName}"
+                    Title="Select a driver"
+                    SelectedItem="{Binding BindingContext.SelectedDriver, Source={x:Reference scrlview}}"
+                    Grid.Row="10"/>
+                </Frame>
 
                 <Button
                     Grid.Row="15"
                     Grid.ColumnSpan="2"
                     Command="{Binding RegisterCommand}"
-                    Text="Register"/>
-                    <!--IsEnabled="{Binding CanRegister}"-->
+                    Text="Register" />
+                <!--  IsEnabled="{Binding CanRegister}"  -->
 
             </Grid>
 
