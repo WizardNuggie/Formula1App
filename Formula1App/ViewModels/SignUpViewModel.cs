@@ -172,8 +172,8 @@ namespace Formula1App.ViewModels
             }
             return sum >= 4;
         }
-        public List<MyDriver> Drivers { get; private set; }
-        public List<Constructor> Constructors { get; private set; }
+        public List<MyDriver> Drivers { get; set; }
+        public List<Constructor> Constructors { get; set; }
         private MyDriver selectedDriver;
         public MyDriver SelectedDriver
         {
