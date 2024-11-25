@@ -38,22 +38,20 @@ namespace Formula1App.Services
 
         public async Task<List<MyDriver>> GetDriversByYearAsync(string year)
         {
-            string url = ExtAPI + year + "drivers";
+            string url = ExtAPI + year + "drivers.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    JsonSerializerOptions options = new JsonSerializerOptions
+                    resContent = resContent.Replace("\"MRData\":", "\"DriversData\":");
+                    DriverApi result = JsonSerializer.Deserialize<DriverApi>(resContent);
+                    List<Driver> dList = result.DriversData.DriverTable.Drivers.ToList();
+                    List<MyDriver>? newDList = new();
+                    foreach (Driver d in dList)
                     {
-                        PropertyNameCaseInsensitive = true
-                    };
-                    List<Driver>? result = JsonSerializer.Deserialize<List<Driver>>(resContent, options);
-                    List<MyDriver>? dList = new();
-                    foreach (Driver d in result)
-                    {
-                        dList.Add(new MyDriver()
+                        newDList.Add(new MyDriver()
                         {
                             DriverId = d.driverId,
                             PermanentNumber = d.permanentNumber,
@@ -66,7 +64,7 @@ namespace Formula1App.Services
                             FullName = d.givenName + " " + d.familyName
                         });
                     }
-                    return dList;
+                    return newDList;
                 }
                 else
                 {
@@ -82,13 +80,14 @@ namespace Formula1App.Services
 
         public async Task<List<Constructor>> GetConstructorsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "constructors";
+            string url = ExtAPI + year + "constructors.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
+                    resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
