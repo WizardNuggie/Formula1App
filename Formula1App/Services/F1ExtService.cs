@@ -8,22 +8,17 @@ using System.Threading.Tasks;
 
 namespace Formula1App.Services
 {
-    public class F1Service
+    public class F1ExtService
     {
-        private static string PerAPI = "";
         private static string ExtAPI = "http://ergast.com/api/f1/";
         private string currYear = DateTime.Now.Year.ToString() +"/";
         private HttpClient client;
-        private string baseUrl;
-        public static string baseAddress = "https://" + PerAPI + "/api/";
-
-        public F1Service()
+        public F1ExtService()
         {
             HttpClientHandler handler = new HttpClientHandler();
             handler.CookieContainer = new System.Net.CookieContainer();
 
             this.client = new HttpClient(handler);
-            this.baseUrl = baseAddress;
         }
 
         public async Task<List<MyDriver>> GetCurrDriversAsync()
@@ -88,11 +83,7 @@ namespace Formula1App.Services
                 if (response.IsSuccessStatusCode)
                 {
                     resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
-                    JsonSerializerOptions options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
-                    List<Constructor>? result = JsonSerializer.Deserialize<List<Constructor>>(resContent, options);
+                    List<Constructor>? result = JsonSerializer.Deserialize<List<Constructor>>(resContent);
                     return result;
                 }
                 else

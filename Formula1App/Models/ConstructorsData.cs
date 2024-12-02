@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Formula1App.Models
 {
+    public class ConstructorsApi
+    {
+        public ConstructorsData ConstructorsData { get; set; }
+    }
+
     public class ConstructorsData
     {
         public string xmlns { get; set; }

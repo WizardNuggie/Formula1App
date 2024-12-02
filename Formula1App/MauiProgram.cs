@@ -21,7 +21,7 @@ namespace Formula1App
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpView>();
             builder.Services.AddSingleton<SignUpViewModel>();
-            builder.Services.AddSingleton<F1Service>();
+            builder.Services.AddSingleton<F1ExtService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

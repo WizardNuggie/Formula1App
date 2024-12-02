@@ -11,7 +11,7 @@ namespace Formula1App.ViewModels
     public class LoginViewModel:ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly F1Service service;
+        private readonly F1ExtService service;
         public ICommand LoginCommand { get; set; }
         public ICommand ToRegisterCommand { get; set; }
         
@@ -40,7 +40,7 @@ namespace Formula1App.ViewModels
                 }
             }
         }
-        public LoginViewModel(IServiceProvider sp, F1Service s)
+        public LoginViewModel(IServiceProvider sp, F1ExtService s)
         {
             this.serviceProvider = sp;
             this.service = s;
