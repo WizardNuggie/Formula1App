@@ -82,9 +82,10 @@ namespace Formula1App.Services
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
-                    List<Constructor>? result = JsonSerializer.Deserialize<List<Constructor>>(resContent);
-                    return result;
+                    resContent = resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
+                    ConstructorsApi result = JsonSerializer.Deserialize<ConstructorsApi>(resContent);
+                    List<Constructor> cList = result.ConstructorsData.ConstructorTable.Constructors.ToList();
+                    return cList;
                 }
                 else
                 {

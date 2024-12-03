@@ -16,6 +16,7 @@ namespace Formula1App.ViewModels
         private readonly F1ExtService service;
         
         public ICommand RegisterCommand { get; set; }
+        public ICommand CanRegisterCommand { get; set; }
 
         private string username;
         public string Username
@@ -44,8 +45,7 @@ namespace Formula1App.ViewModels
                 {
                     if (password != null)
                     {
-                        bool IsPasswordOk = IsValidPassword(password);
-                        if (!IsPasswordOk)
+                        if (IsValidPassword(password))
                         {
                             PassError = "The password must contain at least 4 characters";
                         }
@@ -60,7 +60,7 @@ namespace Formula1App.ViewModels
             set
             {
                 passError = value;
-                if (PassError != "" || PassError != null)
+                if (!string.IsNullOrEmpty(PassError))
                     IsPassErr = true;
                 else
                     IsPassErr = false;
@@ -73,8 +73,26 @@ namespace Formula1App.ViewModels
             get => email;
             set
             {
-                    email = value;
-                    OnPropertyChanged(nameof(Email));
+                email = value;
+                EmailError = "";
+                OnPropertyChanged(nameof(Email));
+                IsValidEmail();
+                if (string.IsNullOrEmpty(Email))
+                    EmailError = "";
+            }
+        }
+        private string emailError;
+        public string EmailError
+        {
+            get => emailError;
+            set
+            {
+                emailError = value;
+                if (string.IsNullOrEmpty(EmailError))
+                    IsEmailErr = false;
+                else
+                    IsEmailErr = true;
+                OnPropertyChanged(nameof(EmailError));
             }
         }
         private string name;
@@ -106,7 +124,7 @@ namespace Formula1App.ViewModels
             set
             {
                 nameError = value;
-                if (NameError != "" || NameError != null)
+                if (!string.IsNullOrEmpty(NameError))
                     IsNameErr = true;
                 else
                     IsNameErr = false;
@@ -163,6 +181,26 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged(nameof(IsPassErr));
             }
         }
+        private bool isEmailErr;
+        public bool IsEmailErr
+        {
+            get => isEmailErr;
+            set
+            {
+                isEmailErr = value;
+                OnPropertyChanged(nameof(IsEmailErr));
+            }
+        }
+        private DateOnly maxDate;
+        public DateOnly MaxDate
+        {
+            get => maxDate;
+            set
+            {
+                maxDate = value;
+                OnPropertyChanged(nameof(MaxDate));
+            }
+        }
         private bool IsValidPassword(string pass)
         {
             int sum = 0;
@@ -171,6 +209,24 @@ namespace Formula1App.ViewModels
                 sum++;
             }
             return sum >= 4;
+        }
+        private bool IsValidEmail()
+        {
+            if (!string.IsNullOrEmpty(Email))
+            {
+                //check if email is in the correct format using regular expression
+                if (!System.Text.RegularExpressions.Regex.IsMatch(Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    EmailError = "Email is invalid";
+                    return false;
+                }
+                else
+                {
+                    EmailError = "";
+                    return true;
+                }
+            }
+            return false;
         }
         private List<MyDriver> drivers;
         public List<MyDriver> Drivers 
@@ -182,7 +238,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged(nameof(Drivers));
             }
         }
-        public List<Constructor> Constructors { get; set; }
+        private List<Constructor> constructors;
+        public List<Constructor> Constructors
+        {
+            get => constructors;
+            set
+            {
+                constructors = value;
+                OnPropertyChanged(nameof(Constructors));
+            }
+        }
         private MyDriver selectedDriver;
         public MyDriver SelectedDriver
         {
@@ -193,14 +258,41 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged(nameof(SelectedDriver));
             }
         }
+        private Constructor selectedConst;
+        public Constructor SelectedConst
+        {
+            get => selectedConst;
+            set
+            {
+                selectedConst = value;
+                OnPropertyChanged(nameof(SelectedConst));
+            }
+        }
+        private bool canRegister;
+        public bool CanRegister
+        {
+            get => canRegister;
+            set
+            {
+                canRegister = value;
+                if (Username == null || Password == null || Name == null || FavDriver == null || Favconstructor == null || Bday == DateOnly.FromDateTime(DateTime.Today) || IsNameErr || IsPassErr || !IsValidEmail())
+                    canRegister = false;
+                else
+                    canRegister = true;
+                OnPropertyChanged(nameof(CanRegister));
+            }
+        }
         public SignUpViewModel(IServiceProvider sp, F1ExtService s)
         {
             this.serviceProvider = sp;
             this.service = s;
+            //RegisterCommand = new Command(OnRegister);
             Drivers = new();
             Constructors = new();
+            MaxDate = DateOnly.FromDateTime(DateTime.Today.Date.AddDays(-1));
             GetDrivers();
             GetConstructors();
+            
         }
         private async void GetDrivers()
         {

@@ -13,7 +13,7 @@
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always">
 
-            <Grid ColumnDefinitions="*,0.4*" RowDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+            <Grid ColumnDefinitions="*,0.4*" RowDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
                 <Label
                     Padding="5"
                     FontAttributes="Bold"
@@ -75,6 +75,16 @@
                         Text="{Binding Email}"
                         WidthRequest="240" />
                 </Frame>
+                
+                <Label
+    Grid.Row="4"
+    Grid.Column="1"
+    Margin="4"
+    HorizontalOptions="Center"
+    IsVisible="{Binding IsEmailErr}"
+    Text="{Binding EmailError}"
+    TextColor="red"
+    VerticalOptions="Center" />
 
                 <Label
                     x:Name="username_lbl"
@@ -149,12 +159,54 @@
                     Grid.Row="10"/>
                 </Frame>
 
+                <Label
+    x:Name="const_lbl"
+    Grid.Row="11"
+    Margin="20,20,0,0"
+    Text="Favorite Constructor"/>
+
+                <Frame
+    Grid.Row="12"
+    Margin="20,0,0,10"
+    Padding="3"
+    CornerRadius="10"
+    HorizontalOptions="Start"
+    WidthRequest="250">
+                    <Picker
+    x:DataType="model:Constructor"
+    HeightRequest="50"
+    ItemsSource="{Binding BindingContext.Constructors, Source={x:Reference scrlview}}"
+    ItemDisplayBinding="{Binding name}"
+    Title="Select a constructor"
+    SelectedItem="{Binding BindingContext.SelectedConst, Source={x:Reference scrlview}}"
+    Grid.Row="12"/>
+                </Frame>
+
+                <Label
+x:Name="bday_lbl"
+Grid.Row="13"
+Margin="20,20,0,0"
+Text="Date of birth"/>
+
+                <Frame
+Grid.Row="14"
+Margin="20,0,0,10"
+Padding="3"
+CornerRadius="10"
+HorizontalOptions="Start"
+WidthRequest="250">
+                    <DatePicker
+                        Date="{Binding Bday}"
+                        MaximumDate="{Binding MaxDate}"
+                        MinimumDate="01/01/1900"/>
+                </Frame>
+
                 <Button
                     Grid.Row="15"
                     Grid.ColumnSpan="2"
                     Command="{Binding RegisterCommand}"
-                    Text="Register" />
-                <!--  IsEnabled="{Binding CanRegister}"  -->
+                    IsEnabled="{Binding CanRegister}"  
+                    Text="Register"/>
 
             </Grid>
 
