@@ -13,7 +13,8 @@ namespace Formula1App.ViewModels
     public class SignUpViewModel:ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly F1ExtService service;
+        private readonly F1ExtService extService;
+        private readonly F1IntService intService;
         
         public ICommand RegisterCommand { get; set; }
         public ICommand CanRegisterCommand { get; set; }
@@ -292,10 +293,11 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged(nameof(CanRegister));
             }
         }
-        public SignUpViewModel(IServiceProvider sp, F1ExtService s)
+        public SignUpViewModel(IServiceProvider sp, F1ExtService extService, F1IntService intService)
         {
             this.serviceProvider = sp;
-            this.service = s;
+            this.extService = extService;
+            this.intService = intService;
             //RegisterCommand = new Command(OnRegister);
             Drivers = new();
             Constructors = new();
@@ -303,16 +305,15 @@ namespace Formula1App.ViewModels
             Dob = DateTime.Today;
             GetDrivers();
             GetConstructors();
-            
         }
         private async void GetDrivers()
         {
-            Drivers = await service.GetCurrDriversAsync();
+            Drivers = await extService.GetCurrDriversAsync();
         }
 
         private async void GetConstructors()
         {
-            Constructors = await service.GetCurrConstructorsAsync();
+            Constructors = await extService.GetCurrConstructorsAsync();
         }
     }
 }

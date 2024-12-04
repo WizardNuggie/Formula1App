@@ -19,6 +19,30 @@ namespace Formula1App.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
 
-            #endregion
+        #endregion
+        #region InServerCall
+        private bool inServerCall;
+        public bool InServerCall
+        {
+            get
+            {
+                return this.inServerCall;
+            }
+            set
+            {
+                this.inServerCall = value;
+                OnPropertyChanged(nameof(NotInServerCall));
+                OnPropertyChanged(nameof(InServerCall));
+            }
         }
+
+        public bool NotInServerCall
+        {
+            get
+            {
+                return !this.InServerCall;
+            }
+        }
+        #endregion
+    }
 }
