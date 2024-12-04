@@ -161,6 +161,16 @@ namespace Formula1App.ViewModels
                     OnPropertyChanged(nameof(Bday));
             }
         }
+        private DateTime dob;
+        public DateTime Dob
+        {
+            get => dob;
+            set
+            {
+                dob = value;
+                OnPropertyChanged(nameof(Dob));
+            }
+        }
         private bool isNameErr;
         public bool IsNameErr
         {
@@ -191,8 +201,8 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged(nameof(IsEmailErr));
             }
         }
-        private DateOnly maxDate;
-        public DateOnly MaxDate
+        private DateTime maxDate;
+        public DateTime MaxDate
         {
             get => maxDate;
             set
@@ -275,7 +285,7 @@ namespace Formula1App.ViewModels
             set
             {
                 canRegister = value;
-                if (Username == null || Password == null || Name == null || FavDriver == null || Favconstructor == null || Bday == DateOnly.FromDateTime(DateTime.Today) || IsNameErr || IsPassErr || !IsValidEmail())
+                if (Username == null || Password == null || Name == null || FavDriver == null || Favconstructor == null || Dob == DateTime.Today || IsNameErr || IsPassErr || !IsValidEmail())
                     canRegister = false;
                 else
                     canRegister = true;
@@ -289,7 +299,8 @@ namespace Formula1App.ViewModels
             //RegisterCommand = new Command(OnRegister);
             Drivers = new();
             Constructors = new();
-            MaxDate = DateOnly.FromDateTime(DateTime.Today.Date.AddDays(-1));
+            MaxDate = DateTime.Today;
+            Dob = DateTime.Today;
             GetDrivers();
             GetConstructors();
             
