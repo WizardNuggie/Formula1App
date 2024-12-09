@@ -22,6 +22,7 @@ namespace Formula1App
             builder.Services.AddSingleton<SignUpView>();
             builder.Services.AddSingleton<SignUpViewModel>();
             builder.Services.AddSingleton<F1ExtService>();
+            builder.Services.AddSingleton<F1IntService>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

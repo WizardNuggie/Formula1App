@@ -26,7 +26,7 @@ namespace Formula1App.ViewModels
             set
             {
                     username = value;
-                    OnPropertyChanged(nameof(Username));
+                    OnPropertyChanged();
             }
         }
         private string password;
@@ -37,7 +37,7 @@ namespace Formula1App.ViewModels
             {
                 password = value;
                 PassError = "";
-                OnPropertyChanged(nameof(Password));
+                OnPropertyChanged();
                 if (string.IsNullOrEmpty(password))
                 {
                     PassError = "";
@@ -65,7 +65,7 @@ namespace Formula1App.ViewModels
                     IsPassErr = true;
                 else
                     IsPassErr = false;
-                OnPropertyChanged(nameof(PassError));
+                OnPropertyChanged();
             }
         }
         private string email;
@@ -76,7 +76,7 @@ namespace Formula1App.ViewModels
             {
                 email = value;
                 EmailError = "";
-                OnPropertyChanged(nameof(Email));
+                OnPropertyChanged();
                 IsValidEmail();
                 if (string.IsNullOrEmpty(Email))
                     EmailError = "";
@@ -93,7 +93,7 @@ namespace Formula1App.ViewModels
                     IsEmailErr = false;
                 else
                     IsEmailErr = true;
-                OnPropertyChanged(nameof(EmailError));
+                OnPropertyChanged();
             }
         }
         private string name;
@@ -104,14 +104,14 @@ namespace Formula1App.ViewModels
             {
                     name = value;
                     NameError = "";
-                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged();
                     if (!string.IsNullOrEmpty(Name))
                     {
                     foreach(char c in Name)
                         if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z'))
                         {
                             NameError = "A name can only contain letters";
-                            OnPropertyChanged(nameof(Name));
+                            OnPropertyChanged();
                         }
                     }
                     else
@@ -129,7 +129,7 @@ namespace Formula1App.ViewModels
                     IsNameErr = true;
                 else
                     IsNameErr = false;
-                OnPropertyChanged(nameof(NameError));
+                OnPropertyChanged();
             }
         }
         private string favDriver;
@@ -139,7 +139,7 @@ namespace Formula1App.ViewModels
             set
             {
                     favDriver = value;
-                    OnPropertyChanged(nameof(FavDriver));
+                    OnPropertyChanged();
             }
         }
         private string favConstructor;
@@ -149,7 +149,7 @@ namespace Formula1App.ViewModels
             set
             {
                     favConstructor = value;
-                    OnPropertyChanged(nameof(Favconstructor));
+                    OnPropertyChanged();
             }
         }
         private DateOnly bday;
@@ -159,7 +159,7 @@ namespace Formula1App.ViewModels
             set
             {
                     bday = value;
-                    OnPropertyChanged(nameof(Bday));
+                    OnPropertyChanged();
             }
         }
         private DateTime dob;
@@ -169,7 +169,7 @@ namespace Formula1App.ViewModels
             set
             {
                 dob = value;
-                OnPropertyChanged(nameof(Dob));
+                OnPropertyChanged();
             }
         }
         private bool isNameErr;
@@ -179,7 +179,7 @@ namespace Formula1App.ViewModels
             set
             {
                 isNameErr = value;
-                OnPropertyChanged(nameof(IsNameErr));
+                OnPropertyChanged();
             }
         }
         private bool isPassErr;
@@ -189,7 +189,7 @@ namespace Formula1App.ViewModels
             set
             {
                 isPassErr = value;
-                OnPropertyChanged(nameof(IsPassErr));
+                OnPropertyChanged();
             }
         }
         private bool isEmailErr;
@@ -199,7 +199,7 @@ namespace Formula1App.ViewModels
             set
             {
                 isEmailErr = value;
-                OnPropertyChanged(nameof(IsEmailErr));
+                OnPropertyChanged();
             }
         }
         private DateTime maxDate;
@@ -209,7 +209,7 @@ namespace Formula1App.ViewModels
             set
             {
                 maxDate = value;
-                OnPropertyChanged(nameof(MaxDate));
+                OnPropertyChanged();
             }
         }
         private bool IsValidPassword(string pass)
@@ -246,7 +246,7 @@ namespace Formula1App.ViewModels
             set
             {
                 drivers = value;
-                OnPropertyChanged(nameof(Drivers));
+                OnPropertyChanged();
             }
         }
         private List<Constructor> constructors;
@@ -256,7 +256,7 @@ namespace Formula1App.ViewModels
             set
             {
                 constructors = value;
-                OnPropertyChanged(nameof(Constructors));
+                OnPropertyChanged();
             }
         }
         private MyDriver selectedDriver;
@@ -266,7 +266,7 @@ namespace Formula1App.ViewModels
             set
             {
                 selectedDriver = value;
-                OnPropertyChanged(nameof(SelectedDriver));
+                OnPropertyChanged();
             }
         }
         private Constructor selectedConst;
@@ -276,21 +276,7 @@ namespace Formula1App.ViewModels
             set
             {
                 selectedConst = value;
-                OnPropertyChanged(nameof(SelectedConst));
-            }
-        }
-        private bool canRegister;
-        public bool CanRegister
-        {
-            get => canRegister;
-            set
-            {
-                canRegister = value;
-                if (Username == null || Password == null || Name == null || FavDriver == null || Favconstructor == null || Dob == DateTime.Today || IsNameErr || IsPassErr || !IsValidEmail())
-                    canRegister = false;
-                else
-                    canRegister = true;
-                OnPropertyChanged(nameof(CanRegister));
+                OnPropertyChanged();
             }
         }
         public SignUpViewModel(IServiceProvider sp, F1ExtService extService, F1IntService intService)

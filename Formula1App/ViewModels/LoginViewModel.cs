@@ -25,7 +25,8 @@ namespace Formula1App.ViewModels
                 if (username != value)
                 {
                     username = value; 
-                    OnPropertyChanged(nameof(Username));
+                    OnPropertyChanged();
+                    ((Command)LoginCommand).ChangeCanExecute();
                 }
             }
         }
@@ -38,7 +39,8 @@ namespace Formula1App.ViewModels
                 if (password != value)
                 {
                     password = value;
-                    OnPropertyChanged(nameof(Password));
+                    OnPropertyChanged();
+                    ((Command)LoginCommand).ChangeCanExecute();
                 }
             }
         }
@@ -55,11 +57,16 @@ namespace Formula1App.ViewModels
                 }
             }
         }
+
         public LoginViewModel(IServiceProvider sp, F1ExtService extService, F1IntService intService)
         {
             this.serviceProvider = sp;
             this.extService = extService;
             this.intService = intService;
+            LoginCommand = new Command(OnLogin,
+                () =>
+                !string.IsNullOrEmpty(Username) &&
+                !string.IsNullOrEmpty(Password));
         }
 
         private async void OnLogin()
@@ -79,7 +86,9 @@ namespace Formula1App.ViewModels
             {
                 ErrorMsg = "";
                 AppShell shell = serviceProvider.GetService<AppShell>();
-
+                ((App)Application.Current).MainPage = shell;
+                Shell.Current.FlyoutIsPresented = false;
+                //Shell.Current.GoToAsync("");
             }
         }
     }
