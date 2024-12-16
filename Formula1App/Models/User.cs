@@ -15,8 +15,9 @@ namespace Formula1App.Models
         public string FavDriver { get; set; }
         public string FavConstructor { get; set; }
         public DateOnly Birthday { get; set; }
+        public bool IsAdmin { get; set; }
 
-        public User(string email, string username, string name, string password, string driver, string @const, DateOnly bd)
+        public User(string email, string username, string name, string password, string driver, string @const, DateOnly bd, bool isAdmin)
         {
             this.Email = email;
             this.Username = username;
@@ -25,6 +26,7 @@ namespace Formula1App.Models
             this.FavDriver = driver;
             this.FavConstructor = @const;
             this.Birthday = bd;
+            IsAdmin = isAdmin;
         }
         public User(Models.User u)
         {
@@ -35,6 +37,7 @@ namespace Formula1App.Models
             this.FavDriver = u.FavDriver;
             this.FavConstructor = u.FavConstructor;
             this.Birthday = u.Birthday;
+            this.IsAdmin = u.IsAdmin;
         }
         public User() { }
     }

@@ -17,7 +17,7 @@ namespace Formula1App
             InitializeComponent();
             LoggedUser = null;
 
-            MainPage = new NavigationPage(sp.GetService<LoginView>());
+            MainPage = sp.GetService<SignPage>();
         }
     }
 }

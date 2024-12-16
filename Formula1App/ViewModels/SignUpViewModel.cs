@@ -17,16 +17,15 @@ namespace Formula1App.ViewModels
         private readonly F1IntService intService;
         
         public ICommand RegisterCommand { get; set; }
-        public ICommand CanRegisterCommand { get; set; }
-
         private string username;
         public string Username
         {
             get => username;
             set
             {
-                    username = value;
-                    OnPropertyChanged();
+               username = value;
+               OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private string password;
@@ -138,8 +137,9 @@ namespace Formula1App.ViewModels
             get => favDriver;
             set
             {
-                    favDriver = value;
-                    OnPropertyChanged();
+                favDriver = value;
+                OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private string favConstructor;
@@ -148,8 +148,9 @@ namespace Formula1App.ViewModels
             get => favConstructor;
             set
             {
-                    favConstructor = value;
-                    OnPropertyChanged();
+                favConstructor = value;
+                OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private DateOnly bday;
@@ -158,8 +159,9 @@ namespace Formula1App.ViewModels
             get => bday;
             set
             {
-                    bday = value;
-                    OnPropertyChanged();
+                bday = value;
+                OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private DateTime dob;
@@ -180,6 +182,7 @@ namespace Formula1App.ViewModels
             {
                 isNameErr = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private bool isPassErr;
@@ -190,6 +193,7 @@ namespace Formula1App.ViewModels
             {
                 isPassErr = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private bool isEmailErr;
@@ -200,6 +204,7 @@ namespace Formula1App.ViewModels
             {
                 isEmailErr = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private DateTime maxDate;
@@ -284,13 +289,47 @@ namespace Formula1App.ViewModels
             this.serviceProvider = sp;
             this.extService = extService;
             this.intService = intService;
-            //RegisterCommand = new Command(OnRegister);
+            RegisterCommand = new Command(OnRegister,
+                () =>
+                !this.IsNameErr &&
+                !this.IsPassErr &&
+                !this.IsEmailErr &&
+                !string.IsNullOrEmpty(this.Username) &&
+                this.FavDriver != null &&
+                this.Favconstructor != null &&
+                this.Bday != DateOnly.FromDateTime(DateTime.Today.Date));
             Drivers = new();
             Constructors = new();
             MaxDate = DateTime.Today;
             Dob = DateTime.Today;
             GetDrivers();
             GetConstructors();
+        }
+        public async void OnRegister()
+        {
+            var newUser = new User
+            {
+                Name = this.Name,
+                Email = this.Email,
+                Username = this.Username,
+                Password = this.Password,
+                FavDriver = this.FavDriver,
+                FavConstructor = this.Favconstructor,
+                Birthday = this.Bday,
+                IsAdmin = false
+            };
+            InServerCall = true;
+            newUser = await intService.SignUpAsync(newUser);
+            InServerCall = false;
+            if (newUser != null)
+            {
+                await intService.LoginAsync(new LoginUser { Username = newUser.Username, Password = newUser.Password });
+            }
+            else
+            {
+                string errorMsg = "Sign up failed\nPlease try again";
+                await Application.Current.MainPage.DisplayAlert("Sign Up Failed", errorMsg, "ok");
+            }
         }
         private async void GetDrivers()
         {

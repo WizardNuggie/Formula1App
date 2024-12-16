@@ -44,19 +44,6 @@ namespace Formula1App.ViewModels
                 }
             }
         }
-        private string errorMsg;
-        public string ErrorMsg
-        {
-            get => errorMsg;
-            set
-            {
-                if (errorMsg != value)
-                {
-                    errorMsg = value;
-                    OnPropertyChanged(nameof(ErrorMsg));
-                }
-            }
-        }
 
         public LoginViewModel(IServiceProvider sp, F1ExtService extService, F1IntService intService)
         {
@@ -72,7 +59,6 @@ namespace Formula1App.ViewModels
         private async void OnLogin()
         {
             InServerCall = true;
-            ErrorMsg = "";
             LoginUser loginInfo = new LoginUser(Username = this.Username, Password = this.Password);
             User u = await this.intService.LoginAsync(loginInfo);
             InServerCall = false;
@@ -80,11 +66,11 @@ namespace Formula1App.ViewModels
             ((App)Application.Current).LoggedUser = u;
             if (u == null)
             {
-                ErrorMsg = "The username or password is incorrect";
+                string errorMsg = "The username or password is incorrect";
+                await Application.Current.MainPage.DisplayAlert("Login Failed", errorMsg, "ok");
             }
             else
             {
-                ErrorMsg = "";
                 AppShell shell = serviceProvider.GetService<AppShell>();
                 ((App)Application.Current).MainPage = shell;
                 Shell.Current.FlyoutIsPresented = false;

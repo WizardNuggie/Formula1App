@@ -17,15 +17,22 @@ namespace Formula1App
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<SignPage>();
+            #region Views
             builder.Services.AddSingleton<LoginView>();
-            builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpView>();
+            #endregion
+            #region View Models
+            builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpViewModel>();
+            #endregion
+            #region Services
             builder.Services.AddSingleton<F1ExtService>();
             builder.Services.AddSingleton<F1IntService>();
+            #endregion
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

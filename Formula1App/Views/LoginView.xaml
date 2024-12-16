@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              x:Class="Formula1App.Views.LoginView"
-             x:DataType="viewmodel:LoginViewModel">
+             x:DataType="viewmodel:LoginViewModel"
+             Title="Login">
     <VerticalStackLayout Padding="10" BackgroundColor="#f7f4f1">
         <Label
         HorizontalOptions="Center"
@@ -47,19 +48,5 @@
         Text="Login"
         BackgroundColor="#E11900"
         VerticalOptions="CenterAndExpand" />
-
-        <StackLayout Margin="0,20,0,0" HorizontalOptions="Center">
-            <Label Text="Don't have an account yet?" />
-            <Label
-            FontAttributes="Bold"
-            HorizontalOptions="Center"
-            Text="Register"
-            TextColor="#E11900">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ToRegisterCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
-
     </VerticalStackLayout>
 </ContentPage>

@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     xmlns:model="clr-namespace:Formula1App.Models"
-    x:DataType="viewmodel:SignUpViewModel">
+    x:DataType="viewmodel:SignUpViewModel"
+    Title="Sign Up">
     <StackLayout VerticalOptions="FillAndExpand">
         <ScrollView
             x:Name="scrlview"
@@ -16,11 +17,12 @@
             <Grid ColumnDefinitions="*,0.4*" RowDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
                 <Label
                     Padding="5"
+                    Grid.ColumnSpan="2"
                     FontAttributes="Bold"
                     FontFamily="Consolas"
                     FontSize="30"
                     HorizontalOptions="Center"
-                    Text="Register"
+                    Text="Sign Up"
                     TextColor="Black" />
 
                 <Label
@@ -75,7 +77,7 @@
                         Text="{Binding Email}"
                         WidthRequest="240" />
                 </Frame>
-                
+
                 <Label
     Grid.Row="4"
     Grid.Column="1"
@@ -205,9 +207,7 @@ WidthRequest="250">
                     Grid.ColumnSpan="2"
                     Command="{Binding RegisterCommand}"
                     Text="Register"/>
-
             </Grid>
-
         </ScrollView>
     </StackLayout>
 </ContentPage>

@@ -10,7 +10,7 @@ namespace Formula1App.ViewModels
         public class ViewModelsBase : INotifyPropertyChanged
         {
 
-            #region INotifyPropertyChanged
+        #region INotifyPropertyChanged
 
             public event PropertyChangedEventHandler PropertyChanged;
 
