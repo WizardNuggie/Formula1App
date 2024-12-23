@@ -207,6 +207,12 @@ WidthRequest="250">
                     Grid.ColumnSpan="2"
                     Command="{Binding RegisterCommand}"
                     Text="Register"/>
+                <ActivityIndicator
+                    Grid.Row="7"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding InServerCall}"
+                    Color="#E11900"/>
             </Grid>
         </ScrollView>
     </StackLayout>

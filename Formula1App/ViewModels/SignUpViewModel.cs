@@ -45,7 +45,7 @@ namespace Formula1App.ViewModels
                 {
                     if (password != null)
                     {
-                        if (IsValidPassword(password))
+                        if (!IsValidPassword(password))
                         {
                             PassError = "The password must contain at least 4 characters";
                         }
@@ -139,18 +139,16 @@ namespace Formula1App.ViewModels
             {
                 favDriver = value;
                 OnPropertyChanged();
-                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private string favConstructor;
-        public string Favconstructor
+        public string FavConstructor
         {
             get => favConstructor;
             set
             {
                 favConstructor = value;
                 OnPropertyChanged();
-                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private DateOnly bday;
@@ -161,7 +159,6 @@ namespace Formula1App.ViewModels
             {
                 bday = value;
                 OnPropertyChanged();
-                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private DateTime dob;
@@ -172,6 +169,7 @@ namespace Formula1App.ViewModels
             {
                 dob = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private bool isNameErr;
@@ -272,6 +270,7 @@ namespace Formula1App.ViewModels
             {
                 selectedDriver = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         private Constructor selectedConst;
@@ -282,6 +281,7 @@ namespace Formula1App.ViewModels
             {
                 selectedConst = value;
                 OnPropertyChanged();
+                ((Command)RegisterCommand).ChangeCanExecute();
             }
         }
         public SignUpViewModel(IServiceProvider sp, F1ExtService extService, F1IntService intService)
@@ -295,9 +295,9 @@ namespace Formula1App.ViewModels
                 !this.IsPassErr &&
                 !this.IsEmailErr &&
                 !string.IsNullOrEmpty(this.Username) &&
-                this.FavDriver != null &&
-                this.Favconstructor != null &&
-                this.Bday != DateOnly.FromDateTime(DateTime.Today.Date));
+                this.SelectedDriver != null &&
+                this.SelectedConst != null &&
+                this.Dob != DateTime.Today);
             Drivers = new();
             Constructors = new();
             MaxDate = DateTime.Today;
@@ -307,6 +307,9 @@ namespace Formula1App.ViewModels
         }
         public async void OnRegister()
         {
+            this.FavDriver = this.SelectedDriver.FullName;
+            this.FavConstructor = this.SelectedConst.name;
+            Bday = DateOnly.FromDateTime(Dob);
             var newUser = new User
             {
                 Name = this.Name,
@@ -314,7 +317,7 @@ namespace Formula1App.ViewModels
                 Username = this.Username,
                 Password = this.Password,
                 FavDriver = this.FavDriver,
-                FavConstructor = this.Favconstructor,
+                FavConstructor = this.FavConstructor,
                 Birthday = this.Bday,
                 IsAdmin = false
             };
