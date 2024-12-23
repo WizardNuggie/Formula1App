@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Formula1App.Models
+namespace Formula1App.ModelsExt
 {
-    public class ConstructorsApi
+    public class DriverApi
     {
-        public ConstructorsData ConstructorsData { get; set; }
+        public DriversData DriversData { get; set; }
     }
 
-    public class ConstructorsData
+    public class DriversData
     {
         public string xmlns { get; set; }
         public string series { get; set; }
@@ -19,12 +19,13 @@ namespace Formula1App.Models
         public string limit { get; set; }
         public string offset { get; set; }
         public string total { get; set; }
-        public ConstructorTable ConstructorTable { get; set; }
+        public DriverTable DriverTable { get; set; }
     }
 
-    public class ConstructorTable
+    public class DriverTable
     {
         public string season { get; set; }
-        public Constructor[] Constructors { get; set; }
+        public Driver[] Drivers { get; set; }
     }
+
 }

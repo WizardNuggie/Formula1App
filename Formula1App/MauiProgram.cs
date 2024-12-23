@@ -19,12 +19,15 @@ namespace Formula1App
                 });
             builder.Services.AddSingleton<SignPage>();
             #region Views
+            builder.Services.AddTransient<AppShell>();
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<SignUpView>();
+            builder.Services.AddTransient<StandingsView>();
             #endregion
             #region View Models
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddTransient<StandingsViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();

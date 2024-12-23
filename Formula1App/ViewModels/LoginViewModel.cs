@@ -73,8 +73,6 @@ namespace Formula1App.ViewModels
             {
                 AppShell shell = serviceProvider.GetService<AppShell>();
                 ((App)Application.Current).MainPage = shell;
-                Shell.Current.FlyoutIsPresented = false;
-                //Shell.Current.GoToAsync("");
             }
         }
     }
