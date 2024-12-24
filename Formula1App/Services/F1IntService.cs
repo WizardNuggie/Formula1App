@@ -11,10 +11,14 @@ namespace Formula1App.Services
 {
     public class F1IntService
     {
-        private static string serverIp = "h61v9h1k-7209.euw.devtunnels.ms";
+        private static string serverIp = "frwczxqq-7209.uks1.devtunnels.ms";
         private HttpClient client;
         private string baseUrl;
-        public static string BaseAddress = "https://h61v9h1k-7209.euw.devtunnels.ms/api/";
+        //school tunnel
+        //h61v9h1k-7209.euw
+        //home tunnel
+        //frwczxqq-7209.uks1
+        public static string BaseAddress = "https://frwczxqq-7209.uks1.devtunnels.ms/api/";
 
         public F1IntService()
         {
