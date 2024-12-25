@@ -4,10 +4,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Formula1App.Views">
+    <Shell.FlyoutHeader>
+        <Border
+            BackgroundColor="#E11900"
+            Margin="0,0,0,10">
+            <Label
+                HeightRequest="80"
+                TextColor="White"
+                Text="F1"
+                HorizontalOptions="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold"
+                FontSize="30"/>
+        </Border>
+    </Shell.FlyoutHeader>
     <FlyoutItem
-        Title="Standings">
-    <ShellContent
-        ContentTemplate="{DataTemplate local:StandingsView}"
-        Route="Standings"/>
+        FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Standings"
+            Icon="standings.png"
+            ContentTemplate="{DataTemplate local:StandingsView}"
+            Route="Standings">
+            <TabBar>
+                <Tab>
+                    
+                </Tab>
+            </TabBar>
+        </ShellContent>
     </FlyoutItem>
+
 </Shell>

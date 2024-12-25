@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              x:Class="Formula1App.Views.StandingsView"
+             x:DataType="viewmodel:StandingsViewModel"
              Title="Standings">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView
+        x:Name="scrlview"
+        HorizontalScrollBarVisibility="Always"
+        VerticalOptions="FillAndExpand"
+        VerticalScrollBarVisibility="Always">
+        
+    </ScrollView>
 </ContentPage>
