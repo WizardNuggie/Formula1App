@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     xmlns:model="clr-namespace:Formula1App.Models"
+    xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     x:DataType="viewmodel:SignUpViewModel"
     Title="Sign Up">
     <StackLayout VerticalOptions="FillAndExpand">
@@ -152,7 +153,7 @@
                     HorizontalOptions="Start"
                     WidthRequest="250">
                     <Picker
-                    x:DataType="model:MyDriver"
+                    x:DataType="modelext:MyDriver"
                     HeightRequest="50"
                     ItemsSource="{Binding BindingContext.Drivers, Source={x:Reference scrlview}}"
                     ItemDisplayBinding="{Binding FullName}"
@@ -175,7 +176,7 @@
     HorizontalOptions="Start"
     WidthRequest="250">
                     <Picker
-    x:DataType="model:Constructor"
+    x:DataType="modelext:Constructor"
     HeightRequest="50"
     ItemsSource="{Binding BindingContext.Constructors, Source={x:Reference scrlview}}"
     ItemDisplayBinding="{Binding name}"

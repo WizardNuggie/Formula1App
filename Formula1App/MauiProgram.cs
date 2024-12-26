@@ -22,12 +22,14 @@ namespace Formula1App
             builder.Services.AddTransient<AppShell>();
             builder.Services.AddSingleton<LoginView>();
             builder.Services.AddSingleton<SignUpView>();
-            builder.Services.AddTransient<StandingsView>();
+            builder.Services.AddTransient<DriverStandingsView>();
+            builder.Services.AddTransient<ConstStandingsView>();
             #endregion
             #region View Models
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpViewModel>();
-            builder.Services.AddTransient<StandingsViewModel>();
+            builder.Services.AddTransient<DriverStandingsViewModel>();
+            builder.Services.AddTransient<ConstStandingsViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();

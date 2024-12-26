@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             x:Class="Formula1App.Views.StandingsView"
-             x:DataType="viewmodel:StandingsViewModel"
-             Title="Standings">
+             x:Class="Formula1App.Views.DriverStandingsView"
+             x:DataType="viewmodel:DriverStandingsViewModel"
+             Title="Drivers">
     <ScrollView
         x:Name="scrlview"
         HorizontalScrollBarVisibility="Always"

@@ -19,18 +19,19 @@
         </Border>
     </Shell.FlyoutHeader>
     <FlyoutItem
-        FlyoutDisplayOptions="AsMultipleItems">
+        FlyoutDisplayOptions="AsSingleItem"
+        Title="Standings"
+        Icon="standings.png">
         <ShellContent
-            Title="Standings"
-            Icon="standings.png"
-            ContentTemplate="{DataTemplate local:StandingsView}"
-            Route="Standings">
-            <TabBar>
-                <Tab>
-                    
-                </Tab>
-            </TabBar>
-        </ShellContent>
+            Title="Drivers"
+            Icon="driver_standings.png"
+            ContentTemplate="{DataTemplate local:DriverStandingsView}"
+            Route="DriverStandings"/>
+        <ShellContent
+            Title="Constructors"
+            Icon="const_standings"
+            ContentTemplate="{DataTemplate local:ConstStandingsView}"
+            Route="ConstStandings"/>
     </FlyoutItem>
 
 </Shell>
