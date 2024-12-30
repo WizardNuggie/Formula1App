@@ -13,6 +13,7 @@ namespace Formula1App
             Routing.RegisterRoute("Register", typeof(SignUpView));
             Routing.RegisterRoute("DriverStandings", typeof(DriverStandingsView));
             Routing.RegisterRoute("ConstStandings", typeof(ConstStandingsView));
+            Routing.RegisterRoute("News", typeof(NewsView));
             #endregion
         }
     }

@@ -19,6 +19,16 @@
         </Border>
     </Shell.FlyoutHeader>
     <FlyoutItem
+    FlyoutDisplayOptions="AsMultipleItems"
+    Title="News"
+    Icon="news.png">
+        <ShellContent
+        Title="News"
+        Icon="news.png"
+        ContentTemplate="{DataTemplate local:NewsView}"
+        Route="News"/>
+    </FlyoutItem>
+    <FlyoutItem
         FlyoutDisplayOptions="AsSingleItem"
         Title="Standings"
         Icon="standings.png">
@@ -29,9 +39,8 @@
             Route="DriverStandings"/>
         <ShellContent
             Title="Constructors"
-            Icon="const_standings"
+            Icon="const_standings.png"
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Route="ConstStandings"/>
     </FlyoutItem>
-
 </Shell>

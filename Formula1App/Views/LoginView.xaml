@@ -6,7 +6,8 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title="Login"
     x:DataType="viewmodel:LoginViewModel">
-    <VerticalStackLayout Padding="10" BackgroundColor="#f7f4f1">
+    <!--nice white color #f7f4f1-->
+    <VerticalStackLayout Padding="10">
         <Label
             Padding="5"
             FontAttributes="Bold"
@@ -48,7 +49,7 @@
             Command="{Binding LoginCommand}"
             HorizontalOptions="FillAndExpand"
             Text="Login"
-            VerticalOptions="CenterAndExpand" />
+            VerticalOptions="CenterAndExpand"/>
         <ActivityIndicator
             IsRunning="{Binding InServerCall}"
             Color="#E11900" />
