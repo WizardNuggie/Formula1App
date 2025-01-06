@@ -62,6 +62,7 @@ namespace Formula1App.Services
             }
         }
         #endregion
+
         #region Sign Up
         public async Task<User?> SignUpAsync(User user)
         {
@@ -79,6 +80,60 @@ namespace Formula1App.Services
                         PropertyNameCaseInsensitive = true
                     };
                     User? result = JsonSerializer.Deserialize<User>(resContent, options);
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region News
+        public async Task<List<Article>> GetNews()
+        {
+            string url = $"{this.baseUrl}GetNews";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region Subjects
+        public async Task<List<Subject>> GetSubjects()
+        {
+            string url = $"{this.baseUrl}GetSubjects";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    List<Subject> result = JsonSerializer.Deserialize<List<Subject>>(resContent);
+                    if (result == null)
+                        return null;
                     return result;
                 }
                 else

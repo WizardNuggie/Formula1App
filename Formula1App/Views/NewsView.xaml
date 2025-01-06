@@ -4,6 +4,24 @@
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              xmlns:model="clr-namespace:Formula1App.Models"
              x:Class="Formula1App.Views.NewsView"
-             x:DataType="viewmodel:"
+             x:DataType="viewmodel:NewsViewModel"
              Title="News">
+    <ScrollView x:Name="scrlview">
+        <StackLayout>
+            <RefreshView>
+                <Grid
+                    RowDefinitions="*,*,10*"
+                    ColumnDefinitions="*,0.25*">
+                    <Picker
+                        HorizontalTextAlignment="Center"
+                        x:DataType="model:Subject"
+                        HeightRequest="50"
+                        ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
+                        ItemDisplayBinding="{Binding SubjectName}"
+                        Title="Select a subject"
+                        SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"/>
+                </Grid>
+            </RefreshView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
