@@ -18,7 +18,16 @@ namespace Formula1App.ViewModels
 
         private List<Article> articles;
         public ObservableCollection<Article> Articles { get; private set; }
-        public List<Subject> Subjects { get; private set; }
+        private List<Subject> subjects;
+        public List<Subject> Subjects
+        {
+            get => subjects;
+            set
+            {
+                subjects = value;
+                OnPropertyChanged();
+            }
+        }
         private Subject selectedSubject;
         public Subject SelectedSubject
         {
@@ -29,6 +38,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
                 Filter();
                 ((Command)ClearFilterCommand).ChangeCanExecute();
+            }
+        }
+        private Article selectedArticle;
+        public Article SelectedArticle
+        {
+            get => selectedArticle;
+            set
+            {
+                selectedArticle = value;
+                OnPropertyChanged();
             }
         }
         private bool isRefreshing;
@@ -67,15 +86,34 @@ namespace Formula1App.ViewModels
         {
             Subjects = await intService.GetSubjects();
         }
+        private async Task Refresh()
+        {
+            IsRefreshing = true;
+            SelectedSubject = null;
+            IsRefreshing = false;
+            Articles.Clear();
+            GetArticles();
+            foreach (Article a in articles)
+            {
+                Articles.Add(a);
+            }
+            Refresh();
+        }
         private async Task Filter()
         {
             Articles.Clear();
             SelectedArticle = null;
-            GetArticles();
+            if (SelectedSubject != null)
+            {
+                articles = await intService.GetNewsBySubject(SelectedSubject.Id);
+            }
+            else
+            {
+                GetArticles();
+            }
             foreach (Article a in articles)
             {
-                if (a.SubjectId == SelectedStatus.Id)
-                    Questions.Add(question);
+                Articles.Add(a);
             }
         }
     }

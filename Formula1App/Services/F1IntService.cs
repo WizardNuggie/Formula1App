@@ -104,7 +104,11 @@ namespace Formula1App.Services
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent);
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent, options);
                     if (result == null)
                         return null;
                     return result;
@@ -119,6 +123,37 @@ namespace Formula1App.Services
                 return null;
             }
         }
+
+        public async Task<List<Article>> GetNewsBySubject(int subjectId)
+        {
+            string parameterKey = "subjectId";
+            string parameterValue = subjectId.ToString();
+            string url = $"{this.baseUrl}GetNewsBySubject?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+         }
         #endregion
 
         #region Subjects
@@ -131,7 +166,11 @@ namespace Formula1App.Services
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    List<Subject> result = JsonSerializer.Deserialize<List<Subject>>(resContent);
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<Subject> result = JsonSerializer.Deserialize<List<Subject>>(resContent, options);
                     if (result == null)
                         return null;
                     return result;
