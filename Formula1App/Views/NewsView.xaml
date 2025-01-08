@@ -7,23 +7,65 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title="News"
     x:DataType="viewmodel:NewsViewModel">
-    <ScrollView x:Name="scrlview">
-        <StackLayout>
-            <RefreshView
-                IsRefreshing="{Binding IsRefreshing}"
-                Command="{Binding RefreshCommand}">
+    <RefreshView
+    IsRefreshing="{Binding IsRefreshing}"
+    Command="{Binding RefreshCommand}">
+        <ScrollView x:Name="scrlview">
+            <StackLayout>
                 <Grid
-                    ColumnDefinitions="*,0.5*"
-                    RowDefinitions="*,*,10*">
-                    <Picker
-                        Title="Select a subject"
-                        x:DataType="model:Subject"
-                        HorizontalTextAlignment="Center"
-                        ItemDisplayBinding="{Binding Name}"
-                        ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
-                        SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"/>
+                    ColumnDefinitions="*,0.25*"
+                    RowDefinitions="*,10*">
+                    
+                    <!--<Grid>
+                        --><!-- Top Border --><!--
+                        <BoxView Color="Black" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+
+                        --><!-- Right Border --><!--
+                        <BoxView Color="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End" />
+
+                        --><!-- Content --><!--
+                        <StackLayout Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <Label Text="Content inside frame" />
+                        </StackLayout>
+                    </Grid>-->
+                    <!--<Frame
+                        Grid.ColumnSpan="2"
+                        BorderColor="#E11900"
+                        WidthRequest="390">
+                        
+                    </Frame>-->
+                    <!--<Frame
+                        HeightRequest="45"
+                        CornerRadius="10"
+                        Padding="3">
+                        <Picker
+                            VerticalOptions="Center"
+                            Title="Select a subject"
+                            x:DataType="model:Subject"
+                            HorizontalTextAlignment="Center"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
+                            SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"/>
+                    </Frame>
+                    <ImageButton
+                        Source="cancel.png"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        CornerRadius="10"
+                        Grid.Column="1"
+                        Command="{Binding ClearFilterCommand}"/>-->
+                    <CollectionView x:Name="colview" Grid.Row="1" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedArticle}" ItemsSource="{Binding Articles}" SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Article">
+                                <Grid
+                                    >
+                                    
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Grid>
-            </RefreshView>
-        </StackLayout>
-    </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

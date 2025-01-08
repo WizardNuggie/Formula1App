@@ -122,6 +122,7 @@
                     HorizontalOptions="Start"
                     WidthRequest="250">
                     <Entry
+                        ClearButtonVisibility="WhileEditing"
                         Grid.Row="8"
                         HorizontalOptions="Start"
                         Placeholder="Enter password"
