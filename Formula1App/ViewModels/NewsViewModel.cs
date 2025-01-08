@@ -90,14 +90,13 @@ namespace Formula1App.ViewModels
         {
             IsRefreshing = true;
             SelectedSubject = null;
-            IsRefreshing = false;
             Articles.Clear();
             GetArticles();
             foreach (Article a in articles)
             {
                 Articles.Add(a);
             }
-            Refresh();
+            IsRefreshing = false;
         }
         private async Task Filter()
         {
