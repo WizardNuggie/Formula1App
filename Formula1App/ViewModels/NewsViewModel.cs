@@ -37,7 +37,6 @@ namespace Formula1App.ViewModels
                 selectedSubject = value;
                 OnPropertyChanged();
                 Filter();
-                ((Command)ClearFilterCommand).ChangeCanExecute();
             }
         }
         private Article selectedArticle;
@@ -48,6 +47,7 @@ namespace Formula1App.ViewModels
             {
                 selectedArticle = value;
                 OnPropertyChanged();
+                ((Command)NavToArticleCommand).ChangeCanExecute();
             }
         }
         private bool isRefreshing;
@@ -62,7 +62,7 @@ namespace Formula1App.ViewModels
         }
 
         public ICommand RefreshCommand { get; set; }
-        public ICommand ClearFilterCommand { get; set; }
+        public ICommand NavToArticleCommand { get; set; }
 
         public NewsViewModel(IServiceProvider serviceProvider, F1ExtService extService, F1IntService intService)
         {
@@ -71,18 +71,25 @@ namespace Formula1App.ViewModels
             this.intService = intService;
 
             Subjects = new();
-            GetSubjects();
-            GetArticles();
+            
             Articles = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
-            ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedSubject != null);
+            NavToArticleCommand = new Command(async () => await NavToArticle(), () => SelectedArticle != null);
+            InitData();
         }
-        private async void GetArticles()
+
+        private async void InitData()
         {
-            articles = await intService.GetNews();
+            await Refresh();
+
         }
-        private async void GetSubjects()
+        private async Task GetArticles()
+        {
+            List<Article> a = await intService.GetNews();
+            articles = new(a);
+        }
+        private async Task GetSubjects()
         {
             Subjects = await intService.GetSubjects();
         }
@@ -91,12 +98,19 @@ namespace Formula1App.ViewModels
             IsRefreshing = true;
             SelectedSubject = null;
             Articles.Clear();
-            GetArticles();
+            await GetArticles();
             foreach (Article a in articles)
             {
                 Articles.Add(a);
             }
             IsRefreshing = false;
+        }
+        private async Task NavToArticle()
+        {
+            Dictionary<string, object> data = new();
+            data.Add("Article", SelectedArticle);
+            await AppShell.Current.GoToAsync("DriverStandings", data);
+            SelectedArticle = null;
         }
         private async Task Filter()
         {
@@ -104,7 +118,8 @@ namespace Formula1App.ViewModels
             SelectedArticle = null;
             if (SelectedSubject != null)
             {
-                articles = await intService.GetNewsBySubject(SelectedSubject.Id);
+                List<Article> a = await intService.GetNewsBySubject(SelectedSubject.Id);
+                articles = new(a);
             }
             else
             {

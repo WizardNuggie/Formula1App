@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-    Title="News"
     x:DataType="viewmodel:NewsViewModel">
     <RefreshView
     IsRefreshing="{Binding IsRefreshing}"
@@ -15,19 +14,12 @@
                 <Grid
                     ColumnDefinitions="*,0.25*"
                     RowDefinitions="*,10*">
-                    
-                    <!--<Grid>
-                        --><!-- Top Border --><!--
-                        <BoxView Color="Black" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+                    <Grid Margin="0,0,0,20">
+                        <BoxView Color="#E11900" HeightRequest="1" VerticalOptions="Start" />
+                        <BoxView Color="#E11900" HeightRequest="55" WidthRequest="1" HorizontalOptions="End" />
+                        <Label FontAttributes="Bold" VerticalOptions="Center" FontSize="30" Text="  Top Stories"/>
+                    </Grid>
 
-                        --><!-- Right Border --><!--
-                        <BoxView Color="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End" />
-
-                        --><!-- Content --><!--
-                        <StackLayout Padding="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <Label Text="Content inside frame" />
-                        </StackLayout>
-                    </Grid>-->
                     <!--<Frame
                         Grid.ColumnSpan="2"
                         BorderColor="#E11900"
@@ -57,10 +49,39 @@
                     <CollectionView x:Name="colview" Grid.Row="1" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedArticle}" ItemsSource="{Binding Articles}" SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Article">
+                                <Frame
+                                    CornerRadius="15"
+                                    Margin="8"
+                                    Padding="5">
                                 <Grid
-                                    >
-                                    
+                                    RowDefinitions="*,4*"
+                                    ColumnDefinitions="*,1.5*">
+                                    <Label
+                                        HeightRequest="100"
+                                        Grid.RowSpan="2"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        Text="this will contain the pic"/>
+                                    <Frame
+                                        Grid.Column="1"
+                                        BorderColor="#E11900"
+                                        CornerRadius="20"
+                                        HeightRequest="20"
+                                        WidthRequest="100"
+                                        HorizontalOptions="Start"
+                                        Padding="0">
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        TextColor="#E11900"
+                                        Text="{Binding FirstSubject.Name}"/>
+                                    </Frame>
+                                    <Label
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Margin="20,0,0,0"
+                                        Text="{Binding Title}"/>
                                 </Grid>
+                                </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

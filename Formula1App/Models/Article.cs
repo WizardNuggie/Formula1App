@@ -11,13 +11,8 @@ namespace Formula1App.Models
         public string Title { get; set; }
         public string Text { get; set; }
         public bool IsBreaking { get; set; }
-
-        public Article(string title, string text, bool isBreaking)
-        {
-            this.Title = title;
-            this.Text = text;
-            this.IsBreaking = isBreaking;
-        }
+        public List<Subject> Subjects { get; set; }
+        public Subject FirstSubject { get; set; }
         public Article() { }
     }
 }
