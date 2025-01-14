@@ -13,13 +13,26 @@
             <StackLayout>
                 <Grid
                     ColumnDefinitions="*,0.25*"
-                    RowDefinitions="*,10*">
+                    RowDefinitions="*,0.25*,10*">
                     <Grid Margin="0,0,0,20">
-                        <BoxView Color="#E11900" HeightRequest="1" VerticalOptions="Start" />
-                        <BoxView Color="#E11900" HeightRequest="55" WidthRequest="1" HorizontalOptions="End" />
+                        <BoxView Color="#E11900" HeightRequest="2" VerticalOptions="Start" />
+                        <BoxView Color="#E11900" HeightRequest="55" WidthRequest="2" HorizontalOptions="End" />
                         <Label FontAttributes="Bold" VerticalOptions="Center" FontSize="30" Text="  Top Stories"/>
                     </Grid>
 
+                    <Label
+                        FontAttributes="Bold"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Text="All news >"
+                        Margin="2"/>
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="End"
+                        HeightRequest="2"
+                        Color="#E11900"/>
                     <!--<Frame
                         Grid.ColumnSpan="2"
                         BorderColor="#E11900"
@@ -46,13 +59,16 @@
                         CornerRadius="10"
                         Grid.Column="1"
                         Command="{Binding ClearFilterCommand}"/>-->
-                    <CollectionView x:Name="colview" Grid.Row="1" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedArticle}" ItemsSource="{Binding Articles}" SelectionMode="Single">
+                    
+                    <CollectionView x:Name="colview" Grid.Row="2" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedArticle}" ItemsSource="{Binding Articles}" SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Article">
-                                <Frame
-                                    CornerRadius="15"
+                                <Border
                                     Margin="8"
                                     Padding="5">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15"/>
+                                    </Border.StrokeShape>
                                 <Grid
                                     RowDefinitions="*,4*"
                                     ColumnDefinitions="*,1.5*">
@@ -62,26 +78,31 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalOptions="Center"
                                         Text="this will contain the pic"/>
-                                    <Frame
+                                    <Border
                                         Grid.Column="1"
-                                        BorderColor="#E11900"
-                                        CornerRadius="20"
-                                        HeightRequest="20"
+                                        Stroke="#E11900"
+                                        HeightRequest="25"
                                         WidthRequest="100"
                                         HorizontalOptions="Start"
-                                        Padding="0">
+                                        Padding="0"
+                                        StrokeThickness="2">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="20"/>
+                                            </Border.StrokeShape>
                                     <Label
+                                        FontAttributes="Bold"
                                         HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         TextColor="#E11900"
                                         Text="{Binding FirstSubject.Name}"/>
-                                    </Frame>
+                                    </Border>
                                     <Label
                                         Grid.Column="1"
                                         Grid.Row="1"
                                         Margin="20,0,0,0"
                                         Text="{Binding Title}"/>
                                 </Grid>
-                                </Frame>
+                                </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

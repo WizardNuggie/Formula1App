@@ -13,7 +13,6 @@ namespace Formula1App.ViewModels
     public class NewsViewModel : ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly F1ExtService extService;
         private readonly F1IntService intService;
 
         private List<Article> articles;
@@ -65,10 +64,9 @@ namespace Formula1App.ViewModels
         public ICommand RefreshCommand { get; set; }
         public ICommand NavToArticleCommand { get; set; }
 
-        public NewsViewModel(IServiceProvider serviceProvider, F1ExtService extService, F1IntService intService)
+        public NewsViewModel(IServiceProvider serviceProvider, F1IntService intService)
         {
             this.serviceProvider = serviceProvider;
-            this.extService = extService;
             this.intService = intService;            
             Articles = new();
             IsRefreshing = false;
@@ -105,7 +103,7 @@ namespace Formula1App.ViewModels
         {
             Dictionary<string, object> data = new();
             data.Add("Article", SelectedArticle);
-            await AppShell.Current.GoToAsync("DriverStandings", data);
+            await AppShell.Current.GoToAsync("Article", data);
             SelectedArticle = null;
         }
         //private async Task Filter()
