@@ -18,27 +18,27 @@ namespace Formula1App.ViewModels
 
         private List<Article> articles;
         public ObservableCollection<Article> Articles { get; private set; }
-        private List<Subject> subjects;
-        public List<Subject> Subjects
-        {
-            get => subjects;
-            set
-            {
-                subjects = value;
-                OnPropertyChanged();
-            }
-        }
-        private Subject selectedSubject;
-        public Subject SelectedSubject
-        {
-            get => selectedSubject;
-            set
-            {
-                selectedSubject = value;
-                OnPropertyChanged();
-                Filter();
-            }
-        }
+        //private List<Subject> subjects;
+        //public List<Subject> Subjects
+        //{
+        //    get => subjects;
+        //    set
+        //    {
+        //        subjects = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+        //private Subject selectedSubject;
+        //public Subject SelectedSubject
+        //{
+        //    get => selectedSubject;
+        //    set
+        //    {
+        //        selectedSubject = value;
+        //        OnPropertyChanged();
+        //        Filter();
+        //    }
+        //}
         private Article selectedArticle;
         public Article SelectedArticle
         {
@@ -47,7 +47,8 @@ namespace Formula1App.ViewModels
             {
                 selectedArticle = value;
                 OnPropertyChanged();
-                ((Command)NavToArticleCommand).ChangeCanExecute();
+                if (selectedArticle != null)
+                    NavToArticle();
             }
         }
         private bool isRefreshing;
@@ -68,14 +69,10 @@ namespace Formula1App.ViewModels
         {
             this.serviceProvider = serviceProvider;
             this.extService = extService;
-            this.intService = intService;
-
-            Subjects = new();
-            
+            this.intService = intService;            
             Articles = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
-            NavToArticleCommand = new Command(async () => await NavToArticle(), () => SelectedArticle != null);
             InitData();
         }
 
@@ -89,14 +86,13 @@ namespace Formula1App.ViewModels
             List<Article> a = await intService.GetNews();
             articles = new(a);
         }
-        private async Task GetSubjects()
-        {
-            Subjects = await intService.GetSubjects();
-        }
+        //private async Task GetSubjects()
+        //{
+        //    Subjects = await intService.GetSubjects();
+        //}
         private async Task Refresh()
         {
             IsRefreshing = true;
-            SelectedSubject = null;
             Articles.Clear();
             await GetArticles();
             foreach (Article a in articles)
@@ -112,23 +108,23 @@ namespace Formula1App.ViewModels
             await AppShell.Current.GoToAsync("DriverStandings", data);
             SelectedArticle = null;
         }
-        private async Task Filter()
-        {
-            Articles.Clear();
-            SelectedArticle = null;
-            if (SelectedSubject != null)
-            {
-                List<Article> a = await intService.GetNewsBySubject(SelectedSubject.Id);
-                articles = new(a);
-            }
-            else
-            {
-                GetArticles();
-            }
-            foreach (Article a in articles)
-            {
-                Articles.Add(a);
-            }
-        }
+        //private async Task Filter()
+        //{
+        //    Articles.Clear();
+        //    SelectedArticle = null;
+        //    if (SelectedSubject != null)
+        //    {
+        //        List<Article> a = await intService.GetNewsBySubject(SelectedSubject.Id);
+        //        articles = new(a);
+        //    }
+        //    else
+        //    {
+        //        GetArticles();
+        //    }
+        //    foreach (Article a in articles)
+        //    {
+        //        Articles.Add(a);
+        //    }
+        //}
     }
 }
