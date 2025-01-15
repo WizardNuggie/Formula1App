@@ -9,12 +9,13 @@
         <StackLayout
             Padding="10,0">
             <CollectionView
-                ItemsSource="{Binding Article.Subjects}">
+                ItemsSource="{Binding Article.Subjects}"
+                ItemsLayout="VerticalGrid, 3">
                 <CollectionView.ItemTemplate>
                     <DataTemplate
                         x:DataType="model:Subject">
                         <Border
-                            Margin="3"
+                            Margin="0"
                             Stroke="#E11900"
                             WidthRequest="100"
                             HeightRequest="25"
@@ -32,9 +33,6 @@
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
             </CollectionView>
             <Label
                 FontSize="40"

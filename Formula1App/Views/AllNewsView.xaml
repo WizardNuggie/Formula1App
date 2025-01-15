@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Formula1App.Models"
+             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+             x:DataType="viewmodel:AllNewsViewModel"
+             x:Class="Formula1App.Views.AllNewsView">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView x:Name="scrlview">
+            <StackLayout>
+                <Grid
+                    ColumnDefinitions="*,0.25*"
+                    RowDefinitions="*,*,10*">
+                    <Grid Margin="0,0,0,20">
+                        <BoxView
+                        HeightRequest="2"
+                        VerticalOptions="Start"
+                        Color="#E11900" />
+                        <BoxView
+                        HeightRequest="55"
+                        HorizontalOptions="End"
+                        WidthRequest="2"
+                        Color="#E11900" />
+                        <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="  All news"
+                        VerticalOptions="Center" />
+                    </Grid>
+
+                    <Frame
+                        Grid.Row="1"
+                        HeightRequest="45"
+                        CornerRadius="10"
+                        Padding="3"
+                        Margin="10,0,0,0">
+                    <Picker
+                        VerticalOptions="Center"
+                        Title="Select a subject"
+                        x:DataType="model:Subject"
+                        HorizontalTextAlignment="Center"
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
+                        SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"/>
+                </Frame>
+                <ImageButton
+                    Source="cancel.png"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    CornerRadius="10"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Command="{Binding ClearFilterCommand}"/>
+
+                    <CollectionView
+                    x:Name="colview"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    ItemsSource="{Binding Articles}"
+                    SelectedItem="{Binding SelectedArticle}"
+                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Article">
+                                <Border
+                                Margin="8"
+                                Padding="5">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle
+                                        CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Grid
+                                    ColumnDefinitions="*,1.5*"
+                                    RowDefinitions="*,4*">
+                                        <Label
+                                        Grid.RowSpan="2"
+                                        HeightRequest="100"
+                                        HorizontalOptions="Center"
+                                        Text="this will contain the pic"
+                                        VerticalTextAlignment="Center" />
+                                        <Border
+                                        Grid.Column="1"
+                                        Padding="0"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Stroke="#E11900"
+                                        StrokeThickness="2"
+                                        WidthRequest="100">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle
+                                                CornerRadius="20" />
+                                            </Border.StrokeShape>
+                                            <Label
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding FirstSubject.Name}"
+                                            TextColor="#E11900"
+                                            VerticalOptions="Center" />
+                                        </Border>
+                                        <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="20,0,0,0"
+                                        Text="{Binding Title}" />
+                                    </Grid>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="White"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="White"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

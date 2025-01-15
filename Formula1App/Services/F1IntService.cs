@@ -146,6 +146,10 @@ namespace Formula1App.Services
                     List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent, options);
                     if (result == null)
                         return null;
+                    foreach (Article a in result)
+                    {
+                        a.FirstSubject = a.Subjects.FirstOrDefault();
+                    }
                     return result;
                 }
                 else

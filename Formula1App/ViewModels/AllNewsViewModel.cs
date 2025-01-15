@@ -1,22 +1,44 @@
-﻿using System;
+﻿using Formula1App.Models;
+using Formula1App.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Formula1App.Services;
-using Formula1App.Models;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Formula1App.ViewModels
 {
-    public class NewsViewModel : ViewModelsBase
+    public class AllNewsViewModel : ViewModelsBase
     {
         private readonly IServiceProvider serviceProvider;
         private readonly F1IntService intService;
 
         private List<Article> articles;
         public ObservableCollection<Article> Articles { get; private set; }
+        private List<Subject> subjects;
+        public List<Subject> Subjects
+        {
+            get => subjects;
+            set
+            {
+                subjects = value;
+                OnPropertyChanged();
+            }
+        }
+        private Subject selectedSubject;
+        public Subject SelectedSubject
+        {
+            get => selectedSubject;
+            set
+            {
+                selectedSubject = value;
+                OnPropertyChanged();
+                ((Command)ClearFilterCommand).ChangeCanExecute();
+                Filter();
+            }
+        }
         private Article selectedArticle;
         public Article SelectedArticle
         {
@@ -41,32 +63,37 @@ namespace Formula1App.ViewModels
         }
 
         public ICommand RefreshCommand { get; set; }
-        public ICommand NavToAllNewsCommand { get; set; }
+        public ICommand ClearFilterCommand { get; set; }
 
-        public NewsViewModel(IServiceProvider serviceProvider, F1IntService intService)
+        public AllNewsViewModel(IServiceProvider serviceProvider, F1IntService intService)
         {
             this.serviceProvider = serviceProvider;
-            this.intService = intService;            
+            this.intService = intService;
             Articles = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
-            NavToAllNewsCommand = new Command(async () => await NavToAllNews());
+            ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedSubject != null);
             InitData();
         }
 
         private async void InitData()
         {
+            await GetSubjects();
             await Refresh();
         }
         private async Task GetArticles()
         {
             List<Article> a = await intService.GetNews();
-            a = a.Take(5).ToList();
             articles = new(a);
+        }
+        private async Task GetSubjects()
+        {
+            Subjects = await intService.GetSubjects();
         }
         private async Task Refresh()
         {
             IsRefreshing = true;
+            SelectedSubject = null;
             await GetArticles();
             Articles.Clear();
             foreach (Article a in articles)
@@ -82,10 +109,23 @@ namespace Formula1App.ViewModels
             await AppShell.Current.GoToAsync("Article", data);
             SelectedArticle = null;
         }
-        private async Task NavToAllNews()
+        private async Task Filter()
         {
-            await AppShell.Current.GoToAsync("AllNews");
+            Articles.Clear();
             SelectedArticle = null;
+            if (SelectedSubject != null)
+            {
+                List<Article> a = await intService.GetNewsBySubject(SelectedSubject.Id);
+                articles = new(a);
+            }
+            else
+            {
+                await GetArticles();
+            }
+            foreach (Article a in articles)
+            {
+                Articles.Add(a);
+            }
         }
     }
 }

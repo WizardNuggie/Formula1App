@@ -11,8 +11,6 @@ namespace Formula1App.ViewModels
     [QueryProperty(nameof(Article), "Article")]
     public class ArticleViewModel:ViewModelsBase
     {
-        private readonly IServiceProvider serviceProvider;
-        private readonly F1IntService intService;
         private Article article;
         public Article Article
         {
@@ -23,10 +21,8 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ArticleViewModel(IServiceProvider serviceProvider, F1IntService intService)
+        public ArticleViewModel()
         {
-            this.serviceProvider = serviceProvider;
-            this.intService = intService;
         }
     }
 }

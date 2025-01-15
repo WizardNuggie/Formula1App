@@ -25,6 +25,7 @@ namespace Formula1App
             builder.Services.AddTransient<DriverStandingsView>();
             builder.Services.AddTransient<ConstStandingsView>();
             builder.Services.AddTransient<NewsView>();
+            builder.Services.AddTransient<AllNewsView>();
             builder.Services.AddTransient<ArticleView>();
             #endregion
             #region View Models
@@ -33,6 +34,7 @@ namespace Formula1App
             builder.Services.AddTransient<DriverStandingsViewModel>();
             builder.Services.AddTransient<ConstStandingsViewModel>();
             builder.Services.AddTransient<NewsViewModel>();
+            builder.Services.AddTransient<AllNewsViewModel>();
             builder.Services.AddTransient<ArticleViewModel>();
             #endregion
             #region Services

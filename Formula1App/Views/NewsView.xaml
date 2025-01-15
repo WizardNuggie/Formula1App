@@ -6,38 +6,50 @@
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:NewsViewModel">
-    <RefreshView
-    IsRefreshing="{Binding IsRefreshing}"
-    Command="{Binding RefreshCommand}">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
         <ScrollView x:Name="scrlview">
             <StackLayout>
-                <Grid
-                    ColumnDefinitions="*,0.25*"
-                    RowDefinitions="*,0.25*,10*">
+                <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,0.25*,10*">
                     <Grid Margin="0,0,0,20">
-                        <BoxView Color="#E11900" HeightRequest="2" VerticalOptions="Start" />
-                        <BoxView Color="#E11900" HeightRequest="55" WidthRequest="2" HorizontalOptions="End" />
-                        <Label FontAttributes="Bold" VerticalOptions="Center" FontSize="30" Text="  Top Stories"/>
+                        <BoxView
+                            HeightRequest="2"
+                            VerticalOptions="Start"
+                            Color="#E11900" />
+                        <BoxView
+                            HeightRequest="55"
+                            HorizontalOptions="End"
+                            WidthRequest="2"
+                            Color="#E11900" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            Text="  Top Stories"
+                            VerticalOptions="Center" />
                     </Grid>
 
                     <Label
-                        FontAttributes="Bold"
                         Grid.Row="1"
                         Grid.Column="1"
+                        Margin="2"
+                        FontAttributes="Bold"
                         HorizontalOptions="Center"
-                        Text="All news >"
-                        Margin="2"/>
+                        Text="All news >">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding NavToAllNewsCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <BoxView
                         Grid.Row="1"
                         Grid.Column="1"
-                        VerticalOptions="End"
                         HeightRequest="2"
-                        Color="#E11900"/>
+                        VerticalOptions="End"
+                        Color="#E11900" />
                     <!--<Frame
                         Grid.ColumnSpan="2"
                         BorderColor="#E11900"
                         WidthRequest="390">
-                        
+
                     </Frame>-->
                     <!--<Frame
                         HeightRequest="45"
@@ -59,49 +71,75 @@
                         CornerRadius="10"
                         Grid.Column="1"
                         Command="{Binding ClearFilterCommand}"/>-->
-                    
-                    <CollectionView x:Name="colview" Grid.Row="2" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedArticle}" ItemsSource="{Binding Articles}" SelectionMode="Single">
+
+                    <CollectionView
+                        x:Name="colview"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Articles}"
+                        SelectedItem="{Binding SelectedArticle}"
+                        SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Article">
                                 <Border
                                     Margin="8"
                                     Padding="5">
                                     <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15"/>
+                                        <RoundRectangle
+                                            CornerRadius="15" />
                                     </Border.StrokeShape>
-                                <Grid
-                                    RowDefinitions="*,4*"
-                                    ColumnDefinitions="*,1.5*">
-                                    <Label
-                                        HeightRequest="100"
-                                        Grid.RowSpan="2"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalOptions="Center"
-                                        Text="this will contain the pic"/>
-                                    <Border
-                                        Grid.Column="1"
-                                        Stroke="#E11900"
-                                        HeightRequest="25"
-                                        WidthRequest="100"
-                                        HorizontalOptions="Start"
-                                        Padding="0"
-                                        StrokeThickness="2">
+                                    <Grid
+                                        ColumnDefinitions="*,1.5*"
+                                        RowDefinitions="*,4*">
+                                        <Label
+                                            Grid.RowSpan="2"
+                                            HeightRequest="100"
+                                            HorizontalOptions="Center"
+                                            Text="this will contain the pic"
+                                            VerticalTextAlignment="Center" />
+                                        <Border
+                                            Grid.Column="1"
+                                            Padding="0"
+                                            HeightRequest="25"
+                                            HorizontalOptions="Start"
+                                            Stroke="#E11900"
+                                            StrokeThickness="2"
+                                            WidthRequest="100">
                                             <Border.StrokeShape>
-                                                <RoundRectangle CornerRadius="20"/>
+                                                <RoundRectangle
+                                                    CornerRadius="20" />
                                             </Border.StrokeShape>
-                                    <Label
-                                        FontAttributes="Bold"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        TextColor="#E11900"
-                                        Text="{Binding FirstSubject.Name}"/>
-                                    </Border>
-                                    <Label
-                                        Grid.Column="1"
-                                        Grid.Row="1"
-                                        Margin="20,0,0,0"
-                                        Text="{Binding Title}"/>
-                                </Grid>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding FirstSubject.Name}"
+                                                TextColor="#E11900"
+                                                VerticalOptions="Center" />
+                                        </Border>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="20,0,0,0"
+                                            Text="{Binding Title}" />
+                                    </Grid>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="White"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="White"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
