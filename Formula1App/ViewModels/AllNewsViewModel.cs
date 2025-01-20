@@ -84,7 +84,13 @@ namespace Formula1App.ViewModels
         private async Task GetArticles()
         {
             List<Article> a = await intService.GetNews();
+            articles.Clear();
             articles = new(a);
+            Articles.Clear();
+            foreach (Article ar in articles)
+            {
+                Articles.Add(ar);
+            }
         }
         private async Task GetSubjects()
         {
@@ -95,11 +101,6 @@ namespace Formula1App.ViewModels
             IsRefreshing = true;
             SelectedSubject = null;
             await GetArticles();
-            Articles.Clear();
-            foreach (Article a in articles)
-            {
-                Articles.Add(a);
-            }
             IsRefreshing = false;
         }
         private async Task NavToArticle()
@@ -121,10 +122,6 @@ namespace Formula1App.ViewModels
             else
             {
                 await GetArticles();
-            }
-            foreach (Article a in articles)
-            {
-                Articles.Add(a);
             }
         }
     }
