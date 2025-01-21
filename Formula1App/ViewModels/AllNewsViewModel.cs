@@ -70,6 +70,7 @@ namespace Formula1App.ViewModels
             this.serviceProvider = serviceProvider;
             this.intService = intService;
             Articles = new();
+            articles = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedSubject != null);

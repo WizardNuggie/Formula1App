@@ -5,42 +5,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Formula1App.Views">
     <Shell.FlyoutHeader>
-        <Border
-            BackgroundColor="#E11900"
-            Margin="0,0,0,10">
+        <Border Margin="0,0,0,10" BackgroundColor="#E11900">
             <Label
-                HeightRequest="80"
-                TextColor="White"
-                Text="F1"
-                HorizontalOptions="Center"
-                VerticalTextAlignment="Center"
                 FontAttributes="Bold"
-                FontSize="30"/>
+                FontSize="30"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                Text="F1"
+                TextColor="White"
+                VerticalTextAlignment="Center" />
         </Border>
     </Shell.FlyoutHeader>
     <FlyoutItem
-    FlyoutDisplayOptions="AsMultipleItems"
-    Title="News"
-    Icon="news.png">
-        <ShellContent
         Title="News"
-        Icon="news.png"
-        ContentTemplate="{DataTemplate local:NewsView}"
-        Route="News"/>
+        FlyoutDisplayOptions="AsMultipleItems"
+        Icon="news.png">
+        <ShellContent
+            Title="News"
+            ContentTemplate="{DataTemplate local:NewsView}"
+            Icon="news.png"
+            Route="News" />
     </FlyoutItem>
     <FlyoutItem
-        FlyoutDisplayOptions="AsSingleItem"
         Title="Standings"
+        FlyoutDisplayOptions="AsSingleItem"
         Icon="standings.png">
         <ShellContent
             Title="Drivers"
-            Icon="driver_standings.png"
             ContentTemplate="{DataTemplate local:DriverStandingsView}"
-            Route="DriverStandings"/>
+            Icon="driver_standings.png"
+            Route="DriverStandings" />
         <ShellContent
             Title="Constructors"
-            Icon="const_standings.png"
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
-            Route="ConstStandings"/>
+            Icon="const_standings.png"
+            Route="ConstStandings" />
     </FlyoutItem>
 </Shell>
