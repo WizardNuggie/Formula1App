@@ -33,10 +33,9 @@
                         Margin="2"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
-                        Text="All news >">
+                        Text="All news &gt;">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding NavToAllNewsCommand}" />
+                            <TapGestureRecognizer Command="{Binding NavToAllNewsCommand}" />
                         </Label.GestureRecognizers>
                     </Label>
                     <BoxView
@@ -45,32 +44,6 @@
                         HeightRequest="2"
                         VerticalOptions="End"
                         Color="#E11900" />
-                    <!--<Frame
-                        Grid.ColumnSpan="2"
-                        BorderColor="#E11900"
-                        WidthRequest="390">
-
-                    </Frame>-->
-                    <!--<Frame
-                        HeightRequest="45"
-                        CornerRadius="10"
-                        Padding="3">
-                        <Picker
-                            VerticalOptions="Center"
-                            Title="Select a subject"
-                            x:DataType="model:Subject"
-                            HorizontalTextAlignment="Center"
-                            ItemDisplayBinding="{Binding Name}"
-                            ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
-                            SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"/>
-                    </Frame>
-                    <ImageButton
-                        Source="cancel.png"
-                        HeightRequest="50"
-                        WidthRequest="50"
-                        CornerRadius="10"
-                        Grid.Column="1"
-                        Command="{Binding ClearFilterCommand}"/>-->
 
                     <CollectionView
                         x:Name="colview"
@@ -81,22 +54,23 @@
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:Article">
-                                <Border
-                                    Margin="8"
-                                    Padding="5">
+                                <Border Margin="8" Padding="5">
                                     <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="15" />
+                                        <RoundRectangle CornerRadius="15" />
                                     </Border.StrokeShape>
-                                    <Grid
-                                        ColumnDefinitions="*,1.5*"
-                                        RowDefinitions="*,4*">
-                                        <Label
+                                    <Grid ColumnDefinitions="*,1.5*" RowDefinitions="*,4*">
+                                        <Border
                                             Grid.RowSpan="2"
                                             HeightRequest="100"
                                             HorizontalOptions="Center"
-                                            Text="this will contain the pic"
-                                            VerticalTextAlignment="Center" />
+                                            VerticalOptions="Center"
+                                            Stroke="Transparent">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="15" />
+                                            </Border.StrokeShape>
+                                            <Image
+                                                Source="{Binding FullImagePath}"/>
+                                        </Border>
                                         <Border
                                             Grid.Column="1"
                                             Padding="0"
@@ -106,8 +80,7 @@
                                             StrokeThickness="2"
                                             WidthRequest="100">
                                             <Border.StrokeShape>
-                                                <RoundRectangle
-                                                    CornerRadius="20" />
+                                                <RoundRectangle CornerRadius="20" />
                                             </Border.StrokeShape>
                                             <Label
                                                 FontAttributes="Bold"
@@ -126,16 +99,12 @@
                                         <VisualStateGroup>
                                             <VisualState Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter
-                                                        Property="BackgroundColor"
-                                                        Value="White"/>
+                                                    <Setter Property="BackgroundColor" Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                             <VisualState Name="Normal">
                                                 <VisualState.Setters>
-                                                    <Setter
-                                                        Property="BackgroundColor"
-                                                        Value="White"/>
+                                                    <Setter Property="BackgroundColor" Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>

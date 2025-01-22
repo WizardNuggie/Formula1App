@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Formula1App.Views.ManageUsersView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Formula1App.Models"
+    xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    x:DataType="viewmodel:ManageUsersViewModel">
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView
+            x:Name="scrlview">
+            <StackLayout>
+                <Grid
+                    ColumnDefinitions="*,0.25*"
+                    RowDefinitions="*,10*">
+                    <Grid
+                        Margin="0,0,0,20">
+                        <BoxView
+                            HeightRequest="2"
+                            VerticalOptions="Start"
+                            Color="#E11900"/>
+                        <BoxView
+                            HeightRequest="55"
+                            HorizontalOptions="End"
+                            WidthRequest="2"
+                            Color="#E11900"/>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            Text=" Manage users"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                    <CollectionView
+                        x:Name="colview"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Users}"
+                        SelectedItem="{Binding SelectedUser}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="modelext:UserWType">
+                                <Border
+                                    Margin="8"
+                                    Padding="5">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle
+                                            CornerRadius="15" />
+                                    </Border.StrokeShape>
+                                    <Grid
+                                        ColumnDefinitions="*,3*"
+                                        RowDefinitions="*,*,*">
+                                        <Label
+                                            Grid.RowSpan="3">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Id: "/>
+                                                    <Span Text="{Binding Id}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            Grid.Column="1"
+                                            Margin="20,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Username: "/>
+                                                    <Span Text="{Binding Username}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Role: "/>
+                                                    <Span Text="{Binding UserTypeName}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Admin: "/>
+                                                    <Span Text="{Binding IsAdmin}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

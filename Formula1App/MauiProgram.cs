@@ -27,6 +27,7 @@ namespace Formula1App
             builder.Services.AddTransient<NewsView>();
             builder.Services.AddTransient<AllNewsView>();
             builder.Services.AddTransient<ArticleView>();
+            builder.Services.AddTransient<ManageUsersView>();
             #endregion
             #region View Models
             builder.Services.AddSingleton<LoginViewModel>();
@@ -36,6 +37,7 @@ namespace Formula1App
             builder.Services.AddTransient<NewsViewModel>();
             builder.Services.AddTransient<AllNewsViewModel>();
             builder.Services.AddTransient<ArticleViewModel>();
+            builder.Services.AddTransient<ManageUsersViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();

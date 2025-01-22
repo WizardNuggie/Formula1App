@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Formula1App.Models;
+using Formula1App.Services;
 
-namespace Formula1App.Models
+namespace Formula1App.ModelsExt
 {
-    public class User
+    public class UserWType
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -18,23 +20,15 @@ namespace Formula1App.Models
         public DateOnly Birthday { get; set; }
         public bool IsAdmin { get; set; }
         public int UserTypeId { get; set; }
+        public string UserTypeName { get; set; }
 
-        public User(string email, string username, string name, string password, string driver, string @const, DateOnly bd, bool isAdmin, int id2)
+        public UserWType() { }
+        public UserWType(User u, F1IntService service)
         {
-            this.Email = email;
-            this.Username = username;
-            this.Name = name;
-            this.Password = password;
-            this.FavDriver = driver;
-            this.FavConstructor = @const;
-            this.Birthday = bd;
-            this.IsAdmin = isAdmin;
-            this.UserTypeId = id2;
-        }
-        public User(Models.User u)
-        {
+            this.Id = u.Id;
             this.Email = u.Email;
             this.Username = u.Username;
+            this.Password = u.Password;
             this.Name = u.Name;
             this.Password = u.Password;
             this.FavDriver = u.FavDriver;
@@ -42,7 +36,17 @@ namespace Formula1App.Models
             this.Birthday = u.Birthday;
             this.IsAdmin = u.IsAdmin;
             this.UserTypeId = u.UserTypeId;
+            List<UserType> l = new();
+            GetTypeData(l, service);
         }
-        public User() { }
+        private async void GetTypeData(List<UserType> l, F1IntService service)
+        {
+            await GetTypeName(l, service);
+        }
+        private async Task GetTypeName(List<UserType> l, F1IntService service)
+        {
+            l = await service.GetUsertypes();
+            this.UserTypeName = l.Where(u => u.Id == this.UserTypeId).FirstOrDefault().Name;
+        }
     }
 }

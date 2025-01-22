@@ -16,6 +16,7 @@ namespace Formula1App
             Routing.RegisterRoute("News", typeof(NewsView));
             Routing.RegisterRoute("AllNews", typeof(AllNewsView));
             Routing.RegisterRoute("Article", typeof(ArticleView));
+            Routing.RegisterRoute("Manage", typeof(ManageUsersView));
             #endregion
         }
     }

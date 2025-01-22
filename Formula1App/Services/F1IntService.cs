@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Android.Database.Sqlite;
 using Formula1App.Models;
+using Formula1App.ModelsExt;
 
 namespace Formula1App.Services
 {
@@ -64,7 +67,7 @@ namespace Formula1App.Services
         #endregion
 
         #region Sign Up
-        public async Task<User?> SignUpAsync(User user)
+        public async Task<ResponseUser?> SignUpAsync(User user)
         {
             string url = $"{this.baseUrl}Register";
             try
@@ -79,8 +82,20 @@ namespace Formula1App.Services
                     {
                         PropertyNameCaseInsensitive = true
                     };
-                    User? result = JsonSerializer.Deserialize<User>(resContent, options);
+                    ResponseUser? result = new()
+                    {
+                        User = JsonSerializer.Deserialize<User>(resContent, options),
+                        IsExist = false
+                    };
                     return result;
+                }
+                else if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    return new ResponseUser()
+                    {
+                        User = null,
+                        IsExist = true
+                    };
                 }
                 else
                 {
@@ -191,6 +206,133 @@ namespace Formula1App.Services
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+        #endregion
+
+        #region Users
+
+        public async Task<List<User>> GetUsers()
+        {
+            string url = $"{this.baseUrl}GetUsers";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<User> result = JsonSerializer.Deserialize<List<User>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region UserTypes
+
+        public async Task<List<UserType>> GetUsertypes()
+        {
+            string url = $"{this.baseUrl}GetUserTypes";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<UserType> result = JsonSerializer.Deserialize<List<UserType>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region Article
+
+        public async Task<Article?> UploadArticle(Article article)
+        {
+            string url = $"{this.baseUrl}UploadArticle";
+            try
+            {
+                string json = JsonSerializer.Serialize(article);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    string resContent = await response.Content.ReadAsStringAsync();
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    Article? result = JsonSerializer.Deserialize<Article>(resContent, options);
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+        #region Upload photo
+
+        public async Task<bool> UploadArticleImage(string imagePath, int id)
+        {
+            //Set URI to the specific function API
+            string url = $"{this.baseUrl}UploadArticleImage?id={id}";
+            try
+            {
+                //Create the form data
+                MultipartFormDataContent form = new MultipartFormDataContent();
+                var fileContent = new ByteArrayContent(File.ReadAllBytes(imagePath));
+                form.Add(fileContent, "file", imagePath);
+                //Call the server API
+                HttpResponseMessage response = await client.PostAsync(url, form);
+                //Check status
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
         #endregion

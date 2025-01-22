@@ -323,15 +323,24 @@ namespace Formula1App.ViewModels
                 IsAdmin = false
             };
             InServerCall = true;
-            newUser = await intService.SignUpAsync(newUser);
-            InServerCall = false;
-            if (newUser != null)
+            ResponseUser newUserResponse = await intService.SignUpAsync(newUser);
+            if (newUserResponse != null)
             {
-                await intService.LoginAsync(new LoginUser { Username = newUser.Username, Password = newUser.Password });
+                newUser = newUserResponse.User;
+                InServerCall = false;
+                if (newUser != null)
+                {
+                    await intService.LoginAsync(new LoginUser { Username = newUser.Username, Password = newUser.Password });
+                }
+                else if (newUserResponse.IsExist)
+                {
+                    string errorMsg = "Username already exists";
+                    await Application.Current.MainPage.DisplayAlert("Sign Up Failed", errorMsg, "ok");
+                }
             }
             else
             {
-                string errorMsg = "Sign up failed\nPlease try again";
+                string errorMsg = "Please try again";
                 await Application.Current.MainPage.DisplayAlert("Sign Up Failed", errorMsg, "ok");
             }
         }

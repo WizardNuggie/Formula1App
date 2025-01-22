@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Formula1App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,19 @@ namespace Formula1App.Models
 {
     public class Article
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
         public bool IsBreaking { get; set; }
         public List<Subject> Subjects { get; set; }
         public Subject FirstSubject { get; set; }
+        public string FullImagePath
+        {
+            get
+            {
+                return F1IntService.BaseAddress + $"//articles//{Id}.png";
+            }
+        }
         public Article() { }
     }
 }
