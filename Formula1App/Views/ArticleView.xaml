@@ -22,7 +22,8 @@
                             Padding="0"
                             StrokeThickness="2">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
+                                <RoundRectangle
+                                    CornerRadius="20"/>
                             </Border.StrokeShape>
                             <Label
                                 VerticalOptions="Center"

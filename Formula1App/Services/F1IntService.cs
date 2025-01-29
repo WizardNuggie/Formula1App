@@ -5,7 +5,6 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Android.Database.Sqlite;
 using Formula1App.Models;
 using Formula1App.ModelsExt;
 
@@ -21,6 +20,7 @@ namespace Formula1App.Services
         //home tunnel
         //frwczxqq-7209.uks1
         public static string BaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/api/";
+        public static string ImageBaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/";
 
         public F1IntService()
         {

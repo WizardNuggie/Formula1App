@@ -57,8 +57,10 @@
                                             Grid.RowSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Id: "/>
-                                                    <Span Text="{Binding Id}"/>
+                                                    <Span
+                                                        Text="Id: "/>
+                                                    <Span
+                                                        Text="{Binding Id}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -67,8 +69,10 @@
                                             Margin="20,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Username: "/>
-                                                    <Span Text="{Binding Username}"/>
+                                                    <Span
+                                                        Text="Username: "/>
+                                                    <Span
+                                                        Text="{Binding Username}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -77,8 +81,10 @@
                                             Grid.Row="1">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Role: "/>
-                                                    <Span Text="{Binding UserTypeName}"/>
+                                                    <Span
+                                                        Text="Role: "/>
+                                                    <Span
+                                                        Text="{Binding UserTypeName}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -87,22 +93,30 @@
                                             Grid.Row="1">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Admin: "/>
-                                                    <Span Text="{Binding IsAdmin}"/>
+                                                    <Span
+                                                        Text="Admin: "/>
+                                                    <Span
+                                                        Text="{Binding IsAdmin}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                     </Grid>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
-                                            <VisualState Name="Selected">
+                                            <VisualState
+                                                Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
-                                            <VisualState Name="Normal">
+                                            <VisualState
+                                                Name="Normal">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>

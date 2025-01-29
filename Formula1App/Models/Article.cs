@@ -19,7 +19,7 @@ namespace Formula1App.Models
         {
             get
             {
-                return F1IntService.BaseAddress + $"//articles//{Id}.png";
+                return F1IntService.ImageBaseAddress + $"articles/{Id}.png";
             }
         }
         public Article() { }
