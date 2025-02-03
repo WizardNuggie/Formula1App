@@ -30,6 +30,7 @@ namespace Formula1App
             builder.Services.AddTransient<ManageUsersView>();
             #endregion
             #region View Models
+            builder.Services.AddTransient<AppShellViewModel>();
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<SignUpViewModel>();
             builder.Services.AddTransient<DriverStandingsViewModel>();

@@ -1,49 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             xmlns:model="clr-namespace:Formula1App.Models"
-             x:DataType="viewmodel:ArticleViewModel"
-             x:Class="Formula1App.Views.ArticleView">
+<ContentPage
+    x:Class="Formula1App.Views.ArticleView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Formula1App.Models"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    x:DataType="viewmodel:ArticleViewModel">
     <ScrollView>
         <StackLayout
             Padding="10,0">
             <CollectionView
-                ItemsSource="{Binding Article.Subjects}"
-                ItemsLayout="VerticalGrid, 3">
+                ItemsLayout="VerticalGrid, 3"
+                ItemsSource="{Binding Article.Subjects}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate
                         x:DataType="model:Subject">
                         <Border
                             Margin="0"
-                            Stroke="#E11900"
-                            WidthRequest="100"
-                            HeightRequest="25"
                             Padding="0"
-                            StrokeThickness="2">
+                            HeightRequest="25"
+                            Stroke="#E11900"
+                            StrokeThickness="2"
+                            WidthRequest="100">
                             <Border.StrokeShape>
                                 <RoundRectangle
-                                    CornerRadius="20"/>
+                                    CornerRadius="20" />
                             </Border.StrokeShape>
                             <Label
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center"
                                 FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="{Binding Name}"
                                 TextColor="#E11900"
-                                Text="{Binding Name}"/>
+                                VerticalOptions="Center" />
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Border
+                Margin="0,15,0,5"
+                Grid.RowSpan="2"
+                WidthRequest="380"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Stroke="Transparent">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15" />
+                </Border.StrokeShape>
+                <Image
+                    WidthRequest="380"
+                    Aspect="AspectFill"
+                    Source="{Binding Article.FullImagePath}"/>
+            </Border>
             <Label
                 FontSize="40"
-                Text="{Binding Article.Title}"/>
+                Text="{Binding Article.Title}" />
             <BoxView
-                Color="Grey"
+                Margin="0,0,0,20"
                 HeightRequest="1"
-                Margin="0,0,0,20"/>
+                Color="Grey" />
             <Label
-                Text="{Binding Article.Text}"/>
+                Text="{Binding Article.Text}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

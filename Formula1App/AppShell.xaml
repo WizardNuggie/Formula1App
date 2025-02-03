@@ -3,6 +3,8 @@
     x:Class="Formula1App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    x:DataType="viewmodel:AppShellViewModel"
     xmlns:local="clr-namespace:Formula1App.Views">
     <Shell.FlyoutHeader>
         <Border Margin="0,0,0,10" BackgroundColor="#E11900">
@@ -16,16 +18,16 @@
                 VerticalTextAlignment="Center" />
         </Border>
     </Shell.FlyoutHeader>
-    <FlyoutItem
-        Title="News"
-        FlyoutDisplayOptions="AsMultipleItems"
-        Icon="news.png">
-        <ShellContent
+        <FlyoutItem
             Title="News"
-            ContentTemplate="{DataTemplate local:NewsView}"
-            Icon="news.png"
-            Route="News" />
-    </FlyoutItem>
+            FlyoutDisplayOptions="AsMultipleItems"
+            Icon="news.png">
+            <ShellContent
+                Title="News"
+                ContentTemplate="{DataTemplate local:NewsView}"
+                Icon="news.png"
+                Route="News" />
+        </FlyoutItem>
     <FlyoutItem
         Title="Standings"
         FlyoutDisplayOptions="AsSingleItem"
@@ -40,5 +42,16 @@
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Icon="const_standings.png"
             Route="ConstStandings" />
+    </FlyoutItem>
+    <FlyoutItem
+        IsVisible="{Binding IsAdmin}"
+        Title="Manage Users"
+        FlyoutDisplayOptions="AsMultipleItems"
+        Icon="admin.png">
+        <ShellContent
+            Title="Manage Users"
+            Icon="admin.png"
+            ContentTemplate="{DataTemplate local:ManageUsersView}"
+            Route="ManageUsers"/>
     </FlyoutItem>
 </Shell>
