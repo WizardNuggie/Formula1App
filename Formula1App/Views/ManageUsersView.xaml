@@ -10,29 +10,43 @@
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView
-            x:Name="scrlview">
+        <ScrollView x:Name="scrlview">
             <StackLayout>
                 <Grid
-                    ColumnDefinitions="*,0.25*"
-                    RowDefinitions="*,10*">
+                    ColumnDefinitions="*,0.25*" 
+                    RowDefinitions="*,*,10*">
                     <Grid
                         Margin="0,0,0,20">
                         <BoxView
                             HeightRequest="2"
                             VerticalOptions="Start"
-                            Color="#E11900"/>
+                            Color="#E11900" />
                         <BoxView
                             HeightRequest="55"
                             HorizontalOptions="End"
                             WidthRequest="2"
-                            Color="#E11900"/>
+                            Color="#E11900" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="30"
-                            Text=" Manage users"
-                            VerticalOptions="Center"/>
+                            Text="  Manage users"
+                            VerticalOptions="Center" />
                     </Grid>
+                    <Frame
+                        Grid.Row="1"
+                        HeightRequest="45"
+                        CornerRadius="10"
+                        Padding="3"
+                        Margin="10,0,0,0">
+                        <Picker
+                            VerticalOptions="Center"
+                            Title="Filter by user type"
+                            x:DataType="model:UserType"
+                            HorizontalTextAlignment="Center"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding BindingContext.UserTypes, Source={x:Reference scrlview}}"
+                            SelectedItem="{Binding BindingContext.SelectedRole, Source={x:Reference scrlview}}"/>
+                    </Frame>
                     <CollectionView
                         x:Name="colview"
                         Grid.Row="2"
@@ -41,82 +55,55 @@
                         SelectedItem="{Binding SelectedUser}"
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate
-                                x:DataType="modelext:UserWType">
-                                <Border
-                                    Margin="8"
-                                    Padding="5">
+                            <DataTemplate x:DataType="modelext:UserWType">
+                                <Border Margin="8" Padding="5">
                                     <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="15" />
+                                        <RoundRectangle CornerRadius="15" />
                                     </Border.StrokeShape>
-                                    <Grid
-                                        ColumnDefinitions="*,3*"
-                                        RowDefinitions="*,*,*">
-                                        <Label
-                                            Grid.RowSpan="3">
+                                    <Grid ColumnDefinitions="*,3*" RowDefinitions="*,*,*">
+                                        <Label Grid.RowSpan="3">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        Text="Id: "/>
-                                                    <Span
-                                                        Text="{Binding Id}"/>
+                                                    <Span Text="Id: " />
+                                                    <Span Text="{Binding Id}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label
-                                            Grid.Column="1"
-                                            Margin="20,0,0,0">
+                                        <Label Grid.Column="1" Margin="20,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        Text="Username: "/>
-                                                    <Span
-                                                        Text="{Binding Username}"/>
+                                                    <Span Text="Username: " />
+                                                    <Span Text="{Binding Username}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label
-                                            Grid.Column="1"
-                                            Grid.Row="1">
+                                        <Label Grid.Row="1" Grid.Column="1">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        Text="Role: "/>
-                                                    <Span
-                                                        Text="{Binding UserTypeName}"/>
+                                                    <Span Text="Role: " />
+                                                    <Span Text="{Binding UserTypeName}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label
-                                            Grid.Column="1"
-                                            Grid.Row="1">
+                                        <Label Grid.Row="1" Grid.Column="0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span
-                                                        Text="Admin: "/>
-                                                    <Span
-                                                        Text="{Binding IsAdmin}"/>
+                                                    <Span Text="Admin: " />
+                                                    <Span Text="{Binding IsAdmin}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                     </Grid>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
-                                            <VisualState
-                                                Name="Selected">
+                                            <VisualState Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter
-                                                        Property="BackgroundColor"
-                                                        Value="White" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
-                                            <VisualState
-                                                Name="Normal">
+                                            <VisualState Name="Normal">
                                                 <VisualState.Setters>
-                                                    <Setter
-                                                        Property="BackgroundColor"
-                                                        Value="White" />
+                                                    <Setter Property="BackgroundColor" Value="White" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>

@@ -39,7 +39,7 @@
                         Margin="10,0,0,0">
                     <Picker
                         VerticalOptions="Center"
-                        Title="Select a subject"
+                        Title="Filter by subject"
                         x:DataType="model:Subject"
                         HorizontalTextAlignment="Center"
                         ItemDisplayBinding="{Binding Name}"

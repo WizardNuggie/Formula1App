@@ -244,7 +244,7 @@ namespace Formula1App.Services
 
         #region UserTypes
 
-        public async Task<List<UserType>> GetUsertypes()
+        public async Task<List<UserType>> GetUserTypes()
         {
             string url = $"{this.baseUrl}GetUserTypes";
             try

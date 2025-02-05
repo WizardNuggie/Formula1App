@@ -23,7 +23,7 @@ namespace Formula1App.ModelsExt
         public string UserTypeName { get; set; }
 
         public UserWType() { }
-        public UserWType(User u, F1IntService service)
+        public UserWType(User u, string userTypeName)
         {
             this.Id = u.Id;
             this.Email = u.Email;
@@ -36,17 +36,7 @@ namespace Formula1App.ModelsExt
             this.Birthday = u.Birthday;
             this.IsAdmin = u.IsAdmin;
             this.UserTypeId = u.UserTypeId;
-            List<UserType> l = new();
-            GetTypeData(l, service);
-        }
-        private async void GetTypeData(List<UserType> l, F1IntService service)
-        {
-            await GetTypeName(l, service);
-        }
-        private async Task GetTypeName(List<UserType> l, F1IntService service)
-        {
-            l = await service.GetUsertypes();
-            this.UserTypeName = l.Where(u => u.Id == this.UserTypeId).FirstOrDefault().Name;
+            this.UserTypeName = userTypeName;
         }
     }
 }
