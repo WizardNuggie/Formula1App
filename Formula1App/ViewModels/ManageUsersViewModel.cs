@@ -70,8 +70,8 @@ namespace Formula1App.ViewModels
             this.intService = intService;
             users = new();
             Users = new();
-            Users.Clear();
             userTypes = new();
+            UserTypes = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedUt != null);
@@ -98,13 +98,15 @@ namespace Formula1App.ViewModels
         private async Task Refresh()
         {
             IsRefreshing = true;
+            SelectedUser = null;
+            SelectedUt = null;
             await GetUsers();
             IsRefreshing = false;
         }
         private async Task GetUserTypes()
         {
             List<UserType> uts = await intService.GetUserTypes();
-            userTypes = new(uts);
+            UserTypes = new(uts);
         }
         private async Task FilterByUt()
         {
@@ -112,8 +114,15 @@ namespace Formula1App.ViewModels
             SelectedUser = null;
             if (SelectedUt != null)
             {
-                List<User> u = await intService.GetUsersByUt(SelectedUt.Id);//code this shit
-                users = new(u);
+                List<User> us = await intService.GetUsersByUT(SelectedUt.Id);//code this shit
+                users = new(us);
+                Users.Clear();
+                string ut = "";
+                foreach (User u in users)
+                {
+                    ut = userTypes.Where(x => x.Id == u.UserTypeId).FirstOrDefault().Name;
+                    Users.Add(new UserWType(u, ut));
+                }
             }
             else
             {

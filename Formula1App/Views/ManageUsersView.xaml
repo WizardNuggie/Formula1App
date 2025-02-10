@@ -10,7 +10,8 @@
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView x:Name="scrlview">
+        <ScrollView
+            x:Name="scrlview">
             <StackLayout>
                 <Grid
                     ColumnDefinitions="*,0.25*" 
@@ -45,7 +46,7 @@
                             HorizontalTextAlignment="Center"
                             ItemDisplayBinding="{Binding Name}"
                             ItemsSource="{Binding BindingContext.UserTypes, Source={x:Reference scrlview}}"
-                            SelectedItem="{Binding BindingContext.SelectedRole, Source={x:Reference scrlview}}"/>
+                            SelectedItem="{Binding BindingContext.SelectedUt, Source={x:Reference scrlview}}"/>
                     </Frame>
                     <CollectionView
                         x:Name="colview"

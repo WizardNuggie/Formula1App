@@ -240,6 +240,37 @@ namespace Formula1App.Services
                 return null;
             }
         }
+
+        public async Task<List<User>> GetUsersByUT(int utId)
+        {
+            string parameterKey = "userTypeId";
+            string parameterValue = utId.ToString();
+            string url = $"{this.baseUrl}GetUsersByUT?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<User> result = JsonSerializer.Deserialize<List<User>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region UserTypes
