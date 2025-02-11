@@ -40,6 +40,18 @@ namespace Formula1App.ViewModels
                 FilterByUt();
             }
         }
+        private string searchText;
+        public string SearchText
+        {
+            get => searchText;
+            set
+            {
+                searchText = value;
+                OnPropertyChanged();
+                if (string.IsNullOrEmpty(searchText))
+                    FilterByUt();
+            }
+        }
         private UserWType selectedUser;
         public UserWType SelectedUser
         {
@@ -63,6 +75,7 @@ namespace Formula1App.ViewModels
 
         public ICommand RefreshCommand { get; set; }
         public ICommand ClearFilterCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
 
         public ManageUsersViewModel(IServiceProvider serviceProvider, F1IntService intService)
         {
@@ -74,7 +87,8 @@ namespace Formula1App.ViewModels
             UserTypes = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
-            ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedUt != null);
+            ClearFilterCommand = new Command(async () => await ClearFilter(), () => SelectedUt != null);
+            SearchCommand = new Command(async () => await Search());
             InitData();
         }
         private async void InitData()
@@ -100,12 +114,23 @@ namespace Formula1App.ViewModels
             IsRefreshing = true;
             SelectedUser = null;
             SelectedUt = null;
+            SearchText = null;
             await GetUsers();
             IsRefreshing = false;
+        }
+        private async Task ClearFilter()
+        {
+            SelectedUser = null;
+            SelectedUt = null;
         }
         private async Task GetUserTypes()
         {
             List<UserType> uts = await intService.GetUserTypes();
+            uts.Add(new UserType()
+            {
+                Name = "Admin",
+                Id = 100
+            });
             UserTypes = new(uts);
         }
         private async Task FilterByUt()
@@ -114,9 +139,69 @@ namespace Formula1App.ViewModels
             SelectedUser = null;
             if (SelectedUt != null)
             {
-                List<User> us = await intService.GetUsersByUT(SelectedUt.Id);//code this shit
+                if (SelectedUt.Id != 100)
+                {
+                    List<User> us = await intService.GetUsersByUT(SelectedUt.Id);
+                    if (!string.IsNullOrEmpty(SearchText))
+                    {
+                        List<User> tempUs = new();
+                        foreach (User u in us)
+                        {
+                            foreach (User user in users)
+                            {
+                                if (u.Id == user.Id)
+                                    tempUs.Add(user);
+                            }
+                        }
+                        users = new(tempUs);
+                    }
+                    else
+                    {
+                        users = new(us);
+                    }
+                    Users.Clear();
+                    string ut = "";
+                    foreach (User u in users)
+                    {
+                        ut = userTypes.Where(x => x.Id == u.UserTypeId).FirstOrDefault().Name;
+                        Users.Add(new UserWType(u, ut));
+                    }
+                }
+                else
+                {
+                    await GetUsers();
+                    List<User> us = users.Where(x => x.IsAdmin == true).ToList();
+                    Users.Clear();
+                    users = new(us);
+                    string ut = "";
+                    foreach (User u in users)
+                    {
+                        ut = userTypes.Where(x => x.Id == u.UserTypeId).FirstOrDefault().Name;
+                        Users.Add(new UserWType(u, ut));
+                    }
+                }
+            }
+            else if (string.IsNullOrEmpty(SearchText))
+            {
+                await GetUsers();
+            }
+            else
+            {
+                Search();
+            }
+        }
+        private async Task Search()
+        {
+            if (!string.IsNullOrEmpty(SearchText))
+            {
+                if (SelectedUt == null)
+                    await GetUsers();
+                else
+                    users = await intService.GetUsersByUT(SelectedUt.Id);
+                List<User> us = users.Where(x => x.Username.Contains(SearchText)).ToList();
                 users = new(us);
                 Users.Clear();
+                users = new(us);
                 string ut = "";
                 foreach (User u in users)
                 {
@@ -126,7 +211,7 @@ namespace Formula1App.ViewModels
             }
             else
             {
-                await GetUsers();
+                await FilterByUt();
             }
         }
     }

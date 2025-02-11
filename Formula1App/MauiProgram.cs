@@ -1,6 +1,7 @@
 ﻿using Formula1App.Views;
 using Formula1App.ViewModels;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 using Formula1App.Services;
 
 namespace Formula1App
@@ -17,6 +18,9 @@ namespace Formula1App
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            #region Syncfusion
+            builder.ConfigureSyncfusionCore();
+            #endregion
             builder.Services.AddSingleton<SignPage>();
             #region Views
             builder.Services.AddTransient<AppShell>();
