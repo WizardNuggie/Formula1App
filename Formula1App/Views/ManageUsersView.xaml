@@ -3,22 +3,16 @@
     x:Class="Formula1App.Views.ManageUsersView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-    xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
     x:DataType="viewmodel:ManageUsersViewModel">
-    <RefreshView
-        Command="{Binding RefreshCommand}"
-        IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView
-            x:Name="scrlview">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView x:Name="scrlview">
             <StackLayout>
-                <Grid
-                    ColumnDefinitions="*,0.25*" 
-                    RowDefinitions="*,*,*,10*">
-                    <Grid
-                        Margin="0,0,0,20">
+                <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,*,*,*,10*">
+                    <Grid Margin="0,0,0,20">
                         <BoxView
                             HeightRequest="2"
                             VerticalOptions="Start"
@@ -35,171 +29,187 @@
                             VerticalOptions="Center" />
                     </Grid>
                     <Frame
-                        Grid.ColumnSpan="2"
                         Grid.Row="1"
-                        CornerRadius="10"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0"
                         Padding="5"
-                        MinimumHeightRequest="30"
-                        Margin="10,0">
-                        <expander:SfExpander
-                            AnimationDuration="120">
+                        CornerRadius="10"
+                        MinimumHeightRequest="30">
+                        <expander:SfExpander AnimationDuration="120">
                             <expander:SfExpander.Header>
-                                <Label
-                                    VerticalOptions="Center"
-                                    Text="Search by username"/>
+                                <Label Text="Search by ID" VerticalOptions="Center" />
                             </expander:SfExpander.Header>
                             <expander:SfExpander.Content>
                                 <Grid>
                                     <Frame
-                                    HeightRequest="45"
-                                    CornerRadius="10"
-                                    Padding="3"
-                                    Margin="10,5,0,2">
-                                        <!--<Entry
-                                            Placeholder="Search by username"
-                                            Text="{Binding SearchText}"/>-->
+                                        Margin="10,5,0,2"
+                                        Padding="3"
+                                        CornerRadius="10"
+                                        HeightRequest="45">
                                         <SearchBar
-                                            Placeholder="Search by username"
-                                            Text="{Binding SearchText}"
-                                            SearchCommand="{Binding SearchCommand}"/>
+                                            Placeholder="Search by ID"
+                                            SearchCommand="{Binding IdSearchCommand}"
+                                            Text="{Binding SearchId}" />
                                     </Frame>
-                                    <!--<ImageButton
-                                    Grid.Column="1"
-                                    Source="cancel.png"
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    CornerRadius="10"
-                                    Command="{Binding ClearSearchCommand}"/>-->
                                 </Grid>
                             </expander:SfExpander.Content>
                         </expander:SfExpander>
                     </Frame>
                     <Frame
-                        Grid.ColumnSpan="2"
                         Grid.Row="2"
-                        CornerRadius="10"
+                        Grid.ColumnSpan="2"
+                        Margin="10,10,10,3"
                         Padding="5"
-                        MinimumHeightRequest="30"
-                        Margin="10,10,10,3">
-                        <expander:SfExpander
-                            AnimationDuration="120">
+                        CornerRadius="10"
+                        MinimumHeightRequest="30">
+                        <expander:SfExpander AnimationDuration="120">
                             <expander:SfExpander.Header>
-                                <Label
-                                    VerticalOptions="Center"
-                                    Text="Filter by user type"/>
+                                <Label Text="Search by username" VerticalOptions="Center" />
                             </expander:SfExpander.Header>
                             <expander:SfExpander.Content>
-                                <Grid
-                                    RowDefinitions="*"
-                                    ColumnDefinitions="*,0.25*">
+                                <Grid>
                                     <Frame
-                                        HeightRequest="45"
-                                        CornerRadius="10"
+                                        Margin="10,5,0,2"
                                         Padding="3"
-                                        Margin="10,5,0,2">
+                                        CornerRadius="10"
+                                        HeightRequest="45">
+                                        <SearchBar
+                                            Placeholder="Search by username"
+                                            SearchCommand="{Binding SearchCommand}"
+                                            Text="{Binding SearchText}" />
+                                    </Frame>
+                                </Grid>
+                            </expander:SfExpander.Content>
+                        </expander:SfExpander>
+                    </Frame>
+                    <Frame
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Margin="10,10,10,3"
+                        Padding="5"
+                        CornerRadius="10"
+                        MinimumHeightRequest="30">
+                        <expander:SfExpander AnimationDuration="120">
+                            <expander:SfExpander.Header>
+                                <Label Text="Filter by user type" VerticalOptions="Center" />
+                            </expander:SfExpander.Header>
+                            <expander:SfExpander.Content>
+                                <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*">
+                                    <Frame
+                                        Margin="10,5,0,2"
+                                        Padding="3"
+                                        CornerRadius="10"
+                                        HeightRequest="45">
                                         <Picker
-                                            VerticalOptions="Center"
                                             Title="Filter by user type"
                                             x:DataType="model:UserType"
                                             HorizontalTextAlignment="Center"
                                             ItemDisplayBinding="{Binding Name}"
                                             ItemsSource="{Binding BindingContext.UserTypes, Source={x:Reference scrlview}}"
-                                            SelectedItem="{Binding BindingContext.SelectedUt, Source={x:Reference scrlview}}"/>
+                                            SelectedItem="{Binding BindingContext.SelectedUt, Source={x:Reference scrlview}}"
+                                            VerticalOptions="Center" />
                                     </Frame>
                                     <ImageButton
                                         Grid.Column="1"
-                                        Source="cancel.png"
-                                        HeightRequest="50"
-                                        WidthRequest="50"
+                                        Command="{Binding ClearFilterCommand}"
                                         CornerRadius="10"
-                                        Command="{Binding ClearFilterCommand}"/>
+                                        HeightRequest="50"
+                                        Source="cancel.png"
+                                        WidthRequest="50" />
                                 </Grid>
                             </expander:SfExpander.Content>
                         </expander:SfExpander>
                     </Frame>
                     <CollectionView
                         x:Name="colview"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Users}"
-                        SelectedItem="{Binding SelectedUser}">
+                        ItemsSource="{Binding Users}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="modelext:UserWType">
                                 <SwipeView>
-                                    <SwipeView.LeftItems>
-                                        <SwipeItems>
-                                            <SwipeItem IconImageSource="remove.png" Command="{Binding BindingContext.RemoveCommand, Source={x:Reference scrlview}}" CommandParameter="{Binding .}"/> <!--code this shit-->
-                                            <SwipeItem IconImageSource="edit.png" Command="{Binding BindingContext.EditUserCommand, Source={x:Reference scrlview}}" CommandParameter="{Binding .}"/> <!--code this shit-->
-                                        </SwipeItems>
-                                    </SwipeView.LeftItems>
                                     <SwipeView.RightItems>
-                                        <SwipeItem IconImageSource="showdetails.png" Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}" CommandParameter="{Binding .}"/> <!--code this shit-->
+                                        <SwipeItems>
+                                            <SwipeItem
+                                                Command="{Binding BindingContext.RemoveCommand, Source={x:Reference scrlview}}"
+                                                CommandParameter="{Binding .}"
+                                                IconImageSource="remove.png" />
+                                            <SwipeItem
+                                                Command="{Binding BindingContext.EditUserCommand, Source={x:Reference scrlview}}"
+                                                CommandParameter="{Binding .}"
+                                                IconImageSource="edit.png" />
+                                        </SwipeItems>
                                     </SwipeView.RightItems>
-                                <Border Margin="8" Padding="5">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*,*">
-                                        <Label
-                                            Grid.RowSpan="3"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="ID: " />
-                                                    <Span Text="{Binding Id}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label
-                                            Grid.Column="1"
-                                            Margin="20,0,0,0">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Username: " />
-                                                    <Span Text="{Binding Username}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            Margin="20,0,0,0"
-                                            VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Role: " />
-                                                    <Span Text="{Binding UserTypeName}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                        <Label
-                                            Grid.RowSpan="3"
-                                            Grid.Column="2"
-                                            VerticalOptions="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Admin: " />
-                                                    <Span Text="{Binding IsAdmin}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </Grid>
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="White" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="White" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Border>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItem
+                                            Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}"
+                                            CommandParameter="{Binding .}"
+                                            IconImageSource="showdetails.png" />
+                                        <!--  code this shit  -->
+                                    </SwipeView.LeftItems>
+                                    <Border Margin="8" Padding="5">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="15" />
+                                        </Border.StrokeShape>
+                                        <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*,*">
+                                            <Label
+                                                Grid.RowSpan="3"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="ID: " />
+                                                        <Span Text="{Binding Id}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Grid.Column="1" Margin="20,0,0,0">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="Username: " />
+                                                        <Span Text="{Binding Username}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Margin="20,0,0,0"
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="Role: " />
+                                                        <Span Text="{Binding UserTypeName}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
+                                                Grid.RowSpan="3"
+                                                Grid.Column="2"
+                                                VerticalOptions="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="Admin: " />
+                                                        <Span Text="{Binding IsAdmin}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
                                 </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

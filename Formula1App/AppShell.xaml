@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:AppShellViewModel"
-    xmlns:local="clr-namespace:Formula1App.Views">
+    xmlns:local="clr-namespace:Formula1App.Views"
+    Shell.TabBarForegroundColor="#E11900"
+    Shell.TabBarTitleColor="#E11900">
     <Shell.FlyoutHeader>
         <Border Margin="0,0,0,10" BackgroundColor="#E11900">
             <Label
@@ -42,6 +44,17 @@
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Icon="const_standings.png"
             Route="ConstStandings" />
+    </FlyoutItem>
+    <FlyoutItem
+        IsVisible="{Binding IsAdmin}"
+        Title="Add Articles"
+        FlyoutDisplayOptions="AsMultipleItems"
+        Icon="add_article.png">
+        <ShellContent
+            Title=""
+            Icon="add_article.png"
+            ContentTemplate="{DataTemplate local:ManageUsersView}"
+            Route="ManageUsers"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsAdmin}"

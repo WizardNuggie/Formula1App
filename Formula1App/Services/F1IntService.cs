@@ -271,6 +271,29 @@ namespace Formula1App.Services
                 return null;
             }
         }
+
+        public async Task<bool> RemoveUser(User u)
+        {
+            string parameterKey = "userId";
+            string parameterValue = u.Id.ToString();
+            string url = $"{this.baseUrl}RemoveUser?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region UserTypes
