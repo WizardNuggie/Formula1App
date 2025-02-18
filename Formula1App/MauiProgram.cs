@@ -21,11 +21,11 @@ namespace Formula1App
             #region Syncfusion
             builder.ConfigureSyncfusionCore();
             #endregion
-            builder.Services.AddSingleton<SignPage>();
+            builder.Services.AddTransient<SignPage>();
             #region Views
             builder.Services.AddTransient<AppShell>();
-            builder.Services.AddSingleton<LoginView>();
-            builder.Services.AddSingleton<SignUpView>();
+            builder.Services.AddTransient<LoginView>();
+            builder.Services.AddTransient<SignUpView>();
             builder.Services.AddTransient<DriverStandingsView>();
             builder.Services.AddTransient<ConstStandingsView>();
             builder.Services.AddTransient<NewsView>();
@@ -36,8 +36,8 @@ namespace Formula1App
             #endregion
             #region View Models
             builder.Services.AddTransient<AppShellViewModel>();
-            builder.Services.AddSingleton<LoginViewModel>();
-            builder.Services.AddSingleton<SignUpViewModel>();
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<SignUpViewModel>();
             builder.Services.AddTransient<DriverStandingsViewModel>();
             builder.Services.AddTransient<ConstStandingsViewModel>();
             builder.Services.AddTransient<NewsViewModel>();

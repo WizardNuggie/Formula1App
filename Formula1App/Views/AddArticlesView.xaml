@@ -2,7 +2,83 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+             xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
              x:DataType="viewmodel:AddArticlesViewModel"
              x:Class="Formula1App.Views.AddArticlesView">
-    <!--code this shit and vm of this shit-->
+    <ScrollView
+        x:Name="scrlview">
+        <Grid
+            ColumnDefinitions="*,0.25*"
+            RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+            <Grid Margin="0,0,0,20">
+                <BoxView
+                    HeightRequest="2"
+                    VerticalOptions="Start"
+                    Color="#E11900" />
+                <BoxView
+                    HeightRequest="55"
+                    HorizontalOptions="End"
+                    WidthRequest="2"
+                    Color="#E11900" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    Text="  Add article"
+                    VerticalOptions="Center" />
+            </Grid>
+            <Frame
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="10,0"
+                Padding="5"
+                CornerRadius="10"
+                MinimumHeightRequest="30">
+                <expander:SfExpander AnimationDuration="120">
+                    <expander:SfExpander.Header>
+                        <Label Text="Article's Title" VerticalOptions="Center" />
+                    </expander:SfExpander.Header>
+                    <expander:SfExpander.Content>
+                        <Grid>
+                            <Frame
+                                Margin="10,5,0,2"
+                                Padding="3"
+                                CornerRadius="10"
+                                HeightRequest="45">
+                                <Entry
+                                    Placeholder="Enter article's title"
+                                    Text="{Binding Article.Title}" />
+                            </Frame>
+                        </Grid>
+                    </expander:SfExpander.Content>
+                </expander:SfExpander>
+            </Frame>
+            <Frame
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="10,10,10,3"
+                Padding="5"
+                CornerRadius="10"
+                MinimumHeightRequest="30">
+                <expander:SfExpander AnimationDuration="120">
+                    <expander:SfExpander.Header>
+                        <Label Text="Article's Text" VerticalOptions="Center" />
+                    </expander:SfExpander.Header>
+                    <expander:SfExpander.Content>
+                        <Grid>
+                            <Frame
+                                Margin="10,5,0,2"
+                                Padding="3"
+                                CornerRadius="10"
+                                MaximumHeightRequest="100">
+                                <Editor
+                                    MaximumHeightRequest="100"
+                                    Placeholder="Enter article's text"
+                                    Text="{Binding Article.Title}" />
+                            </Frame>
+                        </Grid>
+                    </expander:SfExpander.Content>
+                </expander:SfExpander>
+            </Frame>
+        </Grid>
+    </ScrollView>
 </ContentPage>

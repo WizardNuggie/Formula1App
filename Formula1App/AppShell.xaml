@@ -46,15 +46,15 @@
             Route="ConstStandings" />
     </FlyoutItem>
     <FlyoutItem
-        IsVisible="{Binding IsAdmin}"
+        IsVisible="{Binding IsWriter}"
         Title="Add Articles"
         FlyoutDisplayOptions="AsMultipleItems"
         Icon="add_article.png">
         <ShellContent
-            Title=""
+            Title="Add Articles"
             Icon="add_article.png"
-            ContentTemplate="{DataTemplate local:ManageUsersView}"
-            Route="ManageUsers"/>
+            ContentTemplate="{DataTemplate local:AddArticlesView}"
+            Route="AddArticles"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsAdmin}"
@@ -67,4 +67,18 @@
             ContentTemplate="{DataTemplate local:ManageUsersView}"
             Route="ManageUsers"/>
     </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <HorizontalStackLayout
+            Padding="17,14">
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
+            </HorizontalStackLayout.GestureRecognizers>
+        <Image
+            Source="logout.png"
+            HeightRequest="25"/>
+            <Label
+                FontAttributes="Bold"
+                Text="          Logout"/>
+        </HorizontalStackLayout>
+    </Shell.FlyoutFooter>
 </Shell>
