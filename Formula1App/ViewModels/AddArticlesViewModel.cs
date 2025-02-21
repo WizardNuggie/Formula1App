@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Formula1App.Models;
 using Formula1App.Services;
 using Formula1App.ModelsExt;
+using System.Windows.Input;
 
 namespace Formula1App.ViewModels
 {
@@ -20,6 +21,34 @@ namespace Formula1App.ViewModels
             set
             {
                 article = value;
+                OnPropertyChanged();
+            }
+        }
+        private string photoPath;
+        public string PhotoPath
+        {
+            get => photoPath;
+            set
+            {
+                photoPath = value;
+                OnPropertyChanged();
+                if (string.IsNullOrEmpty(photoPath))
+                {
+                    BorderColor = Color.FromArgb("#C8C8C8");
+                }
+                else
+                {
+                    BorderColor = Color.FromArgb("#E11900");
+                }
+            }
+        }
+        private Color borderColor;
+        public Color BorderColor
+        {
+            get => borderColor;
+            set
+            {
+                borderColor = value;
                 OnPropertyChanged();
             }
         }
@@ -43,10 +72,17 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        public ICommand UploadPhotoCommand { get; set; }
+        public ICommand SubmitArticleCommand { get; set; }
         public AddArticlesViewModel(IServiceProvider sp, F1IntService intService)
         {
             this.serviceProvider = sp;
             this.intService = intService;
+            UploadPhotoCommand = new Command(UploadPhoto);
+            SubmitArticleCommand = new Command(SubmitArticle);
+            BorderColor = Color.FromArgb("#C8C8C8");
+            Subjects = new();
+            SelectedSubjects = new();
             InitData();
         }
         private async void InitData()
@@ -56,6 +92,72 @@ namespace Formula1App.ViewModels
         private async Task GetSubjects()
         {
             Subjects = await intService.GetSubjects();
+        }
+        private async void UploadPhoto()
+        {
+            try
+            {
+                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                {
+                    Title = "Please select a photo"
+                });
+                if (result != null)
+                {
+                    PhotoPath = result.FullPath;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        private async void CheckChanged(CheckBox check)
+        {
+            if (check.IsChecked)
+            {
+                List<Subject> subs = new(SelectedSubjects);
+                //ask ofer on monday
+            }
+        }
+        private async void SubmitArticle()
+        {
+            if (string.IsNullOrEmpty(PhotoPath) || string.IsNullOrEmpty(Article.Title) || string.IsNullOrEmpty(Article.Text) || SelectedSubjects.Count == 0)
+            {
+                string err = "You are missing one or more fields";
+                AppShell.Current.DisplayAlert("Submission failed", err, "OK");
+            }
+            else
+            {
+                try
+                {
+                    Article.Subjects = SelectedSubjects;
+                    Article result = await intService.UploadArticle(Article);
+                    if (result == null)
+                    {
+                        string err = "The submission of the article failed.\nPlease try again later";
+                        AppShell.Current.DisplayAlert("Submission failed", err, "OK");
+                    }
+                    else
+                    {
+                        bool isImageUploaded = await intService.UploadArticleImage(PhotoPath, result.Id);
+                        if (!isImageUploaded)
+                        {
+                            string err = "The article was submited but there was a problem submitting the image";
+                            AppShell.Current.DisplayAlert("Image submission failed", err, "OK");
+                        }
+                        else
+                        {
+                            string succ = "Submission completed successfully.\nYou will now be redirected to your pending articles page";
+                            AppShell.Current.DisplayAlert("Submission succeeded", succ, "OK");
+                            //build pending articles page and make a redirection here
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string err = "The submission of the article failed.\nPlease try again later";
+                    AppShell.Current.DisplayAlert("Submission failed", err, "OK");
+                }
+            }
         }
     }
 }

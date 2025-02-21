@@ -15,10 +15,6 @@ namespace Formula1App.Services
         private static string serverIp = "tk4zbkn3-7209.uks1.devtunnels.ms";
         private HttpClient client;
         private string baseUrl;
-        //school tunnel
-        //tk4zbkn3-7209.uks1
-        //home tunnel
-        //frwczxqq-7209.uks1
         public static string BaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/api/";
         public static string ImageBaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/";
 

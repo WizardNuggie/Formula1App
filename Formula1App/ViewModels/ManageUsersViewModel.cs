@@ -272,7 +272,7 @@ namespace Formula1App.ViewModels
         }
         private async Task RemoveUser(UserWType user)
         {
-            bool willDelete = await AppShell.Current.DisplayAlert("Delete user", $"Are you sure you want to delete the user \"{user.Username}\" ?", "Ok", "Cancel");
+            bool willDelete = await AppShell.Current.DisplayAlert("Delete user", $"Are you sure you want to delete the user \"{user.Username}\" ?", "OK", "Cancel");
             if (willDelete)
             {
                 User u = users.Where(x => x.Id == user.Id).FirstOrDefault();
@@ -284,18 +284,18 @@ namespace Formula1App.ViewModels
                         users.Remove(u);
                         Users.Remove(user);
                         string success = $"the user \"{user.Username}\" was deleted successfully";
-                        AppShell.Current.DisplayAlert("Deletion of user succeeded", success, "Ok");
+                        AppShell.Current.DisplayAlert("Deletion of user succeeded", success, "OK");
                     }
                     else
                     {
                         string err = "Something went wrong.\nPlease try again later";
-                        AppShell.Current.DisplayAlert("Deletion of user failed", err, "Ok");
+                        AppShell.Current.DisplayAlert("Deletion of user failed", err, "OK");
                     }
                 }
                 else
                 {
                     string err = "User was not found in database.\nPlease try again later";
-                    AppShell.Current.DisplayAlert("Deletion of user failed", err, "Ok");
+                    AppShell.Current.DisplayAlert("Deletion of user failed", err, "OK");
                 }
             }
             else
@@ -306,7 +306,7 @@ namespace Formula1App.ViewModels
         private void ShowDetails(UserWType u)
         {
             string details = $"ID: \"{u.Id}\"\nUsername: \"{u.Username}\"\nPassword: \"{u.Password}\"\nEmail: \"{u.Email}\"\nName: \"{u.Name}\"\nFavourite Driver: \"{u.FavDriver}\"\nFavourite Constructor: \"{u.FavConstructor}\"\nDate of Birth: \"{u.Birthday.ToString()}\"\nIs Admin: \"{u.IsAdmin}\"\nUser Type: \"{u.UserTypeName}\"";
-            AppShell.Current.DisplayAlert($"{u.Username}'s Details", details, "Ok");
+            AppShell.Current.DisplayAlert($"{u.Username}'s Details", details, "OK");
         }
     }
 }
