@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Formula1App.Models
 {
-    public class Subject
+    public class Status
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsChecked { get; set; }
-        public Subject() { }
+
+        public Status() { }
     }
 }

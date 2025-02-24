@@ -5,7 +5,8 @@
              xmlns:model="clr-namespace:Formula1App.Models"
              xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
              x:DataType="viewmodel:AddArticlesViewModel"
-             x:Class="Formula1App.Views.AddArticlesView">
+             x:Class="Formula1App.Views.AddArticlesView"
+             Title="">
     <ScrollView
         x:Name="scrlview">
         <Grid
@@ -50,6 +51,7 @@
                                 WidthRequest="250">
                                 <Image
                                     HeightRequest="150"
+                                    Aspect="AspectFill"
                                     Source="{Binding PhotoPath}"/>
                             </Border>
                             <Label
@@ -112,7 +114,7 @@
                                 <Editor
                                     MaximumHeightRequest="100"
                                     Placeholder="Enter article's text"
-                                    Text="{Binding Article.Title}" />
+                                    Text="{Binding Article.Text}" />
                             </Frame>
                         </Grid>
                     </expander:SfExpander.Content>
@@ -166,7 +168,8 @@
                                     x:DataType="model:Subject">
                                     <HorizontalStackLayout>
                                     <CheckBox
-                                        Color="#E11900"/>
+                                        Color="#E11900"
+                                        IsChecked="{Binding IsChecked}"/>
                                     <Label
                                         VerticalOptions="Center"
                                         Text="{Binding Name}"/>
@@ -182,7 +185,8 @@
                 Grid.ColumnSpan="2"
                 VerticalOptions="Start"
                 Margin="10,20,10,10"
-                Text="Submit"/>
+                Text="Submit"
+                Command="{Binding SubmitArticleCommand}"/>
         </Grid>
     </ScrollView>
 </ContentPage>

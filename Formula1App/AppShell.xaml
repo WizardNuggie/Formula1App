@@ -51,10 +51,10 @@
         FlyoutDisplayOptions="AsMultipleItems"
         Icon="add_article.png">
         <ShellContent
-            Title="Add Articles"
+            Title="Add Article"
             Icon="add_article.png"
             ContentTemplate="{DataTemplate local:AddArticlesView}"
-            Route="AddArticles"/>
+            Route="AddArticle"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsAdmin}"

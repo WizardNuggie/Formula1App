@@ -81,6 +81,7 @@ namespace Formula1App.ViewModels
             UploadPhotoCommand = new Command(UploadPhoto);
             SubmitArticleCommand = new Command(SubmitArticle);
             BorderColor = Color.FromArgb("#C8C8C8");
+            Article = new();
             Subjects = new();
             SelectedSubjects = new();
             InitData();
@@ -110,17 +111,9 @@ namespace Formula1App.ViewModels
             {
             }
         }
-        private async void CheckChanged(CheckBox check)
-        {
-            if (check.IsChecked)
-            {
-                List<Subject> subs = new(SelectedSubjects);
-                //ask ofer on monday
-            }
-        }
         private async void SubmitArticle()
         {
-            if (string.IsNullOrEmpty(PhotoPath) || string.IsNullOrEmpty(Article.Title) || string.IsNullOrEmpty(Article.Text) || SelectedSubjects.Count == 0)
+            if (string.IsNullOrEmpty(PhotoPath) || string.IsNullOrEmpty(Article.Title) || string.IsNullOrEmpty(Article.Text) || Subjects.Where(x => x.IsChecked).ToList().Count == 0)
             {
                 string err = "You are missing one or more fields";
                 AppShell.Current.DisplayAlert("Submission failed", err, "OK");
@@ -129,6 +122,14 @@ namespace Formula1App.ViewModels
             {
                 try
                 {
+                    SelectedSubjects.Clear();
+                    foreach (Subject s in Subjects)
+                    {
+                        if (s.IsChecked)
+                        {
+                            SelectedSubjects.Add(s);
+                        }
+                    }
                     Article.Subjects = SelectedSubjects;
                     Article result = await intService.UploadArticle(Article);
                     if (result == null)
@@ -158,6 +159,6 @@ namespace Formula1App.ViewModels
                     AppShell.Current.DisplayAlert("Submission failed", err, "OK");
                 }
             }
-        }
+        }//The exciting new 2025 liveries are all here, after their reveal at the F175 LIVE event. So which one is your personal favourite?
     }
 }
