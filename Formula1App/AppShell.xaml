@@ -43,7 +43,7 @@
             Title="Constructors"
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Icon="const_standings.png"
-            Route="ConstStandings" />
+            Route="ConstStandings"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsWriter}"
@@ -55,6 +55,27 @@
             Icon="add_article.png"
             ContentTemplate="{DataTemplate local:AddArticlesView}"
             Route="AddArticle"/>
+    </FlyoutItem>
+    <FlyoutItem
+        IsVisible="{Binding IsWriter}"
+        Title="Your Articles"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="your_articles.png">
+        <ShellContent
+            Title="Approved"
+            ContentTemplate="{DataTemplate local:YourApprovedArticles}"
+            Icon="approved.png"
+            Route="Approved"/>
+        <ShellContent
+            Title="Pending"
+            ContentTemplate="{DataTemplate local:YourPendingArticles}"
+            Icon="pending.png"
+            Route="Pending"/>
+        <ShellContent
+            Title="Declined"
+            ContentTemplate="{DataTemplate local:YourDeclinedArticles}"
+            Icon="remove.png"
+            Route="Declined"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsAdmin}"
