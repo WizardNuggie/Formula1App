@@ -80,6 +80,7 @@ namespace Formula1App.ViewModels
             this.intService = intService;
             UploadPhotoCommand = new Command(UploadPhoto);
             SubmitArticleCommand = new Command(SubmitArticle);
+            Article = null;
             BorderColor = Color.FromArgb("#C8C8C8");
             Article = new();
             Subjects = new();

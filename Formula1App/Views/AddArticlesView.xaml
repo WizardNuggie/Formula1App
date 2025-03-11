@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             xmlns:model="clr-namespace:Formula1App.Models"
-             xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
-             x:DataType="viewmodel:AddArticlesViewModel"
-             x:Class="Formula1App.Views.AddArticlesView"
-             Title="">
-    <ScrollView
-        x:Name="scrlview">
-        <Grid
-            ColumnDefinitions="*,0.25*"
-            RowDefinitions="*,*,*,*,*,*,10*">
+<ContentPage
+    x:Class="Formula1App.Views.AddArticlesView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
+    xmlns:model="clr-namespace:Formula1App.Models"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    Title=""
+    x:DataType="viewmodel:AddArticlesViewModel">
+    <ScrollView x:Name="scrlview">
+        <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,*,*,*,*,*,10*">
             <Grid Margin="0,0,0,20">
                 <BoxView
                     HeightRequest="2"
@@ -42,25 +40,24 @@
                     <expander:SfExpander.Content>
                         <VerticalStackLayout>
                             <Border
-                                Stroke="{Binding BorderColor}"
                                 Margin="5"
                                 Padding="0"
+                                HeightRequest="150"
+                                Stroke="{Binding BorderColor}"
                                 StrokeShape="RoundRectangle, 15"
                                 StrokeThickness="2"
-                                HeightRequest="150"
                                 WidthRequest="250">
                                 <Image
-                                    HeightRequest="150"
                                     Aspect="AspectFill"
-                                    Source="{Binding PhotoPath}"/>
+                                    HeightRequest="150"
+                                    Source="{Binding PhotoPath}" />
                             </Border>
                             <Label
+                                HorizontalOptions="Center"
                                 Text="Upload photo"
-                                TextColor="#E11900"
-                                HorizontalOptions="Center">
+                                TextColor="#E11900">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding UploadPhotoCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding UploadPhotoCommand}" />
                                 </Label.GestureRecognizers>
                             </Label>
                         </VerticalStackLayout>
@@ -85,14 +82,18 @@
                                 Padding="3"
                                 CornerRadius="10"
                                 HeightRequest="45">
-                                <Entry
-                                    Placeholder="Enter article's title"
-                                    Text="{Binding Article.Title}" />
+                                <Entry Placeholder="Enter article's title" Text="{Binding Article.Title}" />
                             </Frame>
                         </Grid>
                     </expander:SfExpander.Content>
                 </expander:SfExpander>
             </Frame>
+            <ActivityIndicator
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                IsRunning="{Binding InServerCall}"
+                VerticalOptions="Center" />
             <Frame
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
@@ -127,24 +128,17 @@
                 Padding="5"
                 CornerRadius="10"
                 MinimumHeightRequest="30">
-                <expander:SfExpander
-                    AnimationDuration="120">
+                <expander:SfExpander AnimationDuration="120">
                     <expander:SfExpander.Header>
-                        <Label
-                            Text="Breaking News"
-                            VerticalOptions="Center" />
+                        <Label Text="Breaking News" VerticalOptions="Center" />
                     </expander:SfExpander.Header>
                     <expander:SfExpander.Content>
-                        <Grid
-                            Margin="10,0,0,0"
-                            ColumnDefinitions="*,*">
-                            <Label
-                                VerticalOptions="Center"
-                                Text="Is breaking news"/>
+                        <Grid Margin="10,0,0,0" ColumnDefinitions="*,*">
+                            <Label Text="Is breaking news" VerticalOptions="Center" />
                             <Switch
                                 Grid.Column="1"
                                 HorizontalOptions="End"
-                                IsToggled="{Binding Article.IsBreaking}"/>
+                                IsToggled="{Binding Article.IsBreaking}" />
                         </Grid>
                     </expander:SfExpander.Content>
                 </expander:SfExpander>
@@ -161,18 +155,12 @@
                         <Label Text="Subjects" VerticalOptions="Center" />
                     </expander:SfExpander.Header>
                     <expander:SfExpander.Content>
-                        <CollectionView
-                            ItemsSource="{Binding Subjects}">
+                        <CollectionView ItemsSource="{Binding Subjects}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate
-                                    x:DataType="model:Subject">
+                                <DataTemplate x:DataType="model:Subject">
                                     <HorizontalStackLayout>
-                                    <CheckBox
-                                        Color="#E11900"
-                                        IsChecked="{Binding IsChecked}"/>
-                                    <Label
-                                        VerticalOptions="Center"
-                                        Text="{Binding Name}"/>
+                                        <CheckBox IsChecked="{Binding IsChecked}" Color="#E11900" />
+                                        <Label Text="{Binding Name}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -183,10 +171,10 @@
             <Button
                 Grid.Row="6"
                 Grid.ColumnSpan="2"
-                VerticalOptions="Start"
                 Margin="10,20,10,10"
+                Command="{Binding SubmitArticleCommand}"
                 Text="Submit"
-                Command="{Binding SubmitArticleCommand}"/>
+                VerticalOptions="Start" />
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -173,6 +173,40 @@ namespace Formula1App.Services
                 return null;
             }
          }
+        public async Task<List<Article>> GetNewsByUser(int userId)
+        {
+            string parameterKey = "userId";
+            string parameterValue = userId.ToString();
+            string url = $"{this.baseUrl}GetNewsByUser?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    foreach (Article a in result)
+                    {
+                        a.FirstSubject = a.Subjects.FirstOrDefault();
+                    }
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Subjects

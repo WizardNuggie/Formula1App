@@ -18,31 +18,8 @@ namespace Formula1App.Models
         public DateOnly Birthday { get; set; }
         public bool IsAdmin { get; set; }
         public int UserTypeId { get; set; }
+        public List<Article> Articles { get; set; }
 
-        public User(string email, string username, string name, string password, string driver, string @const, DateOnly bd, bool isAdmin, int id2)
-        {
-            this.Email = email;
-            this.Username = username;
-            this.Name = name;
-            this.Password = password;
-            this.FavDriver = driver;
-            this.FavConstructor = @const;
-            this.Birthday = bd;
-            this.IsAdmin = isAdmin;
-            this.UserTypeId = id2;
-        }
-        public User(Models.User u)
-        {
-            this.Email = u.Email;
-            this.Username = u.Username;
-            this.Name = u.Name;
-            this.Password = u.Password;
-            this.FavDriver = u.FavDriver;
-            this.FavConstructor = u.FavConstructor;
-            this.Birthday = u.Birthday;
-            this.IsAdmin = u.IsAdmin;
-            this.UserTypeId = u.UserTypeId;
-        }
         public User() { }
     }
 }
