@@ -14,6 +14,18 @@ namespace Formula1App.ViewModels
     {
         private readonly IServiceProvider serviceProvider;
         private readonly F1IntService intService;
+        private Article selectedArticle;
+        public Article SelectedArticle
+        {
+            get => selectedArticle;
+            set
+            {
+                selectedArticle = value;
+                OnPropertyChanged();
+                if (selectedArticle != null)
+                    NavToArticle();
+            }
+        }
         private bool isRefreshing;
         public bool IsRefreshing
         {
@@ -52,6 +64,13 @@ namespace Formula1App.ViewModels
                 Articles.Add(a);
             }
             IsRefreshing = false;
+        }
+        private async Task NavToArticle()
+        {
+            Dictionary<string, object> data = new();
+            data.Add("Article", SelectedArticle);
+            await AppShell.Current.GoToAsync("Article", data);
+            SelectedArticle = null;
         }
     }
 }

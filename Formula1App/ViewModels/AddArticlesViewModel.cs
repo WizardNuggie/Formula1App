@@ -124,6 +124,7 @@ namespace Formula1App.ViewModels
                 try
                 {
                     SelectedSubjects.Clear();
+                    InServerCall = true;
                     foreach (Subject s in Subjects)
                     {
                         if (s.IsChecked)
@@ -141,18 +142,22 @@ namespace Formula1App.ViewModels
                     else
                     {
                         bool isImageUploaded = await intService.UploadArticleImage(PhotoPath, result.Id);
+                        ((App)Application.Current).LoggedUser.Articles.Add(result);
                         if (!isImageUploaded)
                         {
                             string err = "The article was submited but there was a problem submitting the image";
                             AppShell.Current.DisplayAlert("Image submission failed", err, "OK");
+                            //build and redirect to image submission page
                         }
                         else
                         {
+                            Article = null;
                             string succ = "Submission completed successfully.\nYou will now be redirected to your pending articles page";
                             AppShell.Current.DisplayAlert("Submission succeeded", succ, "OK");
                             //build pending articles page and make a redirection here
                         }
                     }
+                    InServerCall = false;
                 }
                 catch (Exception ex)
                 {

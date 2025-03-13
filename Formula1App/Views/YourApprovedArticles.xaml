@@ -35,7 +35,9 @@
                         x:Name="colview"
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Articles}">
+                        ItemsSource="{Binding Articles}"
+                        SelectedItem="{Binding SelectedArticle}"
+                        SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate
                                 x:DataType="model:Article">

@@ -93,6 +93,7 @@
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 IsRunning="{Binding InServerCall}"
+                Color="#E11900"
                 VerticalOptions="Center" />
             <Frame
                 Grid.Row="3"
@@ -121,6 +122,13 @@
                     </expander:SfExpander.Content>
                 </expander:SfExpander>
             </Frame>
+            <ActivityIndicator
+               Grid.Row="3"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="Center"
+               IsRunning="{Binding InServerCall}"
+               Color="#E11900"
+               VerticalOptions="Center" />
             <Frame
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
