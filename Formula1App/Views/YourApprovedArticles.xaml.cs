@@ -9,4 +9,8 @@ public partial class YourApprovedArticles : ContentPage
 		this.BindingContext = vm;
 		InitializeComponent();
 	}
+    //protected override void OnAppearing()
+    //{
+    //    base.OnAppearing();
+    //}
 }

@@ -54,6 +54,9 @@
                             </Border>
                             <Label
                                 HorizontalOptions="Center"
+                                Text="*png"/>
+                            <Label
+                                HorizontalOptions="Center"
                                 Text="Upload photo"
                                 TextColor="#E11900">
                                 <Label.GestureRecognizers>

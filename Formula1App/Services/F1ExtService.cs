@@ -11,7 +11,7 @@ namespace Formula1App.Services
     public class F1ExtService
     {
         //https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
-        private static string ExtAPI = "http://ergast.com/api/f1/";
+        private static string ExtAPI = "https://api.jolpi.ca/ergast/f1/";
         private string currYear = DateTime.Now.Year.ToString() +"/";
         private HttpClient client;
         public F1ExtService()
@@ -22,19 +22,19 @@ namespace Formula1App.Services
             this.client = new HttpClient(handler);
         }
 
-        public async Task<List<MyDriver>> GetCurrDriversAsync()
+        public async Task<List<MyDriver>> GetCurrDriversStandingsAsync()
         {
-            return await GetDriversByYearAsync(currYear);
+            return await GetDriversStandingsByYearAsync(currYear);
         }
 
-        public async Task<List<Constructor>> GetCurrConstructorsAsync()
+        public async Task<List<Constructor>> GetCurrConstructorsStandingsAsync()
         {
-            return await GetConstructorsByYearAsync(currYear);
+            return await GetConstructorsStandingsByYearAsync(currYear);
         }
 
-        public async Task<List<MyDriver>> GetDriversByYearAsync(string year)
+        public async Task<List<MyDriver>> GetDriversStandingsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "drivers.json";
+            string url = ExtAPI + year + "driverstandings.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -74,9 +74,9 @@ namespace Formula1App.Services
             }
         }
 
-        public async Task<List<Constructor>> GetConstructorsByYearAsync(string year)
+        public async Task<List<Constructor>> GetConstructorsStandingsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "constructors.json";
+            string url = ExtAPI + year + "constructorstandings.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);

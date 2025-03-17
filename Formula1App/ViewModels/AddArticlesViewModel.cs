@@ -80,7 +80,6 @@ namespace Formula1App.ViewModels
             this.intService = intService;
             UploadPhotoCommand = new Command(UploadPhoto);
             SubmitArticleCommand = new Command(SubmitArticle);
-            Article = null;
             BorderColor = Color.FromArgb("#C8C8C8");
             Article = new();
             Subjects = new();
@@ -151,10 +150,9 @@ namespace Formula1App.ViewModels
                         }
                         else
                         {
-                            Article = null;
                             string succ = "Submission completed successfully.\nYou will now be redirected to your pending articles page";
                             AppShell.Current.DisplayAlert("Submission succeeded", succ, "OK");
-                            //build pending articles page and make a redirection here
+                            await AppShell.Current.GoToAsync("///Pending");
                         }
                     }
                     InServerCall = false;
@@ -165,6 +163,6 @@ namespace Formula1App.ViewModels
                     AppShell.Current.DisplayAlert("Submission failed", err, "OK");
                 }
             }
-        }//The exciting new 2025 liveries are all here, after their reveal at the F175 LIVE event. So which one is your personal favourite?
+        }
     }
 }

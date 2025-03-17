@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-    x:DataType="viewmodel:NewsViewModel">
+    x:DataType="viewmodel:NewsViewModel"
+    Title="">
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsRefreshing}">
@@ -81,6 +82,7 @@
                                             <Border
                                                 Grid.RowSpan="2"
                                                 HeightRequest="80"
+                                                MaximumWidthRequest="120"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
                                                 Stroke="Transparent">

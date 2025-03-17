@@ -4,12 +4,33 @@
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              x:Class="Formula1App.Views.DriverStandingsView"
              x:DataType="viewmodel:DriverStandingsViewModel"
-             Title="Drivers">
-    <ScrollView
-        x:Name="scrlview"
-        HorizontalScrollBarVisibility="Always"
-        VerticalOptions="FillAndExpand"
-        VerticalScrollBarVisibility="Always">
-        
-    </ScrollView>
+             Title="">
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView
+            x:Name="scrlview">
+            <Grid
+                ColumnDefinitions="*,0.25*"
+                RowDefinitions="*,*,10*">
+                <Grid
+                    Margin="0,0,0,20">
+                    <BoxView
+                        HeightRequest="2"
+                        VerticalOptions="Start"
+                        Color="#E11900" />
+                    <BoxView
+                        HeightRequest="55"
+                        HorizontalOptions="End"
+                        WidthRequest="2"
+                        Color="#E11900" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="  Drivers Standings"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

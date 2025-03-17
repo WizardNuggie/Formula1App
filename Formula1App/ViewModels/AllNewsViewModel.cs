@@ -118,7 +118,7 @@ namespace Formula1App.ViewModels
             if (SelectedSubject != null)
             {
                 List<Article> a = await intService.GetNewsBySubject(SelectedSubject.Id);
-                articles = new(a);
+                Articles = new(a);
             }
             else
             {

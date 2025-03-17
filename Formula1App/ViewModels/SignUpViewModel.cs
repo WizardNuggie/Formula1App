@@ -346,12 +346,12 @@ namespace Formula1App.ViewModels
         }
         private async void GetDrivers()
         {
-            Drivers = await extService.GetCurrDriversAsync();
+            Drivers = await extService.GetCurrDriversStandingsAsync();
         }
 
         private async void GetConstructors()
         {
-            Constructors = await extService.GetCurrConstructorsAsync();
+            Constructors = await extService.GetCurrConstructorsStandingsAsync();
         }
     }
 }

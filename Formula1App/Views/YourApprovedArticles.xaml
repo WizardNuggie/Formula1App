@@ -38,6 +38,15 @@
                         ItemsSource="{Binding Articles}"
                         SelectedItem="{Binding SelectedArticle}"
                         SelectionMode="Single">
+                        <CollectionView.EmptyView>
+                            <StackLayout>
+                                <Image
+                                    Source="no_articles.png"/>
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="No articles found"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
                             <DataTemplate
                                 x:DataType="model:Article">
@@ -60,6 +69,7 @@
                                             <Border
                                                 Grid.RowSpan="2"
                                                 HeightRequest="80"
+                                                MaximumWidthRequest="120"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
                                                 Stroke="Transparent">
@@ -94,7 +104,7 @@
                                         <Label
                                             Grid.Row="1"
                                             Grid.Column="1"
-                                            Margin="20,0,0,0"
+                                            Margin="0,0,10,0"
                                             Text="{Binding Title}" />
                                     </Grid>
                                     <VisualStateManager.VisualStateGroups>

@@ -57,7 +57,7 @@ namespace Formula1App.ViewModels
         {
             IsRefreshing = true;
             Articles.Clear();
-            articles = ((App)Application.Current).LoggedUser.Articles.Where(a => a.StatusId == 1).ToList();//.Include(a => a.Subjects)
+            articles = ((App)Application.Current).LoggedUser.Articles.Where(a => a.StatusId == 1).ToList();
             foreach (Article a in articles)
             {
                 a.FirstSubject = a.Subjects.FirstOrDefault();
