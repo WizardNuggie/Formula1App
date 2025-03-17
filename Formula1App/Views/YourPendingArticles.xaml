@@ -39,13 +39,15 @@
                         SelectedItem="{Binding SelectedArticle}"
                         SelectionMode="Single">
                         <CollectionView.EmptyView>
-                            <StackLayout>
-                                <Image
-                                    Source="no_articles.png"/>
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="No articles found"/>
-                            </StackLayout>
+                            <ContentView>
+                                <StackLayout>
+                                    <Image
+                                        Source="no_articles.png"/>
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        Text="No articles found"/>
+                                </StackLayout>
+                            </ContentView>
                         </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
                             <DataTemplate

@@ -5,9 +5,9 @@
              x:Class="Formula1App.Views.DriverStandingsView"
              x:DataType="viewmodel:DriverStandingsViewModel"
              Title="">
-    <RefreshView
+    <!--<RefreshView
         Command="{Binding RefreshCommand}"
-        IsRefreshing="{Binding IsRefreshing}">
+        IsRefreshing="{Binding IsRefreshing}">-->
         <ScrollView
             x:Name="scrlview">
             <Grid
@@ -32,5 +32,5 @@
                 </Grid>
             </Grid>
         </ScrollView>
-    </RefreshView>
+    <!--</RefreshView>-->
 </ContentPage>

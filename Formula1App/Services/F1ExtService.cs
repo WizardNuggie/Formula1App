@@ -41,25 +41,30 @@ namespace Formula1App.Services
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    resContent = resContent.Replace("\"MRData\":", "\"DriversData\":");
-                    DriverApi result = JsonSerializer.Deserialize<DriverApi>(resContent);
-                    List<Driver> dList = result.DriversData.DriverTable.Drivers.ToList();
-                    List<MyDriver>? newDList = new();
-                    foreach (Driver d in dList)
+                    resContent = resContent.Replace("\"MRData\":", "\"DriverStandingsData\":");
+                    DriverStandingsApi result = JsonSerializer.Deserialize<DriverStandingsApi>(resContent);
+                    List<Standingslist> sList = result.DriverStandingsData.StandingsTable.StandingsLists.ToList();
+                    List<Driverstanding> dList = new();
+                    foreach (Standingslist s in sList)
                     {
-                        newDList.Add(new MyDriver()
-                        {
-                            DriverId = d.driverId,
-                            PermanentNumber = d.permanentNumber,
-                            Code = d.code,
-                            Url = d.url,
-                            FirstName = d.givenName,
-                            LastName = d.familyName,
-                            DateOfBirth = d.dateOfBirth,
-                            Nationality = d.nationality,
-                            FullName = d.givenName + " " + d.familyName
-                        });
+                        dList = s.DriverStandings.ToList();
                     }
+                    List<MyDriver>? newDList = new();
+                    //foreach (Driver d in dList)
+                    //{
+                    //    newDList.Add(new MyDriver()
+                    //    {
+                    //        DriverId = d.driverId,
+                    //        PermanentNumber = d.permanentNumber,
+                    //        Code = d.code,
+                    //        Url = d.url,
+                    //        FirstName = d.givenName,
+                    //        LastName = d.familyName,
+                    //        DateOfBirth = d.dateOfBirth,
+                    //        Nationality = d.nationality,
+                    //        FullName = d.givenName + " " + d.familyName
+                    //    });
+                    //}
                     return newDList;
                 }
                 else
