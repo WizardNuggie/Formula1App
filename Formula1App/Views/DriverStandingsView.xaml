@@ -2,17 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+             xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
              x:Class="Formula1App.Views.DriverStandingsView"
              x:DataType="viewmodel:DriverStandingsViewModel"
              Title="">
-    <!--<RefreshView
+    <RefreshView
         Command="{Binding RefreshCommand}"
-        IsRefreshing="{Binding IsRefreshing}">-->
+        IsRefreshing="{Binding IsRefreshing}">
         <ScrollView
             x:Name="scrlview">
             <Grid
                 ColumnDefinitions="*,0.25*"
-                RowDefinitions="*,*,10*">
+                RowDefinitions="*,10*">
                 <Grid
                     Margin="0,0,0,20">
                     <BoxView
@@ -30,7 +31,104 @@
                         Text="  Drivers Standings"
                         VerticalOptions="Center" />
                 </Grid>
+                <CollectionView
+                    BackgroundColor="#15151D"
+                    ItemsSource="{Binding Standings}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    SelectedItem="{Binding SelectedDriver}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                            x:DataType="modelext:MyDriverStandings">
+                            <Border
+                                Margin="0,2,8,2"
+                                Padding="5"
+                                StrokeShape="RoundRectangle,15"
+                                Background="White"
+                                Stroke="Transparent">
+                                <Grid
+                                    RowDefinitions="*,*"
+                                    ColumnDefinitions="*,*,6*,2*,*">
+                                    <Label
+                                        Text="{Binding PositionText}"
+                                        FontFamily="F1Bold"
+                                        Grid.RowSpan="2"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"/>
+                                    <BoxView
+                                        Color="{Binding TeamColor}"
+                                        WidthRequest="8"
+                                        HeightRequest="40"
+                                        Grid.Column="1"
+                                        Grid.RowSpan="2"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Start"/>
+                                    <Label
+                                        FontSize="15"
+                                        Grid.Column="2"
+                                        TextColor="{Binding TextColor}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding FirstName}"
+                                                    FontFamily="F1Reg"/>
+                                                <Span
+                                                    Text=" "/>
+                                                <Span
+                                                    Text="{Binding LastName}"
+                                                    FontFamily="F1Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        FontSize="10"
+                                        VerticalOptions="End"
+                                        TextColor="{Binding TextColor}"
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Text="{Binding Constructor.name}"
+                                        FontFamily="F1Reg"/>
+                                    <Border
+                                        BackgroundColor="#C5C5C7"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle,50"
+                                        WidthRequest="50"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="3"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="End">
+                                        <Label
+                                            WidthRequest="40"
+                                            FontSize="10"
+                                            HorizontalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        Text="{Binding Points}"
+                                                        FontFamily="F1Bold"/>
+                                                    <Span
+                                                        Text=" "/>
+                                                    <Span
+                                                        Text="PTS"
+                                                        FontFamily="F1Reg"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Border>
+                                    <Label
+                                        Grid.RowSpan="2"
+                                        Grid.Column="4"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        TextColor="{Binding ArrowColor}"
+                                        Text=">"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Grid>
         </ScrollView>
-    <!--</RefreshView>-->
+    </RefreshView>
 </ContentPage>

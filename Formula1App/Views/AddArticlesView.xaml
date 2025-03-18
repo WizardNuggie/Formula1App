@@ -52,9 +52,7 @@
                                     HeightRequest="150"
                                     Source="{Binding PhotoPath}" />
                             </Border>
-                            <Label
-                                HorizontalOptions="Center"
-                                Text="*png"/>
+                            <Label HorizontalOptions="Center" Text="*png" />
                             <Label
                                 HorizontalOptions="Center"
                                 Text="Upload photo"
@@ -96,8 +94,8 @@
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 IsRunning="{Binding InServerCall}"
-                Color="#E11900"
-                VerticalOptions="Center" />
+                VerticalOptions="Center"
+                Color="#E11900" />
             <Frame
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
@@ -126,12 +124,12 @@
                 </expander:SfExpander>
             </Frame>
             <ActivityIndicator
-               Grid.Row="3"
-               Grid.ColumnSpan="2"
-               HorizontalOptions="Center"
-               IsRunning="{Binding InServerCall}"
-               Color="#E11900"
-               VerticalOptions="Center" />
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                IsRunning="{Binding InServerCall}"
+                VerticalOptions="Center"
+                Color="#E11900" />
             <Frame
                 Grid.Row="4"
                 Grid.ColumnSpan="2"

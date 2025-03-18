@@ -1,0 +1,10 @@
+McLaren - #FF8001
+Red Bull - #3671C6
+Mercedes - #28F4D2
+Williams - #1968DB
+Aston Martin - #229971
+Sauber - #52E253
+Ferrari - #E8252C
+Alpine - #00A1E8
+VCARB - #6692FF
+Haas - #B6BABD

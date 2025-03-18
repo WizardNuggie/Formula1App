@@ -17,6 +17,9 @@ namespace Formula1App
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Formula1-Bold_web_0.ttf", "F1Bold");
+                    fonts.AddFont("Formula1-Regular_web_0.ttf", "F1Reg");
+                    fonts.AddFont("Formula1-Wide_web_0.ttf", "F1Wide");
                 });
             #region Syncfusion
             builder.ConfigureSyncfusionCore();
