@@ -7,7 +7,8 @@
     x:DataType="viewmodel:AppShellViewModel"
     xmlns:local="clr-namespace:Formula1App.Views"
     Shell.TabBarForegroundColor="#E11900"
-    Shell.TabBarTitleColor="#E11900">
+    Shell.TabBarTitleColor="#E11900"
+    Shell.ForegroundColor="#E11900">
     <Shell.FlyoutHeader>
         <Border Margin="0,0,0,10" BackgroundColor="#E11900">
             <Label

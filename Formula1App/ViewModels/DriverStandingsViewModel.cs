@@ -37,6 +37,8 @@ namespace Formula1App.ViewModels
             {
                 selectedDriver = value;
                 OnPropertyChanged();
+                if (selectedDriver != null)
+                    NavToDriver();
             }
         }
 
@@ -70,28 +72,35 @@ namespace Formula1App.ViewModels
             Standings.Clear();
             foreach (MyDriverStandings mds in standings)
             {
-                mds.TeamColor = ((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId];
+                mds.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
                 if (mds.PositionText == "-")
                 {
                     mds.PositionText = "NC";
-                    mds.BackColor = "#FFFFFF";
-                    mds.TextColor = "000000";
-                    mds.ArrowColor = "E11900";
+                    mds.BackColor = Color.FromArgb("#FFFFFF");
+                    mds.TextColor = Color.FromArgb("000000");
+                    mds.ArrowColor = Color.FromArgb("E11900");
                 }
                 else if (mds.PositionText == "1")
                 {
-                    mds.BackColor = "#383840";
-                    mds.TextColor = "FFFFFF";
-                    mds.ArrowColor = "FFFFFF";
+                    mds.BackColor = Color.FromArgb("#383840");
+                    mds.TextColor = Color.FromArgb("FFFFFF");
+                    mds.ArrowColor = Color.FromArgb("FFFFFF");
                 }
                 else
                 {
-                    mds.BackColor = "#FFFFFF";
-                    mds.TextColor = "000000";
-                    mds.ArrowColor = "E11900";
+                    mds.BackColor = Color.FromArgb("#FFFFFF");
+                    mds.TextColor = Color.FromArgb("000000");
+                    mds.ArrowColor = Color.FromArgb("E11900");
                 }
                 Standings.Add(mds);
             }
+        }
+        private async Task NavToDriver()
+        {
+            Dictionary<string, object> data = new();
+            data.Add("Driver", SelectedDriver);
+            await AppShell.Current.GoToAsync("Driver", data);
+            SelectedDriver = null;
         }
     }
 }

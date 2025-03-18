@@ -39,6 +39,7 @@ namespace Formula1App
             builder.Services.AddTransient<YourApprovedArticles>();
             builder.Services.AddTransient<YourPendingArticles>();
             builder.Services.AddTransient<YourDeclinedArticles>();
+            builder.Services.AddTransient<DriverView>();
             #endregion
             #region View Models
             builder.Services.AddTransient<AppShellViewModel>();
@@ -54,6 +55,7 @@ namespace Formula1App
             builder.Services.AddTransient<YourApprovedArticlesViewModel>();
             builder.Services.AddTransient<YourPendingArticlesViewModel>();
             builder.Services.AddTransient<YourDeclinedArticlesViewModel>();
+            builder.Services.AddTransient<DriverViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();

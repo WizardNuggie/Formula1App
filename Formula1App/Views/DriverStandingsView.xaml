@@ -44,13 +44,17 @@
                             <Border
                                 Margin="0,2,8,2"
                                 Padding="5"
-                                StrokeShape="RoundRectangle,15"
-                                Background="White"
+                                Background="{Binding BackColor}"
                                 Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle
+                                        CornerRadius="0,7,0,7"/>
+                                </Border.StrokeShape>
                                 <Grid
                                     RowDefinitions="*,*"
                                     ColumnDefinitions="*,*,6*,2*,*">
                                     <Label
+                                        TextColor="{Binding TextColor}"
                                         Text="{Binding PositionText}"
                                         FontFamily="F1Bold"
                                         Grid.RowSpan="2"
@@ -71,11 +75,13 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span
+                                                    TextColor="{Binding TextColor}"
                                                     Text="{Binding FirstName}"
                                                     FontFamily="F1Reg"/>
                                                 <Span
                                                     Text=" "/>
                                                 <Span
+                                                    TextColor="{Binding TextColor}"
                                                     Text="{Binding LastName}"
                                                     FontFamily="F1Bold"/>
                                             </FormattedString>
@@ -92,16 +98,21 @@
                                     <Border
                                         BackgroundColor="#C5C5C7"
                                         Stroke="Transparent"
-                                        StrokeShape="RoundRectangle,50"
-                                        WidthRequest="50"
+                                        WidthRequest="60"
+                                        Padding="3"
                                         Grid.RowSpan="2"
                                         Grid.Column="3"
                                         VerticalOptions="Center"
                                         HorizontalOptions="End">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="20"/>
+                                        </Border.StrokeShape>
                                         <Label
                                             WidthRequest="40"
                                             FontSize="10"
-                                            HorizontalOptions="Center">
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
@@ -124,6 +135,26 @@
                                         TextColor="{Binding ArrowColor}"
                                         Text=">"/>
                                 </Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState
+                                            Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="White"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                                            Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                                    Property="BackgroundColor"
+                                                    Value="White"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

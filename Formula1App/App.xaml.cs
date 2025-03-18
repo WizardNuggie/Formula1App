@@ -11,6 +11,7 @@ namespace Formula1App
     {
         public User LoggedUser { get; set; }
         public Dictionary<string, string> TeamColors;
+        public Dictionary<string, string> CountryCodes;
         private F1IntService intService;
         private F1ExtService extService;
         public App(IServiceProvider sp, F1IntService f1IntService, F1ExtService f1ExtService)
@@ -32,7 +33,28 @@ namespace Formula1App
                 {"rb", "#6692FF"},
                 {"haas", "#B6BABD"}
             };
-
+            CountryCodes = new Dictionary<string, string>()
+            {
+                {"British", "GB"},
+                {"Dutch", "NL"},
+                {"Austrian", "AT"},
+                {"German", "DE"},
+                {"Italian", "IT"},
+                {"Thai", "TH"},
+                {"Canadian", "CA"},
+                {"Swiss", "CH"},
+                {"Monegasque", "MC"},
+                {"Australian", "AU"},
+                {"French", "FR"},
+                {"Japanese", "JP"},
+                {"American", "US"},
+                {"New Zealander", "NZ"},
+                {"Brazilian", "BR"},
+                {"Spanish", "ES"},
+                {"Argentine", "AR"},
+                {"Chinese", "CN"},
+                {"Finnish", "FI"}
+            };
             MainPage = sp.GetService<SignPage>();
         }
     }

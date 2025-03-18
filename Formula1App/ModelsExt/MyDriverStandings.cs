@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace Formula1App.ModelsExt
 {
@@ -21,15 +22,41 @@ namespace Formula1App.ModelsExt
         public string Points { get; set; }
         public string Wins { get; set; }
         public Constructor[] Constructors { get; set; }
-        public string TeamColor { get; set; }
-        public string BackColor {  get; set; }
-        public string TextColor { get; set; }
-        public string ArrowColor { get; set; }
+        public Color TeamColor { get; set; }
+        public Color BackColor {  get; set; }
+        public Color TextColor { get; set; }
+        public Color ArrowColor { get; set; }
         public Constructor Constructor
         {
             get
             {
                 return this.Constructors.Last();
+            }
+        }
+        public string NationalityFlag
+        {
+            get
+            {
+                return $"https://flagsapi.com/{((App)Application.Current).CountryCodes[Nationality]}/flat/64.png";
+            }
+        }
+        public string PhotoUrl
+        {
+            get
+            {
+                string fName = "";
+                if (this.FirstName.Contains(" "))
+                {
+                    fName += FirstName.Substring(0, FirstName.IndexOf(" "));
+                    fName += "%20";
+                    fName += FirstName.Substring(FirstName.LastIndexOf(" ")+1);
+                }
+                else
+                {
+                    fName = FirstName;
+                }
+                string combined = (FirstName.Substring(0, 3) + LastName.Substring(0, 3)).ToLower();
+                return $"https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/{FirstName[0].ToString().ToUpper()}/{combined.ToUpper()}01_{fName}_{LastName}/{combined}01";
             }
         }
     }

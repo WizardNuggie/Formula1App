@@ -12,6 +12,7 @@ namespace Formula1App.Services
     {
         //https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
         private static string ExtAPI = "https://api.jolpi.ca/ergast/f1/";
+        private static string FlagsAPI = "https://flagsapi.com/";
         private string currYear = DateTime.Now.Year.ToString() +"/";
         private HttpClient client;
         public F1ExtService()
