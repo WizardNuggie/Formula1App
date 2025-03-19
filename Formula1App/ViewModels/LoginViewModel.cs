@@ -15,7 +15,6 @@ namespace Formula1App.ViewModels
         private readonly F1ExtService extService;
         private readonly F1IntService intService;
         public ICommand LoginCommand { get; set; }
-        public ICommand ToRegisterCommand { get; set; }
         
         private string username;
         public string Username {

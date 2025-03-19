@@ -23,9 +23,6 @@ namespace Formula1App.ModelsExt
         public string Wins { get; set; }
         public Constructor[] Constructors { get; set; }
         public Color TeamColor { get; set; }
-        public Color BackColor {  get; set; }
-        public Color TextColor { get; set; }
-        public Color ArrowColor { get; set; }
         public Constructor Constructor
         {
             get

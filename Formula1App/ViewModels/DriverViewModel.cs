@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Formula1App.ViewModels
 {
@@ -30,9 +31,17 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        public ICommand NavToTeamCommand { get; set; }
         public DriverViewModel()
         {
             CurrYear = ((App)Application.Current).CurrYear;
+            NavToTeamCommand = new Command(await => NavToTeam());
+        }
+        private async Task NavToTeam()
+        {
+            Dictionary<string, object> data = new();
+            data.Add("Constructor", Driver.Constructor);
+            await AppShell.Current.GoToAsync("Constructor", data);
         }
     }
 }

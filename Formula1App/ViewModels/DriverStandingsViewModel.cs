@@ -38,12 +38,23 @@ namespace Formula1App.ViewModels
                 selectedDriver = value;
                 OnPropertyChanged();
                 if (selectedDriver != null)
-                    NavToDriver();
+                    NavToDriver(SelectedDriver);
+            }
+        }
+        private MyDriverStandings firstPlace;
+        public MyDriverStandings FirstPlace
+        {
+            get => firstPlace;
+            set
+            {
+                firstPlace = value;
+                OnPropertyChanged();
             }
         }
 
         public ICommand RefreshCommand { get; set; }
         public ICommand GoToPrevStandings { get; set; }
+        public ICommand GoToDriverCommand { get; set; }
 
         public DriverStandingsViewModel(IServiceProvider sp, F1IntService intService, F1ExtService extService)
         {
@@ -54,6 +65,7 @@ namespace Formula1App.ViewModels
             Standings = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
+            GoToDriverCommand = new Command(async (Object obj) => await NavToDriver((MyDriverStandings)obj));
             InitData();
         }
         private async void InitData()
@@ -73,32 +85,25 @@ namespace Formula1App.ViewModels
             foreach (MyDriverStandings mds in standings)
             {
                 mds.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
-                if (mds.PositionText == "-")
+                if (mds.PositionText == "1")
+                {
+                    FirstPlace = mds;
+                }
+                else if (mds.PositionText == "-")
                 {
                     mds.PositionText = "NC";
-                    mds.BackColor = Color.FromArgb("#FFFFFF");
-                    mds.TextColor = Color.FromArgb("000000");
-                    mds.ArrowColor = Color.FromArgb("E11900");
-                }
-                else if (mds.PositionText == "1")
-                {
-                    mds.BackColor = Color.FromArgb("#383840");
-                    mds.TextColor = Color.FromArgb("FFFFFF");
-                    mds.ArrowColor = Color.FromArgb("FFFFFF");
+                    Standings.Add(mds);
                 }
                 else
                 {
-                    mds.BackColor = Color.FromArgb("#FFFFFF");
-                    mds.TextColor = Color.FromArgb("000000");
-                    mds.ArrowColor = Color.FromArgb("E11900");
+                    Standings.Add(mds);
                 }
-                Standings.Add(mds);
             }
         }
-        private async Task NavToDriver()
+        private async Task NavToDriver(MyDriverStandings mds)
         {
             Dictionary<string, object> data = new();
-            data.Add("Driver", SelectedDriver);
+            data.Add("Driver", mds);
             await AppShell.Current.GoToAsync("Driver", data);
             SelectedDriver = null;
         }

@@ -100,7 +100,7 @@
             <BoxView
                 Color="White"
                 WidthRequest="15"
-                HeightRequest="91"
+                HeightRequest="92"
                 Grid.Row="1"
                 Grid.RowSpan="2"
                 Grid.Column="1"
@@ -108,8 +108,8 @@
                 HorizontalOptions="Start"/>
             <BoxView
                 Color="White"
-                WidthRequest="175"
-                HeightRequest="13"
+                WidthRequest="178"
+                HeightRequest="60"
                 Grid.Row="2"
                 Grid.Column="1"
                 VerticalOptions="End"
@@ -196,11 +196,54 @@
                 Grid.Row="5"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
+            <Label
+                Text="Wins"
+                FontFamily="F1Reg"
+                FontSize="13"
+                Grid.Row="6"
+                Margin="15,-10,0,0"
+                VerticalOptions="Start"/>
+            <Label
+                Text="{Binding Driver.Wins}"
+                FontFamily="F1Bold"
+                FontSize="25"
+                Margin="15,0,0,16"
+                VerticalOptions="End"
+                Grid.Row="6"/>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,-22,15,0"
+                Grid.Row="8"
+                Grid.RowSpan="2"
+                StrokeThickness="1"
+                HeightRequest="150"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="15"
+                HeightRequest="126"
+                Grid.Row="8"
+                Grid.RowSpan="2"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Margin="-15,-22,0,0"
+                Color="White"
+                WidthRequest="190"
+                HeightRequest="25"
+                Grid.Row="8"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
             <Border
                 Stroke="#D0D0D2"
                 Margin="0,-22,15,0"
                 Grid.Row="6"
-                Grid.RowSpan="2"
+                Grid.RowSpan="3"
                 StrokeThickness="1"
                 HeightRequest="60"
                 VerticalOptions="Start">
@@ -214,34 +257,312 @@
                 WidthRequest="15"
                 HeightRequest="56"
                 Grid.Row="6"
+                Grid.RowSpan="3"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Margin="-15,-22,0,0"
+                Color="White"
+                WidthRequest="190"
+                HeightRequest="14"
+                Grid.Row="6"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Image
+                Grid.Row="8"
+                Grid.RowSpan="3"
+                WidthRequest="200"
+                HeightRequest="110"
+                HorizontalOptions="Start"
+                Margin="-5,5,0,0"
+                Source="{Binding Driver.NumberLogoUrl}"/>
+            <Label
+                Margin="15,0,0,0"
+                Grid.Row="8"
+                FontFamily="F1Reg"
+                Text="Number Logo"/>
+            <Label
+                Margin="15,20,0,5"
+                Grid.Row="3"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                Text="Personal Informartion"
+                FontFamily="F1Bold">
+            </Label>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,0,15,0"
+                Grid.Row="4"
                 Grid.RowSpan="2"
+                Grid.Column="1"
+                StrokeThickness="4"
+                HeightRequest="50"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="15"
+                HeightRequest="56"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Color="White"
+                WidthRequest="180"
+                HeightRequest="16"
+                Grid.Row="5"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Driver Code"
+                FontFamily="F1Reg"
+                FontSize="13"
+                Grid.Row="6"
+                Grid.Column="1"
+                Margin="15,-10,0,0"
+                VerticalOptions="Start"/>
+            <Label
+                Text="{Binding Driver.Code}"
+                FontFamily="F1Bold"
+                FontSize="25"
+                Margin="15,0,0,16"
+                VerticalOptions="End"
+                Grid.Row="6"
+                TextColor="{Binding Driver.TeamColor}"
+                Grid.Column="1"/>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,-15,15,0"
+                Grid.Row="9"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                StrokeThickness="1"
+                HeightRequest="77"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="14"
+                HeightRequest="66"
+                Grid.Row="9"
+                Grid.RowSpan="2"
+                Grid.Column="1"
                 VerticalOptions="Start"
                 HorizontalOptions="Start"/>
             <BoxView
                 Margin="0,-22,0,0"
                 Color="White"
-                WidthRequest="180"
-                HeightRequest="16"
+                WidthRequest="190"
+                HeightRequest="20"
+                Grid.Row="9"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,-22,15,0"
+                Grid.Row="8"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                StrokeThickness="1"
+                HeightRequest="77"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Margin="0,-6,0,0"
+                Color="White"
+                WidthRequest="14"
+                HeightRequest="66"
+                Grid.Row="8"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Margin="-15,-22,0,0"
+                Color="White"
+                WidthRequest="190"
+                HeightRequest="20"
+                Grid.Row="8"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,-22,15,0"
                 Grid.Row="6"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                StrokeThickness="1"
+                HeightRequest="60"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Margin="0,-6,0,0"
+                Color="White"
+                WidthRequest="14"
+                HeightRequest="56"
+                Grid.Row="6"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Margin="-15,-22,0,0"
+                Color="White"
+                WidthRequest="190"
+                HeightRequest="14"
+                Grid.Row="6"
+                Grid.Column="1"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"/>
             <Label
-                Text="Wins"
+                Margin="15,0,0,0"
+                Grid.Row="8"
+                Grid.Column="1"
                 FontFamily="F1Reg"
-                FontSize="13"
-                Grid.Row="6"
-                Margin="15,-10,0,0"
-                VerticalOptions="Start"/>
+                Text="Country"/>
+            <Border
+                Grid.Row="8"
+                Grid.Column="1"
+                Stroke="Transparent"
+                WidthRequest="50"
+                HeightRequest="30"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Margin="0,0,24,0"
+                Padding="0"
+                StrokeShape="RoundRectangle 7">
+                <Image
+                    WidthRequest="70"
+                    HeightRequest="50"
+                    Source="{Binding Driver.NationalityFlag}"/>
+            </Border>
             <Label
-                Text="{Binding Driver.Wins}"
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="15,0,0,0"
+                FontFamily="F1Bold"
+                FontSize="15"
+                Text="{Binding Driver.CountryName}"/>
+            <Label
+                Margin="15,0,0,0"
+                Grid.Row="9"
+                Grid.Column="1"
+                FontFamily="F1Reg"
+                Text="Date Of Birth"/>
+            <Label
+                Grid.Row="9"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="15,0,0,0"
                 FontFamily="F1Bold"
                 FontSize="25"
-                Margin="15,0,0,-6"
+                Text="{Binding Driver.Dob}"/>
+            <Label
+                Margin="15,0,0,-25"
+                Grid.Row="10"
+                HorizontalOptions="Start"
                 VerticalOptions="End"
-                Grid.Row="6"/>
+                FontFamily="F1Bold"
+                FontSize="18"
+                Text="Team"/>
+            <Border
+                Stroke="{Binding Driver.TeamColor}"
+                Margin="3,35,15,0"
+                Grid.Row="11"
+                Grid.RowSpan="5"
+                Grid.ColumnSpan="2"
+                StrokeThickness="4"
+                HeightRequest="200"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavToTeamCommand}"/>
+                </Border.GestureRecognizers>
+            </Border>
+            <BoxView
+                Margin="3,35,0,0"
+                Color="White"
+                WidthRequest="14"
+                HeightRequest="200"
+                Grid.Row="11"
+                Grid.RowSpan="3"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Color="White"
+                WidthRequest="400"
+                HeightRequest="14"
+                Grid.Row="13"
+                Grid.ColumnSpan="2"
+                VerticalOptions="End"
+                HorizontalOptions="Center"/>
             <Image
-                Grid.Row="8"
-                Source="{Binding Driver.NumberLogoUrl}"/>
+                Grid.Row="11"
+                Grid.RowSpan="4"
+                HeightRequest="180"
+                WidthRequest="388"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Source="{Binding Driver.Constructor.PhotoUrl}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavToTeamCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label
+                Grid.Row="14"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                VerticalOptions="Start">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontFamily="F1Bold"
+                            FontSize="18"
+                            Text="{Binding Driver.Constructor.OfficialConstructorName}"/>
+                        <Span
+                            Text=" "/>
+                        <Span
+                            FontFamily="F1Bold"
+                            Text=">"
+                            TextColor="#E11900"
+                            FontSize="18"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavToTeamCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </ScrollView>
 </ContentPage>

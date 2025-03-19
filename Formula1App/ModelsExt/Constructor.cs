@@ -27,6 +27,13 @@ namespace Formula1App.ModelsExt
                 return ((App)Application.Current).OffConstNames[constructorId];
             }
         }
+        public string PhotoUrl
+        {
+            get
+            {
+                return $"https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/{((App)Application.Current).CurrYear}/{OfficialConstructorId}";
+            }
+        }
     }
 
 }

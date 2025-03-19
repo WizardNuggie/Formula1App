@@ -59,7 +59,7 @@ namespace Formula1App
                 {"Chinese", "CN"},
                 {"Finnish", "FI"}
             };
-            CountryCodes = new Dictionary<string, string>()
+            CountryNames = new Dictionary<string, string>()
             {
                 {"British", "GBR"},
                 {"Dutch", "Netherlands"},

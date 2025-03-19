@@ -46,7 +46,7 @@ RowDefinitions="*,*,*">
     Grid.Row="2"
     Color="White"
     HeightRequest="15"
-    WidthRequest="302"
+    WidthRequest="317"
     VerticalOptions="Start"
     HorizontalOptions="Start"/>
                     </Grid>
