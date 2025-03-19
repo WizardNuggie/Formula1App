@@ -11,14 +11,11 @@
     Shell.ForegroundColor="#E11900">
     <Shell.FlyoutHeader>
         <Border Margin="0,0,0,10" BackgroundColor="#E11900">
-            <Label
-                FontAttributes="Bold"
-                FontSize="30"
-                HeightRequest="80"
+            <Image
+                Source="f1logo.png"
+                HeightRequest="100"
                 HorizontalOptions="Center"
-                Text="F1"
-                TextColor="White"
-                VerticalTextAlignment="Center" />
+                VerticalOptions="Center" />
         </Border>
     </Shell.FlyoutHeader>
         <FlyoutItem

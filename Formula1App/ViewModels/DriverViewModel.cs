@@ -20,8 +20,19 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private string currYear;
+        public string CurrYear
+        {
+            get => currYear;
+            set
+            {
+                currYear = value;
+                OnPropertyChanged();
+            }
+        }
         public DriverViewModel()
         {
+            CurrYear = ((App)Application.Current).CurrYear;
         }
     }
 }

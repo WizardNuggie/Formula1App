@@ -33,6 +33,13 @@ namespace Formula1App.ModelsExt
                 return this.Constructors.Last();
             }
         }
+        public string CountryName
+        {
+            get
+            {
+                return ((App)Application.Current).CountryNames[Nationality];
+            }
+        }
         public string NationalityFlag
         {
             get
@@ -57,6 +64,28 @@ namespace Formula1App.ModelsExt
                 }
                 string combined = (FirstName.Substring(0, 3) + LastName.Substring(0, 3)).ToLower();
                 return $"https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/{FirstName[0].ToString().ToUpper()}/{combined.ToUpper()}01_{fName}_{LastName}/{combined}01";
+            }
+        }
+        public string NumberLogoUrl
+        {
+            get
+            {
+                string combined = (FirstName.Substring(0, 3) + LastName.Substring(0, 3)).ToUpper();
+                return $"https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/{combined}01.png";
+            }
+        }
+        public string UpperLastName
+        {
+            get
+            {
+                return LastName.ToUpper();
+            }
+        }
+        public string Dob
+        {
+            get
+            {
+                return $"{DateOfBirth.Substring(8, 2)}/{DateOfBirth.Substring(5, 2)}/{DateOfBirth.Substring(0, 4)}";
             }
         }
     }

@@ -12,6 +12,10 @@ namespace Formula1App
         public User LoggedUser { get; set; }
         public Dictionary<string, string> TeamColors;
         public Dictionary<string, string> CountryCodes;
+        public Dictionary<string, string> CountryNames;
+        public Dictionary<string, string> OffConstCodes;
+        public Dictionary<string, string> OffConstNames;
+        public string CurrYear;
         private F1IntService intService;
         private F1ExtService extService;
         public App(IServiceProvider sp, F1IntService f1IntService, F1ExtService f1ExtService)
@@ -55,6 +59,55 @@ namespace Formula1App
                 {"Chinese", "CN"},
                 {"Finnish", "FI"}
             };
+            CountryCodes = new Dictionary<string, string>()
+            {
+                {"British", "GBR"},
+                {"Dutch", "Netherlands"},
+                {"Austrian", "Austria"},
+                {"German", "Germany"},
+                {"Italian", "Italy"},
+                {"Thai", "Thailand"},
+                {"Canadian", "Canada"},
+                {"Swiss", "Switzerland"},
+                {"Monegasque", "Monaco"},
+                {"Australian", "Australia"},
+                {"French", "France"},
+                {"Japanese", "Japan"},
+                {"American", "USA"},
+                {"New Zealander", "New Zealand"},
+                {"Brazilian", "Brazil"},
+                {"Spanish", "Spain"},
+                {"Argentine", "Argentina"},
+                {"Chinese", "China"},
+                {"Finnish", "Finland"}
+            };
+            OffConstCodes = new Dictionary<string, string>()
+            {
+                {"mclaren", "mclaren"},
+                {"mercedes", "mercedes"},
+                {"red_bull", "red-bull-racing"},
+                {"williams", "williams"},
+                {"aston_martin", "aston-martin"},
+                {"sauber", "kick-sauber"},
+                {"ferrari", "ferrari"},
+                {"alpine", "alpine"},
+                {"rb", "racing-bulls"},
+                {"haas", "haas"}
+            };
+            OffConstNames = new Dictionary<string, string>()
+            {
+                {"mclaren", "McLaren"},
+                {"mercedes", "Mercedes"},
+                {"red_bull", "Red Bull Racing"},
+                {"williams", "Williams"},
+                {"aston_martin", "Aston Martin"},
+                {"sauber", "Kick Sauber"},
+                {"ferrari", "Ferrari"},
+                {"alpine", "Alpine"},
+                {"rb", "Racing Bulls"},
+                {"haas", "Haas"}
+            };
+            CurrYear = DateTime.Now.Year.ToString();
             MainPage = sp.GetService<SignPage>();
         }
     }

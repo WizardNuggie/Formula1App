@@ -4,12 +4,15 @@
              xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
              x:Class="Formula1App.Views.DriverView"
              x:DataType="viewmodel:DriverViewModel"
+             Shell.BackgroundColor="#383840"
+             Shell.ForegroundColor="White"
              Title="">
     <ScrollView>
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+            RowDefinitions="4*,0.25*,3.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*">
             <Grid
+                Margin="0,-5,0,0"
                 HeightRequest="120"
                 Padding="5"
                 RowDefinitions="*,*,*"
@@ -25,6 +28,7 @@
                     Color="{Binding Driver.TeamColor}"
                     Margin="20,0,0,0"/>
                 <Label
+                    FontSize="15"
                     TextColor="White"
                     FontFamily="F1Reg"
                     VerticalOptions="End"
@@ -32,10 +36,11 @@
                     Grid.Column="1"
                     Grid.ColumnSpan="3"/>
                 <Label
+                    FontSize="20"
                     TextColor="White"
                     FontFamily="F1Bold"
                     VerticalOptions="Start"
-                    Text="{Binding Driver.LastName}"
+                    Text="{Binding Driver.UpperLastName}"
                     Grid.Column="1"
                     Grid.Row="1"
                     Grid.ColumnSpan="3"/>
@@ -58,7 +63,7 @@
                 <Label
                     TextColor="White"
                     FontFamily="F1Reg"
-                    Text="{Binding Driver.Constructor.name}"
+                    Text="{Binding Driver.Constructor.OfficialConstructorName}"
                     HorizontalOptions="Start"
                     Grid.Column="3"
                     Grid.Row="2"/>
@@ -71,6 +76,173 @@
                     Grid.Column="4"
                     Grid.RowSpan="3"/>
             </Grid>
+            <Label
+                Text="Championship Standing"
+                VerticalOptions="Start"
+                Grid.Row="1"
+                FontFamily="F1Reg"
+                FontSize="13"
+                Margin="15,15,0,0"/>
+            <Border
+                Stroke="{Binding Driver.TeamColor}"
+                Grid.Column="1"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Margin="0,20,10,0"
+                StrokeThickness="3"
+                HeightRequest="73"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="15"
+                HeightRequest="91"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Color="White"
+                WidthRequest="175"
+                HeightRequest="13"
+                Grid.Row="2"
+                Grid.Column="1"
+                VerticalOptions="End"
+                HorizontalOptions="Center"/>
+            <Label
+                Margin="15,0,0,0"
+                FontFamily="F1Bold"
+                Text="{Binding Driver.PositionText}"
+                VerticalOptions="Start"
+                Grid.Row="2"
+                FontSize="50"/>
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                FontFamily="F1Reg"
+                VerticalOptions="End"
+                Margin="15,0,0,8"
+                FontSize="25"
+                Text="{Binding Driver.Points}"/>
+            <Border
+                BackgroundColor="#383840"
+                Stroke="Transparent"
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="-20,0,0,11"
+                WidthRequest="55"
+                HeightRequest="25"
+                Padding="0,0,0,2">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="3"/>
+                </Border.StrokeShape>
+                <Label
+                    TextColor="White"
+                    FontFamily="F1Bold"
+                    Text="PTS"
+                    FontSize="18"
+                    HorizontalOptions="Center"/>
+            </Border>
+            <Label
+                Margin="15,20,0,5"
+                Grid.Row="3"
+                VerticalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            FontFamily="F1Bold"
+                            Text="{Binding CurrYear}"/>
+                        <Span
+                            Text=" "/>
+                        <Span
+                            FontFamily="F1Reg"
+                            Text="Season"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Border
+                Stroke="{Binding Driver.TeamColor}"
+                Margin="0,0,15,0"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                StrokeThickness="4"
+                HeightRequest="50"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="15"
+                HeightRequest="56"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Color="White"
+                WidthRequest="180"
+                HeightRequest="16"
+                Grid.Row="5"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Border
+                Stroke="#D0D0D2"
+                Margin="0,-22,15,0"
+                Grid.Row="6"
+                Grid.RowSpan="2"
+                StrokeThickness="1"
+                HeightRequest="60"
+                VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="15"/>
+                </Border.StrokeShape>
+            </Border>
+            <BoxView
+                Color="White"
+                WidthRequest="15"
+                HeightRequest="56"
+                Grid.Row="6"
+                Grid.RowSpan="2"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"/>
+            <BoxView
+                Margin="0,-22,0,0"
+                Color="White"
+                WidthRequest="180"
+                HeightRequest="16"
+                Grid.Row="6"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Wins"
+                FontFamily="F1Reg"
+                FontSize="13"
+                Grid.Row="6"
+                Margin="15,-10,0,0"
+                VerticalOptions="Start"/>
+            <Label
+                Text="{Binding Driver.Wins}"
+                FontFamily="F1Bold"
+                FontSize="25"
+                Margin="15,0,0,-6"
+                VerticalOptions="End"
+                Grid.Row="6"/>
+            <Image
+                Grid.Row="8"
+                Source="{Binding Driver.NumberLogoUrl}"/>
         </Grid>
     </ScrollView>
 </ContentPage>
+<!--#D0D0D2-->

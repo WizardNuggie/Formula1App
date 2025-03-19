@@ -13,6 +13,20 @@ namespace Formula1App.ModelsExt
         public string url { get; set; }
         public string name { get; set; }
         public string nationality { get; set; }
+        public string OfficialConstructorId
+        {
+            get
+            {
+                return ((App)Application.Current).OffConstCodes[constructorId];
+            }
+        }
+        public string OfficialConstructorName
+        {
+            get
+            {
+                return ((App)Application.Current).OffConstNames[constructorId];
+            }
+        }
     }
 
 }

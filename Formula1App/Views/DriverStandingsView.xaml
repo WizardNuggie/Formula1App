@@ -15,21 +15,39 @@
                 ColumnDefinitions="*,0.25*"
                 RowDefinitions="*,10*">
                 <Grid
-                    Margin="0,0,0,20">
-                    <BoxView
-                        HeightRequest="2"
-                        VerticalOptions="Start"
-                        Color="#E11900" />
-                    <BoxView
-                        HeightRequest="55"
-                        HorizontalOptions="End"
-                        WidthRequest="2"
-                        Color="#E11900" />
+                    RowDefinitions="*,*,*">
+                    <Border
+                        Grid.RowSpan="3"
+                        Margin="-12,0,0,0"
+                        Stroke="#E11900"
+                        StrokeThickness="3"
+                        HeightRequest="60">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="15"/>
+                        </Border.StrokeShape>
+                    </Border>
                     <Label
+                        Grid.Row="1"
                         FontAttributes="Bold"
                         FontSize="30"
                         Text="  Drivers Standings"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Start" />
+                    <BoxView
+                        Margin="0,-7,0,0"
+                        Grid.Row="2"
+                        Color="White"
+                        HeightRequest="15"
+                        WidthRequest="12"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"/>
+                    <BoxView
+                        Grid.Row="2"
+                        Color="White"
+                        HeightRequest="15"
+                        WidthRequest="302"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"/>
                 </Grid>
                 <CollectionView
                     BackgroundColor="#15151D"
@@ -38,6 +56,12 @@
                     Grid.ColumnSpan="2"
                     SelectedItem="{Binding SelectedDriver}"
                     SelectionMode="Single">
+                    <CollectionView.Header>
+                        <BoxView
+                            HeightRequest="15"
+                            WidthRequest="500"
+                            Color="#15151D"/>
+                    </CollectionView.Header>
                     <CollectionView.ItemTemplate>
                         <DataTemplate
                             x:DataType="modelext:MyDriverStandings">
@@ -93,7 +117,7 @@
                                         TextColor="{Binding TextColor}"
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        Text="{Binding Constructor.name}"
+                                        Text="{Binding Constructor.OfficialConstructorName}"
                                         FontFamily="F1Reg"/>
                                     <Border
                                         BackgroundColor="#C5C5C7"

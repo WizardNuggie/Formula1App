@@ -15,21 +15,40 @@
                 <Grid
                     ColumnDefinitions="*,0.25*"
                     RowDefinitions="*,*,10*">
-                    <Grid Margin="0,0,0,20">
-                        <BoxView
-                            HeightRequest="2"
-                            VerticalOptions="Start"
-                            Color="#E11900" />
-                        <BoxView
-                            HeightRequest="55"
-                            HorizontalOptions="End"
-                            WidthRequest="2"
-                            Color="#E11900" />
+                    <Grid
+RowDefinitions="*,*,*">
+                        <Border
+    Grid.RowSpan="3"
+    Margin="-12,0,0,0"
+    Stroke="#E11900"
+    StrokeThickness="3"
+    HeightRequest="60">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+            CornerRadius="15"/>
+                            </Border.StrokeShape>
+                        </Border>
                         <Label
-                            FontAttributes="Bold"
-                            FontSize="30"
-                            Text="  Declined Articles"
-                            VerticalOptions="Center" />
+    Grid.Row="1"
+    FontAttributes="Bold"
+    FontSize="30"
+    Text="  Declined Articles"
+    VerticalOptions="Start" />
+                        <BoxView
+    Margin="0,-7,0,0"
+    Grid.Row="2"
+    Color="White"
+    HeightRequest="15"
+    WidthRequest="12"
+    VerticalOptions="Start"
+    HorizontalOptions="End"/>
+                        <BoxView
+    Grid.Row="2"
+    Color="White"
+    HeightRequest="15"
+    WidthRequest="302"
+    VerticalOptions="Start"
+    HorizontalOptions="Start"/>
                     </Grid>
                     <CollectionView
                         x:Name="colview"
