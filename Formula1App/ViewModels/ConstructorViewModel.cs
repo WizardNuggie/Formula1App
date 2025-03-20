@@ -10,8 +10,8 @@ namespace Formula1App.ViewModels
     [QueryProperty(nameof(Constructor), "Constructor")]
     public class ConstructorViewModel : ViewModelsBase
     {
-        private Constructor constructor;
-        public Constructor Constructor
+        private Constructorstanding constructor;
+        public Constructorstanding Constructor
         {
             get => constructor;
             set
@@ -19,6 +19,20 @@ namespace Formula1App.ViewModels
                 constructor = value;
                 OnPropertyChanged();
             }
+        }
+        private string currYear;
+        public string CurrYear
+        {
+            get => currYear;
+            set
+            {
+                currYear = value;
+                OnPropertyChanged();
+            }
+        }
+        public ConstructorViewModel()
+        {
+            CurrYear = ((App)Application.Current).CurrYear;
         }
     }
 }

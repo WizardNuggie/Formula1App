@@ -84,7 +84,7 @@ namespace Formula1App.ViewModels
             Standings.Clear();
             foreach (MyDriverStandings mds in standings)
             {
-                mds.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
+                mds.Constructor.Constructor.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
                 if (mds.PositionText == "1")
                 {
                     FirstPlace = mds;

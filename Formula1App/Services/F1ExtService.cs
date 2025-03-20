@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Formula1App.Services
         private static string ExtAPI = "https://api.jolpi.ca/ergast/f1/";
         private static string FlagsAPI = "https://flagsapi.com/";
         private string currYear = DateTime.Now.Year.ToString() +"/";
+        private List<MyDriverStandings> drivers;
+        private List<Constructorstanding> consts;
         private HttpClient client;
         public F1ExtService()
         {
@@ -21,8 +24,29 @@ namespace Formula1App.Services
             handler.CookieContainer = new System.Net.CookieContainer();
 
             this.client = new HttpClient(handler);
+            InitData();
         }
 
+        private async void InitData()
+        {
+            drivers = await GetCurrDriversStandingsAsync();
+            consts = await GetCurrConstructorsStandingsAsync();
+            foreach (MyDriverStandings d in drivers)
+            {
+                d.Constructor = consts.Where(c => c.Constructor.constructorId == d.Constructors.Last().constructorId).First();
+            }
+            foreach (Constructorstanding c in consts)
+            {
+                c.Constructor.Drivers = new();
+                foreach (MyDriverStandings m in drivers)
+                {
+                    if (m.Constructor.Constructor.constructorId == c.Constructor.constructorId)
+                    {
+                        c.Constructor.Drivers.Add(m);
+                    }
+                }
+            }
+        }
         public async Task<List<MyDriverStandings>> GetCurrDriversStandingsAsync()
         {
             return await GetDriversStandingsByYearAsync(currYear);
@@ -32,7 +56,7 @@ namespace Formula1App.Services
             return await GetDriversByYearAsync(currYear);
         }
 
-        public async Task<List<Constructor>> GetCurrConstructorsStandingsAsync()
+        public async Task<List<Constructorstanding>> GetCurrConstructorsStandingsAsync()
         {
             return await GetConstructorsStandingsByYearAsync(currYear);
         }
@@ -61,7 +85,7 @@ namespace Formula1App.Services
                     List<MyDriverStandings>? newDList = new();
                     foreach (Driverstanding d in dList)
                     {
-                        newDList.Add(new MyDriverStandings()
+                        MyDriverStandings mds = new MyDriverStandings()
                         {
                             DriverId = d.Driver.driverId,
                             PermanentNumber = d.Driver.permanentNumber,
@@ -76,7 +100,12 @@ namespace Formula1App.Services
                             Points = d.points,
                             Wins = d.wins,
                             Constructors = d.Constructors,
-                        });
+                        };
+                        if (consts != null && drivers != null)
+                        {
+                            mds.Constructor = drivers.Where(x => x.DriverId == mds.DriverId).First().Constructor;
+                        }
+                        newDList.Add(mds);
                     }
                     return newDList;
                 }
@@ -130,7 +159,7 @@ namespace Formula1App.Services
                 return null;
             }
         }
-        public async Task<List<Constructor>> GetConstructorsStandingsByYearAsync(string year)
+        public async Task<List<Constructorstanding>> GetConstructorsStandingsByYearAsync(string year)
         {
             string url = ExtAPI + year + "constructorstandings.json";
             try
@@ -139,9 +168,21 @@ namespace Formula1App.Services
                 string resContent = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
-                    resContent = resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
-                    ConstructorsApi result = JsonSerializer.Deserialize<ConstructorsApi>(resContent);
-                    List<Constructor> cList = result.ConstructorsData.ConstructorTable.Constructors.ToList();
+                    resContent = resContent.Replace("\"MRData\":", "\"ConstructorStandingsData\":");
+                    ConstructorStandingsApi result = JsonSerializer.Deserialize<ConstructorStandingsApi>(resContent);
+                    List<Standingslist> sList = result.ConstructorStandingsData.StandingsTable.StandingsLists.ToList();
+                    List<Constructorstanding> cList = new();
+                    foreach (Standingslist s in sList)
+                    {
+                        cList = s.ConstructorStandings.ToList();
+                    }
+                    if (consts != null && drivers != null)
+                    {
+                        foreach (Constructorstanding c in cList)
+                        {
+                            c.Constructor.Drivers = consts.Where(x => x.Constructor.constructorId == c.Constructor.constructorId).First().Constructor.Drivers; ;
+                        }
+                    }
                     return cList;
                 }
                 else

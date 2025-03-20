@@ -9,7 +9,7 @@
              Title="">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding Constructor.OfficialConstructorName}"
+            Text="{Binding Constructor.Constructor.OfficialConstructorName}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

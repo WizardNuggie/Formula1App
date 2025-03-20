@@ -35,6 +35,7 @@ namespace Formula1App.ModelsExt
         public string season { get; set; }
         public string round { get; set; }
         public Driverstanding[] DriverStandings { get; set; }
+        public Constructorstanding[] ConstructorStandings { get; set; }
     }
 
     public class Driverstanding
