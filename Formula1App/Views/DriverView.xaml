@@ -6,10 +6,11 @@
              x:DataType="viewmodel:DriverViewModel"
              Shell.BackgroundColor="#383840"
              Shell.ForegroundColor="White"
+             Shell.TabBarIsVisible="False"
              Title="">
     <ScrollView>
         <Grid
-            RowDefinitions="4*,0.25*,3.5*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
+            RowDefinitions="4*,0.25*,0.5*,*,*,*,*,*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*">
             <Grid
                 Margin="0,-5,0,0"
@@ -115,7 +116,7 @@
                 VerticalOptions="End"
                 HorizontalOptions="Center"/>
             <Label
-                Margin="15,0,0,0"
+                Margin="15,-23,0,0"
                 FontFamily="F1Bold"
                 Text="{Binding Driver.PositionText}"
                 VerticalOptions="Start"
@@ -125,7 +126,7 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 FontFamily="F1Reg"
-                VerticalOptions="End"
+                VerticalOptions="Start"
                 Margin="15,0,0,8"
                 FontSize="25"
                 Text="{Binding Driver.Points}"/>
@@ -135,8 +136,8 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 HorizontalOptions="Center"
-                VerticalOptions="End"
-                Margin="-20,0,0,11"
+                VerticalOptions="Start"
+                Margin="-20,3,0,11"
                 WidthRequest="55"
                 HeightRequest="25"
                 Padding="0,0,0,2">

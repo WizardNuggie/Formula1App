@@ -6,6 +6,7 @@
              x:DataType="viewmodel:ConstructorViewModel"
              Shell.BackgroundColor="#383840"
              Shell.ForegroundColor="White"
+             Shell.TabBarIsVisible="False"
              Title="">
     <VerticalStackLayout>
         <Label 

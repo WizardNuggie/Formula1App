@@ -182,7 +182,7 @@
                         x:DataType="modelext:Constructor"
                         HeightRequest="50"
                         ItemsSource="{Binding BindingContext.Constructors, Source={x:Reference scrlview}}"
-                        ItemDisplayBinding="{Binding name}"
+                        ItemDisplayBinding="{Binding OfficialConstructorName}"
                         Title="Select a constructor"
                         SelectedItem="{Binding BindingContext.SelectedConst, Source={x:Reference scrlview}}"
                         Grid.Row="12"/>

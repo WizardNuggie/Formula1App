@@ -104,6 +104,11 @@
                                     Grid.Column="2"
                                     Grid.Row="1"
                                     Grid.ColumnSpan="3">
+                                    <CollectionView.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding GoToConstCommand}"
+                                            CommandParameter="{Binding FirstPlace}"/>
+                                    </CollectionView.GestureRecognizers>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate
                                             x:DataType="modelext:MyDriverStandings">
@@ -230,11 +235,12 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <Label
+                                        x:DataType="viewmodel:ConstStandingsViewModel"
                                         FontSize="10"
                                         VerticalOptions="End"
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        Text="TBC"
+                                        Text="{Binding Drivers}"
                                         FontFamily="F1Reg"/>
                                     <Border
                                         BackgroundColor="#E0E0E1"
