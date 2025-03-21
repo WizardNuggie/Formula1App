@@ -156,10 +156,10 @@
                     HorizontalOptions="Start"
                     WidthRequest="250">
                     <Picker
-                        x:DataType="modelext:MyDriver"
+                        x:DataType="modelext:Driver"
                         HeightRequest="50"
                         ItemsSource="{Binding BindingContext.Drivers, Source={x:Reference scrlview}}"
-                        ItemDisplayBinding="{Binding FullName}"
+                        ItemDisplayBinding="{Binding familyName}"
                         Title="Select a driver"
                         SelectedItem="{Binding BindingContext.SelectedDriver, Source={x:Reference scrlview}}"
                         Grid.Row="10"/>

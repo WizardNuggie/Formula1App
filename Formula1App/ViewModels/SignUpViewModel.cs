@@ -243,8 +243,8 @@ namespace Formula1App.ViewModels
             }
             return false;
         }
-        private List<MyDriver> drivers;
-        public List<MyDriver> Drivers 
+        private List<Driver> drivers;
+        public List<Driver> Drivers
         {
             get => drivers;
             set
@@ -346,7 +346,7 @@ namespace Formula1App.ViewModels
         }
         private async void GetDrivers()
         {
-            Drivers = await extService.GetCurrDriversAsync();
+            Drivers = await extService.GetAllDriversAsync();
         }
 
         private async void GetConstructors()

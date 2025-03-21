@@ -159,6 +159,66 @@ namespace Formula1App.Services
                 return null;
             }
         }
+        public async Task<List<Driver>> GetAllDriversAsync()
+        {
+            string total = "";
+            int totalNum = 0;
+            string url = ExtAPI + "drivers.json";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync((url + "/?limit=1"));
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"DriversData\":");
+                    DriverApi result = JsonSerializer.Deserialize<DriverApi>(resContent);
+                    total = result.DriversData.total;
+                    int.TryParse(total, out totalNum);
+                    List<Driver> dList = new();
+                    int offset = 0;
+                    if (totalNum / 100 == 0)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
+                        string newResContent = await response.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
+                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(resContent);
+                            dList = newResult.DriversData.DriverTable.Drivers.ToList();
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    for (int i = 0; i <= totalNum / 100; i++)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
+                        string newResContent = await res.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
+                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(newResContent);
+                            dList.AddRange(newResult.DriversData.DriverTable.Drivers.ToList());
+                            offset += 100;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    return dList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<List<Constructorstanding>> GetConstructorsStandingsByYearAsync(string year)
         {
             string url = ExtAPI + year + "constructorstandings.json";
