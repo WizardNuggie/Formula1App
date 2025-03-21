@@ -235,12 +235,11 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <Label
-                                        x:DataType="viewmodel:ConstStandingsViewModel"
                                         FontSize="10"
                                         VerticalOptions="End"
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        Text="{Binding Drivers}"
+                                        Text="{Binding DriversString}"
                                         FontFamily="F1Reg"/>
                                     <Border
                                         BackgroundColor="#E0E0E1"

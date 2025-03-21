@@ -30,6 +30,19 @@ namespace Formula1App.ModelsExt
         public string points { get; set; }
         public string wins { get; set; }
         public Constructor Constructor { get; set; }
+        public string DriversString
+        {
+            get
+            {
+                string str = "";
+                foreach (MyDriverStandings d in this.Constructor.Drivers)
+                {
+                    str += $"{d.LastName} / ";
+                }
+                str = str.Substring(0, str.Length - 3);
+                return str;
+            }
+        }
     }
 
 }

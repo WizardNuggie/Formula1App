@@ -51,23 +51,6 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
-        private List<string> drivers;
-        public List<string> Drivers
-        {
-            get => drivers;
-            set
-            {
-                drivers = value;
-                OnPropertyChanged();
-            }
-        }
-        //        string str = "";
-        //        foreach (MyDriverStandings d in Constructor.Constructor.Drivers)
-        //        {
-        //            str += $"{d.LastName}/";
-        //        }
-        //        str = str.Substring(0, str.Length - 1);
-        //        return str;
         public ICommand RefreshCommand { get; set; }
         public ICommand GoToPrevStandings { get; set; }
         public ICommand GoToConstCommand { get; set; }
@@ -79,8 +62,6 @@ namespace Formula1App.ViewModels
             this.extService = extService;
             standings = new();
             Standings = new();
-            drivers = new();
-            Drivers = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             GoToConstCommand = new Command(async (Object obj) => await NavToConst((Constructorstanding)obj));
@@ -116,13 +97,6 @@ namespace Formula1App.ViewModels
                 {
                     Standings.Add(cs);
                 }
-                string str = "";
-                foreach (MyDriverStandings d in cs.Constructor.Drivers)
-                {
-                    str += $"{d.LastName}/";
-                }
-                str = str.Substring(0, str.Length - 1);
-                Drivers.Add(str);
             }
         }
         private async Task NavToConst(Constructorstanding cs)
