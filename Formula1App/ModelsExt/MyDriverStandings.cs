@@ -57,6 +57,13 @@ namespace Formula1App.ModelsExt
                 return $"https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/{FirstName[0].ToString().ToUpper()}/{combined.ToUpper()}01_{fName}_{LastName}/{combined}01";
             }
         }
+        public string FullPhotoUrl
+        {
+            get
+            {
+                return $"https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/drivers/2025Drivers/{LastName.ToLower()}";
+            }
+        }
         public string NumberLogoUrl
         {
             get

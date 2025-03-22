@@ -18,6 +18,30 @@ namespace Formula1App.ViewModels
         private readonly F1IntService intService;
         
         public ICommand RegisterCommand { get; set; }
+        public ICommand DriverSearchCommand { get; set; }
+        public ICommand ConstSearchCommand { get; set; }
+        private string searchDriver;
+        public string SearchDriver
+        {
+            get => searchDriver;
+            set
+            {
+                searchDriver = value;
+                OnPropertyChanged();
+                SearchDrivers();
+            }
+        }
+        private string searchConst;
+        public string SearchConst
+        {
+            get => searchConst;
+            set
+            {
+                searchConst = value;
+                OnPropertyChanged();
+                SearchConstructors();
+            }
+        }
         private string username;
         public string Username
         {
@@ -243,13 +267,33 @@ namespace Formula1App.ViewModels
             }
             return false;
         }
-        private List<Driver> drivers;
-        public List<Driver> Drivers
+        private List<MyDriver> drivers;
+        public List<MyDriver> Drivers
         {
             get => drivers;
             set
             {
                 drivers = value;
+                OnPropertyChanged();
+            }
+        }
+        private List<MyDriver> driversForSearch;
+        public List<MyDriver> DriversForSearch
+        {
+            get => driversForSearch;
+            set
+            {
+                driversForSearch = value;
+                OnPropertyChanged();
+            }
+        }
+        private List<Constructor> constsForSearch;
+        public List<Constructor> ConstsForSearch
+        {
+            get => constsForSearch;
+            set
+            {
+                constsForSearch = value;
                 OnPropertyChanged();
             }
         }
@@ -300,7 +344,11 @@ namespace Formula1App.ViewModels
                 this.SelectedConst != null &&
                 this.Dob != DateTime.Today);
             Drivers = new();
+            DriversForSearch = new();
+            DriverSearchCommand = new Command(async () => await SearchDrivers());
+            ConstSearchCommand = new Command(async () => await SearchConstructors());
             Constructors = new();
+            ConstsForSearch = new();
             MaxDate = DateTime.Today;
             Dob = DateTime.Today;
             GetDrivers();
@@ -348,10 +396,69 @@ namespace Formula1App.ViewModels
         {
             Drivers = await extService.GetAllDriversAsync();
         }
-
         private async void GetConstructors()
         {
-            Constructors = await extService.GetCurrConstructorsAsync();
+            Constructors = await extService.GetAllConstructorsAsync();
+        }
+        private async Task SearchDrivers()
+        {
+            DriversForSearch = new();
+            SelectedDriver = null;
+            if (!string.IsNullOrEmpty(SearchDriver))
+            {
+                foreach (MyDriver md in Drivers)
+                {
+                    if (SearchDriver.Contains(" "))
+                    {
+                        if (SearchDriver.Length <= md.FullName.Length)
+                        {
+                            if (md.FullName.Substring(0, SearchDriver.Length).ToLower().Contains(SearchDriver.ToLower()))
+                            {
+                                if (!DriversForSearch.Contains(md))
+                                    DriversForSearch.Add(md);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (SearchDriver.Length <= md.FirstName.Length)
+                        {
+                            if (md.FirstName.Substring(0, SearchDriver.Length).ToLower().Contains(SearchDriver.ToLower()))
+                            {
+                                if (!DriversForSearch.Contains(md))
+                                    DriversForSearch.Add(md);
+                            }
+                        }
+                        if (SearchDriver.Length <= md.LastName.Length)
+                        {
+                            if (md.LastName.Substring(0, SearchDriver.Length).ToLower().Contains(SearchDriver.ToLower()))
+                            {
+                                if (!DriversForSearch.Contains(md))
+                                    DriversForSearch.Add(md);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private async Task SearchConstructors()
+        {
+            ConstsForSearch = new();
+            SelectedConst = null;
+            if (!string.IsNullOrEmpty(SearchConst))
+            {
+                foreach (Constructor c in Constructors)
+                {
+                    if (SearchConst.Length <= c.name.Length)
+                    {
+                        if (c.name.Substring(0, SearchConst.Length).ToLower().Contains(SearchConst.ToLower()))
+                        {
+                            if (!ConstsForSearch.Contains(c))
+                                ConstsForSearch.Add(c);
+                        }
+                    }
+                }
+            }
         }
     }
 }

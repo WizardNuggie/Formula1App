@@ -114,6 +114,11 @@
                                             x:DataType="modelext:MyDriverStandings">
                                             <Grid
                                                 ColumnDefinitions="*,3*">
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Path=BindingContext.GoToConstCommand, Source={x:Reference scrlview}}"
+                                                        CommandParameter="{Binding Path=BindingContext.FirstPlace, Source={x:Reference scrlview}}"/>
+                                                </Grid.GestureRecognizers>
                                                 <Border
                                                     Margin="0,0,0,5"
                                                     HorizontalOptions="Start"

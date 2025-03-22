@@ -6,6 +6,7 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
+    xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
     x:DataType="viewmodel:SignUpViewModel"
     Title="Sign Up">
     <StackLayout
@@ -142,13 +143,13 @@
                     TextColor="red"
                     VerticalOptions="Center" />
 
-                <Label
+                <!--<Label
                     x:Name="driver_lbl"
                     Grid.Row="9"
                     Margin="20,20,0,0"
-                    Text="Favorite Driver"/>
+                    Text="Favorite Driver"/>-->
 
-                <Frame
+                <!--<Frame
                     Grid.Row="10"
                     Margin="20,0,0,10"
                     Padding="3"
@@ -156,16 +157,99 @@
                     HorizontalOptions="Start"
                     WidthRequest="250">
                     <Picker
-                        x:DataType="modelext:Driver"
+                        x:DataType="modelext:MyDriver"
                         HeightRequest="50"
                         ItemsSource="{Binding BindingContext.Drivers, Source={x:Reference scrlview}}"
-                        ItemDisplayBinding="{Binding familyName}"
+                        ItemDisplayBinding="{Binding FullName}"
                         Title="Select a driver"
                         SelectedItem="{Binding BindingContext.SelectedDriver, Source={x:Reference scrlview}}"
                         Grid.Row="10"/>
+                </Frame>-->
+                
+                <Frame
+                    Grid.Row="9"
+                    Grid.RowSpan="2"
+                    Margin="0,30,0,10"
+                    Padding="5"
+                    MinimumHeightRequest="30"
+                    WidthRequest="250"
+                    CornerRadius="10">
+                    <ScrollView>
+                        <expander:SfExpander
+                            AnimationDuration="120">
+                            <expander:SfExpander.Header>
+                                <Label
+                                    Text="Favorite Driver"
+                                    VerticalOptions="Center"/>
+                            </expander:SfExpander.Header>
+                            <expander:SfExpander.Content>
+                                <Grid
+                                    Padding="5"
+                                    MinimumHeightRequest="45"
+                                    RowDefinitions="45,*">
+                                    <Frame
+                                        Margin="10,5,0,10"
+                                        Padding="3"
+                                        CornerRadius="10"
+                                        HeightRequest="45">
+                                        <SearchBar
+                                            Placeholder="Search driver"
+                                            SearchCommand="{Binding DriverSearchCommand}"
+                                            Text="{Binding SearchDriver}" />
+                                    </Frame>
+                                    <CollectionView
+                                        MaximumHeightRequest="225"
+                                        Grid.Row="1"
+                                        ItemsSource="{Binding DriversForSearch}"
+                                        SelectedItem="{Binding SelectedDriver}"
+                                        SelectionMode="Single">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate
+                                                x:DataType="modelext:MyDriver">
+                                                <Grid>
+                                                    <Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    Text="• "/>
+                                                                <Span
+                                                                    TextColor="Black"
+                                                                    FontFamily="F1Reg"
+                                                                    Text="{Binding FullName}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup>
+                                                            <VisualState
+                                                                Name="Selected">
+                                                                <VisualState.Setters>
+                                                                    <Setter
+                                                                        Property="BackgroundColor"
+                                                                        Value="#99E11900"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState
+                                                                Name="Normal">
+                                                                <VisualState.Setters>
+                                                                    <Setter
+                                                                        Property="BackgroundColor"
+                                                                        Value="White"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </expander:SfExpander.Content>
+                        </expander:SfExpander>
+                    </ScrollView>
                 </Frame>
-
-                <Label
+                
+                <!--<Label
                     x:Name="const_lbl"
                     Grid.Row="11"
                     Margin="20,20,0,0"
@@ -186,6 +270,89 @@
                         Title="Select a constructor"
                         SelectedItem="{Binding BindingContext.SelectedConst, Source={x:Reference scrlview}}"
                         Grid.Row="12"/>
+                </Frame>-->
+
+                <Frame
+                    Grid.Row="11"
+                    Grid.RowSpan="2"
+                    Margin="0,30,0,10"
+                    Padding="5"
+                    MinimumHeightRequest="30"
+                    WidthRequest="250"
+                    CornerRadius="10">
+                    <ScrollView>
+                        <expander:SfExpander
+                            AnimationDuration="120">
+                            <expander:SfExpander.Header>
+                                <Label
+                                    Text="Favorite Costructor"
+                                    VerticalOptions="Center"/>
+                            </expander:SfExpander.Header>
+                            <expander:SfExpander.Content>
+                                <Grid
+                                    Padding="5"
+                                    MinimumHeightRequest="45"
+                                    RowDefinitions="45,*">
+                                    <Frame
+                                        Margin="10,5,0,10"
+                                        Padding="3"
+                                        CornerRadius="10"
+                                        HeightRequest="45">
+                                        <SearchBar
+                                            Placeholder="Search Costructor"
+                                            SearchCommand="{Binding ConstSearchCommand}"
+                                            Text="{Binding SearchConst}" />
+                                    </Frame>
+                                    <CollectionView
+                                        MaximumHeightRequest="225"
+                                        Grid.Row="1"
+                                        ItemsSource="{Binding ConstsForSearch}"
+                                        SelectedItem="{Binding SelectedConst}"
+                                        SelectionMode="Single">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate
+                                                x:DataType="modelext:Constructor">
+                                                <Grid>
+                                                    <Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span
+                                                                    Text="• "/>
+                                                                <Span
+                                                                    TextColor="Black"
+                                                                    FontFamily="F1Reg"
+                                                                    Text="{Binding OfficialConstructorName}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup>
+                                                            <VisualState
+                                                                Name="Selected">
+                                                                <VisualState.Setters>
+                                                                    <Setter
+                                                                        Property="BackgroundColor"
+                                                                        Value="#99E11900"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState
+                                                                Name="Normal">
+                                                                <VisualState.Setters>
+                                                                    <Setter
+                                                                        Property="BackgroundColor"
+                                                                        Value="White"/>
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </expander:SfExpander.Content>
+                        </expander:SfExpander>
+                    </ScrollView>
                 </Frame>
 
                 <Label

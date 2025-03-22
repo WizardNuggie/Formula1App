@@ -14,7 +14,6 @@ namespace Formula1App.Services
         //https://github.com/jolpica/jolpica-f1/blob/main/docs/README.md
         private static string ExtAPI = "https://api.jolpi.ca/ergast/f1/";
         private static string FlagsAPI = "https://flagsapi.com/";
-        private string currYear = DateTime.Now.Year.ToString() +"/";
         private List<MyDriverStandings> drivers;
         private List<Constructorstanding> consts;
         private HttpClient client;
@@ -49,20 +48,20 @@ namespace Formula1App.Services
         }
         public async Task<List<MyDriverStandings>> GetCurrDriversStandingsAsync()
         {
-            return await GetDriversStandingsByYearAsync(currYear);
+            return await GetDriversStandingsByYearAsync("current/");
         }
         public async Task<List<MyDriver>> GetCurrDriversAsync()
         {
-            return await GetDriversByYearAsync(currYear);
+            return await GetDriversByYearAsync("current/");
         }
 
         public async Task<List<Constructorstanding>> GetCurrConstructorsStandingsAsync()
         {
-            return await GetConstructorsStandingsByYearAsync(currYear);
+            return await GetConstructorsStandingsByYearAsync("current/");
         }
         public async Task<List<Constructor>> GetCurrConstructorsAsync()
         {
-            return await GetConstructorsByYearAsync(currYear);
+            return await GetConstructorsByYearAsync("current/");
         }
 
         public async Task<List<MyDriverStandings>> GetDriversStandingsByYearAsync(string year)
@@ -159,7 +158,7 @@ namespace Formula1App.Services
                 return null;
             }
         }
-        public async Task<List<Driver>> GetAllDriversAsync()
+        public async Task<List<MyDriver>> GetAllDriversAsync()
         {
             string total = "";
             int totalNum = 0;
@@ -183,7 +182,7 @@ namespace Formula1App.Services
                         if (res.IsSuccessStatusCode)
                         {
                             newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
-                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(resContent);
+                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(newResContent);
                             dList = newResult.DriversData.DriverTable.Drivers.ToList();
                         }
                         else
@@ -207,7 +206,23 @@ namespace Formula1App.Services
                             return null;
                         }
                     }
-                    return dList;
+                    List<MyDriver>? newDList = new();
+                    foreach (Driver d in dList)
+                    {
+                        newDList.Add(new MyDriver()
+                        {
+                            DriverId = d.driverId,
+                            PermanentNumber = d.permanentNumber,
+                            Code = d.code,
+                            Url = d.url,
+                            FirstName = d.givenName,
+                            LastName = d.familyName,
+                            DateOfBirth = d.dateOfBirth,
+                            Nationality = d.nationality,
+                            FullName = d.givenName + " " + d.familyName
+                        });
+                    }
+                    return newDList;
                 }
                 else
                 {
@@ -267,6 +282,66 @@ namespace Formula1App.Services
                     resContent = resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
                     ConstructorsApi result = JsonSerializer.Deserialize<ConstructorsApi>(resContent);
                     List<Constructor> cList = result.ConstructorsData.ConstructorTable.Constructors.ToList();
+                    return cList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<Constructor>> GetAllConstructorsAsync()
+        {
+            string total = "";
+            int totalNum = 0;
+            string url = ExtAPI + "constructors.json";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync((url + "/?limit=1"));
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"ConstructorsData\":");
+                    ConstructorsApi result = JsonSerializer.Deserialize<ConstructorsApi>(resContent);
+                    total = result.ConstructorsData.total;
+                    int.TryParse(total, out totalNum);
+                    List<Constructor> cList = new();
+                    int offset = 0;
+                    if (totalNum / 100 == 0)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
+                        string newResContent = await response.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"ConstructorsData\":");
+                            ConstructorsApi newResult = JsonSerializer.Deserialize<ConstructorsApi>(newResContent);
+                            cList = newResult.ConstructorsData.ConstructorTable.Constructors.ToList();
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    for (int i = 0; i <= totalNum / 100; i++)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
+                        string newResContent = await res.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"ConstructorsData\":");
+                            ConstructorsApi newResult = JsonSerializer.Deserialize<ConstructorsApi>(newResContent);
+                            cList.AddRange(newResult.ConstructorsData.ConstructorTable.Constructors.ToList());
+                            offset += 100;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
                     return cList;
                 }
                 else

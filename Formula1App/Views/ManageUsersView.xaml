@@ -13,39 +13,39 @@
             <StackLayout>
                 <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,*,*,*,10*">
                     <Grid
-    RowDefinitions="*,*,*">
+                        RowDefinitions="*,*,*">
                         <Border
-        Grid.RowSpan="3"
-        Margin="-12,0,0,0"
-        Stroke="#E11900"
-        StrokeThickness="3"
-        HeightRequest="60">
+                            Grid.RowSpan="3"
+                            Margin="-12,0,0,0"
+                            Stroke="#E11900"
+                            StrokeThickness="3"
+                            HeightRequest="60">
                             <Border.StrokeShape>
                                 <RoundRectangle
-                CornerRadius="15"/>
+                                    CornerRadius="15"/>
                             </Border.StrokeShape>
                         </Border>
                         <Label
-        Grid.Row="1"
-        FontAttributes="Bold"
-        FontSize="30"
-        Text="  Manage Users"
-        VerticalOptions="Start" />
+                            Grid.Row="1"
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            Text="  Manage Users"
+                            VerticalOptions="Start" />
                         <BoxView
-        Margin="0,-7,0,0"
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="12"
-        VerticalOptions="Start"
-        HorizontalOptions="End"/>
+                            Margin="0,-7,0,0"
+                            Grid.Row="2"
+                            Color="White"
+                            HeightRequest="15"
+                            WidthRequest="12"
+                            VerticalOptions="Start"
+                            HorizontalOptions="End"/>
                         <BoxView
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="317"
-        VerticalOptions="Start"
-        HorizontalOptions="Start"/>
+                            Grid.Row="2"
+                            Color="White"
+                            HeightRequest="15"
+                            WidthRequest="317"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"/>
                     </Grid>
                     <Frame
                         Grid.Row="1"
@@ -66,7 +66,7 @@
                                         CornerRadius="10"
                                         HeightRequest="45">
                                         <SearchBar
-                                            Placeholder="Search by ID"
+                                            Placeholder="Search ID"
                                             SearchCommand="{Binding IdSearchCommand}"
                                             Text="{Binding SearchId}" />
                                     </Frame>
@@ -93,7 +93,7 @@
                                         CornerRadius="10"
                                         HeightRequest="45">
                                         <SearchBar
-                                            Placeholder="Search by username"
+                                            Placeholder="Search username"
                                             SearchCommand="{Binding SearchCommand}"
                                             Text="{Binding SearchText}" />
                                     </Frame>
@@ -120,7 +120,7 @@
                                         CornerRadius="10"
                                         HeightRequest="45">
                                         <Picker
-                                            Title="Filter by user type"
+                                            Title="Select user type"
                                             x:DataType="model:UserType"
                                             HorizontalTextAlignment="Center"
                                             ItemDisplayBinding="{Binding Name}"

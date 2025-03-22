@@ -10,7 +10,9 @@
     Shell.TabBarTitleColor="#E11900"
     Shell.ForegroundColor="#E11900">
     <Shell.FlyoutHeader>
-        <Border Margin="0,0,0,10" BackgroundColor="#E11900">
+        <Border
+            Margin="-2"
+            BackgroundColor="#E11900">
             <Image
                 Source="f1logo.png"
                 HeightRequest="100"
