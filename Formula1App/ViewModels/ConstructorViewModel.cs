@@ -43,17 +43,16 @@ namespace Formula1App.ViewModels
                     NavToDriver();
             }
         }
-        //public ICommand NavToDriverCommand { get; set; }
         public ConstructorViewModel()
         {
             CurrYear = ((App)Application.Current).CurrYear;
-            //NavToDriverCommand = new Command(async (Object obj) => await NavToDriver((MyDriverStandings)obj));
         }
         private async Task NavToDriver()
         {
             Dictionary<string, object> data = new();
             data.Add("Driver", SelectedDriver);
             await AppShell.Current.GoToAsync("Driver", data);
+            SelectedDriver = null;
         }
     }
 }

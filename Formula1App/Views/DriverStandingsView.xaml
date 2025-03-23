@@ -139,9 +139,9 @@
                                 <Border
                                     BackgroundColor="#E0E0E1"
                                     Stroke="Transparent"
-                                    WidthRequest="60"
+                                    MinimumWidthRequest="60"
                                     Padding="3"
-                                    Grid.RowSpan="3"
+                                    Grid.Row="2"
                                     Grid.Column="5"
                                     VerticalOptions="End"
                                     HorizontalOptions="End"
@@ -151,7 +151,7 @@
                                             CornerRadius="20"/>
                                     </Border.StrokeShape>
                                     <Label
-                                        WidthRequest="40"
+                                        MinimumWidthRequest="40"
                                         FontSize="10"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center">
@@ -237,7 +237,7 @@
                                     <Border
                                         BackgroundColor="#E0E0E1"
                                         Stroke="Transparent"
-                                        WidthRequest="60"
+                                        MinimumWidthRequest="60"
                                         Padding="3"
                                         Grid.RowSpan="2"
                                         Grid.Column="3"
@@ -248,7 +248,7 @@
                                                 CornerRadius="20"/>
                                         </Border.StrokeShape>
                                         <Label
-                                            WidthRequest="40"
+                                            MinimumWidthRequest="40"
                                             FontSize="10"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
