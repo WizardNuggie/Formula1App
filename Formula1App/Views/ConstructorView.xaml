@@ -430,23 +430,23 @@
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedDriver}"
                 ItemsSource="{Binding Constructor.Constructor.Drivers}"
-                ItemSizingStrategy="MeasureFirstItem"
                 MaximumWidthRequest="400">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout
                         Orientation="Horizontal"
-                        ItemSpacing="0"/>
+                        ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate
                         x:DataType="modelext:MyDriverStandings">
                         <Grid
-                            RowDefinitions="1.8*,*">
+                            Margin="0,0,0,20">
                             <Border
+                                Margin="10,0"
                                 Stroke="{Binding Constructor.Constructor.TeamColor}"
                                 StrokeThickness="4"
                                 HeightRequest="250"
-                                WidthRequest="200"
+                                WidthRequest="205"
                                 VerticalOptions="Start">
                                 <Border.StrokeShape>
                                     <RoundRectangle
@@ -454,18 +454,17 @@
                                 </Border.StrokeShape>
                             </Border>
                             <BoxView
+                                Margin="10,0,0,0"
                                 Color="White"
-                                WidthRequest="14"
-                                HeightRequest="200"
-                                VerticalOptions="Start"
+                                WidthRequest="15"
+                                HeightRequest="250"
+                                VerticalOptions="Center"
                                 HorizontalOptions="Start"/>
                             <BoxView
-                                Margin="0,0,0,5"
-                                Grid.Row="1"
                                 Color="White"
-                                WidthRequest="400"
+                                WidthRequest="205"
                                 HeightRequest="14"
-                                VerticalOptions="Center"
+                                VerticalOptions="End"
                                 HorizontalOptions="Center"/>
                             <Border
                                 Margin="0,10,0,0"
@@ -483,9 +482,9 @@
                                     Source="{Binding FullPhotoUrl}"/>
                             </Border>
                             <Grid
+                                Margin="0,0,0,7"
                                 HorizontalOptions="Center"
-                                VerticalOptions="Start"
-                                Grid.Row="1"
+                                VerticalOptions="End"
                                 RowDefinitions="*,*">
                                 <Label
                                     HorizontalOptions="Center"

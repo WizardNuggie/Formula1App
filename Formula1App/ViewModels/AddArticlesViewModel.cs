@@ -90,7 +90,7 @@ namespace Formula1App.ViewModels
         {
             await GetSubjects();
         }
-        private async Task GetSubjects()
+        public async Task GetSubjects()
         {
             Subjects = await intService.GetSubjects();
         }

@@ -89,6 +89,7 @@
                                     Color="{Binding FirstPlace.Constructor.Constructor.TeamColor}"
                                     Margin="20,0,0,0"/>
                                 <Label
+                                    Margin="3,0,0,0"
                                     FontSize="15"
                                     TextColor="White"
                                     FontFamily="F1Reg"
@@ -97,6 +98,7 @@
                                     Grid.Column="2"
                                     Grid.ColumnSpan="3"/>
                                 <Label
+                                    Margin="3,0,0,0"
                                     FontSize="20"
                                     TextColor="White"
                                     FontFamily="F1Bold"
@@ -196,7 +198,7 @@
                                 </Border.StrokeShape>
                                 <Grid
                                     RowDefinitions="*,*"
-                                    ColumnDefinitions="*,*,6*,2*,*">
+                                    ColumnDefinitions="*,0.5*,6*,2*,*">
                                     <Label
                                         Text="{Binding PositionText}"
                                         FontFamily="F1Bold"

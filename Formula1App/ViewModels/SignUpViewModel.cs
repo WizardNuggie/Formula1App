@@ -132,7 +132,7 @@ namespace Formula1App.ViewModels
                     if (!string.IsNullOrEmpty(Name))
                     {
                     foreach(char c in Name)
-                        if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z'))
+                        if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') && !(c == ' '))
                         {
                             NameError = "A name can only contain letters";
                             OnPropertyChanged();
@@ -395,10 +395,12 @@ namespace Formula1App.ViewModels
         private async void GetDrivers()
         {
             Drivers = await extService.GetAllDriversAsync();
+            DriversForSearch = Drivers.OrderBy(d => d.FirstName).ToList();
         }
         private async void GetConstructors()
         {
             Constructors = await extService.GetAllConstructorsAsync();
+            ConstsForSearch = Constructors.OrderBy(c => c.OfficialConstructorName).ToList();
         }
         private async Task SearchDrivers()
         {
@@ -440,6 +442,11 @@ namespace Formula1App.ViewModels
                     }
                 }
             }
+            else
+            {
+                DriversForSearch = Drivers;
+            }
+            DriversForSearch = DriversForSearch.OrderBy(d => d.FirstName).ToList();
         }
         private async Task SearchConstructors()
         {
@@ -459,6 +466,11 @@ namespace Formula1App.ViewModels
                     }
                 }
             }
+            else
+            {
+                ConstsForSearch = Constructors;
+            }
+            ConstsForSearch = ConstsForSearch.OrderBy(c => c.OfficialConstructorName).ToList();
         }
     }
 }
