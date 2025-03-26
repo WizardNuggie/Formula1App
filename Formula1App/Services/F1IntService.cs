@@ -125,6 +125,8 @@ namespace Formula1App.Services
                     foreach (Article a in result)
                     {
                         a.FirstSubject = a.Subjects.FirstOrDefault();
+                        User w = await GetUserByArticle(a);
+                        a.Writer = w;
                     }
                     return result;
                 }
@@ -160,6 +162,8 @@ namespace Formula1App.Services
                     foreach (Article a in result)
                     {
                         a.FirstSubject = a.Subjects.FirstOrDefault();
+                        User w = await GetUserByArticle(a);
+                        a.Writer = w;
                     }
                     return result;
                 }
@@ -194,6 +198,8 @@ namespace Formula1App.Services
                     foreach (Article a in result)
                     {
                         a.FirstSubject = a.Subjects.FirstOrDefault();
+                        User w = await GetUserByArticle(a);
+                        a.Writer = w;
                     }
                     return result;
                 }
@@ -256,6 +262,34 @@ namespace Formula1App.Services
                         PropertyNameCaseInsensitive = true
                     };
                     List<User> result = JsonSerializer.Deserialize<List<User>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<User> GetUserByArticle(Article a)
+        {
+            string url = $"{this.baseUrl}GetWriterByArticle?articleId={a.Id}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    User result = JsonSerializer.Deserialize<User>(resContent, options);
                     if (result == null)
                         return null;
                     return result;

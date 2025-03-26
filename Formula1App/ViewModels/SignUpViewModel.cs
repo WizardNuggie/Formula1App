@@ -1,6 +1,8 @@
 ﻿using Formula1App.Models;
 using Formula1App.ModelsExt;
 using Formula1App.Services;
+using Formula1App.Views;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -354,10 +356,10 @@ namespace Formula1App.ViewModels
             GetDrivers();
             GetConstructors();
         }
-        public async void OnRegister()
+        private async void OnRegister()
         {
             this.FavDriver = this.SelectedDriver.FullName;
-            this.FavConstructor = this.SelectedConst.name;
+            this.FavConstructor = this.SelectedConst.OfficialConstructorName;
             Bday = DateOnly.FromDateTime(Dob);
             var newUser = new User
             {
@@ -368,7 +370,8 @@ namespace Formula1App.ViewModels
                 FavDriver = this.FavDriver,
                 FavConstructor = this.FavConstructor,
                 Birthday = this.Bday,
-                IsAdmin = false
+                IsAdmin = false,
+                Articles = new()
             };
             InServerCall = true;
             ResponseUser newUserResponse = await intService.SignUpAsync(newUser);
@@ -378,7 +381,19 @@ namespace Formula1App.ViewModels
                 InServerCall = false;
                 if (newUser != null)
                 {
-                    await intService.LoginAsync(new LoginUser { Username = newUser.Username, Password = newUser.Password });
+                    User u = await intService.LoginAsync(new LoginUser { Username = newUser.Username, Password = newUser.Password });
+                    ((App)Application.Current).LoggedUser = u;
+                    if (u == null)
+                    {
+                        string errorMsg = "Sign up succeeded but the login failed.\nTry to login manually";
+                        await Application.Current.MainPage.DisplayAlert("Login Failed", errorMsg, "ok");
+                        ((App)Application.Current).MainPage = serviceProvider.GetService<SignPage>();
+                    }
+                    else
+                    {
+                        AppShell shell = serviceProvider.GetService<AppShell>();
+                        ((App)Application.Current).MainPage = shell;
+                    }
                 }
                 else if (newUserResponse.IsExist)
                 {

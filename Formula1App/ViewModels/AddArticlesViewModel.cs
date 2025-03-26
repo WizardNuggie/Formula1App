@@ -104,7 +104,13 @@ namespace Formula1App.ViewModels
                 });
                 if (result != null)
                 {
-                    PhotoPath = result.FullPath;
+                    if (result.FullPath.Substring(result.FullPath.LastIndexOf('.')) == ".png")
+                        PhotoPath = result.FullPath;
+                    else
+                    {
+                        string errmsg = "Incorrect file type, please select only a *.png";
+                        AppShell.Current.DisplayAlert("Photo Upload Failed", errmsg, "OK");
+                    }
                 }
             }
             catch (Exception ex)
@@ -132,6 +138,7 @@ namespace Formula1App.ViewModels
                         }
                     }
                     Article.Subjects = SelectedSubjects;
+                    Article.Writer = ((App)Application.Current).LoggedUser;
                     Article result = await intService.UploadArticle(Article);
                     if (result == null)
                     {

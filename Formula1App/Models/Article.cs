@@ -14,6 +14,7 @@ namespace Formula1App.Models
         public string Text { get; set; }
         public bool IsBreaking { get; set; }
         public int WriterId { get; set; }
+        public User Writer { get; set; }
         public int StatusId { get; set; }
         public List<Subject> Subjects { get; set; }
         public Subject FirstSubject { get; set; }

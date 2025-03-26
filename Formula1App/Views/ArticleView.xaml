@@ -7,14 +7,10 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:ArticleViewModel">
     <ScrollView>
-        <StackLayout
-            Padding="10,0">
-            <CollectionView
-                ItemsLayout="VerticalGrid, 3"
-                ItemsSource="{Binding Article.Subjects}">
+        <StackLayout Padding="10,0">
+            <CollectionView ItemsLayout="VerticalGrid, 3" ItemsSource="{Binding Article.Subjects}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate
-                        x:DataType="model:Subject">
+                    <DataTemplate x:DataType="model:Subject">
                         <Border
                             Margin="0"
                             Padding="0"
@@ -23,8 +19,7 @@
                             StrokeThickness="2"
                             WidthRequest="100">
                             <Border.StrokeShape>
-                                <RoundRectangle
-                                    CornerRadius="20" />
+                                <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
                             <Label
                                 FontAttributes="Bold"
@@ -36,23 +31,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Border
-                Margin="0,15,0,5"
-                Grid.RowSpan="2"
-                WidthRequest="380"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Stroke="Transparent">
-                <Border.StrokeShape>
-                    <RoundRectangle
-                        CornerRadius="15" />
-                </Border.StrokeShape>
-                <Image
-                    WidthRequest="380"
-                    Aspect="AspectFill"
-                    Source="{Binding Article.FullImagePath}"/>
-            </Border>
             <Label
+                Margin="0,25,0,0"
                 FontSize="40"
                 Text="{Binding Article.Title}" />
             <BoxView
@@ -60,7 +40,23 @@
                 HeightRequest="1"
                 Color="Grey" />
             <Label
-                Text="{Binding Article.Text}" />
+                Text="{Binding Article.Writer.Name}"
+                HorizontalOptions="End"/>
+            <Border
+                Margin="0,15,0,5"
+                HorizontalOptions="Center"
+                Stroke="Transparent"
+                VerticalOptions="Center"
+                WidthRequest="380">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+                <Image
+                    Aspect="AspectFill"
+                    Source="{Binding Article.FullImagePath}"
+                    WidthRequest="380" />
+            </Border>
+            <Label Text="{Binding Article.Text}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
