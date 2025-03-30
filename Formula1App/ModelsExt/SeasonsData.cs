@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Formula1App.ModelsExt
 {
-    public class ConstructorsApi
+
+    public class SeasonsApi
     {
-        public ConstructorsData ConstructorsData { get; set; }
+        public SeasonsData SeasonsData { get; set; }
     }
 
-    public class ConstructorsData
+    public class SeasonsData
     {
         public string xmlns { get; set; }
         public string series { get; set; }
@@ -19,12 +20,18 @@ namespace Formula1App.ModelsExt
         public string limit { get; set; }
         public string offset { get; set; }
         public string total { get; set; }
-        public ConstructorTable ConstructorTable { get; set; }
+        public Seasontable SeasonTable { get; set; }
     }
 
-    public class ConstructorTable
+    public class Seasontable
+    {
+        public List<Season> Seasons { get; set; }
+    }
+
+    public class Season
     {
         public string season { get; set; }
-        public List<Constructor> Constructors { get; set; }
+        public string url { get; set; }
     }
+
 }

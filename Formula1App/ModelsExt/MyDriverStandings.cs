@@ -21,9 +21,9 @@ namespace Formula1App.ModelsExt
         public string PositionText { get; set; }
         public string Points { get; set; }
         public string Wins { get; set; }
-        public Constructor[] Constructors { get; set; }
+        public List<Constructor> Constructors { get; set; }
         public Color TeamColor { get; set; }
-        public Constructorstanding Constructor { get; set; }
+        public Constructor Constructor { get; set; }
         public string CountryName
         {
             get

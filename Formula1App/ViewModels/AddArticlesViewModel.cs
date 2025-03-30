@@ -84,11 +84,6 @@ namespace Formula1App.ViewModels
             Article = new();
             Subjects = new();
             SelectedSubjects = new();
-            InitData();
-        }
-        private async void InitData()
-        {
-            await GetSubjects();
         }
         public async Task GetSubjects()
         {

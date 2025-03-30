@@ -27,15 +27,15 @@ namespace Formula1App.ModelsExt
     {
         public string season { get; set; }
         public string round { get; set; }
-        public Standingslist[] StandingsLists { get; set; }
+        public List<Standingslist> StandingsLists { get; set; }
     }
 
     public class Standingslist
     {
         public string season { get; set; }
         public string round { get; set; }
-        public Driverstanding[] DriverStandings { get; set; }
-        public Constructorstanding[] ConstructorStandings { get; set; }
+        public List<Driverstanding> DriverStandings { get; set; }
+        public List<Constructorstanding> ConstructorStandings { get; set; }
     }
 
     public class Driverstanding
@@ -45,6 +45,6 @@ namespace Formula1App.ModelsExt
         public string points { get; set; }
         public string wins { get; set; }
         public Driver Driver { get; set; }
-        public Constructor[] Constructors { get; set; }
+        public List<Constructor> Constructors { get; set; }
     }
 }

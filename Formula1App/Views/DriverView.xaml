@@ -26,7 +26,7 @@
                     HeightRequest="78"
                     VerticalOptions="Center"
                     HorizontalOptions="Start"
-                    Color="{Binding Driver.Constructor.Constructor.TeamColor}"
+                    Color="{Binding Driver.Constructor.TeamColor}"
                     Margin="20,0,0,0"/>
                 <Label
                     FontSize="15"
@@ -64,7 +64,7 @@
                 <Label
                     TextColor="White"
                     FontFamily="F1Reg"
-                    Text="{Binding Driver.Constructor.Constructor.OfficialConstructorName}"
+                    Text="{Binding Driver.Constructor.OfficialConstructorName}"
                     HorizontalOptions="Start"
                     Grid.Column="3"
                     Grid.Row="2"/>
@@ -85,7 +85,7 @@
                 FontSize="13"
                 Margin="15,15,0,0"/>
             <Border
-                Stroke="{Binding Driver.Constructor.Constructor.TeamColor}"
+                Stroke="{Binding Driver.Constructor.TeamColor}"
                 Grid.Column="1"
                 Grid.Row="1"
                 Grid.RowSpan="2"
@@ -170,7 +170,7 @@
                 </Label.FormattedText>
             </Label>
             <Border
-                Stroke="{Binding Driver.Constructor.Constructor.TeamColor}"
+                Stroke="{Binding Driver.Constructor.TeamColor}"
                 Margin="0,0,15,0"
                 Grid.Row="4"
                 Grid.RowSpan="2"
@@ -336,7 +336,7 @@
                 Margin="15,0,0,16"
                 VerticalOptions="End"
                 Grid.Row="6"
-                TextColor="{Binding Driver.Constructor.Constructor.TeamColor}"
+                TextColor="{Binding Driver.Constructor.TeamColor}"
                 Grid.Column="1"/>
             <Border
                 Stroke="#D0D0D2"
@@ -491,7 +491,7 @@
                 FontSize="18"
                 Text="Team"/>
             <Border
-                Stroke="{Binding Driver.Constructor.Constructor.TeamColor}"
+                Stroke="{Binding Driver.Constructor.TeamColor}"
                 Margin="3,35,15,0"
                 Grid.Row="11"
                 Grid.RowSpan="5"
@@ -533,7 +533,7 @@
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Source="{Binding Driver.Constructor.Constructor.PhotoUrl}">
+                Source="{Binding Driver.Constructor.PhotoUrl}">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer
                         Command="{Binding NavToTeamCommand}"/>
@@ -549,7 +549,7 @@
                         <Span
                             FontFamily="F1Bold"
                             FontSize="18"
-                            Text="{Binding Driver.Constructor.Constructor.OfficialConstructorName}"/>
+                            Text="{Binding Driver.Constructor.OfficialConstructorName}"/>
                         <Span
                             Text=" "/>
                         <Span

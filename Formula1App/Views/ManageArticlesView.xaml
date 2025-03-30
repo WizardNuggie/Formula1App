@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModel="clr-namespace:Formula1App.ViewModels"
+             x:Class="Formula1App.Views.ManageArticlesView"
              xmlns:model="clr-namespace:Formula1App.Models"
-             x:DataType="viewModel:YourPendingArticlesViewModel"
-             x:Class="Formula1App.Views.YourPendingArticles"
+             xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
+             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+             x:DataType="viewmodel:ManageArticlesViewModel"
              Title="">
     <RefreshView
         Command="{Binding RefreshCommand}"
@@ -32,7 +33,7 @@
                             Grid.Row="1"
                             FontAttributes="Bold"
                             FontSize="30"
-                            Text="  Pending Articles"
+                            Text="  Manage Articles"
                             VerticalOptions="Start" />
                         <BoxView
                             Margin="0,-7,0,0"
@@ -71,39 +72,56 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate
                                 x:DataType="model:Article">
-                                <Border
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem
+                                                Command="{Binding BindingContext.DeclineArticleCommand, Source={x:Reference scrlview}}"
+                                                IconImageSource="remove.png" />
+                                            <SwipeItem
+                                                Command="{Binding BindingContext.ApproveArticleCommand, Source={x:Reference scrlview}}"
+                                                IconImageSource="approved.png" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItem
+                                            Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}"
+                                            IconImageSource="showdetails.png" />
+                                    </SwipeView.LeftItems>
+                                    <Border
                                     Margin="8"
                                     Padding="5">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
                                             CornerRadius="15" />
-                                    </Border.StrokeShape>
-                                    <Grid
+                                        </Border.StrokeShape>
+                                        <Grid
                                         ColumnDefinitions="*,1.5*"
                                         RowDefinitions="*,4*">
-                                        <Border
+                                            <Border
                                             Grid.RowSpan="2"
                                             HeightRequest="100"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
                                             Stroke="Transparent">
-                                            <Border
+                                                <Border
                                                 Grid.RowSpan="2"
                                                 HeightRequest="80"
                                                 MaximumWidthRequest="120"
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
                                                 Stroke="Transparent">
-                                                <Border.StrokeShape>
-                                                    <RoundRectangle CornerRadius="15" />
-                                                </Border.StrokeShape>
-                                                <Image
-                                                HeightRequest="80"
-                                                Aspect="AspectFill"
-                                                Source="{Binding FullImagePath}"/>
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle
+                                                        CornerRadius="15" />
+                                                    </Border.StrokeShape>
+                                                    <Image
+                                                    HeightRequest="80"
+                                                    Aspect="AspectFill"
+                                                    Source="{Binding FullImagePath}"/>
+                                                </Border>
                                             </Border>
-                                        </Border>
-                                        <Border
+                                            <Border
                                             Grid.Column="1"
                                             Padding="0"
                                             HeightRequest="25"
@@ -111,23 +129,24 @@
                                             Stroke="#E11900"
                                             StrokeThickness="2"
                                             WidthRequest="100">
-                                            <Border.StrokeShape>
-                                                <RoundRectangle
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle
                                                     CornerRadius="20" />
-                                            </Border.StrokeShape>
-                                            <Label
+                                                </Border.StrokeShape>
+                                                <Label
                                                 FontAttributes="Bold"
                                                 HorizontalOptions="Center"
                                                 Text="{Binding FirstSubject.Name}"
                                                 TextColor="#E11900"
                                                 VerticalOptions="Center" />
-                                        </Border>
-                                        <Label
+                                            </Border>
+                                            <Label
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             Margin="0,0,10,0"
                                             Text="{Binding Title}" />
-                                    </Grid>
+                                        </Grid>
+                                    </Border>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState
@@ -148,7 +167,7 @@
                                             </VisualState>
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
-                                </Border>
+                                </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

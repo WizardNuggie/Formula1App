@@ -12,9 +12,16 @@ namespace Formula1App
         public User LoggedUser { get; set; }
         public Dictionary<string, string> TeamColors;
         public Dictionary<string, string> CountryCodes;
+        public Dictionary<string, string> RacesCountryCodes;
         public Dictionary<string, string> CountryNames;
         public Dictionary<string, string> OffConstCodes;
         public Dictionary<string, string> OffConstNames;
+        public Dictionary<string, string> MonthNames;
+        public Dictionary<string, string> DayNames;
+        public Dictionary<string, string> RacesNames;
+        public Dictionary<string, string> RacesGpName;
+        public Dictionary<string, string> TrackPic;
+        public Dictionary<string, string> TrackSponsors;
         public string CurrYear;
         private F1IntService intService;
         private F1ExtService extService;
@@ -57,7 +64,30 @@ namespace Formula1App
                 {"Spanish", "ES"},
                 {"Argentine", "AR"},
                 {"Chinese", "CN"},
-                {"Finnish", "FI"}
+                {"Finnish", "FI"},
+            };
+            RacesCountryCodes = new Dictionary<string, string>()
+            {
+                {"Australia", "AU"},
+                {"China", "CN"},
+                {"Saudi Arabia", "SA"},
+                {"Bahrain", "BH"},
+                {"USA", "US"},
+                {"Italy", "IT"},
+                {"Monaco", "MC"},
+                {"Spain", "ES"},
+                {"Canada", "CA"},
+                {"Austria", "AT"},
+                {"UK", "GB"},
+                {"Belgium", "BE"},
+                {"Hungary", "HU"},
+                {"Netherlands", "ND"},
+                {"Azerbaijan", "AZ"},
+                {"Singapore", "SG"},
+                {"Mexico", "MX"},
+                {"Brazil", "BR"},
+                {"Qatar", "QA"},
+                {"UAE", "AE"}
             };
             CountryNames = new Dictionary<string, string>()
             {
@@ -106,6 +136,139 @@ namespace Formula1App
                 {"alpine", "Alpine"},
                 {"rb", "Racing Bulls"},
                 {"haas", "Haas"}
+            };
+            MonthNames = new Dictionary<string, string>()
+            {
+                {"1", "Jan"},
+                {"2", "Feb"},
+                {"3", "Mar"},
+                {"4", "Apr"},
+                {"5", "May"},
+                {"6", "Jun"},
+                {"7", "Jul"},
+                {"8", "Aug"},
+                {"9", "Sep"},
+                {"10", "Oct"},
+                {"11", "Nov"},
+                {"12", "Dec"}
+            };
+            DayNames = new Dictionary<string, string>()
+            {
+                {"Sunday", "Sun"},
+                {"Monday", "Mon"},
+                {"Tuesday", "Tue"},
+                {"Wednesday", "Wed"},
+                {"Thursday", "Thu"},
+                {"Friday", "Fri"},
+                {"Saturday", "Sat"},
+            };
+            RacesNames = new Dictionary<string, string>()
+            {
+                {"Melbourne", "Australia"},
+                {"Shanghai", "China"},
+                {"Suzuka", "Japan"},
+                {"Sakhir", "Bahrain"},
+                {"Jeddah", "Saudi Arabia"},
+                {"Miami", "Miami"},
+                {"Imola", "Emilia-Romagna"},
+                {"Monte-Carlo", "Monaco"},
+                {"Montmeló", "Spain"},
+                {"Montreal", "Canada"},
+                {"Spielberg", "Austria"},
+                {"Silverstone", "Great Britain"},
+                {"Spa", "Belgium"},
+                {"Budapest", "Hungary"},
+                {"Zandvoort", "Netherlands"},
+                {"Monza", "Italy"},
+                {"Baku", "Azerbaijan"},
+                {"Marina Bay", "Singapore"},
+                {"Austin", "United States"},
+                {"Mexico City", "Mexico"},
+                {"São Paulo", "Brazil"},
+                {"Las Vegas", "Las Vegas"},
+                {"Al Daayen", "Qatar"},
+                {"Abu Dhabi", "Abu Dhabi"}
+            };
+            RacesGpName = new Dictionary<string, string>()
+            {
+                {"Melbourne", "Australian Grand Prix"},
+                {"Shanghai", "Chinese Grand Prix"},
+                {"Suzuka", "Japanese Grand Prix"},
+                {"Sakhir", "Bahrain Grand Prix"},
+                {"Jeddah", "Saudi Arabian Grand Prix"},
+                {"Miami", "Miami Grand Prix"},
+                {"Imola", "Gran Premio Del Made In Italy E Dell'Emilia-Romagna"},
+                {"Monte-Carlo", "Grand Prix De Monaco"},
+                {"Montmeló", "Gran Premio De España"},
+                {"Montreal", "Grand Prix Du Canada"},
+                {"Spielberg", "Austrian Grand Prix"},
+                {"Silverstone", "British Grand Prix"},
+                {"Spa", "Belgian Grand Prix"},
+                {"Budapest", "Hungarian Grand Prix"},
+                {"Zandvoort", "Dutch Grand Prix"},
+                {"Monza", "Gran Premio D'Italia"},
+                {"Baku", "Azerbaijan Grand Prix"},
+                {"Marina Bay", "Singapore Grand Prix"},
+                {"Austin", "United States Grand Prix"},
+                {"Mexico City", "Gran Premio De La Ciudad De México"},
+                {"São Paulo", "Grande Prémio De São Paulo"},
+                {"Las Vegas", "Las Vegas Grand Prix"},
+                {"Al Daayen", "Qatar Grand Prix"},
+                {"Abu Dhabi", "Abu Dhabi Grand Prix"}
+            };
+            TrackPic = new Dictionary<string, string>()
+            {
+                {"Melbourne", "australia"},
+                {"Shanghai", "china"},
+                {"Suzuka", "japan"},
+                {"Sakhir", "bahrain"},
+                {"Jeddah", "saudi_arabia"},
+                {"Miami", "miami"},
+                {"Imola", "emilia%20romagna"},
+                {"Monte-Carlo", "monaco"},
+                {"Montmeló", "spain"},
+                {"Montreal", "canada"},
+                {"Spielberg", "austria"},
+                {"Silverstone", "great%20britain"},
+                {"Spa", "belgium"},
+                {"Budapest", "hungary"},
+                {"Zandvoort", "netherlands"},
+                {"Monza", "italy"},
+                {"Baku", "azerbaijan"},
+                {"Marina Bay", "singapore"},
+                {"Austin", "usa"},
+                {"Mexico City", "mexico"},
+                {"São Paulo", "brazil"},
+                {"Las Vegas", "las%20vegas"},
+                {"Al Daayen", "qatar"},
+                {"Abu Dhabi", "abu%20dhabi"}
+            };
+            TrackSponsors = new Dictionary<string, string>()
+            {
+                {"Melbourne", "Louis Vuitton"},
+                {"Shanghai", "Heineken"},
+                {"Suzuka", "Lenovo"},
+                {"Sakhir", "Gulf Air"},
+                {"Jeddah", "STC"},
+                {"Miami", "Crypto.com"},
+                {"Imola", "AWS"},
+                {"Monte-Carlo", "Tag Heuer"},
+                {"Montmeló", "Aramco"},
+                {"Montreal", "Pirelli"},
+                {"Spielberg", "MSC Cruises"},
+                {"Silverstone", "Qatar Airways"},
+                {"Spa", "Moët & Chandon"},
+                {"Budapest", "Lenovo"},
+                {"Zandvoort", "Heineken"},
+                {"Monza", "Pirelli"},
+                {"Baku", "Qatar Airways"},
+                {"Marina Bay", "Singapore Airlines"},
+                {"Austin", "MSC Cruises"},
+                {"Mexico City", ""},
+                {"São Paulo", "MSC Cruises"},
+                {"Las Vegas", "Heineken"},
+                {"Al Daayen", "Qatar Airways"},
+                {"Abu Dhabi", "Etihad Airways"}
             };
             CurrYear = DateTime.Now.Year.ToString();
             MainPage = sp.GetService<SignPage>();

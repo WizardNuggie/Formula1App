@@ -25,7 +25,7 @@ namespace Formula1App.ModelsExt
     public class DriverTable
     {
         public string season { get; set; }
-        public Driver[] Drivers { get; set; }
+        public List<Driver> Drivers { get; set; }
     }
 
 }

@@ -443,7 +443,7 @@
                             Margin="0,0,0,20">
                             <Border
                                 Margin="10,0"
-                                Stroke="{Binding Constructor.Constructor.TeamColor}"
+                                Stroke="{Binding Constructor.TeamColor}"
                                 StrokeThickness="4"
                                 HeightRequest="250"
                                 WidthRequest="205"

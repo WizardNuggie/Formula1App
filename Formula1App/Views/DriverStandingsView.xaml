@@ -86,7 +86,7 @@
                                     HeightRequest="78"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Start"
-                                    Color="{Binding FirstPlace.Constructor.Constructor.TeamColor}"
+                                    Color="{Binding FirstPlace.Constructor.TeamColor}"
                                     Margin="20,0,0,0"/>
                                 <Label
                                     Margin="3,0,0,0"
@@ -126,7 +126,7 @@
                                 <Label
                                     TextColor="White"
                                     FontFamily="F1Reg"
-                                    Text="{Binding FirstPlace.Constructor.Constructor.OfficialConstructorName}"
+                                    Text="{Binding FirstPlace.Constructor.OfficialConstructorName}"
                                     HorizontalOptions="Start"
                                     Grid.Column="4"
                                     Grid.Row="2"/>
@@ -206,7 +206,7 @@
                                         VerticalOptions="Center"
                                         HorizontalOptions="Center"/>
                                     <BoxView
-                                        Color="{Binding Constructor.Constructor.TeamColor}"
+                                        Color="{Binding Constructor.TeamColor}"
                                         WidthRequest="8"
                                         HeightRequest="40"
                                         Grid.Column="1"
@@ -234,7 +234,7 @@
                                         VerticalOptions="End"
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        Text="{Binding Constructor.Constructor.OfficialConstructorName}"
+                                        Text="{Binding Constructor.OfficialConstructorName}"
                                         FontFamily="F1Reg"/>
                                     <Border
                                         BackgroundColor="#E0E0E1"
@@ -300,6 +300,14 @@
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <Button
+                            Margin="20,25,20,50"
+                            BackgroundColor="#EE0000"
+                            TextColor="White"
+                            Text="SEE PREVIOUS SEASONS' RESULTS"
+                            Command="{Binding GoToPrevStandings}"/>
+                    </CollectionView.Footer>
                 </CollectionView>
             </Grid>
         </ScrollView>

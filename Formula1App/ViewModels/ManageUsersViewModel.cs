@@ -284,18 +284,18 @@ namespace Formula1App.ViewModels
                         users.Remove(u);
                         Users.Remove(user);
                         string success = $"the user \"{user.Username}\" was deleted successfully";
-                        AppShell.Current.DisplayAlert("Deletion of user succeeded", success, "OK");
+                        AppShell.Current.DisplayAlert("Deletion Of User Succeeded", success, "OK");
                     }
                     else
                     {
                         string err = "Something went wrong.\nPlease try again later";
-                        AppShell.Current.DisplayAlert("Deletion of user failed", err, "OK");
+                        AppShell.Current.DisplayAlert("Deletion Of User Failed", err, "OK");
                     }
                 }
                 else
                 {
                     string err = "User was not found in database.\nPlease try again later";
-                    AppShell.Current.DisplayAlert("Deletion of user failed", err, "OK");
+                    AppShell.Current.DisplayAlert("Deletion Of User Failed", err, "OK");
                 }
             }
             else

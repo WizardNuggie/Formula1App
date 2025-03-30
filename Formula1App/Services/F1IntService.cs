@@ -106,6 +106,40 @@ namespace Formula1App.Services
         #endregion
 
         #region News
+        public async Task<List<Article>> GetAllNews()
+        {
+            string url = $"{this.baseUrl}GetAllNews";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    List<Article> result = JsonSerializer.Deserialize<List<Article>>(resContent, options);
+                    if (result == null)
+                        return null;
+                    foreach (Article a in result)
+                    {
+                        a.FirstSubject = a.Subjects.FirstOrDefault();
+                        User w = await GetUserByArticle(a);
+                        a.Writer = w;
+                    }
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<List<Article>> GetNews()
         {
             string url = $"{this.baseUrl}GetNews";
@@ -439,6 +473,53 @@ namespace Formula1App.Services
                 //Call the server API
                 HttpResponseMessage response = await client.PostAsync(url, form);
                 //Check status
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Manage Articles
+        public async Task<bool> ApproveArticle(Article a)
+        {
+            string parameterKey = "articleId";
+            string parameterValue = a.Id.ToString();
+            string url = $"{this.baseUrl}ApproveArticle?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public async Task<bool> DeclineArticle(Article a)
+        {
+            string parameterKey = "articleId";
+            string parameterValue = a.Id.ToString();
+            string url = $"{this.baseUrl}DeclineArticle?{parameterKey}={parameterValue}";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     return true;

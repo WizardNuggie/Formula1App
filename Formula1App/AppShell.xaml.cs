@@ -16,6 +16,7 @@ namespace Formula1App
             Routing.RegisterRoute("Article", typeof(ArticleView));
             Routing.RegisterRoute("Driver", typeof(DriverView));
             Routing.RegisterRoute("Constructor", typeof(ConstructorView));
+            Routing.RegisterRoute("PrevSeasons", typeof(PrevSeasonsView));
             #endregion
         }
     }

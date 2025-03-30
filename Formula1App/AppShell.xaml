@@ -6,13 +6,15 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:AppShellViewModel"
     xmlns:local="clr-namespace:Formula1App.Views"
-    Shell.TabBarForegroundColor="#E11900"
-    Shell.TabBarTitleColor="#E11900"
-    Shell.ForegroundColor="#E11900">
+    Shell.TabBarForegroundColor="White"
+    Shell.TabBarBackgroundColor="#EE0000"
+    Shell.TabBarUnselectedColor="White"
+    Shell.TabBarTitleColor="White"
+    Shell.ForegroundColor="#EE0000">
     <Shell.FlyoutHeader>
         <Border
             Margin="-2"
-            BackgroundColor="#E11900">
+            BackgroundColor="#EE0000">
             <Image
                 Source="f1logo.png"
                 HeightRequest="100"
@@ -22,7 +24,7 @@
     </Shell.FlyoutHeader>
         <FlyoutItem
             Title="News"
-            FlyoutDisplayOptions="AsMultipleItems"
+            FlyoutDisplayOptions="AsSingleItem"
             Icon="news.png">
             <ShellContent
                 Title="News"
@@ -44,11 +46,29 @@
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Icon="const_standings.png"
             Route="ConstStandings"/>
+        <ShellContent
+            Title="Race Results"
+            ContentTemplate="{DataTemplate local:RaceResultsView}"
+            Icon="race_results.png"
+            Route="RaceResults"/>
+    </FlyoutItem>
+    <FlyoutItem
+        Title="Racing"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="races.png">
+        <ShellContent
+            Title="Upcoming"
+            ContentTemplate="{DataTemplate local:UpcomingRacesView}"
+            Route="UpcomingRaces" />
+        <ShellContent
+            Title="Past"
+            ContentTemplate="{DataTemplate local:SeasonPastRacesView}"
+            Route="SeasonPastRaces"/>
     </FlyoutItem>
     <FlyoutItem
         IsVisible="{Binding IsWriter}"
         Title="Add Articles"
-        FlyoutDisplayOptions="AsMultipleItems"
+        FlyoutDisplayOptions="AsSingleItem"
         Icon="add_article.png">
         <ShellContent
             Title="Add Article"
@@ -80,13 +100,24 @@
     <FlyoutItem
         IsVisible="{Binding IsAdmin}"
         Title="Manage Users"
-        FlyoutDisplayOptions="AsMultipleItems"
+        FlyoutDisplayOptions="AsSingleItem"
         Icon="admin.png">
         <ShellContent
             Title="Manage Users"
-            Icon="admin.png"
+            Icon="manage_users.png"
             ContentTemplate="{DataTemplate local:ManageUsersView}"
             Route="ManageUsers"/>
+    </FlyoutItem>
+    <FlyoutItem
+        IsVisible="{Binding IsAdmin}"
+        Title="Manage Articles"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="admin.png">
+        <ShellContent
+            Title="Manage Articles"
+            Icon="manage_articles.png"
+            ContentTemplate="{DataTemplate local:ManageArticlesView}"
+            Route="ManageArticles"/>
     </FlyoutItem>
     <Shell.FlyoutFooter>
         <HorizontalStackLayout

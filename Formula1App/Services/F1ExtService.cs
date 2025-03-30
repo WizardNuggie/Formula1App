@@ -32,14 +32,14 @@ namespace Formula1App.Services
             consts = await GetCurrConstructorsStandingsAsync();
             foreach (MyDriverStandings d in drivers)
             {
-                d.Constructor = consts.Where(c => c.Constructor.constructorId == d.Constructors.Last().constructorId).First();
+                d.Constructor = (consts.Where(c => c.Constructor.constructorId == d.Constructors.Last().constructorId).First()).Constructor;
             }
             foreach (Constructorstanding c in consts)
             {
                 c.Constructor.Drivers = new();
                 foreach (MyDriverStandings m in drivers)
                 {
-                    if (m.Constructor.Constructor.constructorId == c.Constructor.constructorId)
+                    if (m.Constructor.constructorId == c.Constructor.constructorId)
                     {
                         c.Constructor.Drivers.Add(m);
                     }
@@ -48,25 +48,30 @@ namespace Formula1App.Services
         }
         public async Task<List<MyDriverStandings>> GetCurrDriversStandingsAsync()
         {
-            return await GetDriversStandingsByYearAsync("current/");
+            List<MyDriverStandings> mds = await GetDriversStandingsByYearAsync("current");
+            return mds;
         }
         public async Task<List<MyDriver>> GetCurrDriversAsync()
         {
-            return await GetDriversByYearAsync("current/");
+            return await GetDriversByYearAsync("current");
         }
 
         public async Task<List<Constructorstanding>> GetCurrConstructorsStandingsAsync()
         {
-            return await GetConstructorsStandingsByYearAsync("current/");
+            return await GetConstructorsStandingsByYearAsync("current");
         }
         public async Task<List<Constructor>> GetCurrConstructorsAsync()
         {
-            return await GetConstructorsByYearAsync("current/");
+            return await GetConstructorsByYearAsync("current");
+        }
+        public async Task<List<Race>> GetCurrRacesAsync()
+        {
+            return await GetRacesByYearAsync("current");
         }
 
         public async Task<List<MyDriverStandings>> GetDriversStandingsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "driverstandings.json";
+            string url = ExtAPI + year + "/driverstandings.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -79,7 +84,7 @@ namespace Formula1App.Services
                     List<Driverstanding> dList = new();
                     foreach (Standingslist s in sList)
                     {
-                        dList = s.DriverStandings.ToList();
+                        dList = s.DriverStandings;
                     }
                     List<MyDriverStandings>? newDList = new();
                     foreach (Driverstanding d in dList)
@@ -99,11 +104,8 @@ namespace Formula1App.Services
                             Points = d.points,
                             Wins = d.wins,
                             Constructors = d.Constructors,
+                            Constructor = d.Constructors.Last()
                         };
-                        if (consts != null && drivers != null)
-                        {
-                            mds.Constructor = drivers.Where(x => x.DriverId == mds.DriverId).First().Constructor;
-                        }
                         newDList.Add(mds);
                     }
                     return newDList;
@@ -120,7 +122,7 @@ namespace Formula1App.Services
         }
         public async Task<List<MyDriver>> GetDriversByYearAsync(string year)
         {
-            string url = ExtAPI + year + "drivers.json";
+            string url = ExtAPI + year + "/drivers.json?limit=100";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -239,7 +241,7 @@ namespace Formula1App.Services
         }
         public async Task<List<Constructorstanding>> GetConstructorsStandingsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "constructorstandings.json";
+            string url = ExtAPI + year + "/constructorstandings.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -275,7 +277,7 @@ namespace Formula1App.Services
         }
         public async Task<List<Constructor>> GetConstructorsByYearAsync(string year)
         {
-            string url = ExtAPI + year + "constructors.json";
+            string url = ExtAPI + year + "/constructors.json";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -357,5 +359,143 @@ namespace Formula1App.Services
                 return null;
             }
         }
+        public async Task<List<Race>> GetRacesByYearAsync(string year)
+        {
+            string url = ExtAPI + year + "/races.json";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"RacesData\":");
+                    RacesApi result = JsonSerializer.Deserialize<RacesApi>(resContent);
+                    List<Race> rList = result.RacesData.RaceTable.Races.ToList();
+                    return rList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<int> GetCurrRound()
+        {
+            string url = ExtAPI + "current/driverstandings.json?limit=1";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"DriverStandingsData\":");
+                    DriverStandingsApi result = JsonSerializer.Deserialize<DriverStandingsApi>(resContent);
+                    int.TryParse(result.DriverStandingsData.StandingsTable.round, out int round);
+                    return round;
+                }
+                else
+                {
+                    return default;
+                }
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
+        public async Task<List<Result>> GetRaceResultsAsync(string year, string round)
+        {
+            string url = $"{ExtAPI}{year}/{round}/results.json?limit=100";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"RaceResultsData\":");
+                    RaceResultsApi result = JsonSerializer.Deserialize<RaceResultsApi>(resContent);
+                    List<Race> rList = result.RaceResultsData.RaceTable.Races.ToList();
+                    List<Result> newRList = new();
+                    foreach (Race r in rList)
+                    {
+                        newRList = r.Results.ToList();
+                    }
+                    return newRList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<Season>> GetSeasonsAsync()
+        {
+            string total = "";
+            int totalNum = 0;
+            string url = ExtAPI + "seasons.json";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync((url + "/?limit=1"));
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"SeasonsData\":");
+                    SeasonsApi result = JsonSerializer.Deserialize<SeasonsApi>(resContent);
+                    total = result.SeasonsData.total;
+                    int.TryParse(total, out totalNum);
+                    List<Season> sList = new();
+                    int offset = 0;
+                    if (totalNum / 100 == 0)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
+                        string newResContent = await response.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"SeasonsData\":");
+                            SeasonsApi newResult = JsonSerializer.Deserialize<SeasonsApi>(newResContent);
+                            sList = newResult.SeasonsData.SeasonTable.Seasons;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    for (int i = 0; i <= totalNum / 100; i++)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
+                        string newResContent = await res.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"SeasonsData\":");
+                            SeasonsApi newResult = JsonSerializer.Deserialize<SeasonsApi>(newResContent);
+                            sList.AddRange(newResult.SeasonsData.SeasonTable.Seasons);
+                            offset += 100;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    return sList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

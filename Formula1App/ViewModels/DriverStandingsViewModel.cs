@@ -66,6 +66,7 @@ namespace Formula1App.ViewModels
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             GoToDriverCommand = new Command(async (Object obj) => await NavToDriver((MyDriverStandings)obj));
+            GoToPrevStandings = new Command(async () => await NavToPrevStands());
             InitData();
         }
         private async void InitData()
@@ -84,7 +85,7 @@ namespace Formula1App.ViewModels
             Standings.Clear();
             foreach (MyDriverStandings mds in standings)
             {
-                mds.Constructor.Constructor.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
+                mds.Constructor.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[mds.Constructors.Last().constructorId]);
                 if (mds.PositionText == "1")
                 {
                     FirstPlace = mds;
@@ -106,6 +107,10 @@ namespace Formula1App.ViewModels
             data.Add("Driver", mds);
             await AppShell.Current.GoToAsync("Driver", data);
             SelectedDriver = null;
+        }
+        private async Task NavToPrevStands()
+        {
+            await AppShell.Current.GoToAsync("PrevSeasons");
         }
     }
 }

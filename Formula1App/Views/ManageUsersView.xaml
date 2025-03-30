@@ -7,7 +7,8 @@
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-    x:DataType="viewmodel:ManageUsersViewModel">
+    x:DataType="viewmodel:ManageUsersViewModel"
+    Title="">
     <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
         <ScrollView x:Name="scrlview">
             <StackLayout>

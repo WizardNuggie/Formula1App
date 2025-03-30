@@ -31,7 +31,7 @@
                         Grid.Row="1"
                         FontAttributes="Bold"
                         FontSize="30"
-                        Text="  Drivers Standings"
+                        Text=" Constructor Standings"
                         VerticalOptions="Start" />
                     <BoxView
                         Margin="0,-7,0,0"

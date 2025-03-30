@@ -3,6 +3,7 @@ using Formula1App.ViewModels;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 using Formula1App.Services;
+using CommunityToolkit.Maui;
 
 namespace Formula1App
 {
@@ -13,6 +14,7 @@ namespace Formula1App
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -41,6 +43,11 @@ namespace Formula1App
             builder.Services.AddTransient<YourDeclinedArticles>();
             builder.Services.AddTransient<DriverView>();
             builder.Services.AddTransient<ConstructorView>();
+            builder.Services.AddTransient<UpcomingRacesView>();
+            builder.Services.AddTransient<SeasonPastRacesView>();
+            builder.Services.AddTransient<RaceResultsView>();
+            builder.Services.AddTransient<ManageArticlesView>();
+            builder.Services.AddTransient<PrevSeasonsView>();
             #endregion
             #region View Models
             builder.Services.AddTransient<AppShellViewModel>();
@@ -58,6 +65,9 @@ namespace Formula1App
             builder.Services.AddTransient<YourDeclinedArticlesViewModel>();
             builder.Services.AddTransient<DriverViewModel>();
             builder.Services.AddTransient<ConstructorViewModel>();
+            builder.Services.AddTransient<CurrSeasonRacesViewModel>();
+            builder.Services.AddTransient<ManageArticlesViewModel>();
+            builder.Services.AddTransient<PrevSeasonsViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();
