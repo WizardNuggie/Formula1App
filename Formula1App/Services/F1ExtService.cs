@@ -177,21 +177,6 @@ namespace Formula1App.Services
                     int.TryParse(total, out totalNum);
                     List<Driver> dList = new();
                     int offset = 0;
-                    if (totalNum / 100 == 0)
-                    {
-                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
-                        string newResContent = await response.Content.ReadAsStringAsync();
-                        if (res.IsSuccessStatusCode)
-                        {
-                            newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
-                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(newResContent);
-                            dList = newResult.DriversData.DriverTable.Drivers.ToList();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
                     else
                     {
                         for (int i = 0; i <= totalNum / 100; i++)
@@ -316,21 +301,6 @@ namespace Formula1App.Services
                     int.TryParse(total, out totalNum);
                     List<Constructor> cList = new();
                     int offset = 0;
-                    if (totalNum / 100 == 0)
-                    {
-                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
-                        string newResContent = await response.Content.ReadAsStringAsync();
-                        if (res.IsSuccessStatusCode)
-                        {
-                            newResContent = newResContent.Replace("\"MRData\":", "\"ConstructorsData\":");
-                            ConstructorsApi newResult = JsonSerializer.Deserialize<ConstructorsApi>(newResContent);
-                            cList = newResult.ConstructorsData.ConstructorTable.Constructors.ToList();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
                     for (int i = 0; i <= totalNum / 100; i++)
                     {
                         HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
@@ -448,21 +418,6 @@ namespace Formula1App.Services
                     int.TryParse(total, out totalNum);
                     List<Season> sList = new();
                     int offset = 0;
-                    if (totalNum / 100 == 0)
-                    {
-                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
-                        string newResContent = await response.Content.ReadAsStringAsync();
-                        if (res.IsSuccessStatusCode)
-                        {
-                            newResContent = newResContent.Replace("\"MRData\":", "\"SeasonsData\":");
-                            SeasonsApi newResult = JsonSerializer.Deserialize<SeasonsApi>(newResContent);
-                            sList = newResult.SeasonsData.SeasonTable.Seasons;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
                     for (int i = 0; i <= totalNum / 100; i++)
                     {
                         HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
@@ -509,21 +464,6 @@ namespace Formula1App.Services
                     int.TryParse(total, out totalNum);
                     List<Race> rList = new();
                     int offset = 0;
-                    if (totalNum / 100 == 0)
-                    {
-                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
-                        string newResContent = await response.Content.ReadAsStringAsync();
-                        if (res.IsSuccessStatusCode)
-                        {
-                            newResContent = newResContent.Replace("\"MRData\":", "\"RaceResultsData\":");
-                            RaceResultsApi newResult = JsonSerializer.Deserialize<RaceResultsApi>(newResContent);
-                            rList = newResult.RaceResultsData.RaceTable.Races.ToList();
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
                     for (int i = 0; i <= totalNum / 100; i++)
                     {
                         HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
@@ -543,7 +483,11 @@ namespace Formula1App.Services
                                     rs2.Add(r);
                                 }
                             }
-                            rs.RemoveRange(rs2);
+                            if (rs2.Count > 0)
+                            {
+                                int index = rs.IndexOf(rs2.FirstOrDefault());
+                                rs.RemoveRange(index, rs2.Count);
+                            }
                             rList.AddRange(rs);
                             offset += 100;
                         }

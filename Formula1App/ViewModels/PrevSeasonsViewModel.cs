@@ -259,6 +259,20 @@ namespace Formula1App.ViewModels
                     return !InAllConsts;
             }
         }
+        private bool hasSprint;
+        public bool HasSprint
+        {
+            get => hasSprint;
+            set
+            {
+                hasSprint = value;
+                OnPropertyChanged();
+                if (InSpecRace && SelectedRace.HasSprint)
+                    hasSprint = true;
+                else
+                    hasSprint = false;
+            }
+        }
 
         public ICommand RacesAllCommand { get; set; }
         public ICommand DriversAllCommand { get; set; }
@@ -335,6 +349,7 @@ namespace Formula1App.ViewModels
         }
         public async Task GetSeasonResults()
         {
+            InServerCall = true;
             SeasonResults = await extService.GetSeasonResultsAsync(SelectedSeason.season);
             foreach (Race r in SeasonResults)
             {
@@ -343,6 +358,7 @@ namespace Formula1App.ViewModels
                 r.Results.Add(add);
             }
             SeasonResults = new(SeasonResults);
+            InServerCall = false;
         }
         private async Task GetCats()
         {

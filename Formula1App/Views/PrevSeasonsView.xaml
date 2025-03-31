@@ -10,67 +10,651 @@
              Title="Previous Seasons"
              BackgroundColor="#F7F4F1"
              Shell.TabBarIsVisible="False">
-    <!--<ContentPage.Resources>
-        <modelext:MyDataTempSelector x:Key="DataTemp">
+    <ContentPage.Resources>
+        <modelext:MyDataTempSelector x:Key="AllRacesDataTemp">
             <modelext:MyDataTempSelector.EvenTemplate>
                 <DataTemplate
                     x:DataType="modelext:Race">
-                    <ScrollView>
-                        <Grid
-                            BackgroundColor="#F3F3F3"
-                            Margin="10,20,0,0"
+                    <Grid
+                        BackgroundColor="#F3F3F3"
+                        HeightRequest="50"
+                        VerticalOptions="Center"
+                        ColumnDefinitions="3*,2*,3*">
+                        <Label
+                            Margin="10,0,0,0"
                             VerticalOptions="Center"
-                            ColumnDefinitions="3*,2*,3*">
-                            <Label
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding OffRaceName}"/>
-                            <Label
-                                Grid.Column="1"
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding Winner.Driver.code}"/>
-                            <Label
-                                Grid.Column="2"
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
-                        </Grid>
-                    </ScrollView>
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding OffRaceName}"/>
+                        <Label
+                            Margin="5,0,0,0"
+                            VerticalOptions="Center"
+                            Grid.Column="1"
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                            Margin="5,0,0,0"
+                            VerticalOptions="Center"
+                            Grid.Column="2"
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
             <modelext:MyDataTempSelector.OddTemplate>
                 <DataTemplate
                     x:DataType="modelext:Race">
-                    <ScrollView>
-                        <Grid
-                            BackgroundColor="White"
-                            Margin="10,20,0,0"
+                    <Grid
+                        BackgroundColor="White"
+                        HeightRequest="50"
+                        VerticalOptions="Center"
+                        ColumnDefinitions="3*,2*,3*">
+                        <Label
+                            Margin="10,0,0,0"
                             VerticalOptions="Center"
-                            ColumnDefinitions="3*,2*,3*">
-                            <Label
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding OffRaceName}"/>
-                            <Label
-                                Grid.Column="1"
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding Winner.Driver.code}"/>
-                            <Label
-                                Grid.Column="2"
-                                FontSize="12"
-                                FontFamily="F1Reg"
-                                Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
-                        </Grid>
-                    </ScrollView>
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding OffRaceName}"/>
+                        <Label
+                            Margin="5,0,0,0"
+                            VerticalOptions="Center"
+                            Grid.Column="1"
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                            Margin="5,0,0,0"
+                            VerticalOptions="Center"
+                            Grid.Column="2"
+                            FontSize="12"
+                            FontFamily="F1Reg"
+                            Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
         </modelext:MyDataTempSelector>
-    </ContentPage.Resources>-->
+        <modelext:MyDataTempSelector x:Key="RaceResultDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="RacePitsDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="RaceGridDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="RaceQualiDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="RaceSprintDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="AllDriversDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="DriverDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="AllConstsDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="ConstDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="#F3F3F3"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+            x:DataType="modelext:Race">
+                    <Grid
+                BackgroundColor="White"
+                HeightRequest="50"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                        <Label
+                    Margin="10,0,0,0"
+                    VerticalOptions="Center"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding OffRaceName}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Driver.code}"/>
+                        <Label
+                    Margin="5,0,0,0"
+                    VerticalOptions="Center"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="F1Reg"
+                    Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+    </ContentPage.Resources>
     <ScrollView>
-    <VerticalStackLayout>
-        <expander:SfExpander
+        <VerticalStackLayout>
+            <expander:SfExpander
             Margin="10,30"
             AnimationDuration="120"
             AnimationEasing="Linear"
@@ -144,7 +728,7 @@
                 </CollectionView>
             </expander:SfExpander.Content>
         </expander:SfExpander>
-        <expander:SfExpander
+            <expander:SfExpander
     Margin="10,0"
     AnimationDuration="120"
     AnimationEasing="Linear"
@@ -219,7 +803,7 @@
                 </CollectionView>
             </expander:SfExpander.Content>
         </expander:SfExpander>
-        <expander:SfExpander
+            <expander:SfExpander
     Margin="10,30"
     AnimationDuration="120"
     AnimationEasing="Linear"
@@ -416,86 +1000,557 @@ SelectionMode="Single"
             <VerticalStackLayout
                 Margin="10,0,10,30"
                 BackgroundColor="White">
-                <ScrollView
-                    Margin="0,0,0,20"
-                    Orientation="Both"
-                    HorizontalScrollBarVisibility="Always">
+                <Grid
+                    x:Name="grd"
+                    Margin="0,0,0,20">
+                    <ActivityIndicator
+                            Margin="0,100,0,0"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Color="#848080"
+                            IsRunning="{Binding BindingContext.InServerCall, Source={x:Reference grd}}"/>
                     <CollectionView
-                        VerticalScrollBarVisibility="Always"
-                        ItemsSource="{Binding SeasonResults}"
-                        SelectionMode="None"
-                        IsVisible="{Binding InAllRaces}"
-                        >
-                        <!--ItemTemplate="{StaticResource DataTemp}"-->
-                    <CollectionView.Header>
-                        <VerticalStackLayout>
-                            <Label
-                                Margin="0,15,0,0"
-                                HorizontalOptions="Center">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                            Text="{Binding SelectedSeason.season}"
-                                            FontFamily="F1Reg"
-                                            FontSize="18"/>
-                                        <Span
-                                            Text=" Race Results"
-                                            FontFamily="F1Reg"
-                                            FontSize="18"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Grid
-                                Margin="10,30,0,15"
-                                VerticalOptions="Center"
-                                ColumnDefinitions="3*,2*,3*">
-                                <Label
-                                    TextTransform="Uppercase"
-                                    FontFamily="F1Bold"
-                                    FontSize="12"
-                                    Text="Grand Prix"/>
-                                <Label
-                                    Grid.Column="1"
-                                    TextTransform="Uppercase"
-                                    FontFamily="F1Bold"
-                                    FontSize="12"
-                                    Text="Winner"/>
-                                <Label
-                                    Grid.Column="2"
-                                    TextTransform="Uppercase"
-                                    FontFamily="F1Bold"
-                                    FontSize="12"
-                                    Text="Car"/>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </CollectionView.Header>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate
-                            x:DataType="modelext:Race">
-                                <Grid
-                                    Margin="10,20,0,0"
-                                    VerticalOptions="Center"
-                                    ColumnDefinitions="3*,2*,3*">
+                            VerticalScrollBarVisibility="Always"
+                            ItemsSource="{Binding SeasonResults}"
+                            SelectionMode="None"
+                            IsVisible="{Binding InAllRaces}"
+                            ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
                                     <Label
-                                        FontSize="12"
-                                        FontFamily="F1Reg"
-                                        Text="{Binding OffRaceName}"/>
+                                        Margin="0,15,0,0"
+                                        HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding SelectedSeason.season}"
+                                                    FontFamily="F1Reg"
+                                                    FontSize="18"/>
+                                                <Span
+                                                    Text=" Race Results"
+                                                    FontFamily="F1Reg"
+                                                    FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                                        Margin="10,30,0,15"
+                                        VerticalOptions="Center"
+                                        ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Grand Prix"/>
+                                        <Label
+                                            Grid.Column="1"
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Winner"/>
+                                        <Label
+                                            Grid.Column="2"
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                                        Color="#F3F3F3"
+                                        HeightRequest="1"
+                                        WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--all races-->
+                    <CollectionView
+                            VerticalScrollBarVisibility="Always"
+                            ItemsSource="{Binding SeasonResults}"
+                            SelectionMode="None"
+                            IsVisible="{Binding InAllRaces}"
+                            ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
                                     <Label
-                                        Grid.Column="1"
-                                        FontSize="12"
-                                        FontFamily="F1Reg"
-                                        Text="{Binding Winner.Driver.code}"/>
+                                        Margin="0,15,0,0"
+                                        HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    Text="{Binding SelectedSeason.season}"
+                                                    FontFamily="F1Reg"
+                                                    FontSize="18"/>
+                                                <Span
+                                                    Text=" Race Results"
+                                                    FontFamily="F1Reg"
+                                                    FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                                        Margin="10,30,0,15"
+                                        VerticalOptions="Center"
+                                        ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Grand Prix"/>
+                                        <Label
+                                            Grid.Column="1"
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Winner"/>
+                                        <Label
+                                            Grid.Column="2"
+                                            TextTransform="Uppercase"
+                                            FontFamily="F1Bold"
+                                            FontSize="12"
+                                            Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                                        Color="#F3F3F3"
+                                        HeightRequest="1"
+                                        WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec race result-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
                                     <Label
-                                        Grid.Column="2"
-                                        FontSize="12"
-                                        FontFamily="F1Reg"
-                                        Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
-                                </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec race pits-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec race grid-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec race quali-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec race sprint-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--all drivers-->
+                    <CollectionView
+VerticalScrollBarVisibility="Always"
+ItemsSource="{Binding SeasonResults}"
+SelectionMode="None"
+IsVisible="{Binding InAllRaces}"
+ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+            Margin="0,15,0,0"
+            HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                        Text="{Binding SelectedSeason.season}"
+                        FontFamily="F1Reg"
+                        FontSize="18"/>
+                                                <Span
+                        Text=" Race Results"
+                        FontFamily="F1Reg"
+                        FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+            Margin="10,30,0,15"
+            VerticalOptions="Center"
+            ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Grand Prix"/>
+                                        <Label
+                Grid.Column="1"
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Winner"/>
+                                        <Label
+                Grid.Column="2"
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+            Color="#F3F3F3"
+            HeightRequest="1"
+            WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec driver-->
+                    <CollectionView
+VerticalScrollBarVisibility="Always"
+ItemsSource="{Binding SeasonResults}"
+SelectionMode="None"
+IsVisible="{Binding InAllRaces}"
+ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+            Margin="0,15,0,0"
+            HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                        Text="{Binding SelectedSeason.season}"
+                        FontFamily="F1Reg"
+                        FontSize="18"/>
+                                                <Span
+                        Text=" Race Results"
+                        FontFamily="F1Reg"
+                        FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+            Margin="10,30,0,15"
+            VerticalOptions="Center"
+            ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Grand Prix"/>
+                                        <Label
+                Grid.Column="1"
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Winner"/>
+                                        <Label
+                Grid.Column="2"
+                TextTransform="Uppercase"
+                FontFamily="F1Bold"
+                FontSize="12"
+                Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+            Color="#F3F3F3"
+            HeightRequest="1"
+            WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--all Constructors-->
+                    <CollectionView
+    VerticalScrollBarVisibility="Always"
+    ItemsSource="{Binding SeasonResults}"
+    SelectionMode="None"
+    IsVisible="{Binding InAllRaces}"
+    ItemTemplate="{StaticResource AllRacesDataTemp}">
+                            <CollectionView.Header>
+                                <VerticalStackLayout>
+                                    <Label
+                Margin="0,15,0,0"
+                HorizontalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                            Text="{Binding SelectedSeason.season}"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                                <Span
+                            Text=" Race Results"
+                            FontFamily="F1Reg"
+                            FontSize="18"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Grid
+                Margin="10,30,0,15"
+                VerticalOptions="Center"
+                ColumnDefinitions="3*,2*,3*">
+                                        <Label
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Grand Prix"/>
+                                        <Label
+                    Grid.Column="1"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Winner"/>
+                                        <Label
+                    Grid.Column="2"
+                    TextTransform="Uppercase"
+                    FontFamily="F1Bold"
+                    FontSize="12"
+                    Text="Car"/>
+                                    </Grid>
+                                    <BoxView
+                Color="#F3F3F3"
+                HeightRequest="1"
+                WidthRequest="400"/>
+                                </VerticalStackLayout>
+                            </CollectionView.Header>
+                        </CollectionView>
+                    <!--spec Constructor-->
+                </Grid>
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
