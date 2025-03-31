@@ -63,6 +63,7 @@
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center"
                                             FontFamily="F1Bold"
+                                            TextTransform="Uppercase"
                                             Text="{Binding MonthName}"/>
                                     </Border>
                                 </VerticalStackLayout>

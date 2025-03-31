@@ -804,10 +804,10 @@
             </expander:SfExpander.Content>
         </expander:SfExpander>
             <expander:SfExpander
-    Margin="10,30"
-    AnimationDuration="120"
-    AnimationEasing="Linear"
-    HeaderBackground="White">
+                Margin="10,30"
+                AnimationDuration="120"
+                AnimationEasing="Linear"
+                HeaderBackground="White">
             <expander:SfExpander.Header>
                 <Label
             Margin="10,0,0,0"
@@ -820,7 +820,7 @@
             </expander:SfExpander.Header>
             <expander:SfExpander.Content>
                 <Grid>
-                <CollectionView
+                    <CollectionView
             Margin="10,10,0,0"
             VerticalScrollBarVisibility="Always"
             MaximumHeightRequest="175"
@@ -878,7 +878,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView
+                    <CollectionView
 Margin="10,10,0,0"
 VerticalScrollBarVisibility="Always"
 MaximumHeightRequest="175"
@@ -889,6 +889,7 @@ SelectionMode="Single"
                     <CollectionView.ItemTemplate>
                         <DataTemplate
         x:DataType="modelext:MyDriverStandings">
+                                    <ScrollView>
                             <Grid>
                                 <Label
                 x:Name="ssn"
@@ -933,10 +934,11 @@ SelectionMode="Single"
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                             </Grid>
-                        </DataTemplate>
+                                    </ScrollView>
+                                </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView
+                    <CollectionView
 Margin="10,10,0,0"
 VerticalScrollBarVisibility="Always"
 MaximumHeightRequest="175"
@@ -995,14 +997,207 @@ SelectionMode="Single"
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 </Grid>
-                </expander:SfExpander.Content>
+            </expander:SfExpander.Content>
         </expander:SfExpander>
             <VerticalStackLayout
                 Margin="10,0,10,30"
                 BackgroundColor="White">
+                <VerticalStackLayout
+                    IsVisible="{Binding InSpecRace}">
+                    <Label
+                        Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding SelectedRace.OffGpName}"
+                                    FontFamily="F1Reg"
+                                    FontSize="18"/>
+                                <Span
+                                    Text="{Binding SelectedRace.season}"
+                                    FontFamily="F1Reg"
+                                    FontSize="18"/>
+                                <Span
+                                    Text=" - Race Results"
+                                    FontFamily="F1Reg"
+                                    FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        IsVisible="{Binding SelectedRace.Has1Month}"
+                        Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.FirstDay}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" - "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.LastDay}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.Month2}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.season}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        IsVisible="{Binding SelectedRace.Has2Months}"
+                        Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.FirstDay}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.Month1}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" - "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.LastDay}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.Month2}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=" "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.season}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Margin="0,15,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.Circuit.circuitName}"/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text=", "/>
+                                <Span
+                                    FontFamily="F1Bold"
+                                    FontSize="7"
+                                    Text="{Binding SelectedRace.Circuit.Location.locality}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <CollectionView
+                        ItemsSource="{Binding RaceCats}"
+                        SelectedItem="{Binding SelectedRaceCat}"
+                        SelectionMode="Single">
+                        <CollectionView.Header>
+                            <Grid
+                                ColumnDefinitions="*,10*">
+                                <BoxView
+                                    WidthRequest="7"
+                                    HeightRequest="50"
+                                    Color="#E11900"/>
+                                <Label
+                                    Grid.Column="1"
+                                    Text="Race"
+                                    FontFamily="F1Bold"/>
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="x:String">
+                                <Grid
+                                    ColumnDefinitions="*,10*">
+                                    <BoxView
+                                        x:Name="bxview"
+                                        WidthRequest="7"
+                                        HeightRequest="50"
+                                        Color="#E5E7EB"/>
+                                    <Label
+                                        x:Name="lbl"
+                                        Grid.Column="1"
+                                        Text="{Binding .}"
+                                        FontFamily="F1Reg"/>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState
+                                                Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="#EDEDED"/>
+                                                    <Setter
+                                                        TargetName="lbl"
+                                                        Property="Label.FontFamily"
+                                                        Value="F1Bold"/>
+                                                    <Setter
+                                                        TargetName="bxview"
+                                                        Property="BoxView.Color"
+                                                        Value="#676766D"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState
+                                                Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                                        Property="BackgroundColor"
+                                                        Value="Transparent"/>
+                                                    <Setter
+                                                        TargetName="lbl"
+                                                        Property="Label.FontFamily"
+                                                        Value="F1Reg"/>
+                                                    <Setter
+                                                        TargetName="bxview"
+                                                        Property="BoxView.Color"
+                                                        Value="#E5E7EB"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
                 <Grid
                     x:Name="grd"
-                    Margin="0,0,0,20">
+                    Margin="0,0,0,20" IsVisible="False">
                     <ActivityIndicator
                             Margin="0,100,0,0"
                             VerticalOptions="Start"
@@ -1064,64 +1259,48 @@ SelectionMode="Single"
                         </CollectionView>
                     <!--all races-->
                     <CollectionView
-                            VerticalScrollBarVisibility="Always"
-                            ItemsSource="{Binding SeasonResults}"
-                            SelectionMode="None"
-                            IsVisible="{Binding InAllRaces}"
-                            ItemTemplate="{StaticResource AllRacesDataTemp}">
-                            <CollectionView.Header>
-                                <VerticalStackLayout>
+                        VerticalScrollBarVisibility="Always"
+                        ItemsSource="{Binding SeasonResults}"
+                        SelectionMode="None"
+                        IsVisible="False"
+                        ItemTemplate="{StaticResource AllRacesDataTemp}">
+                        <CollectionView.Header>
+                            <VerticalStackLayout>
+                                <Grid
+                                    Margin="10,30,0,15"
+                                    VerticalOptions="Center"
+                                    ColumnDefinitions="3*,2*,3*">
                                     <Label
-                                        Margin="0,15,0,0"
-                                        HorizontalOptions="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding SelectedSeason.season}"
-                                                    FontFamily="F1Reg"
-                                                    FontSize="18"/>
-                                                <Span
-                                                    Text=" Race Results"
-                                                    FontFamily="F1Reg"
-                                                    FontSize="18"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Grid
-                                        Margin="10,30,0,15"
-                                        VerticalOptions="Center"
-                                        ColumnDefinitions="3*,2*,3*">
-                                        <Label
-                                            TextTransform="Uppercase"
-                                            FontFamily="F1Bold"
-                                            FontSize="12"
-                                            Text="Grand Prix"/>
-                                        <Label
-                                            Grid.Column="1"
-                                            TextTransform="Uppercase"
-                                            FontFamily="F1Bold"
-                                            FontSize="12"
-                                            Text="Winner"/>
-                                        <Label
-                                            Grid.Column="2"
-                                            TextTransform="Uppercase"
-                                            FontFamily="F1Bold"
-                                            FontSize="12"
-                                            Text="Car"/>
-                                    </Grid>
-                                    <BoxView
-                                        Color="#F3F3F3"
-                                        HeightRequest="1"
-                                        WidthRequest="400"/>
-                                </VerticalStackLayout>
-                            </CollectionView.Header>
-                        </CollectionView>
+                                        TextTransform="Uppercase"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Grand Prix"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        TextTransform="Uppercase"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Winner"/>
+                                    <Label
+                                        Grid.Column="2"
+                                        TextTransform="Uppercase"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Car"/>
+                                </Grid>
+                                <BoxView
+                                    Color="#F3F3F3"
+                                    HeightRequest="1"
+                                    WidthRequest="400"/>
+                            </VerticalStackLayout>
+                        </CollectionView.Header>
+                    </CollectionView>
                     <!--spec race result-->
                     <CollectionView
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1175,7 +1354,7 @@ SelectionMode="Single"
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1229,7 +1408,7 @@ SelectionMode="Single"
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1283,7 +1462,7 @@ SelectionMode="Single"
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1337,7 +1516,7 @@ SelectionMode="Single"
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1391,7 +1570,7 @@ SelectionMode="Single"
 VerticalScrollBarVisibility="Always"
 ItemsSource="{Binding SeasonResults}"
 SelectionMode="None"
-IsVisible="{Binding InAllRaces}"
+IsVisible="False"
 ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1445,7 +1624,7 @@ ItemTemplate="{StaticResource AllRacesDataTemp}">
 VerticalScrollBarVisibility="Always"
 ItemsSource="{Binding SeasonResults}"
 SelectionMode="None"
-IsVisible="{Binding InAllRaces}"
+IsVisible="False"
 ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>
@@ -1499,7 +1678,7 @@ ItemTemplate="{StaticResource AllRacesDataTemp}">
     VerticalScrollBarVisibility="Always"
     ItemsSource="{Binding SeasonResults}"
     SelectionMode="None"
-    IsVisible="{Binding InAllRaces}"
+    IsVisible="False"
     ItemTemplate="{StaticResource AllRacesDataTemp}">
                             <CollectionView.Header>
                                 <VerticalStackLayout>

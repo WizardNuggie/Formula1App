@@ -177,23 +177,20 @@ namespace Formula1App.Services
                     int.TryParse(total, out totalNum);
                     List<Driver> dList = new();
                     int offset = 0;
-                    else
+                    for (int i = 0; i <= totalNum / 100; i++)
                     {
-                        for (int i = 0; i <= totalNum / 100; i++)
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
+                        string newResContent = await res.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
                         {
-                            HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
-                            string newResContent = await res.Content.ReadAsStringAsync();
-                            if (res.IsSuccessStatusCode)
-                            {
-                                newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
-                                DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(newResContent);
-                                dList.AddRange(newResult.DriversData.DriverTable.Drivers.ToList());
-                                offset += 100;
-                            }
-                            else
-                            {
-                                return null;
-                            }
+                            newResContent = newResContent.Replace("\"MRData\":", "\"DriversData\":");
+                            DriverApi newResult = JsonSerializer.Deserialize<DriverApi>(newResContent);
+                            dList.AddRange(newResult.DriversData.DriverTable.Drivers.ToList());
+                            offset += 100;
+                        }
+                        else
+                        {
+                            return null;
                         }
                     }
                     List<MyDriver>? newDList = new();

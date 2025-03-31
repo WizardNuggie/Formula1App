@@ -39,6 +39,20 @@ namespace Formula1App.ModelsExt
         public Circuit Circuit { get; set; }
         public string date { get; set; }
         public string time { get; set; }
+        public string FirstDay
+        {
+            get
+            {
+                return FirstPractice.date.Substring(FirstPractice.date.Length -3, 2);
+            }
+        }
+        public string LastDay
+        {
+            get
+            {
+                return date.Substring(date.Length - 3, 2);
+            }
+        }
         public List<Result> Results { get; set; }
         public Result Winner
         {
@@ -93,7 +107,10 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return $"https://media.formula1.com/image/upload/f_auto,c_limit,w_1440,q_auto/f_auto/q_auto/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/{((App)Application.Current).TrackPic[Circuit.Location.locality]}";
+                if (((App)Application.Current).TrackPic.ContainsKey(Circuit.Location.locality))
+                    return $"https://media.formula1.com/image/upload/f_auto,c_limit,w_1440,q_auto/f_auto/q_auto/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/{((App)Application.Current).TrackPic[Circuit.Location.locality]}";
+                else
+                    return "pic doesnt exist";
             }
         }
         public string FlagUrl
@@ -107,21 +124,48 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}".ToUpper();
+                if (((App)Application.Current).TrackSponsors.ContainsKey(Circuit.Location.locality))
+                    return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}".ToUpper();
+                else
+                    return "error";
+            }
+        }
+        public string Month1
+        {
+            get
+            {
+                return ((App)Application.Current).MonthNames[FirstPractice.date.Substring(5, 2)];
+            }
+        }
+        public string Month2
+        {
+            get
+            {
+                return ((App)Application.Current).MonthNames[date.Substring(5, 2)];
+            }
+        }
+        public bool Has2Months
+        {
+            get
+            {
+                return Month1 != Month2;
+            }
+        }
+        public bool Has1Month
+        {
+            get
+            {
+                return !Has2Months;
             }
         }
         public string MonthName
         {
             get
             {
-                int m1 = 0;
-                int m2 = 0;
-                int.TryParse(FirstPractice.date.Substring(5, 2), out m1);
-                int.TryParse(date.Substring(5, 2), out m2);
-                if (m1 < m2)
-                    return $"{((App)Application.Current).MonthNames[m1.ToString()].ToUpper()}-{((App)Application.Current).MonthNames[m2.ToString()].ToUpper()}";
+                if (Has2Months)
+                    return $"{Month1}-{Month2}";
                 else
-                    return ((App)Application.Current).MonthNames[m1.ToString()].ToUpper();
+                    return Month1;
             }
         }
         public string MonthSize
@@ -148,6 +192,27 @@ namespace Formula1App.ModelsExt
                 return !!HasSprint;
             }
         }
+        public Race(Race r)
+        {
+            season = r.season;
+            round = r.round;
+            url = r.url;
+            raceName = r.raceName;
+            Circuit = new Circuit(r.Circuit);
+            date = r.date;
+            time = r.time;
+            Results = r.Results;
+            FirstPractice = r.FirstPractice;
+            SecondPractice = r.SecondPractice;
+            ThirdPractice = r.ThirdPractice;
+            Qualifying = r.Qualifying;
+            Sprint = r.Sprint;
+            SprintQualifying = r.SprintQualifying;
+        }
+        public Race()
+        {
+
+        }
     }
 
     public class Circuit
@@ -156,6 +221,17 @@ namespace Formula1App.ModelsExt
         public string url { get; set; }
         public string circuitName { get; set; }
         public Location Location { get; set; }
+        public Circuit(Circuit c)
+        {
+            circuitId = c.circuitId;
+            url = c.url;
+            circuitName = c.circuitName;
+            Location = new Location(c.Location);
+        }
+        public Circuit()
+        {
+            
+        }
     }
 
     public class Location
@@ -164,6 +240,17 @@ namespace Formula1App.ModelsExt
         public string _long { get; set; }
         public string locality { get; set; }
         public string country { get; set; }
+        public Location(Location l)
+        {
+            lat = l.lat;
+            _long = l._long;
+            locality = l.locality;
+            country = l.country;
+        }
+        public Location()
+        {
+            
+        }
     }
 
     public class Firstpractice
