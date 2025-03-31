@@ -281,11 +281,11 @@ namespace Formula1App.ViewModels
         }
         private async void InitData()
         {
-            await GetCats();
             await GetSeasons();
             await GetRaces();
             await GetDrivers();
             await getConsts();
+            await GetCats();
         }
         private async Task GetSeasons()
         {
@@ -338,7 +338,7 @@ namespace Formula1App.ViewModels
             SeasonResults = await extService.GetSeasonResultsAsync(SelectedSeason.season);
             foreach (Race r in SeasonResults)
             {
-                Result add = r.Results.FirstOrDefault();
+                Result add = r.Winner;
                 r.Results.Clear();
                 r.Results.Add(add);
             }

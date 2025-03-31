@@ -532,7 +532,17 @@ namespace Formula1App.Services
                         {
                             newResContent = newResContent.Replace("\"MRData\":", "\"RaceResultsData\":");
                             RaceResultsApi newResult = JsonSerializer.Deserialize<RaceResultsApi>(newResContent);
-                            rList.AddRange(newResult.RaceResultsData.RaceTable.Races.ToList());
+                            List<Race> rs = newResult.RaceResultsData.RaceTable.Races.ToList();
+                            foreach (Race r in rs)
+                            {
+                                Race rc = rList.Where(x => x.round == r.round).FirstOrDefault();
+                                if (rc != null)
+                                {
+                                    rList.Last().Results.AddRange(r.Results);
+                                    rs.Remove(r);
+                                }
+                            }
+                            rList.AddRange(rs);
                             offset += 100;
                         }
                         else

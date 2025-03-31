@@ -8,7 +8,66 @@
              x:Class="Formula1App.Views.PrevSeasonsView"
              x:DataType="viewmodel:PrevSeasonsViewModel"
              Title="Previous Seasons"
-             BackgroundColor="#F7F4F1">
+             BackgroundColor="#F7F4F1"
+             Shell.TabBarIsVisible="False">
+    <!--<ContentPage.Resources>
+        <modelext:MyDataTempSelector x:Key="DataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+                    x:DataType="modelext:Race">
+                    <ScrollView>
+                        <Grid
+                            BackgroundColor="#F3F3F3"
+                            Margin="10,20,0,0"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="3*,2*,3*">
+                            <Label
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding OffRaceName}"/>
+                            <Label
+                                Grid.Column="1"
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding Winner.Driver.code}"/>
+                            <Label
+                                Grid.Column="2"
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                        </Grid>
+                    </ScrollView>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+                    x:DataType="modelext:Race">
+                    <ScrollView>
+                        <Grid
+                            BackgroundColor="White"
+                            Margin="10,20,0,0"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="3*,2*,3*">
+                            <Label
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding OffRaceName}"/>
+                            <Label
+                                Grid.Column="1"
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding Winner.Driver.code}"/>
+                            <Label
+                                Grid.Column="2"
+                                FontSize="12"
+                                FontFamily="F1Reg"
+                                Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                        </Grid>
+                    </ScrollView>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
+    </ContentPage.Resources>-->
     <ScrollView>
     <VerticalStackLayout>
         <expander:SfExpander
@@ -355,13 +414,19 @@ SelectionMode="Single"
                 </expander:SfExpander.Content>
         </expander:SfExpander>
             <VerticalStackLayout
-                Margin="10,0"
+                Margin="10,0,10,30"
                 BackgroundColor="White">
-                <CollectionView
-                    VerticalScrollBarVisibility="Always"
-                    ItemsSource="{Binding SeasonResults}"
-                    SelectionMode="None"
-                    IsVisible="{Binding InAllRaces}">
+                <ScrollView
+                    Margin="0,0,0,20"
+                    Orientation="Both"
+                    HorizontalScrollBarVisibility="Always">
+                    <CollectionView
+                        VerticalScrollBarVisibility="Always"
+                        ItemsSource="{Binding SeasonResults}"
+                        SelectionMode="None"
+                        IsVisible="{Binding InAllRaces}"
+                        >
+                        <!--ItemTemplate="{StaticResource DataTemp}"-->
                     <CollectionView.Header>
                         <VerticalStackLayout>
                             <Label
@@ -407,7 +472,6 @@ SelectionMode="Single"
                     <CollectionView.ItemTemplate>
                         <DataTemplate
                             x:DataType="modelext:Race">
-                            <ScrollView>
                                 <Grid
                                     Margin="10,20,0,0"
                                     VerticalOptions="Center"
@@ -427,11 +491,11 @@ SelectionMode="Single"
                                         FontFamily="F1Reg"
                                         Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
                                 </Grid>
-                            </ScrollView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </VerticalStackLayout>
+            </ScrollView>
+        </VerticalStackLayout>
     </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
