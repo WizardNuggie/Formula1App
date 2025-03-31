@@ -268,14 +268,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool inSpecRace;
         public bool InSpecRace
         {
-            get
+            get => inSpecRace;
+            set
             {
                 if (!InRaces)
-                    return false;
+                    inSpecRace = false;
                 else
-                    return !InAllRaces;
+                    inSpecRace = !InAllRaces;
             }
         }
         private bool inAllDrivers;
