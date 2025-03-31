@@ -9,9 +9,10 @@
              x:DataType="viewmodel:PrevSeasonsViewModel"
              Title="Previous Seasons"
              BackgroundColor="#F7F4F1">
+    <ScrollView>
     <VerticalStackLayout>
         <expander:SfExpander
-            Margin="20,30"
+            Margin="10,30"
             AnimationDuration="120"
             AnimationEasing="Linear"
             HeaderBackground="White">
@@ -84,5 +85,353 @@
                 </CollectionView>
             </expander:SfExpander.Content>
         </expander:SfExpander>
+        <expander:SfExpander
+    Margin="10,0"
+    AnimationDuration="120"
+    AnimationEasing="Linear"
+    HeaderBackground="White">
+            <expander:SfExpander.Header>
+                <Label
+            Margin="10,0,0,0"
+            HeightRequest="50"
+            Text="Categories"
+            FontFamily="F1Reg"
+            FontSize="20"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"/>
+            </expander:SfExpander.Header>
+            <expander:SfExpander.Content>
+                <CollectionView
+            Margin="10,10,0,0"
+            VerticalScrollBarVisibility="Always"
+            MaximumHeightRequest="175"
+            ItemsSource="{Binding Categories}"
+            SelectedItem="{Binding SelectedCat}"
+            SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                    x:DataType="x:String">
+                            <Grid>
+                                <Label
+                            x:Name="ssn"
+                            FontFamily="F1Reg"
+                            FontSize="18"
+                                    TextTransform="Uppercase"
+                            Text="{Binding .}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState
+                                    Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.FontFamily"
+                                            Value="F1Bold"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.TextDecorations"
+                                            Value="Underline"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                                    Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.FontFamily"
+                                            Value="F1Reg"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.TextDecorations"
+                                            Value="None"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </expander:SfExpander.Content>
+        </expander:SfExpander>
+        <expander:SfExpander
+    Margin="10,30"
+    AnimationDuration="120"
+    AnimationEasing="Linear"
+    HeaderBackground="White">
+            <expander:SfExpander.Header>
+                <Label
+            Margin="10,0,0,0"
+            HeightRequest="50"
+            Text="Results"
+            FontFamily="F1Reg"
+            FontSize="20"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center"/>
+            </expander:SfExpander.Header>
+            <expander:SfExpander.Content>
+                <Grid>
+                <CollectionView
+            Margin="10,10,0,0"
+            VerticalScrollBarVisibility="Always"
+            MaximumHeightRequest="175"
+            ItemsSource="{Binding Races}"
+            SelectedItem="{Binding SelectedRace}"
+            SelectionMode="Single"
+                    IsVisible="{Binding InRaces}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                    x:DataType="modelext:Race">
+                            <Grid>
+                                <Label
+                            x:Name="ssn"
+                            FontFamily="F1Reg"
+                            FontSize="18"
+                                    TextTransform="Uppercase"
+                            Text="{Binding OffRaceName}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState
+                                    Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.FontFamily"
+                                            Value="F1Bold"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.TextDecorations"
+                                            Value="Underline"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                                    Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                            Property="BackgroundColor"
+                                            Value="Transparent"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.FontFamily"
+                                            Value="F1Reg"/>
+                                                <Setter
+                                            TargetName="ssn"
+                                            Property="Label.TextDecorations"
+                                            Value="None"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
+Margin="10,10,0,0"
+VerticalScrollBarVisibility="Always"
+MaximumHeightRequest="175"
+ItemsSource="{Binding OrderedDrivers}"
+SelectedItem="{Binding SelectedDriver}"
+SelectionMode="Single"
+                    IsVisible="{Binding InDrivers}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+        x:DataType="modelext:MyDriverStandings">
+                            <Grid>
+                                <Label
+                x:Name="ssn"
+                FontFamily="F1Reg"
+                FontSize="18"
+                                    TextTransform="Uppercase"
+                Text="{Binding JoinedName}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState
+                        Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                Property="BackgroundColor"
+                                Value="Transparent"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.FontFamily"
+                                Value="F1Bold"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.TextDecorations"
+                                Value="Underline"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                        Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                Property="BackgroundColor"
+                                Value="Transparent"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.FontFamily"
+                                Value="F1Reg"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.TextDecorations"
+                                Value="None"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
+Margin="10,10,0,0"
+VerticalScrollBarVisibility="Always"
+MaximumHeightRequest="175"
+ItemsSource="{Binding OrderedConsts}"
+SelectedItem="{Binding SelectedConst}"
+SelectionMode="Single"
+                    IsVisible="{Binding InConsts}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+        x:DataType="modelext:Constructorstanding">
+                            <Grid>
+                                <Label
+                x:Name="ssn"
+                FontFamily="F1Reg"
+                FontSize="18"
+                                    TextTransform="Uppercase"
+                Text="{Binding Constructor.OfficialConstructorName}"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState
+                        Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter
+                                Property="BackgroundColor"
+                                Value="Transparent"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.FontFamily"
+                                Value="F1Bold"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.TextDecorations"
+                                Value="Underline"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState
+                        Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter
+                                Property="BackgroundColor"
+                                Value="Transparent"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.FontFamily"
+                                Value="F1Reg"/>
+                                                <Setter
+                                TargetName="ssn"
+                                Property="Label.TextDecorations"
+                                Value="None"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                </Grid>
+                </expander:SfExpander.Content>
+        </expander:SfExpander>
+            <VerticalStackLayout
+                Margin="10,0"
+                BackgroundColor="White">
+                <CollectionView
+                    VerticalScrollBarVisibility="Always"
+                    ItemsSource="{Binding SeasonResults}"
+                    SelectionMode="None"
+                    IsVisible="{Binding InAllRaces}">
+                    <CollectionView.Header>
+                        <VerticalStackLayout>
+                            <Label
+                                Margin="0,15,0,0"
+                                HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="{Binding SelectedSeason.season}"
+                                            FontFamily="F1Reg"
+                                            FontSize="18"/>
+                                        <Span
+                                            Text=" Race Results"
+                                            FontFamily="F1Reg"
+                                            FontSize="18"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Grid
+                                Margin="10,30,0,15"
+                                VerticalOptions="Center"
+                                ColumnDefinitions="3*,2*,3*">
+                                <Label
+                                    TextTransform="Uppercase"
+                                    FontFamily="F1Bold"
+                                    FontSize="12"
+                                    Text="Grand Prix"/>
+                                <Label
+                                    Grid.Column="1"
+                                    TextTransform="Uppercase"
+                                    FontFamily="F1Bold"
+                                    FontSize="12"
+                                    Text="Winner"/>
+                                <Label
+                                    Grid.Column="2"
+                                    TextTransform="Uppercase"
+                                    FontFamily="F1Bold"
+                                    FontSize="12"
+                                    Text="Car"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate
+                            x:DataType="modelext:Race">
+                            <ScrollView>
+                                <Grid
+                                    Margin="10,20,0,0"
+                                    VerticalOptions="Center"
+                                    ColumnDefinitions="3*,2*,3*">
+                                    <Label
+                                        FontSize="12"
+                                        FontFamily="F1Reg"
+                                        Text="{Binding OffRaceName}"/>
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="F1Reg"
+                                        Text="{Binding Winner.Driver.code}"/>
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="12"
+                                        FontFamily="F1Reg"
+                                        Text="{Binding Winner.Constructor.OfficialConstructorName}"/>
+                                </Grid>
+                            </ScrollView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

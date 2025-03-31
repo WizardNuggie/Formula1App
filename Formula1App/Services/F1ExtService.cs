@@ -407,7 +407,7 @@ namespace Formula1App.Services
                 return default;
             }
         }
-        public async Task<List<Result>> GetRaceResultsAsync(string year, string round)
+        public async Task<Race> GetRaceResultsAsync(string year, string round)
         {
             string url = $"{ExtAPI}{year}/{round}/results.json?limit=100";
             try
@@ -419,12 +419,7 @@ namespace Formula1App.Services
                     resContent = resContent.Replace("\"MRData\":", "\"RaceResultsData\":");
                     RaceResultsApi result = JsonSerializer.Deserialize<RaceResultsApi>(resContent);
                     List<Race> rList = result.RaceResultsData.RaceTable.Races.ToList();
-                    List<Result> newRList = new();
-                    foreach (Race r in rList)
-                    {
-                        newRList = r.Results.ToList();
-                    }
-                    return newRList;
+                    return rList.FirstOrDefault();
                 }
                 else
                 {
@@ -485,6 +480,67 @@ namespace Formula1App.Services
                         }
                     }
                     return sList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<Race>> GetSeasonResultsAsync(string year)
+        {
+            string total = "";
+            int totalNum = 0;
+            string url = $"{ExtAPI}{year}/results.json";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url + "/?limit=1");
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"RaceResultsData\":");
+                    RaceResultsApi result = JsonSerializer.Deserialize<RaceResultsApi>(resContent);
+                    List<Race> races = result.RaceResultsData.RaceTable.Races.ToList();
+                    total = result.RaceResultsData.total;
+                    int.TryParse(total, out totalNum);
+                    List<Race> rList = new();
+                    int offset = 0;
+                    if (totalNum / 100 == 0)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100"));
+                        string newResContent = await response.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"RaceResultsData\":");
+                            RaceResultsApi newResult = JsonSerializer.Deserialize<RaceResultsApi>(newResContent);
+                            rList = newResult.RaceResultsData.RaceTable.Races.ToList();
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    for (int i = 0; i <= totalNum / 100; i++)
+                    {
+                        HttpResponseMessage res = await client.GetAsync(($"{url}/?limit=100&offset={offset.ToString()}"));
+                        string newResContent = await res.Content.ReadAsStringAsync();
+                        if (res.IsSuccessStatusCode)
+                        {
+                            newResContent = newResContent.Replace("\"MRData\":", "\"RaceResultsData\":");
+                            RaceResultsApi newResult = JsonSerializer.Deserialize<RaceResultsApi>(newResContent);
+                            rList.AddRange(newResult.RaceResultsData.RaceTable.Races.ToList());
+                            offset += 100;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    return rList;
                 }
                 else
                 {

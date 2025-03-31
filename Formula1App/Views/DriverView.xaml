@@ -41,7 +41,8 @@
                     TextColor="White"
                     FontFamily="F1Bold"
                     VerticalOptions="Start"
-                    Text="{Binding Driver.UpperLastName}"
+                    TextTransform="Uppercase"
+                    Text="{Binding Driver.LastName}"
                     Grid.Column="1"
                     Grid.Row="1"
                     Grid.ColumnSpan="3"/>

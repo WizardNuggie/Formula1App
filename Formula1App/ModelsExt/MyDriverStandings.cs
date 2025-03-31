@@ -72,18 +72,21 @@ namespace Formula1App.ModelsExt
                 return $"https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/{combined}01.png";
             }
         }
-        public string UpperLastName
-        {
-            get
-            {
-                return LastName.ToUpper();
-            }
-        }
         public string Dob
         {
             get
             {
                 return $"{DateOfBirth.Substring(8, 2)}/{DateOfBirth.Substring(5, 2)}/{DateOfBirth.Substring(0, 4)}";
+            }
+        }
+        public string JoinedName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(LastName))
+                    return $"{LastName},{FirstName}";
+                else
+                    return FirstName;
             }
         }
     }

@@ -15,8 +15,8 @@ namespace Formula1App.Services
         private static string serverIp = "tk4zbkn3-7209.uks1.devtunnels.ms";
         private HttpClient client;
         private string baseUrl;
-        public static string BaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/api/";
-        public static string ImageBaseAddress = "https://tk4zbkn3-7209.uks1.devtunnels.ms/";
+        public static string BaseAddress = "https://tk4zbkn3-5141.uks1.devtunnels.ms/api/";//7209
+        public static string ImageBaseAddress = "https://tk4zbkn3-5141.uks1.devtunnels.ms/";
 
         public F1IntService()
         {

@@ -40,6 +40,10 @@ namespace Formula1App.ModelsExt
         public string date { get; set; }
         public string time { get; set; }
         public List<Result> Results { get; set; }
+        public Result Winner
+        {
+            get => Results.FirstOrDefault();
+        }
         public Firstpractice FirstPractice { get; set; }
         public Secondpractice SecondPractice { get; set; }
         public Thirdpractice ThirdPractice { get; set; }
@@ -61,7 +65,10 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return ((App)Application.Current).RacesNames[Circuit.Location.locality];
+                if (((App)Application.Current).RacesNames.ContainsKey(Circuit.Location.locality))
+                    return ((App)Application.Current).RacesNames[Circuit.Location.locality];
+                else
+                    return Circuit.Location.locality;
             }
         }
         public string CircuitIcon

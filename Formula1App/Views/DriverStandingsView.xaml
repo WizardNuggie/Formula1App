@@ -103,7 +103,8 @@
                                     TextColor="White"
                                     FontFamily="F1Bold"
                                     VerticalOptions="Start"
-                                    Text="{Binding FirstPlace.UpperLastName}"
+                                    TextTransform="Uppercase"
+                                    Text="{Binding FirstPlace.LastName}"
                                     Grid.Column="2"
                                     Grid.Row="1"
                                     Grid.ColumnSpan="3"/>
@@ -224,7 +225,8 @@
                                                 <Span
                                                     Text=" "/>
                                                 <Span
-                                                    Text="{Binding UpperLastName}"
+                                                    TextTransform="Uppercase"
+                                                    Text="{Binding LastName}"
                                                     FontFamily="F1Bold"/>
                                             </FormattedString>
                                         </Label.FormattedText>
