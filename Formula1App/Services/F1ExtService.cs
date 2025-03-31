@@ -1,4 +1,4 @@
-﻿using Formula1App.ModelsExt;
+using Formula1App.ModelsExt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -533,15 +533,17 @@ namespace Formula1App.Services
                             newResContent = newResContent.Replace("\"MRData\":", "\"RaceResultsData\":");
                             RaceResultsApi newResult = JsonSerializer.Deserialize<RaceResultsApi>(newResContent);
                             List<Race> rs = newResult.RaceResultsData.RaceTable.Races.ToList();
+                            List<Race> rs2 = new();
                             foreach (Race r in rs)
                             {
                                 Race rc = rList.Where(x => x.round == r.round).FirstOrDefault();
                                 if (rc != null)
                                 {
                                     rList.Last().Results.AddRange(r.Results);
-                                    rs.Remove(r);
+                                    rs2.Add(r);
                                 }
                             }
+                            rs.RemoveRange(rs2);
                             rList.AddRange(rs);
                             offset += 100;
                         }
