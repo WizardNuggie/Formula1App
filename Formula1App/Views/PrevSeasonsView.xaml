@@ -816,44 +816,46 @@
                         VerticalTextAlignment="Center" />
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
-                    <CollectionView
-                        Margin="10,10,0,0"
-                        ItemsSource="{Binding Categories}"
-                        MaximumHeightRequest="175"
-                        SelectedItem="{Binding SelectedCat}"
-                        SelectionMode="Single"
-                        VerticalScrollBarVisibility="Always">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="x:String">
-                                <Grid>
-                                    <Label
-                                        x:Name="ssn"
-                                        FontFamily="F1Reg"
-                                        FontSize="18"
-                                        Text="{Binding .}"
-                                        TextTransform="Uppercase" />
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <Grid>
+                        <CollectionView
+                            Margin="10,10,0,0"
+                            ItemsSource="{Binding Categories}"
+                            MaximumHeightRequest="175"
+                            SelectedItem="{Binding SelectedCat}"
+                            SelectionMode="Single"
+                            VerticalScrollBarVisibility="Always">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Grid>
+                                        <Label
+                                            x:Name="ssn"
+                                            FontFamily="F1Reg"
+                                            FontSize="18"
+                                            Text="{Binding .}"
+                                            TextTransform="Uppercase" />
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
                 </expander:SfExpander.Content>
             </expander:SfExpander>
             <expander:SfExpander
