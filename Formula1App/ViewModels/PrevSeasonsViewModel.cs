@@ -38,6 +38,7 @@ namespace Formula1App.ViewModels
                 GetRaces();
                 GetDrivers();
                 GetConsts();
+                GetCats();
                 GetSeasonResults();
             }
         }
@@ -220,7 +221,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<MyDriverStandings> OrderedDrivers { get; set; }
+        private List<MyDriverStandings> orderedDrivers;
+        public List<MyDriverStandings> OrderedDrivers
+        {
+            get => orderedDrivers;
+            set
+            {
+                orderedDrivers = value;
+                OnPropertyChanged();
+            }
+        }
         private MyDriverStandings selectedDriver;
         public MyDriverStandings SelectedDriver
         {
@@ -245,7 +255,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<Constructorstanding> OrderedConsts { get; set; }
+        private List<Constructorstanding> orderedConsts;
+        public List<Constructorstanding> OrderedConsts
+        {
+            get => orderedConsts;
+            set
+            {
+                orderedConsts = value;
+                OnPropertyChanged();
+            }
+        }
         private Constructorstanding selectedConst;
         public Constructorstanding SelectedConst
         {
@@ -440,7 +459,6 @@ namespace Formula1App.ViewModels
             this.serviceProvider = sp;
             this.intService = intService;
             this.extService = extService;
-            Categories = new();
             Seasons = new();
             Races = new();
             Drivers = new();
@@ -453,7 +471,6 @@ namespace Formula1App.ViewModels
             await GetRaces();
             await GetDrivers();
             await GetConsts();
-            await GetCats();
             await GetRaceCats();
         }
         private async Task GetSeasons()
@@ -506,6 +523,7 @@ namespace Formula1App.ViewModels
         }
         private async Task GetCats()
         {
+            Categories = new();
             Categories.Add("Races");
             Categories.Add("Drivers");
             Categories.Add("Constructors");
