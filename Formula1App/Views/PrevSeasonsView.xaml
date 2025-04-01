@@ -31,7 +31,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -61,7 +61,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -93,7 +93,7 @@
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Driver.code}"
+                            Text="{Binding Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -139,7 +139,7 @@
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Driver.code}"
+                            Text="{Binding Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -174,28 +174,35 @@
                     x:DataType="modelext:Result">
                     <Grid
                         BackgroundColor="#F3F3F3"
-                        ColumnDefinitions="3*,2*,3*"
+                        ColumnDefinitions="2*,2*,3*,2*"
                         HeightRequest="50"
                         VerticalOptions="Center">
                         <Label
-                            Margin="10,0,0,0"
+                            Margin="15,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding OffRaceName}"
+                            Text="{Binding FastestLap.rank}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="1"
-                            Margin="5,0,0,0"
+                            Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            Margin="5,0,0,0"
+                            Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Constructor.OfficialConstructorName}"
+                            Text="{Binding FastestLap.Time.time}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="3"
+                            Margin="20,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding FastestLap.lap}"
                             VerticalOptions="Center" />
                     </Grid>
                 </DataTemplate>
@@ -205,28 +212,35 @@
                     x:DataType="modelext:Result">
                     <Grid
                         BackgroundColor="White"
-                        ColumnDefinitions="3*,2*,3*"
+                        ColumnDefinitions="2*,2*,3*,2*"
                         HeightRequest="50"
                         VerticalOptions="Center">
                         <Label
-                            Margin="10,0,0,0"
+                            Margin="15,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding OffRaceName}"
+                            Text="{Binding FastestLap.rank}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="1"
-                            Margin="5,0,0,0"
+                            Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
-                            Margin="5,0,0,0"
+                            Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Constructor.OfficialConstructorName}"
+                            Text="{Binding FastestLap.Time.time}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="3"
+                            Margin="20,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding FastestLap.lap}"
                             VerticalOptions="Center" />
                     </Grid>
                 </DataTemplate>
@@ -251,7 +265,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -281,7 +295,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -313,7 +327,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -343,7 +357,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -375,7 +389,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -405,7 +419,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -437,7 +451,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -467,7 +481,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -499,7 +513,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -529,7 +543,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -561,7 +575,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -591,7 +605,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -623,7 +637,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -653,7 +667,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -685,7 +699,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -715,7 +729,7 @@
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
-                            Text="{Binding Winner.Driver.code}"
+                            Text="{Binding Winner.Driver.OffCode}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Column="2"
@@ -858,8 +872,8 @@
                         VerticalTextAlignment="Center" />
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
-                    <ScrollView>
                         <Grid>
+                    <ScrollView>
                             <Grid>
                                 <CollectionView
                                     Margin="10,10,0,0"
@@ -979,8 +993,8 @@
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
                             </Grid>
-                        </Grid>
                     </ScrollView>
+                        </Grid>
                 </expander:SfExpander.Content>
             </expander:SfExpander>
             <VerticalStackLayout
@@ -1289,7 +1303,7 @@
                     <!--  spec race result  -->
                     <CollectionView
                         IsVisible="{Binding InLaps}"
-                        ItemTemplate="{StaticResource RaceResultDataTemp}"
+                        ItemTemplate="{StaticResource RaceLapsDataTemp}"
                         ItemsSource="{Binding RaceResults}"
                         SelectionMode="None"
                         VerticalScrollBarVisibility="Always">
@@ -1297,7 +1311,7 @@
                             <VerticalStackLayout>
                                 <Grid
                                     Margin="10,30,0,15"
-                                    ColumnDefinitions="2*,2*,2*,3*,3*"
+                                    ColumnDefinitions="2*,2*,3*,2*"
                                     VerticalOptions="Center">
                                     <Label
                                         Margin="5,0,0,0"
@@ -1316,23 +1330,15 @@
                                         Margin="15,0,0,0"
                                         FontFamily="F1Bold"
                                         FontSize="12"
-                                        Text="Lap"
-                                        TextTransform="Uppercase" />
-                                    <Label
-                                        Grid.Column="3"
-                                        Margin="0,0,15,0"
-                                        FontFamily="F1Bold"
-                                        FontSize="12"
-                                        HorizontalOptions="End"
+                                        
                                         Text="Lap Time"
                                         TextTransform="Uppercase" />
                                     <Label
-                                        Grid.Column="4"
-                                        Margin="0,0,15,0"
+                                        Grid.Column="3"
+                                        Margin="20,0,0,0"
                                         FontFamily="F1Bold"
                                         FontSize="12"
-                                        HorizontalOptions="End"
-                                        Text="Avg Speed"
+                                        Text="Lap"
                                         TextTransform="Uppercase" />
                                 </Grid>
                                 <BoxView

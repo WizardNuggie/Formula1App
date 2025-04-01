@@ -17,5 +17,15 @@ namespace Formula1App.ModelsExt
         public string familyName { get; set; }
         public string dateOfBirth { get; set; }
         public string nationality { get; set; }
+        public string OffCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(code))
+                    return familyName.Substring(0, 3).ToUpper();
+                else
+                    return code;
+            }
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace Formula1App.Services
                         {
                             DriverId = d.Driver.driverId,
                             PermanentNumber = d.Driver.permanentNumber,
-                            Code = d.Driver.code,
+                            Code = d.Driver.OffCode,
                             Url = d.Driver.url,
                             FirstName = d.Driver.givenName,
                             LastName = d.Driver.familyName,
@@ -139,7 +139,7 @@ namespace Formula1App.Services
                         {
                             DriverId = d.driverId,
                             PermanentNumber = d.permanentNumber,
-                            Code = d.code,
+                            Code = d.OffCode,
                             Url = d.url,
                             FirstName = d.givenName,
                             LastName = d.familyName,
@@ -200,7 +200,7 @@ namespace Formula1App.Services
                         {
                             DriverId = d.driverId,
                             PermanentNumber = d.permanentNumber,
-                            Code = d.code,
+                            Code = d.OffCode,
                             Url = d.url,
                             FirstName = d.givenName,
                             LastName = d.familyName,

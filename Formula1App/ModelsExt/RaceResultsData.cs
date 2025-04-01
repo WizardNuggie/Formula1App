@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Google.Crypto.Tink.Signature;
 
 namespace Formula1App.ModelsExt
 {
@@ -82,12 +81,22 @@ namespace Formula1App.ModelsExt
     {
         public string rank { get; set; }
         public string lap { get; set; }
-        public Time1 Time { get; set; }
+        public Time Time { get; set; }
+        public Averagespeed AverageSpeed { get; set; }
+        public int rankInt
+        {
+            get
+            {
+                int.TryParse(rank, out int result);
+                return result;
+            }
+        }
     }
 
-    public class Time1
+    public class Averagespeed
     {
-        public string time { get; set; }
+        public string units { get; set; }
+        public string speed { get; set; }
     }
 
 }

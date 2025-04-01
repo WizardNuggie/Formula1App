@@ -35,6 +35,9 @@ namespace Formula1App.ViewModels
             {
                 selectedSeason = value;
                 OnPropertyChanged();
+                GetRaces();
+                GetDrivers();
+                GetConsts();
                 GetSeasonResults();
             }
         }
@@ -151,6 +154,7 @@ namespace Formula1App.ViewModels
                             InGrid = false;
                             InQuali = false;
                             InSprint = false;
+                            GetRaceResults();
                             break;
                         case "Fastest Laps":
                             InResult = false;
@@ -159,6 +163,7 @@ namespace Formula1App.ViewModels
                             InGrid = false;
                             InQuali = false;
                             InSprint = false;
+                            GetFastestLaps();
                             break;
                         case "Pit Stops":
                             InResult = false;
@@ -541,6 +546,15 @@ namespace Formula1App.ViewModels
                 }
             }
             RaceResults = rs.Results;
+        }
+        private async void GetFastestLaps()
+        {
+            foreach (Result r in RaceResults.ToList())
+            {
+                if (r.FastestLap == null)
+                    RaceResults.Remove(r);
+            }
+            RaceResults = RaceResults.OrderBy(r => r.FastestLap.rankInt).ToList();
         }
     }
 }
