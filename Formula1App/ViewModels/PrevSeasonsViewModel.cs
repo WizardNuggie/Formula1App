@@ -105,9 +105,20 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
                 GetRaceCatsInit();
                 if (InRaces && SelectedRace.Circuit.Location.locality == "All")
+                {
                     InAllRaces = true;
-                else
+                    InSpecRace = false;
+                }
+                else if (InRaces && !(SelectedRace.Circuit.Location.locality == "All"))
+                {
                     InAllRaces = false;
+                    InSpecRace = true;
+                }
+                else
+                {
+                    InAllRaces = false;
+                    InSpecRace = false;
+                }
             }
         }
         private List<string> raceCats;
@@ -274,10 +285,8 @@ namespace Formula1App.ViewModels
             get => inSpecRace;
             set
             {
-                if (!InRaces)
-                    inSpecRace = false;
-                else
-                    inSpecRace = !InAllRaces;
+                inSpecRace = value;
+                OnPropertyChanged();
             }
         }
         private bool inAllDrivers;

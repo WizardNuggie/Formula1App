@@ -3,35 +3,33 @@
     x:Class="Formula1App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Formula1App.Views"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:AppShellViewModel"
-    xmlns:local="clr-namespace:Formula1App.Views"
-    Shell.TabBarForegroundColor="White"
+    Shell.ForegroundColor="#EE0000"
     Shell.TabBarBackgroundColor="#EE0000"
-    Shell.TabBarUnselectedColor="White"
+    Shell.TabBarForegroundColor="White"
     Shell.TabBarTitleColor="White"
-    Shell.ForegroundColor="#EE0000">
+    Shell.TabBarUnselectedColor="White">
     <Shell.FlyoutHeader>
-        <Border
-            Margin="-2"
-            BackgroundColor="#EE0000">
+        <Border Margin="-2" BackgroundColor="#EE0000">
             <Image
-                Source="f1logo.png"
                 HeightRequest="100"
                 HorizontalOptions="Center"
+                Source="f1logo.png"
                 VerticalOptions="Center" />
         </Border>
     </Shell.FlyoutHeader>
-        <FlyoutItem
+    <FlyoutItem
+        Title="News"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="news.png">
+        <ShellContent
             Title="News"
-            FlyoutDisplayOptions="AsSingleItem"
-            Icon="news.png">
-            <ShellContent
-                Title="News"
-                ContentTemplate="{DataTemplate local:NewsView}"
-                Icon="news.png"
-                Route="News" />
-        </FlyoutItem>
+            ContentTemplate="{DataTemplate local:NewsView}"
+            Icon="news.png"
+            Route="News" />
+    </FlyoutItem>
     <FlyoutItem
         Title="Standings"
         FlyoutDisplayOptions="AsSingleItem"
@@ -45,12 +43,12 @@
             Title="Constructors"
             ContentTemplate="{DataTemplate local:ConstStandingsView}"
             Icon="const_standings.png"
-            Route="ConstStandings"/>
+            Route="ConstStandings" />
         <ShellContent
             Title="Race Results"
             ContentTemplate="{DataTemplate local:RaceResultsView}"
             Icon="race_results.png"
-            Route="RaceResults"/>
+            Route="RaceResults" />
     </FlyoutItem>
     <FlyoutItem
         Title="Racing"
@@ -63,74 +61,69 @@
         <ShellContent
             Title="Past"
             ContentTemplate="{DataTemplate local:SeasonPastRacesView}"
-            Route="SeasonPastRaces"/>
+            Route="SeasonPastRaces" />
     </FlyoutItem>
     <FlyoutItem
-        IsVisible="{Binding IsWriter}"
         Title="Add Articles"
         FlyoutDisplayOptions="AsSingleItem"
-        Icon="add_article.png">
+        Icon="add_article.png"
+        IsVisible="{Binding IsWriter}">
         <ShellContent
             Title="Add Article"
-            Icon="add_article.png"
             ContentTemplate="{DataTemplate local:AddArticlesView}"
-            Route="AddArticle"/>
+            Icon="add_article.png"
+            Route="AddArticle" />
     </FlyoutItem>
     <FlyoutItem
-        IsVisible="{Binding IsWriter}"
         Title="Your Articles"
         FlyoutDisplayOptions="AsSingleItem"
-        Icon="your_articles.png">
+        Icon="your_articles.png"
+        IsVisible="{Binding IsWriter}">
         <ShellContent
             Title="Approved"
             ContentTemplate="{DataTemplate local:YourApprovedArticles}"
             Icon="approved.png"
-            Route="Approved"/>
+            Route="Approved" />
         <ShellContent
             Title="Pending"
             ContentTemplate="{DataTemplate local:YourPendingArticles}"
             Icon="pending.png"
-            Route="Pending"/>
+            Route="Pending" />
         <ShellContent
             Title="Declined"
             ContentTemplate="{DataTemplate local:YourDeclinedArticles}"
             Icon="remove.png"
-            Route="Declined"/>
+            Route="Declined" />
     </FlyoutItem>
     <FlyoutItem
-        IsVisible="{Binding IsAdmin}"
         Title="Manage Users"
         FlyoutDisplayOptions="AsSingleItem"
-        Icon="admin.png">
+        Icon="manage_users.png"
+        IsVisible="{Binding IsAdmin}">
         <ShellContent
             Title="Manage Users"
-            Icon="manage_users.png"
             ContentTemplate="{DataTemplate local:ManageUsersView}"
-            Route="ManageUsers"/>
+            Icon="manage_users.png"
+            Route="ManageUsers" />
     </FlyoutItem>
     <FlyoutItem
-        IsVisible="{Binding IsAdmin}"
         Title="Manage Articles"
         FlyoutDisplayOptions="AsSingleItem"
-        Icon="admin.png">
+        Icon="manage_articles.png"
+        IsVisible="{Binding IsAdmin}">
         <ShellContent
             Title="Manage Articles"
-            Icon="manage_articles.png"
             ContentTemplate="{DataTemplate local:ManageArticlesView}"
-            Route="ManageArticles"/>
+            Icon="manage_articles.png"
+            Route="ManageArticles" />
     </FlyoutItem>
     <Shell.FlyoutFooter>
-        <HorizontalStackLayout
-            Padding="17,14">
+        <HorizontalStackLayout Padding="17,14">
             <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding LogoutCommand}"/>
+                <TapGestureRecognizer Command="{Binding LogoutCommand}" />
             </HorizontalStackLayout.GestureRecognizers>
-        <Image
-            Source="logout.png"
-            HeightRequest="25"/>
-            <Label
-                FontAttributes="Bold"
-                Text="          Logout"/>
+            <Image HeightRequest="25" Source="logout.png" />
+            <Label FontAttributes="Bold" Text="          Logout" />
         </HorizontalStackLayout>
     </Shell.FlyoutFooter>
 </Shell>

@@ -43,14 +43,14 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return FirstPractice.date.Substring(FirstPractice.date.Length -3, 2);
+                return FirstPractice.date.Substring(FirstPractice.date.Length -2, 2);
             }
         }
         public string LastDay
         {
             get
             {
-                return date.Substring(date.Length - 3, 2);
+                return date.Substring(date.Length - 2, 2);
             }
         }
         public List<Result> Results { get; set; }
@@ -125,7 +125,7 @@ namespace Formula1App.ModelsExt
             get
             {
                 if (((App)Application.Current).TrackSponsors.ContainsKey(Circuit.Location.locality))
-                    return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}".ToUpper();
+                    return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}";
                 else
                     return "error";
             }

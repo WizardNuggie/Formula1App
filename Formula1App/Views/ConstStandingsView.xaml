@@ -1,317 +1,242 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
-             x:Class="Formula1App.Views.ConstStandingsView"
-             x:DataType="viewmodel:ConstStandingsViewModel"
-             Title="">
-    <RefreshView
-        Command="{Binding RefreshCommand}"
-        IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView
-            x:Name="scrlview">
-            <Grid
-                ColumnDefinitions="*,0.25*"
-                RowDefinitions="*,10*">
-                <Grid
-                    RowDefinitions="*,*,*">
+<ContentPage
+    x:Class="Formula1App.Views.ConstStandingsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    Title=""
+    x:DataType="viewmodel:ConstStandingsViewModel">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView x:Name="scrlview">
+            <CollectionView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#15151D"
+                ItemsSource="{Binding Standings}"
+                SelectedItem="{Binding SelectedConst}"
+                SelectionMode="Single">
+                <CollectionView.Header>
                     <Border
-                        Grid.RowSpan="3"
-                        Margin="-12,0,0,0"
-                        Stroke="#E11900"
-                        StrokeThickness="3"
-                        HeightRequest="60">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="15"/>
-                        </Border.StrokeShape>
+                        Margin="0,15,8,2"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 0,7,0,7">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToConstCommand}" CommandParameter="{Binding FirstPlace}" />
+                        </Border.GestureRecognizers>
+                        <Grid
+                            BackgroundColor="#383838"
+                            ColumnDefinitions="0.5*,0.75*,0.5*,0.5*,3*,4*"
+                            RowDefinitions="*,2*">
+                            <Label
+                                Grid.RowSpan="3"
+                                Margin="0,0,-7,0"
+                                FontFamily="F1Bold"
+                                FontSize="17"
+                                HorizontalOptions="End"
+                                Text="{Binding FirstPlace.positionText}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                            <BoxView
+                                Grid.RowSpan="3"
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                HeightRequest="78"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                WidthRequest="8"
+                                Color="{Binding FirstPlace.Constructor.TeamColor}" />
+                            <Label
+                                Grid.Column="2"
+                                Grid.ColumnSpan="3"
+                                Margin="5,0,0,0"
+                                FontFamily="F1Bold"
+                                FontSize="25"
+                                Text="{Binding FirstPlace.Constructor.OfficialConstructorName}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                            <CollectionView
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Grid.ColumnSpan="3"
+                                ItemsSource="{Binding FirstPlace.Constructor.Drivers}"
+                                SelectionMode="None"
+                                VerticalOptions="Start">
+                                <CollectionView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToConstCommand}" CommandParameter="{Binding FirstPlace}" />
+                                </CollectionView.GestureRecognizers>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="modelext:MyDriverStandings">
+                                        <Grid ColumnDefinitions="*,3*">
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToConstCommand, Source={x:Reference scrlview}}" CommandParameter="{Binding Path=BindingContext.FirstPlace, Source={x:Reference scrlview}}" />
+                                            </Grid.GestureRecognizers>
+                                            <Border
+                                                Margin="0,0,0,5"
+                                                Padding="-5"
+                                                HeightRequest="20"
+                                                HorizontalOptions="Start"
+                                                Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 15"
+                                                WidthRequest="38">
+                                                <Image
+                                                    HorizontalOptions="Center"
+                                                    Source="{Binding NationalityFlag}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="40" />
+                                            </Border>
+                                            <Label
+                                                Grid.Column="1"
+                                                FontFamily="F1Reg"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding LastName}"
+                                                TextColor="White" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Image
+                                Grid.RowSpan="3"
+                                Grid.Column="5"
+                                Margin="0,0,-4,-5"
+                                HeightRequest="120"
+                                HorizontalOptions="End"
+                                RotationY="180"
+                                Source="{Binding FirstPlace.Constructor.PhotoUrl}"
+                                TranslationX="55"
+                                VerticalOptions="End" />
+                            <Border
+                                Grid.RowSpan="3"
+                                Grid.Column="5"
+                                Margin="0,0,40,5"
+                                Padding="3"
+                                BackgroundColor="#E0E0E1"
+                                HorizontalOptions="End"
+                                Stroke="Transparent"
+                                VerticalOptions="End"
+                                WidthRequest="60">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <Label
+                                    FontSize="10"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    WidthRequest="40">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="F1Bold" Text="{Binding FirstPlace.points}" />
+                                            <Span Text=" " />
+                                            <Span FontFamily="F1Reg" Text="PTS" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Border>
+                            <Label
+                                Grid.RowSpan="3"
+                                Grid.Column="5"
+                                Margin="0,0,17,0"
+                                FontFamily="F1Bold"
+                                FontSize="20"
+                                HorizontalOptions="End"
+                                Text="&gt;"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
                     </Border>
-                    <Label
-                        Grid.Row="1"
-                        FontAttributes="Bold"
-                        FontSize="30"
-                        Text=" Constructor Standings"
-                        VerticalOptions="Start" />
-                    <BoxView
-                        Margin="0,-7,0,0"
-                        Grid.Row="2"
-                        Color="White"
-                        HeightRequest="15"
-                        WidthRequest="12"
-                        VerticalOptions="Start"
-                        HorizontalOptions="End"/>
-                    <BoxView
-                        Grid.Row="2"
-                        Color="White"
-                        HeightRequest="15"
-                        WidthRequest="317"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Start"/>
-                </Grid>
-                <CollectionView
-                    BackgroundColor="#15151D"
-                    ItemsSource="{Binding Standings}"
-                    Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    SelectedItem="{Binding SelectedConst}"
-                    SelectionMode="Single">
-                    <CollectionView.Header>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="modelext:Constructorstanding">
                         <Border
-                            Margin="0,15,8,2"
-                            Stroke="Transparent"
-                            StrokeShape="RoundRectangle 0,7,0,7">
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding GoToConstCommand}"
-                                    CommandParameter="{Binding FirstPlace}"/>
-                            </Border.GestureRecognizers>
-                            <Grid
-                                RowDefinitions="*,2*"
-                                ColumnDefinitions="0.5*,0.75*,0.5*,0.5*,3*,4*"
-                                BackgroundColor="#383838">
+                            Margin="0,2,8,2"
+                            Padding="5"
+                            Background="White"
+                            Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="0,7,0,7" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*,*,6*,2*,*" RowDefinitions="*,*">
                                 <Label
-                                    Margin="0,0,-7,0"
-                                    TextColor="White"
-                                    Text="{Binding FirstPlace.positionText}"
+                                    Grid.RowSpan="2"
                                     FontFamily="F1Bold"
-                                    FontSize="17"
-                                    Grid.RowSpan="3"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="End"/>
+                                    HorizontalOptions="Center"
+                                    Text="{Binding positionText}"
+                                    VerticalOptions="Center" />
                                 <BoxView
+                                    Grid.RowSpan="2"
                                     Grid.Column="1"
-                                    Grid.RowSpan="3"
-                                    WidthRequest="8"
-                                    HeightRequest="78"
-                                    VerticalOptions="Center"
+                                    HeightRequest="40"
                                     HorizontalOptions="Start"
-                                    Color="{Binding FirstPlace.Constructor.TeamColor}"
-                                    Margin="20,0,0,0"/>
-                                <Label
-                                    Margin="5,0,0,0"
-                                    FontSize="25"
-                                    TextColor="White"
-                                    FontFamily="F1Bold"
                                     VerticalOptions="Center"
-                                    Text="{Binding FirstPlace.Constructor.OfficialConstructorName}"
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="3"/>
-                                <CollectionView
-                                    ItemsSource="{Binding FirstPlace.Constructor.Drivers}"
-                                    SelectionMode="None"
-                                    VerticalOptions="Start"
-                                    Grid.Column="2"
+                                    WidthRequest="8"
+                                    Color="{Binding Constructor.TeamColor}" />
+                                <Label Grid.Column="2" FontSize="15">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontFamily="F1Bold" Text="{Binding Constructor.OfficialConstructorName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
                                     Grid.Row="1"
-                                    Grid.ColumnSpan="3">
-                                    <CollectionView.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding GoToConstCommand}"
-                                            CommandParameter="{Binding FirstPlace}"/>
-                                    </CollectionView.GestureRecognizers>
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate
-                                            x:DataType="modelext:MyDriverStandings">
-                                            <Grid
-                                                ColumnDefinitions="*,3*">
-                                                <Grid.GestureRecognizers>
-                                                    <TapGestureRecognizer
-                                                        Command="{Binding Path=BindingContext.GoToConstCommand, Source={x:Reference scrlview}}"
-                                                        CommandParameter="{Binding Path=BindingContext.FirstPlace, Source={x:Reference scrlview}}"/>
-                                                </Grid.GestureRecognizers>
-                                                <Border
-                                                    Margin="0,0,0,5"
-                                                    HorizontalOptions="Start"
-                                                    Padding="-5"
-                                                    WidthRequest="38"
-                                                    HeightRequest="20"
-                                                    StrokeShape="RoundRectangle 15"
-                                                    Stroke="Transparent">
-                                                    <Image
-                                                        VerticalOptions="Center"
-                                                        HorizontalOptions="Center"
-                                                        Source="{Binding NationalityFlag}"
-                                                        WidthRequest="40"/>
-                                                </Border>
-                                                <Label
-                                                    HorizontalOptions="Start"
-                                                    FontFamily="F1Reg"
-                                                    Text="{Binding LastName}"
-                                                    Grid.Column="1"
-                                                    TextColor="White"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                                <Image
-                                    Source="{Binding FirstPlace.Constructor.PhotoUrl}"
-                                    Margin="0, 0,-4,-5"
-                                    HeightRequest="120"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="End"
-                                    Grid.Column="5"
-                                    Grid.RowSpan="3"
-                                    TranslationX="55"
-                                    RotationY="180"/>
+                                    Grid.Column="2"
+                                    FontFamily="F1Reg"
+                                    FontSize="10"
+                                    Text="{Binding DriversString}"
+                                    VerticalOptions="End" />
                                 <Border
-                                    BackgroundColor="#E0E0E1"
-                                    Stroke="Transparent"
-                                    WidthRequest="60"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="3"
                                     Padding="3"
-                                    Grid.RowSpan="3"
-                                    Grid.Column="5"
-                                    VerticalOptions="End"
+                                    BackgroundColor="#E0E0E1"
                                     HorizontalOptions="End"
-                                    Margin="0,0,40,5">
+                                    Stroke="Transparent"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60">
                                     <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="20"/>
+                                        <RoundRectangle CornerRadius="20" />
                                     </Border.StrokeShape>
                                     <Label
-                                        WidthRequest="40"
                                         FontSize="10"
                                         HorizontalOptions="Center"
-                                        HorizontalTextAlignment="Center">
+                                        HorizontalTextAlignment="Center"
+                                        WidthRequest="40">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span
-                                                    Text="{Binding FirstPlace.points}"
-                                                    FontFamily="F1Bold"/>
-                                                <Span
-                                                    Text=" "/>
-                                                <Span
-                                                    Text="PTS"
-                                                    FontFamily="F1Reg"/>
+                                                <Span FontFamily="F1Bold" Text="{Binding points}" />
+                                                <Span Text=" " />
+                                                <Span FontFamily="F1Reg" Text="PTS" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
                                 </Border>
                                 <Label
-                                    Grid.RowSpan="3"
-                                    Grid.Column="5"
-                                    TextColor="White"
-                                    Text=">"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="4"
                                     FontFamily="F1Bold"
-                                    FontSize="20"
-                                    Margin="0,0,17,0"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"/>
+                                    HorizontalOptions="Center"
+                                    Text="&gt;"
+                                    TextColor="#E11900"
+                                    VerticalOptions="Center" />
                             </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
                         </Border>
-                    </CollectionView.Header>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate
-                            x:DataType="modelext:Constructorstanding">
-                            <Border
-                                Margin="0,2,8,2"
-                                Padding="5"
-                                Background="White"
-                                Stroke="Transparent">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="0,7,0,7"/>
-                                </Border.StrokeShape>
-                                <Grid
-                                    RowDefinitions="*,*"
-                                    ColumnDefinitions="*,*,6*,2*,*">
-                                    <Label
-                                        Text="{Binding positionText}"
-                                        FontFamily="F1Bold"
-                                        Grid.RowSpan="2"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center"/>
-                                    <BoxView
-                                        Color="{Binding Constructor.TeamColor}"
-                                        WidthRequest="8"
-                                        HeightRequest="40"
-                                        Grid.Column="1"
-                                        Grid.RowSpan="2"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Start"/>
-                                    <Label
-                                        FontSize="15"
-                                        Grid.Column="2">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="{Binding Constructor.OfficialConstructorName}"
-                                                    FontFamily="F1Bold"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label
-                                        FontSize="10"
-                                        VerticalOptions="End"
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Text="{Binding DriversString}"
-                                        FontFamily="F1Reg"/>
-                                    <Border
-                                        BackgroundColor="#E0E0E1"
-                                        Stroke="Transparent"
-                                        WidthRequest="60"
-                                        Padding="3"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="3"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="End">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle
-                                                CornerRadius="20"/>
-                                        </Border.StrokeShape>
-                                        <Label
-                                            WidthRequest="40"
-                                            FontSize="10"
-                                            HorizontalOptions="Center"
-                                            HorizontalTextAlignment="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span
-                                                        Text="{Binding points}"
-                                                        FontFamily="F1Bold"/>
-                                                    <Span
-                                                        Text=" "/>
-                                                    <Span
-                                                        Text="PTS"
-                                                        FontFamily="F1Reg"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </Border>
-                                    <Label
-                                        Grid.RowSpan="2"
-                                        Grid.Column="4"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        TextColor="#E11900"
-                                        Text=">"
-                                        FontFamily="F1Bold"/>
-                                </Grid>
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup>
-                                        <VisualState
-                                            Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter
-                                                    Property="BackgroundColor"
-                                                    Value="White"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState
-                                            Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter
-                                                    Property="BackgroundColor"
-                                                    Value="White"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
     </RefreshView>
 </ContentPage>
