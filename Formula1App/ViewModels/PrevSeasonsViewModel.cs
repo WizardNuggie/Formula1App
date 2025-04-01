@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Javax.Microedition.Khronos.Egl;
 
 namespace Formula1App.ViewModels
 {
@@ -147,6 +146,15 @@ namespace Formula1App.ViewModels
                     {
                         case "Race Result":
                             InResult = true;
+                            InLaps = false;
+                            InPit = false;
+                            InGrid = false;
+                            InQuali = false;
+                            InSprint = false;
+                            break;
+                        case "Fastest Laps":
+                            InResult = false;
+                            InLaps = true;
                             InPit = false;
                             InGrid = false;
                             InQuali = false;
@@ -154,6 +162,7 @@ namespace Formula1App.ViewModels
                             break;
                         case "Pit Stops":
                             InResult = false;
+                            InLaps = false;
                             InPit = true;
                             InGrid = false;
                             InQuali = false;
@@ -161,6 +170,7 @@ namespace Formula1App.ViewModels
                             break;
                         case "Starting Grid":
                             InResult = false;
+                            InLaps = false;
                             InPit = false;
                             InGrid = true;
                             InQuali = false;
@@ -168,6 +178,7 @@ namespace Formula1App.ViewModels
                             break;
                         case "Qualifying":
                             InResult = false;
+                            InLaps = false;
                             InPit = false;
                             InGrid = false;
                             InQuali = true;
@@ -175,6 +186,7 @@ namespace Formula1App.ViewModels
                             break;
                         case "Sprint":
                             InResult = false;
+                            InLaps = false;
                             InPit = false;
                             InGrid = false;
                             InQuali = false;
@@ -185,6 +197,7 @@ namespace Formula1App.ViewModels
                 else
                 {
                     InResult = false;
+                    InLaps = false;
                     InPit = false;
                     InGrid = false;
                     InQuali = false;
@@ -362,6 +375,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool inLaps;
+        public bool InLaps
+        {
+            get => inLaps;
+            set
+            {
+                inLaps = value;
+                OnPropertyChanged();
+            }
+        }
         private bool inPit;
         public bool InPit
         {
@@ -491,6 +514,7 @@ namespace Formula1App.ViewModels
         {
             RaceCats = new();
             RaceCats.Add("Race Result");
+            RaceCats.Add("Fastest Laps");
             RaceCats.Add("Pit Stops");
             RaceCats.Add("Starting Grid");
             RaceCats.Add("Qualifying");

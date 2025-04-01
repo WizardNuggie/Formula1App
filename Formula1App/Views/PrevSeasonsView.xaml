@@ -168,6 +168,70 @@
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
         </modelext:MyDataTempSelector>
+        <modelext:MyDataTempSelector x:Key="RaceLapsDataTemp">
+            <modelext:MyDataTempSelector.EvenTemplate>
+                <DataTemplate
+                    x:DataType="modelext:Result">
+                    <Grid
+                        BackgroundColor="#F3F3F3"
+                        ColumnDefinitions="3*,2*,3*"
+                        HeightRequest="50"
+                        VerticalOptions="Center">
+                        <Label
+                            Margin="10,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding OffRaceName}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding Winner.Driver.code}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            Margin="5,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding Winner.Constructor.OfficialConstructorName}"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.EvenTemplate>
+            <modelext:MyDataTempSelector.OddTemplate>
+                <DataTemplate
+                    x:DataType="modelext:Result">
+                    <Grid
+                        BackgroundColor="White"
+                        ColumnDefinitions="3*,2*,3*"
+                        HeightRequest="50"
+                        VerticalOptions="Center">
+                        <Label
+                            Margin="10,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding OffRaceName}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="1"
+                            Margin="5,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding Winner.Driver.code}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            Margin="5,0,0,0"
+                            FontFamily="F1Reg"
+                            FontSize="12"
+                            Text="{Binding Winner.Constructor.OfficialConstructorName}"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </modelext:MyDataTempSelector.OddTemplate>
+        </modelext:MyDataTempSelector>
         <modelext:MyDataTempSelector x:Key="RacePitsDataTemp">
             <modelext:MyDataTempSelector.EvenTemplate>
                 <DataTemplate x:DataType="modelext:Race">
@@ -1224,7 +1288,63 @@
                     </CollectionView>
                     <!--  spec race result  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InLaps}"
+                        ItemTemplate="{StaticResource RaceResultDataTemp}"
+                        ItemsSource="{Binding RaceResults}"
+                        SelectionMode="None"
+                        VerticalScrollBarVisibility="Always">
+                        <CollectionView.Header>
+                            <VerticalStackLayout>
+                                <Grid
+                                    Margin="10,30,0,15"
+                                    ColumnDefinitions="2*,2*,2*,3*,3*"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Margin="5,0,0,0"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Pos"
+                                        TextTransform="Uppercase" />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Driver"
+                                        TextTransform="Uppercase" />
+                                    <Label
+                                        Grid.Column="2"
+                                        Margin="15,0,0,0"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        Text="Lap"
+                                        TextTransform="Uppercase" />
+                                    <Label
+                                        Grid.Column="3"
+                                        Margin="0,0,15,0"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="Lap Time"
+                                        TextTransform="Uppercase" />
+                                    <Label
+                                        Grid.Column="4"
+                                        Margin="0,0,15,0"
+                                        FontFamily="F1Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="Avg Speed"
+                                        TextTransform="Uppercase" />
+                                </Grid>
+                                <BoxView
+                                    HeightRequest="1"
+                                    WidthRequest="400"
+                                    Color="#F3F3F3" />
+                            </VerticalStackLayout>
+                        </CollectionView.Header>
+                    </CollectionView>
+                    <!--  spec race fastest laps  -->
+                    <CollectionView
+                        IsVisible="{Binding InPit}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
@@ -1276,7 +1396,7 @@
                     </CollectionView>
                     <!--  spec race pits  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InGrid}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
@@ -1328,7 +1448,7 @@
                     </CollectionView>
                     <!--  spec race grid  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InQuali}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
@@ -1380,7 +1500,7 @@
                     </CollectionView>
                     <!--  spec race quali  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InSprint}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
@@ -1432,7 +1552,7 @@
                     </CollectionView>
                     <!--  spec race sprint  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InAllDrivers}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
@@ -1536,7 +1656,7 @@
                     </CollectionView>
                     <!--  spec driver  -->
                     <CollectionView
-                        IsVisible="False"
+                        IsVisible="{Binding InAllConsts}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
                         ItemsSource="{Binding SeasonResults}"
                         SelectionMode="None"
