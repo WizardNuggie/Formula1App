@@ -133,7 +133,6 @@ namespace Formula1App.ViewModels
                         }
                     }
                     Article.Subjects = SelectedSubjects;
-                    Article.Writer = ((App)Application.Current).LoggedUser;
                     Article result = await intService.UploadArticle(Article);
                     if (result == null)
                     {
@@ -143,6 +142,7 @@ namespace Formula1App.ViewModels
                     else
                     {
                         bool isImageUploaded = await intService.UploadArticleImage(PhotoPath, result.Id);
+                        result.Writer = ((App)Application.Current).LoggedUser;
                         ((App)Application.Current).LoggedUser.Articles.Add(result);
                         if (!isImageUploaded)
                         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Javax.Microedition.Khronos.Egl;
 
 namespace Formula1App.ViewModels
 {
@@ -103,7 +104,6 @@ namespace Formula1App.ViewModels
             {
                 selectedRace = value;
                 OnPropertyChanged();
-                GetRaceCatsInit();
                 if (InRaces && SelectedRace.Circuit.Location.locality == "All")
                 {
                     InAllRaces = true;
@@ -113,12 +113,14 @@ namespace Formula1App.ViewModels
                 {
                     InAllRaces = false;
                     InSpecRace = true;
+                    GetRaceResults();
                 }
                 else
                 {
                     InAllRaces = false;
                     InSpecRace = false;
                 }
+                GetRaceCatsInit();
             }
         }
         private List<string> raceCats;
@@ -139,43 +141,54 @@ namespace Formula1App.ViewModels
             {
                 selectedRaceCat = value;
                 OnPropertyChanged();
-                switch (selectedRaceCat)
+                if (InSpecRace)
                 {
-                    case "Race Result":
-                        InResult = true;
-                        InPit = false;
-                        InGrid = false;
-                        InQuali = false;
-                        InSprint = false;
-                        break;
-                    case "Pit Stops":
-                        InResult = false;
-                        InPit = true;
-                        InGrid = false;
-                        InQuali = false;
-                        InSprint = false;
-                        break;
-                    case "Starting Grid":
-                        InResult = false;
-                        InPit = false;
-                        InGrid = true;
-                        InQuali = false;
-                        InSprint = false;
-                        break;
-                    case "Qualifying":
-                        InResult = false;
-                        InPit = false;
-                        InGrid = false;
-                        InQuali = true;
-                        InSprint = false;
-                        break;
-                    case "Sprint":
-                        InResult = false;
-                        InPit = false;
-                        InGrid = false;
-                        InQuali = false;
-                        InSprint = true;
-                        break;
+                    switch (selectedRaceCat)
+                    {
+                        case "Race Result":
+                            InResult = true;
+                            InPit = false;
+                            InGrid = false;
+                            InQuali = false;
+                            InSprint = false;
+                            break;
+                        case "Pit Stops":
+                            InResult = false;
+                            InPit = true;
+                            InGrid = false;
+                            InQuali = false;
+                            InSprint = false;
+                            break;
+                        case "Starting Grid":
+                            InResult = false;
+                            InPit = false;
+                            InGrid = true;
+                            InQuali = false;
+                            InSprint = false;
+                            break;
+                        case "Qualifying":
+                            InResult = false;
+                            InPit = false;
+                            InGrid = false;
+                            InQuali = true;
+                            InSprint = false;
+                            break;
+                        case "Sprint":
+                            InResult = false;
+                            InPit = false;
+                            InGrid = false;
+                            InQuali = false;
+                            InSprint = true;
+                            break;
+                    }
+                }
+                else
+                {
+                    InResult = false;
+                    InPit = false;
+                    InGrid = false;
+                    InQuali = false;
+                    InSprint = false;
                 }
             }
         }
@@ -236,6 +249,16 @@ namespace Formula1App.ViewModels
             set
             {
                 seasonResults = value;
+                OnPropertyChanged();
+            }
+        }
+        private List<Result> raceResults;
+        public List<Result> RaceResults
+        {
+            get => raceResults;
+            set
+            {
+                raceResults = value;
                 OnPropertyChanged();
             }
         }
@@ -474,6 +497,26 @@ namespace Formula1App.ViewModels
             if (InSpecRace && SelectedRace.HasSprint)
                 RaceCats.Add("Sprint");
             SelectedRaceCat = RaceCats.FirstOrDefault();
+        }
+        private async void GetRaceResults()
+        {
+            Race rs = await extService.GetRaceResultsAsync(SelectedSeason.season, SelectedRace.round);
+            foreach (Result res in rs.Results)
+            {
+                if (res.OffStatus.Contains("Lap"))
+                {
+                    int.TryParse(res.laps, out int l);
+                    int.TryParse(rs.Winner.laps, out int l2);
+                    if (l2 > l)
+                    {
+                        if (l2 - l == 1)
+                            res.status = $"+{l2-l} Lap";
+                        else
+                            res.status = $"+{l2 - l} Laps";
+                    }
+                }
+            }
+            RaceResults = rs.Results;
         }
     }
 }

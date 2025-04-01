@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Formula1App.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Google.Crypto.Tink.Signature;
 
 namespace Formula1App.ModelsExt
 {
@@ -37,6 +39,37 @@ namespace Formula1App.ModelsExt
         public string status { get; set; }
         public Time Time { get; set; }
         public Fastestlap FastestLap { get; set; }
+        public string OffStatus
+        {
+            get
+            {
+                if (status != "Finished" && !status.ToLower().Contains("lap"))
+                {
+                    if (((App)Application.Current).Statuses.ContainsKey(status))
+                        return ((App)Application.Current).Statuses[status];
+                    else
+                        return "DNF";
+                }
+                else
+                {
+                    return status;
+                }
+            }
+        }
+        public bool HasFinished
+        {
+            get
+            {
+                return OffStatus == "Finished";
+            }
+        }
+        public bool HasNotFinished
+        {
+            get
+            {
+                return !HasFinished;
+            }
+        }
     }
 
     public class Time

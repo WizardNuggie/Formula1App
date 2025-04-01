@@ -22,6 +22,7 @@ namespace Formula1App
         public Dictionary<string, string> RacesGpName;
         public Dictionary<string, string> TrackPic;
         public Dictionary<string, string> TrackSponsors;
+        public Dictionary<string, string> Statuses;
         public string CurrYear;
         private F1IntService intService;
         private F1ExtService extService;
@@ -269,6 +270,11 @@ namespace Formula1App
                 {"Las Vegas", "Heineken"},
                 {"Al Daayen", "Qatar Airways"},
                 {"Abu Dhabi", "Etihad Airways"}
+            };
+            Statuses = new Dictionary<string, string>()
+            {
+                {"Disqualified", "DSQ"},
+                {"Did not start", "DNS"},
             };
             CurrYear = DateTime.Now.Year.ToString();
             MainPage = sp.GetService<SignPage>();
