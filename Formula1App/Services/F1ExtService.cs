@@ -238,11 +238,18 @@ namespace Formula1App.Services
                     {
                         cList = s.ConstructorStandings.ToList();
                     }
-                    if (consts != null && drivers != null)
+                    if (consts != null && drivers != null && result.ConstructorStandingsData.StandingsTable.season == DateTime.Now.Year.ToString())
                     {
                         foreach (Constructorstanding c in cList)
                         {
-                            c.Constructor.Drivers = consts.Where(x => x.Constructor.constructorId == c.Constructor.constructorId).First().Constructor.Drivers; ;
+                            c.Constructor.Drivers  = consts.Where(x => x.Constructor.constructorId == c.Constructor.constructorId).First().Constructor.Drivers; ;
+                        }
+                    }
+                    else
+                    {
+                        foreach (Constructorstanding c in cList)
+                        {
+                            c.Constructor.Drivers = new();
                         }
                     }
                     return cList;

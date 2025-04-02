@@ -75,14 +75,20 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return ((App)Application.Current).CountryNames[nationality];
+                if (((App)Application.Current).CountryNames.ContainsKey(nationality))
+                    return ((App)Application.Current).CountryNames[nationality];
+                else
+                    return nationality;
             }
         }
         public string NationalityFlag
         {
             get
             {
-                return $"https://flagsapi.com/{((App)Application.Current).CountryCodes[nationality]}/flat/64.png";
+                if (((App)Application.Current).CountryCodes.ContainsKey(nationality))
+                    return $"https://flagsapi.com/{((App)Application.Current).CountryCodes[nationality]}/flat/64.png";
+                else
+                    return "error";
             }
         }
         public Color TeamColor { get; set; }

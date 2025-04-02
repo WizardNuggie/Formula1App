@@ -814,7 +814,7 @@
                         VerticalTextAlignment="Center"/>
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
-                    <Grid>
+                    <ScrollView>
                         <CollectionView
                             Margin="10,10,0,0"
                             ItemsSource="{Binding Categories}"
@@ -853,7 +853,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </Grid>
+                    </ScrollView>
                 </expander:SfExpander.Content>
             </expander:SfExpander>
             <expander:SfExpander

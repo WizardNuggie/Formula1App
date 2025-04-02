@@ -34,13 +34,18 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                string str = "";
-                foreach (MyDriverStandings d in this.Constructor.Drivers)
+                if (this.Constructor.Drivers != null)
                 {
-                    str += $"{d.LastName} / ";
+                    string str = "";
+                    foreach (MyDriverStandings d in this.Constructor.Drivers)
+                    {
+                        str += $"{d.LastName} / ";
+                    }
+                    str = str.Substring(0, str.Length - 3);
+                    return str;
                 }
-                str = str.Substring(0, str.Length - 3);
-                return str;
+                else
+                    return "error";
             }
         }
     }

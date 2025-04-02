@@ -43,50 +43,42 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                if (FirstPractice != null)
-                    return FirstPractice.date.Substring(FirstPractice.date.Length -2, 2);
+                string day = DayFirst.Day.ToString();
+                if (day.Length < 2)
+                    return "0" + day;
                 else
-                {
-                    int.TryParse(date.Substring(date.Length - 2, 2), out int day);
-                    if (day > 2)
-                    {
-                        return (day - 2).ToString();
-                    }
-                    else
-                    {
-                        int.TryParse(date.Substring(0, 4), out int year);
-                        string ly = "";
-                        if (DateTime.IsLeapYear(year))
-                            ly = "b";
-                        else
-                            ly = "a";
-                        int.TryParse(date.Substring(5, 2), out int month);
-                        month--;
-                        if (month.ToString() == "02")
-                        {
-                            int.TryParse(((App)Application.Current).DaysInMonths[month.ToString() + ly], out int dim);
-                            return int.Abs(day - dim).ToString();
-                        }
-                        else
-                        {
-                            int.TryParse(((App)Application.Current).DaysInMonths[month.ToString()], out int dim);
-                            return int.Abs(day - dim).ToString();
-                        }
-                    }
-                }
+                    return day;
             }
         }
         public string LastDay
         {
             get
             {
-                return date.Substring(date.Length - 2, 2);
+                string day = DayLast.Day.ToString();
+                if (day.Length < 2)
+                    return "0" + day;
+                else
+                    return day;
             }
         }
         public List<Result> Results { get; set; }
         public Result Winner
         {
             get => Results.FirstOrDefault();
+        }
+        public DateOnly DayLast
+        {
+            get
+            {
+                return DateOnly.Parse(date);
+            }
+        }
+        public DateOnly DayFirst
+        {
+            get
+            {
+                return DayLast.AddDays(-2);
+            }
         }
         public Firstpractice FirstPractice { get; set; }
         public Secondpractice SecondPractice { get; set; }
@@ -143,7 +135,10 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return $"https://flagsapi.com/{((App)Application.Current).RacesCountryCodes[Circuit.Location.country]}/flat/64.png";
+                if (((App)Application.Current).RacesCountryCodes.ContainsKey(Circuit.Location.country))
+                    return $"https://flagsapi.com/{((App)Application.Current).RacesCountryCodes[Circuit.Location.country]}/flat/64.png";
+                else
+                    return "error";
             }
         }
         public string OffGpName
@@ -160,27 +155,14 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                int.TryParse(LastDay, out int day);
-                if (day > 2)
-                {
-                    return ((App)Application.Current).MonthNames[date.Substring(5, 2)];
-                }
-                else
-                {
-                    int.TryParse(date.Substring(5, 2), out int month);
-                    month--;
-                    if (month < 10)
-                        return ((App)Application.Current).MonthNames["0" + month.ToString()];
-                    else
-                        return ((App)Application.Current).MonthNames[month.ToString()];
-                }
+                return ((App)Application.Current).MonthNames[DayFirst.Month.ToString()];
             }
         }
         public string Month2
         {
             get
             {
-                return ((App)Application.Current).MonthNames[date.Substring(5, 2)];
+                return ((App)Application.Current).MonthNames[DayLast.Month.ToString()];
             }
         }
         public bool Has2Months
