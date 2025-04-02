@@ -156,20 +156,6 @@ namespace Formula1App.ModelsExt
                     return "error";
             }
         }
-        public string MMM
-        {
-            get
-            {
-                return Day1.Month.ToString();
-            }
-        }
-        public DateTime Day1
-        {
-            get
-            {
-                return DateTime.Parse(date);
-            }
-        }
         public string Month1
         {
             get
@@ -182,6 +168,7 @@ namespace Formula1App.ModelsExt
                 else
                 {
                     int.TryParse(date.Substring(5, 2), out int month);
+                    month--;
                     if (month < 10)
                         return ((App)Application.Current).MonthNames["0" + month.ToString()];
                     else
