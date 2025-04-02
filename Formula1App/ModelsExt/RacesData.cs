@@ -156,6 +156,20 @@ namespace Formula1App.ModelsExt
                     return "error";
             }
         }
+        public string MMM
+        {
+            get
+            {
+                return Day1.Month.ToString();
+            }
+        }
+        public DateTime Day1
+        {
+            get
+            {
+                return DateTime.Parse(date);
+            }
+        }
         public string Month1
         {
             get
