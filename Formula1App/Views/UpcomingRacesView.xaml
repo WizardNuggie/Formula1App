@@ -7,7 +7,9 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title=""
     x:DataType="viewmodel:CurrSeasonRacesViewModel">
-    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
         <ScrollView x:Name="scrlview">
             <CollectionView
                 x:Name="colview"
@@ -16,7 +18,9 @@
                 SelectedItem="{Binding SelectedRace}"
                 SelectionMode="Single">
                 <CollectionView.Header>
-                    <BoxView HeightRequest="10" Color="#F7F4F1" />
+                    <BoxView
+                        HeightRequest="10"
+                        Color="#F7F4F1"/>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="modelext:Race">
@@ -26,9 +30,11 @@
                             Background="White"
                             Stroke="Transparent">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="0,7,0,7" />
+                                <RoundRectangle CornerRadius="0,7,0,7"/>
                             </Border.StrokeShape>
-                            <Grid ColumnDefinitions="2*,0.25*,6*,0.5*" RowDefinitions="*,*,3*">
+                            <Grid
+                                ColumnDefinitions="2*,0.25*,6*,0.5*"
+                                RowDefinitions="*,*,3*">
                                 <VerticalStackLayout
                                     Grid.RowSpan="3"
                                     HorizontalOptions="Center"
@@ -36,7 +42,7 @@
                                     <Label
                                         Margin="7,0,0,0"
                                         FontFamily="F1Reg"
-                                        Text="{Binding Days}" />
+                                        Text="{Binding Days}"/>
                                     <Border
                                         Padding="3"
                                         BackgroundColor="#E0E0E1"
@@ -45,7 +51,7 @@
                                         Stroke="Transparent"
                                         VerticalOptions="Center">
                                         <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="20" />
+                                            <RoundRectangle CornerRadius="20"/>
                                         </Border.StrokeShape>
                                         <Label
                                             FontFamily="F1Bold"
@@ -55,7 +61,7 @@
                                             MinimumWidthRequest="40"
                                             Text="{Binding MonthName}"
                                             TextColor="#67676D"
-                                            TextTransform="Uppercase" />
+                                            TextTransform="Uppercase"/>
                                     </Border>
                                 </VerticalStackLayout>
                                 <Border
@@ -66,7 +72,7 @@
                                     Stroke="#67676D"
                                     StrokeDashArray="5,5"
                                     StrokeDashOffset="10"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"/>
                                 <Label
                                     Grid.Column="2"
                                     Margin="5,0,0,0"
@@ -77,11 +83,11 @@
                                             <Span
                                                 FontFamily="F1Reg"
                                                 Text="ROUND "
-                                                TextColor="#EE0000" />
+                                                TextColor="#EE0000"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 Text="{Binding round}"
-                                                TextColor="#EE0000" />
+                                                TextColor="#EE0000"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -93,7 +99,7 @@
                                     FontSize="17"
                                     HorizontalOptions="Start"
                                     Text="{Binding OffRaceName}"
-                                    VerticalOptions="Start" />
+                                    VerticalOptions="Start"/>
                                 <Label
                                     Grid.Row="2"
                                     Grid.Column="2"
@@ -104,15 +110,15 @@
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text="FORMULA 1 "
-                                                TextColor="#67676D" />
+                                                TextColor="#67676D"/>
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text="{Binding OffGpName}"
-                                                TextColor="#67676D" />
+                                                TextColor="#67676D"/>
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text=" 2025"
-                                                TextColor="#67676D" />
+                                                TextColor="#67676D"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -124,18 +130,18 @@
                                     HorizontalOptions="Center"
                                     Text="&gt;"
                                     TextColor="#E11900"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"/>
                             </Grid>
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>
                                     <VisualState Name="Selected">
                                         <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="White" />
+                                            <Setter Property="BackgroundColor" Value="White"/>
                                         </VisualState.Setters>
                                     </VisualState>
                                     <VisualState Name="Normal">
                                         <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="White" />
+                                            <Setter Property="BackgroundColor" Value="White"/>
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>
@@ -144,7 +150,9 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>
-                    <BoxView HeightRequest="30" Color="#F7F4F1" />
+                    <BoxView
+                        HeightRequest="30"
+                        Color="#F7F4F1"/>
                 </CollectionView.Footer>
             </CollectionView>
         </ScrollView>

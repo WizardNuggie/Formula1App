@@ -352,7 +352,7 @@ namespace Formula1App.Services
         }
         public async Task<int> GetCurrRound()
         {
-            string url = ExtAPI + "current/driverstandings.json?limit=1";
+            string url = ExtAPI + "current/driverstandings.json/?limit=1";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);

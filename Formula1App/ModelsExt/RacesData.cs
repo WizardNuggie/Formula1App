@@ -43,7 +43,37 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return FirstPractice.date.Substring(FirstPractice.date.Length -2, 2);
+                if (FirstPractice != null)
+                    return FirstPractice.date.Substring(FirstPractice.date.Length -2, 2);
+                else
+                {
+                    int.TryParse(date.Substring(date.Length - 2, 2), out int day);
+                    if (day > 2)
+                    {
+                        return (day - 2).ToString();
+                    }
+                    else
+                    {
+                        int.TryParse(date.Substring(0, 4), out int year);
+                        string ly = "";
+                        if (DateTime.IsLeapYear(year))
+                            ly = "b";
+                        else
+                            ly = "a";
+                        int.TryParse(date.Substring(5, 2), out int month);
+                        month--;
+                        if (month.ToString() == "02")
+                        {
+                            int.TryParse(((App)Application.Current).DaysInMonths[month.ToString() + ly], out int dim);
+                            return int.Abs(day - dim).ToString();
+                        }
+                        else
+                        {
+                            int.TryParse(((App)Application.Current).DaysInMonths[month.ToString()], out int dim);
+                            return int.Abs(day - dim).ToString();
+                        }
+                    }
+                }
             }
         }
         public string LastDay
@@ -68,11 +98,7 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                string day1 = "";
-                string day2 = "";
-                day1 = date.Substring(date.Length - 2, 2);
-                day2 = FirstPractice.date.Substring(date.Length - 2, 2);
-                return $"{day1}-{day2}";
+                return $"{FirstDay}-{LastDay}";
             }
         }
         public string OffRaceName
@@ -134,7 +160,19 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                return ((App)Application.Current).MonthNames[FirstPractice.date.Substring(5, 2)];
+                int.TryParse(LastDay, out int day);
+                if (day > 2)
+                {
+                    return ((App)Application.Current).MonthNames[date.Substring(5, 2)];
+                }
+                else
+                {
+                    int.TryParse(date.Substring(5, 2), out int month);
+                    if (month < 10)
+                        return ((App)Application.Current).MonthNames["0" + month.ToString()];
+                    else
+                        return ((App)Application.Current).MonthNames[month.ToString()];
+                }
             }
         }
         public string Month2

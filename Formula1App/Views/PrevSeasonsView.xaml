@@ -25,21 +25,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -55,21 +55,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -87,14 +87,14 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding positionText}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -102,7 +102,7 @@
                             FontSize="12"
                             IsVisible="{Binding HasFinished}"
                             Text="{Binding Time.time}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -110,14 +110,14 @@
                             FontSize="12"
                             IsVisible="{Binding HasNotFinished}"
                             Text="{Binding OffStatus}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="3"
                             Margin="40,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding points}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -133,14 +133,14 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding positionText}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -148,7 +148,7 @@
                             FontSize="12"
                             IsVisible="{Binding HasFinished}"
                             Text="{Binding Time.time}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
@@ -156,22 +156,21 @@
                             FontSize="12"
                             IsVisible="{Binding HasNotFinished}"
                             Text="{Binding OffStatus}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="3"
                             Margin="40,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding points}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
         </modelext:MyDataTempSelector>
         <modelext:MyDataTempSelector x:Key="RaceLapsDataTemp">
             <modelext:MyDataTempSelector.EvenTemplate>
-                <DataTemplate
-                    x:DataType="modelext:Result">
+                <DataTemplate x:DataType="modelext:Result">
                     <Grid
                         BackgroundColor="#F3F3F3"
                         ColumnDefinitions="2*,2*,3*,2*"
@@ -182,34 +181,33 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.rank}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.Time.time}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="3"
                             Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.lap}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
             <modelext:MyDataTempSelector.OddTemplate>
-                <DataTemplate
-                    x:DataType="modelext:Result">
+                <DataTemplate x:DataType="modelext:Result">
                     <Grid
                         BackgroundColor="White"
                         ColumnDefinitions="2*,2*,3*,2*"
@@ -220,28 +218,28 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.rank}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="10,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.Time.time}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="3"
                             Margin="20,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding FastestLap.lap}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -259,21 +257,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -289,21 +287,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -321,21 +319,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -351,21 +349,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -383,21 +381,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -413,21 +411,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -445,21 +443,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -475,21 +473,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -507,21 +505,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -537,21 +535,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -569,21 +567,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -599,21 +597,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -631,21 +629,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -661,21 +659,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -693,21 +691,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.EvenTemplate>
@@ -723,21 +721,21 @@
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding OffRaceName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="1"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Driver.OffCode}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                         <Label
                             Grid.Column="2"
                             Margin="5,0,0,0"
                             FontFamily="F1Reg"
                             FontSize="12"
                             Text="{Binding Winner.Constructor.OfficialConstructorName}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </modelext:MyDataTempSelector.OddTemplate>
@@ -758,7 +756,7 @@
                         HeightRequest="50"
                         Text="Season"
                         VerticalOptions="Center"
-                        VerticalTextAlignment="Center" />
+                        VerticalTextAlignment="Center"/>
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
                     <CollectionView
@@ -775,21 +773,21 @@
                                         x:Name="ssn"
                                         FontFamily="F1Reg"
                                         FontSize="18"
-                                        Text="{Binding season}" />
+                                        Text="{Binding season}"/>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold"/>
+                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline"/>
                                                 </VisualState.Setters>
                                             </VisualState>
                                             <VisualState Name="Normal">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                    <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg"/>
+                                                    <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None"/>
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
@@ -813,7 +811,7 @@
                         HeightRequest="50"
                         Text="Categories"
                         VerticalOptions="Center"
-                        VerticalTextAlignment="Center" />
+                        VerticalTextAlignment="Center"/>
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
                     <Grid>
@@ -832,21 +830,21 @@
                                             FontFamily="F1Reg"
                                             FontSize="18"
                                             Text="{Binding .}"
-                                            TextTransform="Uppercase" />
+                                            TextTransform="Uppercase"/>
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup>
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState Name="Normal">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
@@ -871,7 +869,7 @@
                         HeightRequest="50"
                         Text="Results"
                         VerticalOptions="Center"
-                        VerticalTextAlignment="Center" />
+                        VerticalTextAlignment="Center"/>
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
                     <Grid>
@@ -891,21 +889,21 @@
                                             FontFamily="F1Reg"
                                             FontSize="18"
                                             Text="{Binding OffRaceName}"
-                                            TextTransform="Uppercase" />
+                                            TextTransform="Uppercase"/>
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup>
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState Name="Normal">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
@@ -930,21 +928,21 @@
                                             FontFamily="F1Reg"
                                             FontSize="18"
                                             Text="{Binding JoinedName}"
-                                            TextTransform="Uppercase" />
+                                            TextTransform="Uppercase"/>
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup>
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState Name="Normal">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
@@ -969,21 +967,21 @@
                                             FontFamily="F1Reg"
                                             FontSize="18"
                                             Text="{Binding Constructor.OfficialConstructorName}"
-                                            TextTransform="Uppercase" />
+                                            TextTransform="Uppercase"/>
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup>
                                                 <VisualState Name="Selected">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Bold"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="Underline"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                                 <VisualState Name="Normal">
                                                     <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="Transparent" />
-                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg" />
-                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None" />
+                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                        <Setter TargetName="ssn" Property="Label.FontFamily" Value="F1Reg"/>
+                                                        <Setter TargetName="ssn" Property="Label.TextDecorations" Value="None"/>
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
@@ -1007,102 +1005,106 @@
                                     FontFamily="F1Reg"
                                     FontSize="22"
                                     Text="Formula 1 "
-                                    TextTransform="Uppercase" />
+                                    TextTransform="Uppercase"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="22"
-                                    Text="{Binding SelectedRace.OffGpName}" />
+                                    Text="{Binding SelectedRace.OffGpName}"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="22"
                                     Text=" "
-                                    TextTransform="Uppercase" />
+                                    TextTransform="Uppercase"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="22"
                                     Text="{Binding SelectedRace.season}"
-                                    TextTransform="Uppercase" />
+                                    TextTransform="Uppercase"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="22"
                                     Text=" - Race Results"
-                                    TextTransform="Uppercase" />
+                                    TextTransform="Uppercase"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Margin="15,15,0,0" IsVisible="{Binding SelectedRace.Has1Month}">
+                    <Label
+                        Margin="15,15,0,0"
+                        IsVisible="{Binding SelectedRace.Has1Month}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.FirstDay}" />
+                                    Text="{Binding SelectedRace.FirstDay}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" - " />
+                                    Text=" - "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.LastDay}" />
+                                    Text="{Binding SelectedRace.LastDay}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" " />
+                                    Text=" "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.Month2}" />
+                                    Text="{Binding SelectedRace.Month2}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" " />
+                                    Text=" "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.season}" />
+                                    Text="{Binding SelectedRace.season}"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Margin="15,15,0,0" IsVisible="{Binding SelectedRace.Has2Months}">
+                    <Label
+                        Margin="15,15,0,0"
+                        IsVisible="{Binding SelectedRace.Has2Months}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.FirstDay}" />
+                                    Text="{Binding SelectedRace.FirstDay}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" " />
+                                    Text=" "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.Month1}" />
+                                    Text="{Binding SelectedRace.Month1}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" - " />
+                                    Text=" - "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.LastDay}" />
+                                    Text="{Binding SelectedRace.LastDay}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" " />
+                                    Text=" "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.Month2}" />
+                                    Text="{Binding SelectedRace.Month2}"/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text=" " />
+                                    Text=" "/>
                                 <Span
                                     FontFamily="F1Bold"
                                     FontSize="10"
-                                    Text="{Binding SelectedRace.season}" />
+                                    Text="{Binding SelectedRace.season}"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -1113,17 +1115,17 @@
                                     FontFamily="F1Reg"
                                     FontSize="10"
                                     Text="{Binding SelectedRace.Circuit.circuitName}"
-                                    TextColor="#48484D" />
+                                    TextColor="#48484D"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="10"
                                     Text=", "
-                                    TextColor="#48484D" />
+                                    TextColor="#48484D"/>
                                 <Span
                                     FontFamily="F1Reg"
                                     FontSize="10"
                                     Text="{Binding SelectedRace.Circuit.Location.locality}"
-                                    TextColor="#48484D" />
+                                    TextColor="#48484D"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -1132,30 +1134,34 @@
                         SelectedItem="{Binding SelectedRaceCat}"
                         SelectionMode="Single">
                         <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="3" Orientation="Vertical" />
+                            <LinearItemsLayout
+                                ItemSpacing="3"
+                                Orientation="Vertical"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.Header>
                             <Grid ColumnDefinitions="*,10*">
                                 <BoxView
                                     HeightRequest="35"
                                     WidthRequest="6"
-                                    Color="#E11900" />
+                                    Color="#E11900"/>
                                 <Label
                                     Grid.Column="1"
                                     FontFamily="F1Bold"
                                     Text="Race"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"/>
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
-                                <Grid Margin="15,0" ColumnDefinitions="*,17*">
+                                <Grid
+                                    Margin="15,0"
+                                    ColumnDefinitions="*,17*">
                                     <BoxView
                                         x:Name="bxview"
                                         HeightRequest="35"
                                         HorizontalOptions="Start"
                                         WidthRequest="6"
-                                        Color="#E5E7EB" />
+                                        Color="#E5E7EB"/>
                                     <Label
                                         x:Name="lbl"
                                         Grid.Column="1"
@@ -1163,23 +1169,23 @@
                                         HorizontalOptions="Start"
                                         Text="{Binding .}"
                                         TextColor="#48484D"
-                                        VerticalOptions="Center" />
+                                        VerticalOptions="Center"/>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="#EDEDED" />
-                                                    <Setter TargetName="lbl" Property="Label.FontFamily" Value="F1Bold" />
-                                                    <Setter TargetName="lbl" Property="Label.TextColor" Value="Black" />
-                                                    <Setter TargetName="bxview" Property="BoxView.Color" Value="#67676D" />
+                                                    <Setter Property="BackgroundColor" Value="#EDEDED"/>
+                                                    <Setter TargetName="lbl" Property="Label.FontFamily" Value="F1Bold"/>
+                                                    <Setter TargetName="lbl" Property="Label.TextColor" Value="Black"/>
+                                                    <Setter TargetName="bxview" Property="BoxView.Color" Value="#67676D"/>
                                                 </VisualState.Setters>
                                             </VisualState>
                                             <VisualState Name="Normal">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                    <Setter TargetName="lbl" Property="Label.FontFamily" Value="F1Reg" />
-                                                    <Setter TargetName="lbl" Property="Label.TextColor" Value="#48484D" />
-                                                    <Setter TargetName="bxview" Property="BoxView.Color" Value="#E5E7EB" />
+                                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                                    <Setter TargetName="lbl" Property="Label.FontFamily" Value="F1Reg"/>
+                                                    <Setter TargetName="lbl" Property="Label.TextColor" Value="#48484D"/>
+                                                    <Setter TargetName="bxview" Property="BoxView.Color" Value="#E5E7EB"/>
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
@@ -1191,14 +1197,13 @@
                 </VerticalStackLayout>
                 <Grid
                     x:Name="grd"
-                    Margin="0,0,0,20"
-                    IsVisible="True">
+                    Margin="0,0,0,20">
                     <ActivityIndicator
                         Margin="0,100,0,0"
                         HorizontalOptions="Center"
                         IsRunning="{Binding BindingContext.InServerCall, Source={x:Reference grd}}"
                         VerticalOptions="Start"
-                        Color="#848080" />
+                        Color="#848080"/>
                     <CollectionView
                         IsVisible="{Binding InAllRaces}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
@@ -1207,17 +1212,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1229,24 +1236,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1268,20 +1275,20 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Pos"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Driver"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         Margin="15,0,0,0"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Time/Retired"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="3"
                                         Margin="0,0,15,0"
@@ -1289,12 +1296,12 @@
                                         FontSize="12"
                                         HorizontalOptions="End"
                                         Text="PTS"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1316,42 +1323,41 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Pos"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Driver"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         Margin="15,0,0,0"
                                         FontFamily="F1Bold"
                                         FontSize="12"
-                                        
                                         Text="Lap Time"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="3"
                                         Margin="20,0,0,0"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Lap"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                         <CollectionView.EmptyView>
                             <Label
                                 Margin="20"
-                                HorizontalOptions="Center"
                                 FontFamily="F1Bold"
                                 FontSize="20"
-                                Text="No data to show" />
+                                HorizontalOptions="Center"
+                                Text="No data to show"/>
                         </CollectionView.EmptyView>
                     </CollectionView>
                     <!--  spec race fastest laps  -->
@@ -1363,17 +1369,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1385,24 +1393,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1415,17 +1423,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1437,24 +1447,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1467,17 +1477,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1489,24 +1501,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1519,17 +1531,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1541,24 +1555,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1571,17 +1585,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1593,24 +1609,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1623,17 +1639,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1645,24 +1663,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1675,17 +1693,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1697,24 +1717,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>
@@ -1727,17 +1747,19 @@
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
                             <VerticalStackLayout>
-                                <Label Margin="0,15,0,0" HorizontalOptions="Center">
+                                <Label
+                                    Margin="0,15,0,0"
+                                    HorizontalOptions="Center">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text="{Binding SelectedSeason.season}" />
+                                                Text="{Binding SelectedSeason.season}"/>
                                             <Span
                                                 FontFamily="F1Reg"
                                                 FontSize="18"
-                                                Text=" Race Results" />
+                                                Text=" Race Results"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -1749,24 +1771,24 @@
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Grand Prix"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="1"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Winner"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                     <Label
                                         Grid.Column="2"
                                         FontFamily="F1Bold"
                                         FontSize="12"
                                         Text="Car"
-                                        TextTransform="Uppercase" />
+                                        TextTransform="Uppercase"/>
                                 </Grid>
                                 <BoxView
                                     HeightRequest="1"
                                     WidthRequest="400"
-                                    Color="#F3F3F3" />
+                                    Color="#F3F3F3"/>
                             </VerticalStackLayout>
                         </CollectionView.Header>
                     </CollectionView>

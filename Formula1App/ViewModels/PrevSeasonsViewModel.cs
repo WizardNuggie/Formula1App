@@ -567,6 +567,10 @@ namespace Formula1App.ViewModels
         }
         private async void GetFastestLaps()
         {
+            await GetFastestLapsRace();
+        }
+        private async Task GetFastestLapsRace()
+        {
             foreach (Result r in RaceResults.ToList())
             {
                 if (r.FastestLap == null)

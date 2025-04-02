@@ -17,6 +17,7 @@ namespace Formula1App
         public Dictionary<string, string> OffConstCodes;
         public Dictionary<string, string> OffConstNames;
         public Dictionary<string, string> MonthNames;
+        public Dictionary<string, string> DaysInMonths;
         public Dictionary<string, string> DayNames;
         public Dictionary<string, string> RacesNames;
         public Dictionary<string, string> RacesGpName;
@@ -275,6 +276,22 @@ namespace Formula1App
             {
                 {"Disqualified", "DSQ"},
                 {"Did not start", "DNS"},
+            };
+            DaysInMonths = new Dictionary<string, string>()
+            {
+                {"01", "31"},
+                {"02a", "28"},
+                {"02b", "29"},
+                {"03", "31"},
+                {"04", "30"},
+                {"05", "31"},
+                {"06", "30"},
+                {"07", "31"},
+                {"08", "31"},
+                {"09", "30"},
+                {"10", "31"},
+                {"11", "30"},
+                {"12", "31"},
             };
             CurrYear = DateTime.Now.Year.ToString();
             MainPage = sp.GetService<SignPage>();
