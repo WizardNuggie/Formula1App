@@ -449,6 +449,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool hasLaps;
+        public bool HasLaps
+        {
+            get => hasLaps;
+            set
+            {
+                hasLaps = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand RacesAllCommand { get; set; }
         public ICommand DriversAllCommand { get; set; }
@@ -537,7 +547,8 @@ namespace Formula1App.ViewModels
         {
             RaceCats = new();
             RaceCats.Add("Race Result");
-            RaceCats.Add("Fastest Laps");
+            if (InSpecRace && HasLaps)
+                RaceCats.Add("Fastest Laps");
             RaceCats.Add("Pit Stops");
             RaceCats.Add("Starting Grid");
             RaceCats.Add("Qualifying");
@@ -564,6 +575,18 @@ namespace Formula1App.ViewModels
                 }
             }
             RaceResults = rs.Results;
+            int count = 0;
+            foreach (Result r in RaceResults)
+            {
+                if (r.FastestLap != null)
+                {
+                    count++;
+                }
+            }
+            if (count > 0)
+                HasLaps = true;
+            else
+                HasLaps = false;
         }
         private async void GetFastestLaps()
         {
@@ -577,6 +600,18 @@ namespace Formula1App.ViewModels
                     RaceResults.Remove(r);
             }
             RaceResults = RaceResults.OrderBy(r => r.FastestLap.rankInt).ToList();
+            int count = 0;
+            foreach (Result r in RaceResults)
+            {
+                if (r.FastestLap != null)
+                {
+                    count++;
+                }
+            }
+            if (count > 0)
+                HasLaps = true;
+            else
+                HasLaps = false;
         }
     }
 }
