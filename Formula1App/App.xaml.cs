@@ -19,6 +19,7 @@ namespace Formula1App
         public Dictionary<string, string> MonthNames;
         public Dictionary<string, string> DayNames;
         public Dictionary<string, string> RacesNames;
+        public Dictionary<string, string> SpecialRacesNames;
         public Dictionary<string, string> RacesGpName;
         public Dictionary<string, string> TrackPic;
         public Dictionary<string, string> TrackSponsors;
@@ -188,14 +189,23 @@ namespace Formula1App
                 {"São Paulo", "Brazil"},
                 {"Las Vegas", "Las Vegas"},
                 {"Al Daayen", "Qatar"},
-                {"Abu Dhabi", "Abu Dhabi"}
+                {"Abu Dhabi", "Abu Dhabi"},
+                {"Nürburg", "Nürburgring"}
+            };
+            SpecialRacesNames = new Dictionary<string, string>()
+            {
+                {"Sakhir Grand Prix", "Sakhir"},
+                {"Bahrain Grand Prix", "bahrain"},
+                {"Styrian Grand Prix", "Styria"},
+                {"70th Anniversary Grand Prix", "70th Anniversary"},
             };
             RacesGpName = new Dictionary<string, string>()
             {
                 {"Melbourne", "Australian Grand Prix"},
                 {"Shanghai", "Chinese Grand Prix"},
                 {"Suzuka", "Japanese Grand Prix"},
-                {"Sakhir", "Bahrain Grand Prix"},
+                {"Sakhir1", "Bahrain Grand Prix"},
+                {"Sakhir2", "Bahrain Grand Prix"},
                 {"Jeddah", "Saudi Arabian Grand Prix"},
                 {"Miami", "Miami Grand Prix"},
                 {"Imola", "Gran Premio Del Made In Italy E Dell'Emilia-Romagna"},

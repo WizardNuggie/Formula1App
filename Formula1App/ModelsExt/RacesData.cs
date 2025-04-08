@@ -97,7 +97,9 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                if (((App)Application.Current).RacesNames.ContainsKey(Circuit.Location.locality))
+                if (((App)Application.Current).SpecialRacesNames.ContainsKey(raceName))
+                    return ((App)Application.Current).SpecialRacesNames[raceName];
+                else if (((App)Application.Current).RacesNames.ContainsKey(Circuit.Location.locality))
                     return ((App)Application.Current).RacesNames[Circuit.Location.locality];
                 else
                     return Circuit.Location.locality;
@@ -146,7 +148,14 @@ namespace Formula1App.ModelsExt
             get
             {
                 if (((App)Application.Current).TrackSponsors.ContainsKey(Circuit.Location.locality))
-                    return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}";
+                {
+                    if (((App)Application.Current).SpecialRacesNames.ContainsKey(raceName))
+                        return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {raceName}";
+                    else if (((App)Application.Current).RacesGpName.ContainsKey(Circuit.Location.locality))
+                        return $"{((App)Application.Current).TrackSponsors[Circuit.Location.locality]} {((App)Application.Current).RacesGpName[Circuit.Location.locality]}";
+                    else
+                        return "error";
+                }
                 else
                     return "error";
             }

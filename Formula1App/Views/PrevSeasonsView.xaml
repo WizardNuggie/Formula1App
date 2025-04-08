@@ -814,7 +814,7 @@
                         VerticalTextAlignment="Center" />
                 </expander:SfExpander.Header>
                 <expander:SfExpander.Content>
-                    <ScrollView>
+                    <Grid>
                         <CollectionView
                             Margin="10,10,0,0"
                             ItemsSource="{Binding Categories}"
@@ -853,7 +853,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </ScrollView>
+                    </Grid>
                 </expander:SfExpander.Content>
             </expander:SfExpander>
             <expander:SfExpander
@@ -1199,12 +1199,6 @@
                 <Grid
                     x:Name="grd"
                     Margin="0,0,0,20">
-                    <ActivityIndicator
-                        Margin="0,100,0,0"
-                        HorizontalOptions="Center"
-                        IsRunning="{Binding BindingContext.InServerCall, Source={x:Reference grd}}"
-                        VerticalOptions="Start"
-                        Color="#848080" />
                     <CollectionView
                         IsVisible="{Binding InAllRaces}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
@@ -1794,6 +1788,12 @@
                         </CollectionView.Header>
                     </CollectionView>
                     <!--  spec Constructor  -->
+                    <ActivityIndicator
+                        Margin="0,100,0,0"
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding BindingContext.InServerCall, Source={x:Reference grd}}"
+                        VerticalOptions="Start"
+                        Color="#848080" />
                 </Grid>
             </VerticalStackLayout>
         </VerticalStackLayout>

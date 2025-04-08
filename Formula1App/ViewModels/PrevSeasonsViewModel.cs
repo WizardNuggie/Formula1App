@@ -35,11 +35,13 @@ namespace Formula1App.ViewModels
             {
                 selectedSeason = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 GetRaces();
                 GetDrivers();
                 GetConsts();
                 GetCats();
                 GetSeasonResults();
+                InServerCall = false;
             }
         }
         private List<string> categories;
@@ -60,6 +62,7 @@ namespace Formula1App.ViewModels
             {
                 selectedCat = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 switch (selectedCat)
                 {
                     case "Races":
@@ -87,6 +90,7 @@ namespace Formula1App.ViewModels
                         SelectedDriver = OrderedDrivers.FirstOrDefault();
                         break;
                 }
+                InServerCall = false;
             }
         }
         private List<Race> races;
@@ -107,6 +111,7 @@ namespace Formula1App.ViewModels
             {
                 selectedRace = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 if (InRaces && SelectedRace.Circuit.Location.locality == "All")
                 {
                     InAllRaces = true;
@@ -124,6 +129,7 @@ namespace Formula1App.ViewModels
                     InSpecRace = false;
                 }
                 GetRaceCatsInit();
+                InServerCall = true;
             }
         }
         private List<string> raceCats;
@@ -144,6 +150,7 @@ namespace Formula1App.ViewModels
             {
                 selectedRaceCat = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 if (InSpecRace)
                 {
                     switch (selectedRaceCat)
@@ -209,6 +216,7 @@ namespace Formula1App.ViewModels
                     InQuali = false;
                     InSprint = false;
                 }
+                InServerCall = false;
             }
         }
         private List<MyDriverStandings> drivers;
@@ -239,10 +247,12 @@ namespace Formula1App.ViewModels
             {
                 selectedDriver = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 if (InDrivers && SelectedDriver.FirstName == "All")
                     InAllDrivers = true;
                 else
                     InAllDrivers = false;
+                InServerCall = false;
             }
         }
         private List<Constructorstanding> consts;
@@ -273,10 +283,12 @@ namespace Formula1App.ViewModels
             {
                 selectedConst = value;
                 OnPropertyChanged();
+                InServerCall = true;
                 if (InConsts && SelectedConst.Constructor.name == "All")
                     InAllConsts = true;
                 else
                     InAllConsts = false;
+                InServerCall = false;
             }
         }
         private List<Race> seasonResults;
@@ -521,7 +533,6 @@ namespace Formula1App.ViewModels
         }
         public async Task GetSeasonResults()
         {
-            InServerCall = true;
             SeasonResults = await extService.GetSeasonResultsAsync(SelectedSeason.season);
             foreach (Race r in SeasonResults)
             {
@@ -529,7 +540,6 @@ namespace Formula1App.ViewModels
                 r.Results.Clear();
                 r.Results.Add(add);
             }
-            InServerCall = false;
         }
         private async Task GetCats()
         {
@@ -547,7 +557,7 @@ namespace Formula1App.ViewModels
         {
             RaceCats = new();
             RaceCats.Add("Race Result");
-            if (InSpecRace && HasLaps)
+            if ((InSpecRace && HasLaps) || InAllRaces)
                 RaceCats.Add("Fastest Laps");
             RaceCats.Add("Pit Stops");
             RaceCats.Add("Starting Grid");
@@ -587,6 +597,7 @@ namespace Formula1App.ViewModels
                 HasLaps = true;
             else
                 HasLaps = false;
+            await GetRaceCats();
         }
         private async void GetFastestLaps()
         {
