@@ -3,7 +3,6 @@ using Formula1App.ViewModels;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
 using Formula1App.Services;
-using CommunityToolkit.Maui;
 
 namespace Formula1App
 {
@@ -14,7 +13,7 @@ namespace Formula1App
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()
+                //.UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

@@ -761,7 +761,7 @@
                 <expander:SfExpander.Content>
                     <CollectionView
                         Margin="10,10,0,0"
-                        ItemsSource="{Binding Seasons}"
+                        ItemsSource="{Binding SeasonsObs}"
                         MaximumHeightRequest="175"
                         SelectedItem="{Binding SelectedSeason}"
                         SelectionMode="Single"
@@ -817,7 +817,7 @@
                     <Grid>
                         <CollectionView
                             Margin="10,10,0,0"
-                            ItemsSource="{Binding Categories}"
+                            ItemsSource="{Binding CategoriesObs}"
                             MaximumHeightRequest="175"
                             SelectedItem="{Binding SelectedCat}"
                             SelectionMode="Single"
@@ -876,7 +876,7 @@
                         <CollectionView
                             Margin="10,10,0,0"
                             IsVisible="{Binding InRaces}"
-                            ItemsSource="{Binding Races}"
+                            ItemsSource="{Binding RacesObs}"
                             MaximumHeightRequest="175"
                             SelectedItem="{Binding SelectedRace}"
                             SelectionMode="Single"
@@ -915,7 +915,7 @@
                         <CollectionView
                             Margin="10,10,0,0"
                             IsVisible="{Binding InDrivers}"
-                            ItemsSource="{Binding OrderedDrivers}"
+                            ItemsSource="{Binding OrderedDriversObs}"
                             MaximumHeightRequest="175"
                             SelectedItem="{Binding SelectedDriver}"
                             SelectionMode="Single"
@@ -954,7 +954,7 @@
                         <CollectionView
                             Margin="10,10,0,0"
                             IsVisible="{Binding InConsts}"
-                            ItemsSource="{Binding OrderedConsts}"
+                            ItemsSource="{Binding OrderedConstsObs}"
                             MaximumHeightRequest="175"
                             SelectedItem="{Binding SelectedConst}"
                             SelectionMode="Single"
@@ -1131,7 +1131,7 @@
                         </Label.FormattedText>
                     </Label>
                     <CollectionView
-                        ItemsSource="{Binding RaceCats}"
+                        ItemsSource="{Binding RaceCatsObs}"
                         SelectedItem="{Binding SelectedRaceCat}"
                         SelectionMode="Single">
                         <CollectionView.ItemsLayout>
@@ -1202,7 +1202,7 @@
                     <CollectionView
                         IsVisible="{Binding InAllRaces}"
                         ItemTemplate="{StaticResource AllRacesDataTemp}"
-                        ItemsSource="{Binding SeasonResults}"
+                        ItemsSource="{Binding SeasonResultsObs}"
                         SelectionMode="None"
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
@@ -1256,7 +1256,7 @@
                     <CollectionView
                         IsVisible="{Binding InResult}"
                         ItemTemplate="{StaticResource RaceResultDataTemp}"
-                        ItemsSource="{Binding RaceResults}"
+                        ItemsSource="{Binding RaceResultsObs}"
                         SelectionMode="None"
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>
@@ -1304,7 +1304,7 @@
                     <CollectionView
                         IsVisible="{Binding InLaps}"
                         ItemTemplate="{StaticResource RaceLapsDataTemp}"
-                        ItemsSource="{Binding RaceResults}"
+                        ItemsSource="{Binding RaceResultsObs}"
                         SelectionMode="None"
                         VerticalScrollBarVisibility="Always">
                         <CollectionView.Header>

@@ -64,7 +64,13 @@ namespace Formula1App.ModelsExt
         public List<Result> Results { get; set; }
         public Result Winner
         {
-            get => Results.FirstOrDefault();
+            get
+            {
+                if (Results.FirstOrDefault() == null)
+                    return new Result();
+                else
+                    return Results.FirstOrDefault();
+            }
         }
         public DateOnly DayLast
         {
