@@ -97,7 +97,9 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                if (((App)Application.Current).SpecialRacesNames.ContainsKey(raceName))
+                if (Circuit.Location.locality == "All")
+                    return Circuit.Location.locality;
+                else if (((App)Application.Current).SpecialRacesNames.ContainsKey(raceName))
                     return ((App)Application.Current).SpecialRacesNames[raceName];
                 else if (((App)Application.Current).RacesNames.ContainsKey(Circuit.Location.locality))
                     return ((App)Application.Current).RacesNames[Circuit.Location.locality];
