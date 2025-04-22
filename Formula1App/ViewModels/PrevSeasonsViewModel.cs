@@ -134,33 +134,34 @@ namespace Formula1App.ViewModels
             }
         private Race selectedRace;
         public Race SelectedRace
+        {
+            get => selectedRace;
+            set
             {
-                get => selectedRace;
-                set
+                selectedRace = value;
+                OnPropertyChanged();
+                InServerCall = true;
+                if (InRaces && SelectedRace.Circuit.Location.locality == "All")
                 {
-                    selectedRace = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    if (InRaces && SelectedRace.Circuit.Location.locality == "All")
-                    {
-                        InAllRaces = true;
-                        InSpecRace = false;
-                    }
-                    else if (InRaces && !(SelectedRace.Circuit.Location.locality == "All"))
-                    {
-                        InAllRaces = false;
-                        InSpecRace = true;
-                        GetRaceResults();
-                    }
-                    else
-                    {
-                        InAllRaces = false;
-                        InSpecRace = false;
-                    }
-                    GetRaceCatsInit();
-                    InServerCall = true;
+                    InAllRaces = true;
+                    InSpecRace = false;
+                    GetRaceResults();
                 }
+                else if (InRaces && !(SelectedRace.Circuit.Location.locality == "All"))
+                {
+                    InAllRaces = false;
+                    InSpecRace = true;
+                    GetRaceResults();
+                }
+                else
+                {
+                    InAllRaces = false;
+                    InSpecRace = false;
+                }
+                GetRaceCatsInit();
+                InServerCall = true;
             }
+        }
         private List<string> raceCats;
         public List<string> RaceCats
             {
@@ -699,11 +700,16 @@ namespace Formula1App.ViewModels
         }
         private async Task GetFastestLapsRace()
         {
-            foreach (Result r in RaceResults.ToList())
+            List<Result> rr = new(RaceResults);
+            foreach (Result r in RaceResults)
             {
                 if (r.FastestLap == null)
-                    RaceResults.Remove(r);
+                {
+                    if (rr.Where(x => x.Driver.driverId == r.Driver.driverId).FirstOrDefault() != null)
+                        rr.Remove(rr.Where(x => x.Driver.driverId == r.Driver.driverId).FirstOrDefault());
+                }
             }
+            RaceResults = new(rr);
             RaceResults = RaceResults.OrderBy(r => r.FastestLap.rankInt).ToList();
             int count = 0;
             foreach (Result r in RaceResults)
