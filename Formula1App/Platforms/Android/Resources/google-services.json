@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966964428455",
+    "project_id": "formula1application-f1277",
+    "storage_bucket": "formula1application-f1277.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966964428455:android:4ade9a6b9fbd75fc72e582",
+        "android_client_info": {
+          "package_name": "com.companyname.formula1app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZnEDIGPh9rkx62kygQwTIOlMfH8iowm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
