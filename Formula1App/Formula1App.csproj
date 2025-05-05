@@ -57,10 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Platforms\Android\Resources\Drawable\icon_notification.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Resources\Fonts\Formula1-Bold_web_0.ttf" />
 	  <None Remove="Resources\Fonts\Formula1-Regular_web_0.ttf" />
 	  <None Remove="Resources\Fonts\Formula1-Wide_web_0.ttf" />
@@ -76,7 +72,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Syncfusion.Maui.Buttons" Version="28.2.6" />
 		<PackageReference Include="Syncfusion.Maui.Expander" Version="28.2.4" />
-    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.2.0.9" ExcludeAssets="All" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -140,24 +135,6 @@
 	  <MauiXaml Update="Views\YourPendingArticles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-	  <PackageReference Include="Xamarin.Firebase.Common">
-	    <Version>121.0.0.5</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.Firebase.Messaging">
-	    <Version>124.1.1.1</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.GooglePlayServices.Base">
-	    <Version>118.7.0.1</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.GooglePlayServices.Basement">
-	    <Version>118.7.0.1</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
-	    <Version>118.3.0.1</Version>
-	  </PackageReference>
 	</ItemGroup>
 
 </Project>
