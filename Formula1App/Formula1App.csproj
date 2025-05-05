@@ -60,7 +60,6 @@
 	  <AndroidResource Remove="Platforms\Android\Resources\Drawable\icon_notification.png" />
 	</ItemGroup>
 
-  <!--a-->
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Formula1-Bold_web_0.ttf" />
 	  <None Remove="Resources\Fonts\Formula1-Regular_web_0.ttf" />
