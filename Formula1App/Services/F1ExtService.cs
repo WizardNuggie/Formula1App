@@ -55,7 +55,6 @@ namespace Formula1App.Services
         {
             return await GetDriversByYearAsync("current");
         }
-
         public async Task<List<Constructorstanding>> GetCurrConstructorsStandingsAsync()
         {
             return await GetConstructorsStandingsByYearAsync("current");
@@ -68,7 +67,6 @@ namespace Formula1App.Services
         {
             return await GetRacesByYearAsync("current");
         }
-
         public async Task<List<MyDriverStandings>> GetDriversStandingsByYearAsync(string year)
         {
             string url = ExtAPI + year + "/driverstandings.json";
@@ -149,6 +147,30 @@ namespace Formula1App.Services
                         });
                     }
                     return newDList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<Driver>> GetDriversByRound(string year, string round)
+        {
+            string url = ExtAPI + year + "/" + round + "/drivers.json?limit=100";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"DriversData\":");
+                    DriverApi result = JsonSerializer.Deserialize<DriverApi>(resContent);
+                    List<Driver> dList = result.DriversData.DriverTable.Drivers.ToList();
+                    return dList;
                 }
                 else
                 {
@@ -501,6 +523,35 @@ namespace Formula1App.Services
                         }
                     }
                     return rList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<List<Pitstop>> GetPitStopsByRace(string year, string round)
+        {
+            string url = $"{ExtAPI}{year}/{round}/pitstops.json/?limit=100/";
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                string resContent = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    resContent = resContent.Replace("\"MRData\":", "\"PitStopsData\":");
+                    PitStopsApi result = JsonSerializer.Deserialize<PitStopsApi>(resContent);
+                    List<Pitstop> ps = result.PitStopsData.RaceTable.Races.FirstOrDefault().PitStops.ToList();
+                    List<Driver> drivers = await GetDriversByRound(year, round);
+                    foreach (Pitstop p in ps)
+                    {
+                        p.Driver = drivers.Where(x => x.driverId == p.driverId).FirstOrDefault();
+                    }
+                    return ps;
                 }
                 else
                 {

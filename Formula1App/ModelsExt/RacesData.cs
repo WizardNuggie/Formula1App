@@ -62,6 +62,7 @@ namespace Formula1App.ModelsExt
             }
         }
         public List<Result> Results { get; set; }
+        public List<Pitstop> PitStops { get; set; }
         public Result Winner
         {
             get

@@ -391,6 +391,16 @@ namespace Formula1App.ViewModels
                     OnPropertyChanged();
                 }
             }
+        private ObservableCollection<Pitstop> pitStops;
+        public ObservableCollection<Pitstop> PitStops
+        {
+            get => pitStops;
+            set
+            {
+                pitStops = value;
+                OnPropertyChanged();
+            }
+        }
         private bool inRaces;
         public bool InRaces
         {
@@ -551,6 +561,16 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool hasPits;
+        public bool HasPits
+        {
+            get => hasPits;
+            set
+            {
+                hasPits = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand RacesAllCommand { get; set; }
         public ICommand DriversAllCommand { get; set; }
@@ -572,6 +592,7 @@ namespace Formula1App.ViewModels
             OrderedConstsObs = new();
             SeasonResultsObs = new();
             RaceResultsObs = new();
+            PitStops = new();
             InitData();
         }
         private async void InitData()
@@ -648,12 +669,14 @@ namespace Formula1App.ViewModels
         }
         private async Task GetRaceCats()
         {
+            await GetPitStopsRace();
             RaceCats = new();
             RaceCats.Clear();
             RaceCats.Add("Race Result");
             if ((InSpecRace && HasLaps) || InAllRaces)
                 RaceCats.Add("Fastest Laps");
-            RaceCats.Add("Pit Stops");
+            if (InSpecRace && HasPits)
+                RaceCats.Add("Pit Stops");
             RaceCats.Add("Starting Grid");
             RaceCats.Add("Qualifying");
             if (InSpecRace && SelectedRace.HasSprint)
@@ -724,6 +747,33 @@ namespace Formula1App.ViewModels
                 HasLaps = true;
             else
                 HasLaps = false;
+        }
+        private async void GetPitStopsInit()
+        {
+            await GetPitStopsRace();
+        }
+        private async Task GetPitStopsRace()
+        {
+            List<Pitstop> ps = new();
+            if (!InAllRaces)
+            {
+                ps = await extService.GetPitStopsByRace(SelectedSeason.season, SelectedRace.round);
+                if (ps == null)
+                {
+                    HasPits = false;
+                    PitStops = new();
+                }
+                else
+                {
+                    HasPits = true;
+                    PitStops = new(ps);
+                }
+            }
+            else
+            {
+                HasPits = false;
+                PitStops = new();
+            }
         }
     }
 }
