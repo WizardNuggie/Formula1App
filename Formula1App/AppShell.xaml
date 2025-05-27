@@ -117,6 +117,16 @@
             Icon="manage_articles.png"
             Route="ManageArticles" />
     </FlyoutItem>
+    <FlyoutItem
+        Title="Profile"
+        FlyoutDisplayOptions="AsSingleItem"
+        Icon="profile.png">
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate local:NewsView}"
+            Icon="profile.png"
+            Route="Profile" />
+    </FlyoutItem>
     <Shell.FlyoutFooter>
         <HorizontalStackLayout Padding="17,14">
             <HorizontalStackLayout.GestureRecognizers>

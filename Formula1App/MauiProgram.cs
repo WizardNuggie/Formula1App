@@ -47,6 +47,7 @@ namespace Formula1App
             builder.Services.AddTransient<RaceResultsView>();
             builder.Services.AddTransient<ManageArticlesView>();
             builder.Services.AddTransient<PrevSeasonsView>();
+            builder.Services.AddTransient<ProfileView>();
             #endregion
             #region View Models
             builder.Services.AddTransient<AppShellViewModel>();
@@ -67,6 +68,7 @@ namespace Formula1App
             builder.Services.AddTransient<CurrSeasonRacesViewModel>();
             builder.Services.AddTransient<ManageArticlesViewModel>();
             builder.Services.AddTransient<PrevSeasonsViewModel>();
+            builder.Services.AddTransient<ProfileViewModel>();
             #endregion
             #region Services
             builder.Services.AddSingleton<F1ExtService>();

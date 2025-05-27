@@ -111,6 +111,9 @@
 	  <MauiXaml Update="Views\PrevSeasonsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ProfileView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\RaceResultsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
