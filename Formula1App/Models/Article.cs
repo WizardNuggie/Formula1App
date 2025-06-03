@@ -25,6 +25,15 @@ namespace Formula1App.Models
                 return F1IntService.ImageBaseAddress + $"articles/{Id}.png";
             }
         }
+
+        public Subject Subjects_
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public Article() { }
     }
 }

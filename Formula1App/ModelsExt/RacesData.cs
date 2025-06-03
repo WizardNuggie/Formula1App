@@ -28,6 +28,14 @@ namespace Formula1App.ModelsExt
         public string season { get; set; }
         public string round { get; set; }
         public List<Race> Races { get; set; }
+
+        public Race Races_
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
     public class Race

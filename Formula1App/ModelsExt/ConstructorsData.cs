@@ -26,5 +26,13 @@ namespace Formula1App.ModelsExt
     {
         public string season { get; set; }
         public List<Constructor> Constructors { get; set; }
+
+        public Constructor Constructor
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

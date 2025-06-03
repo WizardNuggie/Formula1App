@@ -1,360 +1,821 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Formula1App.Models.Article" Collapsed="true">
-    <Position X="2.75" Y="3.25" Width="1.5" />
+    <Position X="22.25" Y="27.25" Width="1.5" />
+    <Members>
+      <Property Name="Subjects" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAACAEgIAAAIAEAAAAAAAAAAAAAAAAAAAAAACAEQAgA=</HashCode>
       <FileName>Models\Article.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FirstSubject" />
+      <Property Name="Writer" />
+      <Property Name="Subjects_" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.Models.LoginUser" Collapsed="true">
-    <Position X="9.75" Y="5.25" Width="1.5" />
+    <Position X="19.25" Y="28.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\LoginUser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.Models.Status" Collapsed="true">
-    <Position X="9.75" Y="8.25" Width="1.5" />
+    <Position X="21.25" Y="29.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Status.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.Models.Subject" Collapsed="true">
-    <Position X="11.5" Y="8.25" Width="1.5" />
+    <Position X="18.5" Y="26.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Subject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.Models.User" Collapsed="true">
-    <Position X="2.75" Y="9.25" Width="1.5" />
+    <Position X="22" Y="25.25" Width="1.5" />
+    <Members>
+      <Property Name="Articles" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAACAAAIAiIAAAAAAQAAAAQACQAIAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\User.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Articles_" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.Models.UserType" Collapsed="true">
-    <Position X="4.5" Y="9.25" Width="1.5" />
+    <Position X="19.25" Y="29.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\UserType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Constructor" Collapsed="true">
-    <Position X="8" Y="3.25" Width="1.5" />
+    <Position X="25" Y="10.5" Width="1.5" />
+    <Members>
+      <Property Name="Drivers" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>JAEAAAAGEAAAAAAAgABBAAAAAAAMAAAAAAAIAAAAAQA=</HashCode>
+      <HashCode>JAEAAAAGEAAAAAAAgABBAAAAAAAMgAAAAAAIAAAAAQA=</HashCode>
       <FileName>ModelsExt\Constructor.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Driver" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.ConstructorsApi" Collapsed="true">
-    <Position X="9.75" Y="3.25" Width="1.5" />
+    <Position X="22.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ConstructorsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.ConstructorsData" Collapsed="true">
-    <Position X="11.5" Y="3.25" Width="1.5" />
+    <Position X="22.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAAAAAAAEIEAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ConstructorTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.ConstructorTable" Collapsed="true">
-    <Position X="4.5" Y="4.25" Width="1.5" />
+    <Position X="22.25" Y="9" Width="1.5" />
+    <Members>
+      <Property Name="Constructors" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAABAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Constructor" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.ConstructorStandingsApi" Collapsed="true">
-    <Position X="15" Y="3.25" Width="1.5" />
+    <Position X="25" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ConstructorStandingsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.ConstructorStandingsData" Collapsed="true">
-    <Position X="2.75" Y="4.25" Width="1.5" />
+    <Position X="25" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAAAAAAAEYAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StandingsTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Constructorstanding" Collapsed="true">
-    <Position X="13.25" Y="3.25" Width="1.5" />
+    <Position X="27.75" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAkCAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>ModelsExt\ConstructorStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Constructor" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Driver" Collapsed="true">
-    <Position X="6.25" Y="4.25" Width="1.5" />
+    <Position X="25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAGAAAAEAAAAAAAAAAAAAAAIAAIABAAAAAIAAABAAA=</HashCode>
       <FileName>ModelsExt\Driver.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.DriverApi" Collapsed="true">
-    <Position X="8" Y="4.25" Width="1.5" />
+    <Position X="19.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriversData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DriversData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.DriversData" Collapsed="true">
-    <Position X="9.75" Y="4.25" Width="1.5" />
+    <Position X="19.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAAAAAAAEIAAAAAEAAIAAAAAA=</HashCode>
       <FileName>ModelsExt\DriversData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DriverTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.DriverTable" Collapsed="true">
-    <Position X="2.75" Y="5.25" Width="1.5" />
+    <Position X="19.5" Y="10.5" Width="1.5" />
+    <Members>
+      <Property Name="Drivers" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>BAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAABAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriversData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Driver" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.DriverStandingsApi" Collapsed="true">
-    <Position X="13.25" Y="4.25" Width="1.5" />
+    <Position X="20.25" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriverStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DriverStandingsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.DriverStandingsData" Collapsed="true">
-    <Position X="15" Y="4.25" Width="1.5" />
+    <Position X="20.25" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAAAAAAAEYAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriverStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StandingsTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Standingstable" Collapsed="true">
-    <Position X="8" Y="8.25" Width="1.5" />
+    <Position X="22.5" Y="18" Width="1.5" />
+    <Members>
+      <Property Name="StandingsLists" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAABAAAEAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAEAAAAAAAAAAAAAAAAAAAAAAAAAggAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriverStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Standingslist" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Standingslist" Collapsed="true">
-    <Position X="6.25" Y="8.25" Width="1.5" />
+    <Position X="22.5" Y="16.5" Width="1.5" />
+    <Members>
+      <Property Name="ConstructorStandings" Hidden="true" />
+      <Property Name="DriverStandings" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>EAABAAAAAAAAAAAACAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>EAABAAAAAAAIAAAACAAAAAAAAAgAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\DriverStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Constructorstanding" />
+      <Property Name="Driverstanding" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Driverstanding" Collapsed="true">
-    <Position X="11.5" Y="4.25" Width="1.5" />
+    <Position X="25" Y="13.5" Width="1.5" />
+    <Members>
+      <Property Name="Constructors" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>BAAAAECAAAAAAAAAAAAAIAAAAAAAgAAAAAAAIAAAAAA=</HashCode>
       <FileName>ModelsExt\DriverStandingsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Driver" />
+      <Property Name="Constructor" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.MyDriver" Collapsed="true">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+    <Position X="33.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAJAAAAAgAAAAAAAQAAAACAAQAAAACAg=</HashCode>
       <FileName>ModelsExt\MyDriver.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.MyDriverStandings" Collapsed="true">
-    <Position X="13.25" Y="5.25" Width="1.5" />
+    <Position X="20" Y="15.25" Width="1.5" />
+    <Members>
+      <Property Name="Constructors" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>IIAAAEQEEQAAgBAggCAgAAAACAAQAAAgCAAQAAAACAg=</HashCode>
+      <HashCode>IIAAAEQEEQAAgBAggCAgCAAACAAQAAAgCAAQAAAACAg=</HashCode>
       <FileName>ModelsExt\MyDriverStandings.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Constructor" />
+      <Property Name="Constructors_" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.PitStopsApi" Collapsed="true">
-    <Position X="2.75" Y="6.25" Width="1.5" />
+    <Position X="22.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\PitStopsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PitStopsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.PitStopsData" Collapsed="true">
-    <Position X="4.5" Y="6.25" Width="1.5" />
+    <Position X="22.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAABAAAAEIAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\PitStopsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RaceTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Pitstop" Collapsed="true">
-    <Position X="15" Y="5.25" Width="1.5" />
+    <Position X="17.75" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABIAIAEAAAAAAAAAAAAAAAAAAggAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\PitStopsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Driver" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.RaceResultsApi" Collapsed="true">
-    <Position X="9.75" Y="6.25" Width="1.5" />
+    <Position X="25.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RaceResultsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.RaceResultsData" Collapsed="true">
-    <Position X="11.5" Y="6.25" Width="1.5" />
+    <Position X="25.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAABAAAAEIAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RaceTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Result" Collapsed="true">
-    <Position X="6.25" Y="7.25" Width="1.5" />
+    <Position X="25.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAYAAECCAAIAQAAAAAAAIAAAAAAAgAAAAAAUAABAAQA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Constructor" />
+      <Property Name="Driver" />
+      <Property Name="FastestLap" />
+      <Property Name="Time" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Time" Collapsed="true">
-    <Position X="15" Y="8.25" Width="1.5" />
+    <Position X="27.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Fastestlap" Collapsed="true">
-    <Position X="4.5" Y="5.25" Width="1.5" />
+    <Position X="27.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAQAAAgAAAAAAAAAEAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Time" />
+      <Property Name="AverageSpeed" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Averagespeed" Collapsed="true">
-    <Position X="4.5" Y="3.25" Width="1.5" />
+    <Position X="27.75" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RaceResultsData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.RacesApi" Collapsed="true">
-    <Position X="13.25" Y="6.25" Width="1.5" />
+    <Position X="25.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RacesData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.RacesData" Collapsed="true">
-    <Position X="15" Y="6.25" Width="1.5" />
+    <Position X="25.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAAAAAAAAAABAAAAEIAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RaceTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Racetable" Collapsed="true">
-    <Position X="2.75" Y="7.25" Width="1.5" />
+    <Position X="25.5" Y="3" Width="1.5" />
+    <Members>
+      <Property Name="Races" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Races_" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Race" Collapsed="true">
-    <Position X="8" Y="6.25" Width="1.5" />
+    <Position X="28" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>DAQBACgEBAAAAAAAAACMAEAACBAMpAAEQgAAwQAwUAI=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Circuit" />
+      <Property Name="FirstPractice" />
+      <Property Name="Qualifying" />
+      <Property Name="SecondPractice" />
+      <Property Name="Sprint" />
+      <Property Name="SprintQualifying" />
+      <Property Name="ThirdPractice" />
+      <Property Name="Winner" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Circuit" Collapsed="true">
-    <Position X="6.25" Y="3.25" Width="1.5" />
+    <Position X="31.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAACAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Location" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Location" Collapsed="true">
-    <Position X="8" Y="5.25" Width="1.5" />
+    <Position X="33.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAEAACAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Firstpractice" Collapsed="true">
-    <Position X="6.25" Y="5.25" Width="1.5" />
+    <Position X="31.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Secondpractice" Collapsed="true">
-    <Position X="15" Y="7.25" Width="1.5" />
+    <Position X="31.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Thirdpractice" Collapsed="true">
-    <Position X="13.25" Y="8.25" Width="1.5" />
+    <Position X="31.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Qualifying" Collapsed="true">
-    <Position X="6.25" Y="6.25" Width="1.5" />
+    <Position X="31.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Sprint" Collapsed="true">
-    <Position X="2.75" Y="8.25" Width="1.5" />
+    <Position X="31.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.Sprintqualifying" Collapsed="true">
-    <Position X="4.5" Y="8.25" Width="1.5" />
+    <Position X="31.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ModelsExt\RacesData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.ResponseUser" Collapsed="true">
-    <Position X="4.5" Y="7.25" Width="1.5" />
+    <Position X="18.75" Y="25.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\ResponseUser.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.SeasonsApi" Collapsed="true">
-    <Position X="9.75" Y="7.25" Width="1.5" />
+    <Position X="41" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\SeasonsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SeasonsData" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.SeasonsData" Collapsed="true">
-    <Position X="11.5" Y="7.25" Width="1.5" />
+    <Position X="39" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAUAAAAAAABAAAAAAAAAAAAEIAAAAAEAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\SeasonsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SeasonTable" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Seasontable" Collapsed="true">
-    <Position X="13.25" Y="7.25" Width="1.5" />
+    <Position X="39" Y="7" Width="1.5" />
+    <Members>
+      <Property Name="Seasons" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\SeasonsData.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Season" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Formula1App.ModelsExt.Season" Collapsed="true">
-    <Position X="8" Y="7.25" Width="1.5" />
+    <Position X="41" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\SeasonsData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Formula1App.ModelsExt.UserWType" Collapsed="true">
-    <Position X="6.25" Y="9.25" Width="1.5" />
+    <Position X="21.25" Y="28.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACACAAAiIAAAAAAQAAAAQACQAIAAACAAAAAAAAAAA=</HashCode>
       <FileName>ModelsExt\UserWType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Services.F1ExtService" Collapsed="true">
+    <Position X="34.25" Y="12.25" Width="1.5" />
+    <Members>
+      <Field Name="consts" Hidden="true" />
+      <Field Name="drivers" Hidden="true" />
+    </Members>
+    <AssociationLine Name="consts_" Type="Formula1App.ModelsExt.Constructorstanding" ManuallyRouted="true">
+      <Path>
+        <Point X="34.25" Y="12.471" />
+        <Point X="29.25" Y="12.471" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gCgAgAQQCACAACABIkQAIAEQAEAAAAAggAAgFAAAAIQ=</HashCode>
+      <FileName>Services\F1ExtService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="consts_" />
+      <Property Name="drivers_" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Formula1App.Services.F1IntService" Collapsed="true">
+    <Position X="36" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgEAACAIABACAAAIFEAAEAACAAEAAEABAAgAZAAAAAA=</HashCode>
+      <FileName>Services\F1IntService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.AddArticlesView" Collapsed="true">
+    <Position X="55.75" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddArticlesView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.AllNewsView" Collapsed="true">
+    <Position X="62.5" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AllNewsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ArticleView" Collapsed="true">
+    <Position X="71.5" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ArticleView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ConstructorView" Collapsed="true">
+    <Position X="78.25" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ConstructorView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ConstStandingsView" Collapsed="true">
+    <Position X="85" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ConstStandingsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.DriverStandingsView" Collapsed="true">
+    <Position X="58" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DriverStandingsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.DriverView" Collapsed="true">
+    <Position X="64.75" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DriverView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.LoginView" Collapsed="true">
+    <Position X="69.25" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ManageArticlesView" Collapsed="true">
+    <Position X="73.75" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ManageArticlesView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ManageUsersView" Collapsed="true">
+    <Position X="80.5" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ManageUsersView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.NewsView" Collapsed="true">
+    <Position X="87.25" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\NewsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.PrevSeasonsView" Collapsed="true">
+    <Position X="94" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PrevSeasonsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.ProfileView" Collapsed="true">
+    <Position X="60.25" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ProfileView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.RaceResultsView" Collapsed="true">
+    <Position X="91.75" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\RaceResultsView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.SeasonPastRacesView" Collapsed="true">
+    <Position X="91.75" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SeasonPastRacesView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.SignPage" Collapsed="true">
+    <Position X="68.25" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SignPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.SignUpView" Collapsed="true">
+    <Position X="67" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SignUpView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.UpcomingRacesView" Collapsed="true">
+    <Position X="91.75" Y="27.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\UpcomingRacesView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.YourApprovedArticles" Collapsed="true">
+    <Position X="76" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\YourApprovedArticles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.YourDeclinedArticles" Collapsed="true">
+    <Position X="82.75" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\YourDeclinedArticles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.Views.YourPendingArticles" Collapsed="true">
+    <Position X="89.5" Y="26.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\YourPendingArticles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.AddArticlesViewModel" Collapsed="true">
+    <Position X="55.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAIgAAAQABCIEAAACEgAFABgAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AddArticlesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.AllNewsViewModel" Collapsed="true">
+    <Position X="62.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAgIAFQIAABIAAAAxEAAAAAAAhABAAAAAAAAAIAAABA=</HashCode>
+      <FileName>ViewModels\AllNewsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ArticleViewModel" Collapsed="true">
+    <Position X="71.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ArticleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ConstructorViewModel" Collapsed="true">
+    <Position X="78.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIAEABAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ViewModels\ConstructorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ConstStandingsViewModel" Collapsed="true">
+    <Position X="85" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQBAAAMACBAAAAAwEAAAAAAAhABAAAAAEAAAEAACQA=</HashCode>
+      <FileName>ViewModels\ConstStandingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.CurrSeasonRacesViewModel" Collapsed="true">
+    <Position X="91.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAABAgAAAwEAACAAAAgABCEAAAMgAAAAAAIA=</HashCode>
+      <FileName>ViewModels\CurrSeasonRacesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.DriverStandingsViewModel" Collapsed="true">
+    <Position X="58" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQJAAANAABAAAAAwEAAAAAAAhABgAAAAEAAAAAACQQ=</HashCode>
+      <FileName>ViewModels\DriverStandingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.DriverViewModel" Collapsed="true">
+    <Position X="64.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAIAAAAAAAAEAAAABCAAAAAgAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DriverViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="69.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAQAAAgEAAgABAAACAAAAAgCAAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ManageArticlesViewModel" Collapsed="true">
+    <Position X="73.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAAAQIAABBAIAA0EACAAAAAgADAAAAAAAAQIAAAAA=</HashCode>
+      <FileName>ViewModels\ManageArticlesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ManageUsersViewModel" Collapsed="true">
+    <Position X="80.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAECBAAABLhAAAwEACACSAAgAFCAEAAAgBCAAgCAk=</HashCode>
+      <FileName>ViewModels\ManageUsersViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.NewsViewModel" Collapsed="true">
+    <Position X="87.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgIAAQIAABAAAQAwEAAAAAAAgABAAAAAAAAAIAAAAQ=</HashCode>
+      <FileName>ViewModels\NewsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.PrevSeasonsViewModel" Collapsed="true">
+    <Position X="94" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>5qhYNuYIQiZQjCIAOOwoSCsaQkgjGQDNsCgIjVggWBA=</HashCode>
+      <FileName>ViewModels\PrevSeasonsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ProfileViewModel" Collapsed="true">
+    <Position X="60.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAEIAAQIAABABKAAwFCgDAAQAgQDAIAEAAAACWQACAA=</HashCode>
+      <FileName>ViewModels\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.SignUpViewModel" Collapsed="true">
+    <Position X="67" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>bAEIAEQIAyIEDAAiBRCYDAUQCwQnAgCGAAJAC2wICAA=</HashCode>
+      <FileName>ViewModels\SignUpViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.ViewModelsBase" Collapsed="true">
+    <Position X="73.75" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAABAAAAgQAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelsBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Formula1App.ViewModels.YourApprovedArticlesViewModel" Collapsed="true">
+    <Position X="76" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgIAAQIAABAAAAAwEAAAAAAAgABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\YourApprovedArticlesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.YourDeclinedArticlesViewModel" Collapsed="true">
+    <Position X="82.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgIAAQIAABAAAAAwEAAAAAAAgABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\YourDeclinedArticlesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Formula1App.ViewModels.YourPendingArticlesViewModel" Collapsed="true">
+    <Position X="89.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgIAAQIAABAAAAAwEAAAAAAAgABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\YourPendingArticlesViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

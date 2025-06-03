@@ -123,7 +123,7 @@
         Icon="profile.png">
         <ShellContent
             Title="Profile"
-            ContentTemplate="{DataTemplate local:NewsView}"
+            ContentTemplate="{DataTemplate local:ProfileView}"
             Icon="profile.png"
             Route="Profile" />
     </FlyoutItem>

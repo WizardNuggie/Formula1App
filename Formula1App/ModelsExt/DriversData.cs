@@ -26,6 +26,14 @@ namespace Formula1App.ModelsExt
     {
         public string season { get; set; }
         public List<Driver> Drivers { get; set; }
+
+        public Driver Driver
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
 }

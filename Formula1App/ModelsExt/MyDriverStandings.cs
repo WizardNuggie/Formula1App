@@ -89,5 +89,13 @@ namespace Formula1App.ModelsExt
                     return FirstName;
             }
         }
+
+        public Constructor Constructors_
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

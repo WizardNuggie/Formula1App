@@ -26,6 +26,22 @@ namespace Formula1App.Services
             InitData();
         }
 
+        public Constructorstanding consts_
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public MyDriverStandings drivers_
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private async void InitData()
         {
             drivers = await GetCurrDriversStandingsAsync();

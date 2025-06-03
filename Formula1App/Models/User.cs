@@ -20,6 +20,28 @@ namespace Formula1App.Models
         public int UserTypeId { get; set; }
         public List<Article> Articles { get; set; }
 
+        public Article Articles_
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public User() { }
+        public User(User u)
+        {
+            this.Id = u.Id;
+            this.Email = u.Email;
+            this.Username = u.Username;
+            this.Name = u.Name;
+            this.Password = u.Password;
+            this.FavDriver = u.FavDriver;
+            this.FavConstructor = u.FavConstructor;
+            this.Birthday = u.Birthday;
+            this.IsAdmin = u.IsAdmin;
+            this.UserTypeId = u.UserTypeId;
+            this.Articles = u.Articles != null ? new List<Article>(u.Articles) : new List<Article>();
+        }
     }
 }

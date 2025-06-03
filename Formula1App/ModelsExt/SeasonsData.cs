@@ -26,6 +26,14 @@ namespace Formula1App.ModelsExt
     public class Seasontable
     {
         public List<Season> Seasons { get; set; }
+
+        public Season Season
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
     public class Season

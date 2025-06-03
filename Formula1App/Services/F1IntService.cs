@@ -210,7 +210,7 @@ namespace Formula1App.Services
             {
                 return null;
             }
-         }
+        }
         public async Task<List<Article>> GetNewsByUser(int userId)
         {
             string parameterKey = "userId";
@@ -532,6 +532,37 @@ namespace Formula1App.Services
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+        #endregion
+
+        #region Edit User Details
+        public async Task<User> EditUserDetails(User u)
+        {
+            string url = $"{this.baseUrl}EditUserDetails";
+            try
+            {
+                string json = JsonSerializer.Serialize(u);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    string resContent = await response.Content.ReadAsStringAsync();
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    User? result = JsonSerializer.Deserialize<User>(resContent, options);
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
         #endregion

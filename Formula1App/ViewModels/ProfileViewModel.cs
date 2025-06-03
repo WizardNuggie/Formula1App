@@ -27,6 +27,63 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private string username;
+        public string Username
+        {
+            get => username;
+            set
+            {
+                username = value;
+                OnPropertyChanged();
+                CheckUserDiff();
+            }
+        }
+        private string name;
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged();
+                CheckUserDiff();
+            }
+        }
+
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged();
+                CheckUserDiff();
+            }
+        }
+
+        private string password;
+        public string Password
+        {
+            get => password;
+            set
+            {
+                password = value;
+                OnPropertyChanged();
+                CheckUserDiff();
+            }
+        }
+        private DateTime dob;
+        public DateTime Dob
+        {
+            get => dob;
+            set
+            {
+                dob = value;
+                OnPropertyChanged();
+                CheckUserDiff();
+            }
+        }
         private string searchDriver;
         public string SearchDriver
         {
@@ -97,6 +154,21 @@ namespace Formula1App.ViewModels
             {
                 selectedDriver = value;
                 OnPropertyChanged();
+                if (selectedDriver != null && (SelectedDriverHolder == null || selectedDriver.DriverId != SelectedDriverHolder.DriverId))
+                {
+                    SelectedDriverHolder = selectedDriver;
+                }
+                CheckUserDiff();
+            }
+        }
+        private MyDriver selectedDriverHolder;
+        public MyDriver SelectedDriverHolder
+        {
+            get => selectedDriverHolder;
+            set
+            {
+                selectedDriverHolder = value;
+                OnPropertyChanged();
             }
         }
         private Constructor selectedConst;
@@ -106,6 +178,21 @@ namespace Formula1App.ViewModels
             set
             {
                 selectedConst = value;
+                OnPropertyChanged();
+                if (selectedConst != null && (SelectedConstHolder == null || selectedConst.constructorId != SelectedConstHolder.constructorId))
+                {
+                    SelectedConstHolder = selectedConst;
+                }
+                CheckUserDiff();
+            }
+        }
+        private Constructor selectedConstHolder;
+        public Constructor SelectedConstHolder
+        {
+            get => selectedConstHolder;
+            set
+            {
+                selectedConstHolder = value;
                 OnPropertyChanged();
             }
         }
@@ -119,10 +206,35 @@ namespace Formula1App.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool showPass;
+        public bool ShowPass
+        {
+            get => showPass;
+            set
+            {
+                showPass = value;
+                OnPropertyChanged();
+            }
+        }
+        private bool isUserDiff;
+        public bool IsUserDiff
+        {
+            get => isUserDiff;
+            set
+            {
+                isUserDiff = value;
+                OnPropertyChanged();
+                ((Command)CancelChangesCommand).ChangeCanExecute();
+                ((Command)SubmitChangesCommand).ChangeCanExecute();
+            }
+        }
 
         public ICommand RefreshCommand { get; set; }
         public ICommand DriverSearchCommand { get; set; }
         public ICommand ConstSearchCommand { get; set; }
+        public ICommand SubmitChangesCommand { get; set; }
+        public ICommand CancelChangesCommand { get; set; }
+        public ICommand ShowPassCommand { get; set; }
 
         public ProfileViewModel(IServiceProvider serviceProvider, F1ExtService extService, F1IntService intService)
         {
@@ -132,31 +244,73 @@ namespace Formula1App.ViewModels
             RefreshCommand = new Command(async () => await Refresh());
             DriverSearchCommand = new Command(async () => await SearchDrivers());
             ConstSearchCommand = new Command(async () => await SearchConstructors());
-            _User = ((App)Application.Current).LoggedUser;
+            SubmitChangesCommand = new Command(async () => await SubmitChanges(), () => IsUserDiff);
+            CancelChangesCommand = new Command(async () => await Refresh(), () => IsUserDiff);
+            ShowPassCommand = new Command(ShowPassword);
+            _User = new(((App)Application.Current).LoggedUser);
+            ShowPass = true;
             InitData();
         }
+
         private async void InitData()
         {
+            Username = _User.Username;
+            Name = _User.Name;
+            Email = _User.Email;
+            Password = _User.Password;
+            Dob = new(_User.Birthday, new TimeOnly());
             await GetDrivers();
             await GetConstructors();
-            await Refresh();
         }
         private async Task GetDrivers()
         {
             Drivers = new(await extService.GetAllDriversAsync());
             DriversForSearch = new(Drivers.OrderBy(d => d.FirstName).ToList());
+            MyDriver temp = Drivers.Where(d => (d.FullName.ToLower() == _User.FavDriver.ToLower())).FirstOrDefault();
+            if (temp != null)
+            {
+                DriversForSearch.Remove(Drivers.Where(d => (d.FullName.ToLower() == _User.FavDriver.ToLower())).FirstOrDefault());
+                DriversForSearch.Insert(0, temp);
+            }
+            SelectedDriver = temp;
         }
         private async Task GetConstructors()
         {
             Consts = new(await extService.GetAllConstructorsAsync());
             ConstsForSearch = new(Consts.OrderBy(c => c.OfficialConstructorName).ToList());
+            Constructor temp = Consts.Where(c => c.OfficialConstructorName.ToLower() == _User.FavConstructor.ToLower()).FirstOrDefault();
+            if (temp != null)
+            {
+                ConstsForSearch.Remove(Consts.Where(c => c.OfficialConstructorName.ToLower() == _User.FavConstructor.ToLower()).FirstOrDefault());
+                ConstsForSearch.Insert(0, temp);
+            }
+            SelectedConst = temp;
         }
         private async Task Refresh()
         {
             IsRefreshing = true;
-            _User = ((App)Application.Current).LoggedUser;
+            _User = new(((App)Application.Current).LoggedUser);
+            Dob = new(_User.Birthday, new TimeOnly());
             SearchDriver = String.Empty;
             SearchConst = String.Empty;
+            #region Reset Selected Driver
+            MyDriver tempD = Drivers.Where(d => (d.FullName.ToLower() == _User.FavDriver.ToLower())).FirstOrDefault();
+            if (tempD != null)
+            {
+                DriversForSearch.Remove(Drivers.Where(d => (d.FullName.ToLower() == _User.FavDriver.ToLower())).FirstOrDefault());
+                DriversForSearch.Insert(0, tempD);
+            }
+            SelectedDriver = tempD;
+            #endregion
+            #region Reset Selected Cosnt
+            Constructor tempC = Consts.Where(c => c.OfficialConstructorName.ToLower() == _User.FavConstructor.ToLower()).FirstOrDefault();
+            if (tempC != null)
+            {
+                ConstsForSearch.Remove(Consts.Where(c => c.OfficialConstructorName.ToLower() == _User.FavConstructor.ToLower()).FirstOrDefault());
+                ConstsForSearch.Insert(0, tempC);
+            }
+            SelectedConst = tempC;
+            #endregion
             IsRefreshing = false;
         }
         private async Task SearchDrivers()
@@ -204,6 +358,12 @@ namespace Formula1App.ViewModels
                 DriversForSearch = Drivers;
             }
             DriversForSearch = new(DriversForSearch.OrderBy(d => d.FirstName).ToList());
+            if (DriversForSearch.Where(d => d.DriverId == SelectedDriverHolder.DriverId).FirstOrDefault() != null)
+            {
+                SelectedDriver = SelectedDriverHolder;
+                DriversForSearch.Remove(DriversForSearch.Where(d => d.DriverId == SelectedDriver.DriverId).FirstOrDefault());
+                DriversForSearch.Insert(0, SelectedDriver);
+            }
         }
         private async Task SearchConstructors()
         {
@@ -228,6 +388,54 @@ namespace Formula1App.ViewModels
                 ConstsForSearch = Consts;
             }
             ConstsForSearch = new(ConstsForSearch.OrderBy(c => c.OfficialConstructorName).ToList());
+            if (ConstsForSearch.Where(c => c.constructorId == SelectedConstHolder.constructorId).FirstOrDefault() != null)
+            {
+                SelectedConst = SelectedConstHolder;
+                ConstsForSearch.Remove(ConstsForSearch.Where(c => c.constructorId == SelectedConst.constructorId).FirstOrDefault());
+                ConstsForSearch.Insert(0, SelectedConst);
+            }
+        }
+        private async Task SubmitChanges()
+        {
+            _User.Name = Name;
+            _User.Username = Username;
+            _User.Email = Email;
+            _User.Password = Password;
+            _User.Birthday = DateOnly.FromDateTime(Dob);
+            _User.FavDriver = SelectedDriverHolder.FullName;
+            _User.FavConstructor = SelectedConstHolder.OfficialConstructorName;
+            User u = await intService.EditUserDetails(_User);
+            if (u != null)
+            {
+                AppShell.Current.DisplayAlert("Information Changed Successfully", "Your information were changed successfully.", "OK");
+                ((App)Application.Current).LoggedUser = new(u);
+                _User = new(((App)Application.Current).LoggedUser);
+                await Refresh();
+            }
+            else
+            {
+                AppShell.Current.DisplayAlert("Something Went Wrong", "Something went wrong when updating your information.\nPlease try again later.", "OK");
+            }
+        }
+        private void ShowPassword()
+        {
+            ShowPass = !ShowPass;
+        }
+        private async void CheckUserDiff()
+        {
+            User u = ((App)Application.Current).LoggedUser;
+            if (Email != u.Email ||
+                Username != u.Username ||
+                Name != u.Name ||
+                Password != u.Password ||
+                DateOnly.FromDateTime(Dob) != u.Birthday ||
+                (SelectedDriverHolder != null && SelectedDriverHolder.FullName.ToLower() != u.FavDriver.ToLower()) ||
+                (SelectedConstHolder != null && SelectedConstHolder.OfficialConstructorName.ToLower() != u.FavConstructor.ToLower()))
+            {
+                IsUserDiff = true;
+            }
+            else
+                IsUserDiff = false;
         }
     }
 }

@@ -9,16 +9,150 @@
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:ProfileViewModel"
     Title="Profile">
-    <RefreshView>
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
         <ScrollView x:Name="scrlview">
-            <StackLayout>
+            <VerticalStackLayout
+                Margin="0"
+                Padding="10">
                 <Frame
-                    Grid.Row="9"
-                    Grid.RowSpan="2"
-                    Margin="0,30,0,10"
-                    Padding="5"
+                    Margin="0,10,0,10"
+                    Padding="0"
                     MinimumHeightRequest="30"
-                    WidthRequest="250"
+                    WidthRequest="400"
+                    CornerRadius="10">
+                    <Grid
+                        ColumnDefinitions="*,2*">
+                        <Label
+                            Margin="10,5,0,0"
+                            Text="Username:"
+                            FontSize="20"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Grid.Column="1"
+                            Text="{Binding Username}"
+                            Margin="10,0,10,0"
+                            FontSize="15"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Start" 
+                            HorizontalTextAlignment="Center"
+                            WidthRequest="240"/>
+                    </Grid>
+                </Frame>
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="0"
+                    MinimumHeightRequest="30"
+                    WidthRequest="400"
+                    CornerRadius="10">
+                    <Grid
+                        ColumnDefinitions="*,2*">
+                        <Label
+                            Margin="10,5,0,0"
+                            Text="Name:"
+                            FontSize="20"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Grid.Column="1"
+                            Text="{Binding Name}"
+                            Margin="10,0,10,0"
+                            FontSize="15"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Center"
+                            WidthRequest="240" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="0"
+                    MinimumHeightRequest="30"
+                    WidthRequest="400"
+                    CornerRadius="10">
+                    <Grid
+                        ColumnDefinitions="*,2*">
+                        <Label
+                            Margin="10,5,0,0"
+                            Text="Email:"
+                            FontSize="20"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Grid.Column="1"
+                            Text="{Binding Email}"
+                            Margin="10,0,10,0"
+                            FontSize="15"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Center"
+                            WidthRequest="240" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="0"
+                    MinimumHeightRequest="30"
+                    WidthRequest="400"
+                    CornerRadius="10">
+                    <Grid
+                        ColumnDefinitions="*,2*">
+                        <Label
+                            Margin="10,5,0,0"
+                            Text="Password:"
+                            FontSize="20"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Center" />
+                        <Entry
+                            Grid.Column="1"
+                            Text="{Binding Password}"
+                            Margin="10,0,10,0"
+                            FontSize="15"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Center"
+                            WidthRequest="240" 
+                            IsPassword="{Binding ShowPass}"/>
+                        <ImageButton
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Margin="10,0,20,0"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            Source="pass.png"
+                            Command="{Binding ShowPassCommand}" />
+                    </Grid>
+            </Frame>
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="0"
+                    MinimumHeightRequest="30"
+                    WidthRequest="400"
+                    CornerRadius="10">
+                    <Grid
+                        ColumnDefinitions="*,2*">
+                        <Label
+                            Margin="10,5,0,0"
+                            Text="Birthday:"
+                            FontSize="20"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Center" />
+                        <DatePicker
+                            Grid.Column="1"
+                            Margin="10,0,10,0"
+                            FontSize="15"
+                            FontFamily="F1Reg"
+                            HorizontalOptions="Start"
+                            WidthRequest="240"
+                            Format="dd/MM/yy"
+                            Date="{Binding Dob}" />
+                    </Grid>
+                </Frame>
+                <Frame
+                    Margin="0,10,0,10"
+                    Padding="5"
+                    MinimumHeightRequest="40"
+                    WidthRequest="400"
                     CornerRadius="10">
                     <ScrollView>
                         <expander:SfExpander
@@ -95,12 +229,10 @@
                     </ScrollView>
                 </Frame>
                 <Frame
-                    Grid.Row="11"
-                    Grid.RowSpan="2"
-                    Margin="0,30,0,10"
+                    Margin="0,10,0,10"
                     Padding="5"
-                    MinimumHeightRequest="30"
-                    WidthRequest="250"
+                    MinimumHeightRequest="40"
+                    WidthRequest="400"
                     CornerRadius="10">
                     <ScrollView>
                         <expander:SfExpander
@@ -176,7 +308,20 @@
                         </expander:SfExpander>
                     </ScrollView>
                 </Frame>
-            </StackLayout>
+                <Grid
+                    Margin="0,10,0,10"
+                    ColumnDefinitions="*,*">
+                    <Button
+                        Margin="0,0,5,0"
+                        Text="Cancel Changes"
+                        Command="{Binding CancelChangesCommand}" />
+                    <Button
+                        Margin="5,0,0,0"
+                        Text="Submit Changes"
+                        Grid.Column="1"
+                        Command="{Binding SubmitChangesCommand}"/>
+                </Grid>
+            </VerticalStackLayout>
         </ScrollView>
     </RefreshView>
 </ContentPage>
