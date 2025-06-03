@@ -123,7 +123,7 @@
                                     FontSize="10"
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
-                                    WidthRequest="40">
+                                    MinimumWidthRequest="40">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span FontFamily="F1Bold" Text="{Binding FirstPlace.points}" />
@@ -201,7 +201,7 @@
                                         FontSize="10"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"
-                                        WidthRequest="40">
+                                        MinimumWidthRequest="40">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span FontFamily="F1Bold" Text="{Binding points}" />
@@ -237,6 +237,14 @@
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Button
+                        Margin="20,25,20,50"
+                        BackgroundColor="#EE0000"
+                        Command="{Binding GoToPrevStandings}"
+                        Text="SEE PREVIOUS SEASONS' RESULTS"
+                        TextColor="White" />
+                </CollectionView.Footer>
             </CollectionView>
         </ScrollView>
     </RefreshView>

@@ -65,6 +65,7 @@ namespace Formula1App.ViewModels
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             GoToConstCommand = new Command(async (Object obj) => await NavToConst((Constructorstanding)obj));
+            GoToPrevStandings = new Command(async () => await NavToPrevStands());
             InitData();
         }
         private async void InitData()
@@ -105,6 +106,10 @@ namespace Formula1App.ViewModels
             data.Add("Constructor", cs);
             await AppShell.Current.GoToAsync("Constructor", data);
             SelectedConst = null;
+        }
+        private async Task NavToPrevStands()
+        {
+            await AppShell.Current.GoToAsync("PrevSeasons");
         }
     }
 }

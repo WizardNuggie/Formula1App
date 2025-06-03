@@ -55,6 +55,7 @@ namespace Formula1App.ViewModels
             PastRaces = new();
             UpcomingRaces = new();
             RefreshCommand = new Command(async () => await Refresh());
+            GoToPrevStandings = new Command(async () => await NavToPrevStands());
             InitData();
         }
 
@@ -86,6 +87,10 @@ namespace Formula1App.ViewModels
             //{
             //    r.Results = await extService.GetRaceResultsAsync("current", r.round);
             //}
+        }
+        private async Task NavToPrevStands()
+        {
+            await AppShell.Current.GoToAsync("PrevSeasons");
         }
     }
 }

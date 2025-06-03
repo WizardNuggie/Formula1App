@@ -175,9 +175,12 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                     <CollectionView.Footer>
-                        <BoxView
-                            Color="#F7F4F1"
-                            HeightRequest="30"/>
+                        <Button
+                            Margin="20,25,20,50"
+                            BackgroundColor="#EE0000"
+                            Command="{Binding GoToPrevStandings}"
+                            Text="SEE PREVIOUS SEASONS' RESULTS"
+                            TextColor="White" />
                     </CollectionView.Footer>
                 </CollectionView>
             </Grid>
