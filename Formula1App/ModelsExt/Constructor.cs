@@ -93,14 +93,6 @@ namespace Formula1App.ModelsExt
         }
         public Color TeamColor { get; set; }
         public List<MyDriverStandings> Drivers { get; set; }
-
-        public Driver Driver
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 
 }

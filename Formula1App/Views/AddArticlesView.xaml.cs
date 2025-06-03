@@ -16,6 +16,7 @@ public partial class AddArticlesView : ContentPage
         base.OnAppearing();
         AddArticlesViewModel context = (AddArticlesViewModel)this.BindingContext;
         context.Article = new();
+        context.PhotoPath = "";
         InitData(context);
     }
     private async void InitData(AddArticlesViewModel vm)
