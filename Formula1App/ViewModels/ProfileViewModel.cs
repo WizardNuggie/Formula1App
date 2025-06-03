@@ -414,7 +414,7 @@ namespace Formula1App.ViewModels
             }
             else
             {
-                AppShell.Current.DisplayAlert("Something Went Wrong", "Something went wrong when updating your information.\nPlease try again later.", "OK");
+                AppShell.Current.DisplayAlert("Something Went Wrong", "Something went wrong while updating your information.\nPlease try again later.", "OK");
             }
         }
         private void ShowPassword()

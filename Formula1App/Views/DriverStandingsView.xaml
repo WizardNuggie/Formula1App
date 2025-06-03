@@ -6,7 +6,8 @@
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title=""
-    x:DataType="viewmodel:DriverStandingsViewModel">
+    x:DataType="viewmodel:DriverStandingsViewModel"
+    IsEnabled="{Binding NotInServerCall}">
     <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
         <ScrollView x:Name="scrlview">
             <CollectionView

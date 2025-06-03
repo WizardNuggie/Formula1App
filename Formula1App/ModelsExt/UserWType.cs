@@ -21,6 +21,7 @@ namespace Formula1App.ModelsExt
         public bool IsAdmin { get; set; }
         public int UserTypeId { get; set; }
         public string UserTypeName { get; set; }
+        public List<Article> Articles { get; set; }
 
         public UserWType() { }
         public UserWType(User u, string userTypeName)
@@ -36,6 +37,7 @@ namespace Formula1App.ModelsExt
             this.Birthday = u.Birthday;
             this.IsAdmin = u.IsAdmin;
             this.UserTypeId = u.UserTypeId;
+            this.Articles = u.Articles;
             this.UserTypeName = userTypeName;
         }
     }

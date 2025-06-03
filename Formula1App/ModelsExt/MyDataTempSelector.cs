@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Formula1App.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,22 @@ namespace Formula1App.ModelsExt
             }
 
             return OddTemplate; // Default fallback
+        }
+    }
+    public class MyDataTempSelectorLog : DataTemplateSelector
+    {
+        public DataTemplate NotLoggedTemplate { get; set; }
+        public DataTemplate LoggedTemplate { get; set; }
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
+            if (container is CollectionView collectionView && collectionView.ItemsSource is IEnumerable items)
+            {
+                var itemList = items.Cast<object>().ToList(); // Convert to List<object>
+
+                return (((UserWType)item).Id == ((App)Application.Current).LoggedUser.Id) ? LoggedTemplate : NotLoggedTemplate;
+            }
+
+            return NotLoggedTemplate; // Default fallback
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Formula1App.ModelsExt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,21 @@ namespace Formula1App.Models
             this.IsAdmin = u.IsAdmin;
             this.UserTypeId = u.UserTypeId;
             this.Articles = u.Articles != null ? new List<Article>(u.Articles) : new List<Article>();
+        }
+        public User(UserWType u)
+        {
+            this.Id = u.Id;
+            this.Email = u.Email;
+            this.Username = u.Username;
+            this.Password = u.Password;
+            this.Name = u.Name;
+            this.Password = u.Password;
+            this.FavDriver = u.FavDriver;
+            this.FavConstructor = u.FavConstructor;
+            this.Birthday = u.Birthday;
+            this.IsAdmin = u.IsAdmin;
+            this.UserTypeId = u.UserTypeId;
+            this.Articles = u.Articles;
         }
     }
 }

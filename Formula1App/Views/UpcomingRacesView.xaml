@@ -6,7 +6,8 @@
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title=""
-    x:DataType="viewmodel:CurrSeasonRacesViewModel">
+    x:DataType="viewmodel:CurrSeasonRacesViewModel"
+    IsEnabled="{Binding NotInServerCall}">
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsRefreshing}">
@@ -15,8 +16,7 @@
                 x:Name="colview"
                 BackgroundColor="#F7F4F1"
                 ItemsSource="{Binding UpcomingRaces}"
-                SelectedItem="{Binding SelectedRace}"
-                SelectionMode="Single">
+                SelectionMode="None">
                 <CollectionView.Header>
                     <BoxView
                         HeightRequest="10"
@@ -110,27 +110,18 @@
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text="FORMULA 1 "
-                                                TextColor="#67676D"/>
+                                                TextColor="#67676D" />
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text="{Binding OffGpName}"
-                                                TextColor="#67676D"/>
+                                                TextColor="#67676D" />
                                             <Span
                                                 FontFamily="F1Bold"
                                                 Text=" 2025"
-                                                TextColor="#67676D"/>
+                                                TextColor="#67676D" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label
-                                    Grid.RowSpan="3"
-                                    Grid.Column="3"
-                                    FontFamily="F1Reg"
-                                    FontSize="20"
-                                    HorizontalOptions="Center"
-                                    Text="&gt;"
-                                    TextColor="#E11900"
-                                    VerticalOptions="Center"/>
                             </Grid>
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>

@@ -8,7 +8,241 @@
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:ManageUsersViewModel"
-    Title="">
+    Title=""
+    IsEnabled="{Binding NotInServerCall}">
+    <ContentPage.Resources>
+        <modelext:MyDataTempSelectorLog
+            x:Key="ColView">
+            <modelext:MyDataTempSelectorLog.NotLoggedTemplate>
+                <DataTemplate
+                    x:DataType="modelext:UserWType">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    Command="{Binding BindingContext.RemoveCommand, Source={x:Reference scrlview}}"
+                                    CommandParameter="{Binding .}"
+                                    IconImageSource="remove.png" />
+                                <SwipeItem
+                                    Command="{Binding BindingContext.EditUserCommand, Source={x:Reference scrlview}}"
+                                    CommandParameter="{Binding .}"
+                                    IconImageSource="edit.png" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItem
+                                Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="showdetails.png" />
+                        </SwipeView.LeftItems>
+                        <Border
+                            Margin="8"
+                            Padding="5">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid
+                                ColumnDefinitions="*,2*,*"
+                                RowDefinitions="*,*,*">
+                                <Label
+                                    Grid.RowSpan="3"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="ID: " />
+                                            <Span
+                                                Text="{Binding Id}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="20,0,0,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Username: " />
+                                            <Span
+                                                Text="{Binding Username}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="20,0,0,0"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Role: " />
+                                            <Span
+                                                Text="{Binding UserTypeName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.RowSpan="3"
+                                    Grid.Column="2"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Admin: " />
+                                            <Span
+                                                Text="{Binding IsAdmin}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState
+                                        Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState
+                                        Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </modelext:MyDataTempSelectorLog.NotLoggedTemplate>
+            <modelext:MyDataTempSelectorLog.LoggedTemplate>
+                <DataTemplate
+                    x:DataType="modelext:UserWType">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    Command="{Binding BindingContext.RemoveCommand, Source={x:Reference scrlview}}"
+                                    CommandParameter="{Binding .}"
+                                    IconImageSource="remove.png" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItem
+                                Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="showdetails.png" />
+                        </SwipeView.LeftItems>
+                        <Border
+                            Margin="8"
+                            Padding="5">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="15" />
+                            </Border.StrokeShape>
+                            <Grid
+                                ColumnDefinitions="*,2*,*"
+                                RowDefinitions="*,*,*">
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="ID: " />
+                                            <Span
+                                                Text="{Binding Id}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Text="(You)"
+                                    FontFamily="F1Bold"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    TextColor="#cd853f" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="20,0,0,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Username: " />
+                                            <Span
+                                                Text="{Binding Username}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="20,0,0,0"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Role: " />
+                                            <Span
+                                                Text="{Binding UserTypeName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.RowSpan="3"
+                                    Grid.Column="2"
+                                    VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                                FontAttributes="Bold"
+                                                Text="Admin: " />
+                                            <Span
+                                                Text="{Binding IsAdmin}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState
+                                        Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState
+                                        Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter
+                                                Property="BackgroundColor"
+                                                Value="White" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </modelext:MyDataTempSelectorLog.LoggedTemplate>
+        </modelext:MyDataTempSelectorLog>
+    </ContentPage.Resources>
     <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
         <ScrollView x:Name="scrlview">
             <StackLayout>
@@ -121,7 +355,7 @@
                                         CornerRadius="10"
                                         HeightRequest="45">
                                         <Picker
-                                            Title="Select user type"
+                                            Title="Select User Type"
                                             x:DataType="model:UserType"
                                             HorizontalTextAlignment="Center"
                                             ItemDisplayBinding="{Binding Name}"
@@ -144,95 +378,8 @@
                         x:Name="colview"
                         Grid.Row="4"
                         Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Users}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="modelext:UserWType">
-                                <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems>
-                                            <SwipeItem
-                                                Command="{Binding BindingContext.RemoveCommand, Source={x:Reference scrlview}}"
-                                                CommandParameter="{Binding .}"
-                                                IconImageSource="remove.png" />
-                                            <SwipeItem
-                                                Command="{Binding BindingContext.EditUserCommand, Source={x:Reference scrlview}}"
-                                                CommandParameter="{Binding .}"
-                                                IconImageSource="edit.png" />
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
-                                    <SwipeView.LeftItems>
-                                        <SwipeItem
-                                            Command="{Binding BindingContext.ShowDetailsCommand, Source={x:Reference scrlview}}"
-                                            CommandParameter="{Binding .}"
-                                            IconImageSource="showdetails.png" />
-                                        <!--  code this shit  -->
-                                    </SwipeView.LeftItems>
-                                    <Border Margin="8" Padding="5">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="15" />
-                                        </Border.StrokeShape>
-                                        <Grid ColumnDefinitions="*,2*,*" RowDefinitions="*,*,*">
-                                            <Label
-                                                Grid.RowSpan="3"
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span FontAttributes="Bold" Text="ID: " />
-                                                        <Span Text="{Binding Id}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label Grid.Column="1" Margin="20,0,0,0">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span FontAttributes="Bold" Text="Username: " />
-                                                        <Span Text="{Binding Username}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="1"
-                                                Margin="20,0,0,0"
-                                                VerticalOptions="Center">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span FontAttributes="Bold" Text="Role: " />
-                                                        <Span Text="{Binding UserTypeName}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <Label
-                                                Grid.RowSpan="3"
-                                                Grid.Column="2"
-                                                VerticalOptions="Center">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span FontAttributes="Bold" Text="Admin: " />
-                                                        <Span Text="{Binding IsAdmin}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </Grid>
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup>
-                                                <VisualState Name="Selected">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="White" />
-                                                    </VisualState.Setters>
-                                                </VisualState>
-                                                <VisualState Name="Normal">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="BackgroundColor" Value="White" />
-                                                    </VisualState.Setters>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                    </Border>
-                                </SwipeView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                        ItemsSource="{Binding Users}"
+                        ItemTemplate="{StaticResource ColView}">
                     </CollectionView>
                 </Grid>
             </StackLayout>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-             xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
-             x:DataType="viewmodel:CurrSeasonRacesViewModel"
-             x:Class="Formula1App.Views.RaceResultsView"
-             Title="">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
+    xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
+    x:DataType="viewmodel:CurrSeasonRacesViewModel"
+    x:Class="Formula1App.Views.RaceResultsView"
+    Title=""
+    IsEnabled="{Binding NotInServerCall}">
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsRefreshing}">
@@ -136,27 +138,18 @@
                                                 <Span
                                                     FontFamily="F1Bold"
                                                     TextColor="#67676D"
-                                                    Text="FORMULA 1 "/>
+                                                    Text="FORMULA 1 " />
                                                 <Span
                                                     FontFamily="F1Bold"
                                                     TextColor="#67676D"
-                                                    Text="{Binding OffGpName}"/>
+                                                    Text="{Binding OffGpName}" />
                                                 <Span
                                                     FontFamily="F1Bold"
                                                     TextColor="#67676D"
-                                                    Text=" 2025"/>
+                                                    Text=" 2025" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label
-                                        Grid.RowSpan="3"
-                                        Grid.Column="3"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        TextColor="#E11900"
-                                        Text=">"
-                                        FontFamily="F1Reg"
-                                        FontSize="20"/>
                                 </Grid>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>

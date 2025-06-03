@@ -8,7 +8,8 @@
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     x:DataType="viewmodel:ProfileViewModel"
-    Title="Profile">
+    Title="Profile"
+    IsEnabled="{Binding NotInServerCall}">
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
         <ScrollView x:Name="scrlview">
             <VerticalStackLayout

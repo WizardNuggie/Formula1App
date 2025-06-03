@@ -8,7 +8,8 @@
     xmlns:modelext="clr-namespace:Formula1App.ModelsExt"
     xmlns:expander="clr-namespace:Syncfusion.Maui.Expander;assembly=Syncfusion.Maui.Expander"
     x:DataType="viewmodel:SignUpViewModel"
-    Title="Sign Up">
+    Title="Sign Up"
+    IsEnabled="{Binding NotInServerCall}">
     <StackLayout
         VerticalOptions="FillAndExpand">
         <ScrollView

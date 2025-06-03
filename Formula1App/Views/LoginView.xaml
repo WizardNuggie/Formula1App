@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title="Login"
-    x:DataType="viewmodel:LoginViewModel">
+    x:DataType="viewmodel:LoginViewModel"
+    IsEnabled="{Binding NotInServerCall}">
     <!--nice white color #f7f4f1-->
     <VerticalStackLayout
         Padding="10">

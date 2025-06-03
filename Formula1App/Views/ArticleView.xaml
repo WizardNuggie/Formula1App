@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:Formula1App.Models"
     xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
-    x:DataType="viewmodel:ArticleViewModel">
+    x:DataType="viewmodel:ArticleViewModel"
+    IsEnabled="{Binding NotInServerCall}">
     <ScrollView>
         <StackLayout Padding="10,0">
             <CollectionView ItemsLayout="VerticalGrid, 3" ItemsSource="{Binding Article.Subjects}">
