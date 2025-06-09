@@ -67,10 +67,30 @@ namespace Formula1App.ModelsExt
         {
             get
             {
-                if (Results.FirstOrDefault() == null)
+                if (Results == null || Results.FirstOrDefault() == null)
                     return new Result();
                 else
                     return Results.FirstOrDefault();
+            }
+        }
+        public Result SecondPlace
+        {
+            get
+            {
+                if (Results == null || Results[1] == null)
+                    return new Result();
+                else
+                    return Results[1];
+            }
+        }
+        public Result ThirdPlace
+        {
+            get
+            {
+                if (Results == null || Results[2] == null)
+                    return new Result();
+                else
+                    return Results[2];
             }
         }
         public DateOnly DayLast

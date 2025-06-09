@@ -28,6 +28,7 @@ namespace Formula1App
         private F1ExtService extService;
         public App(IServiceProvider sp, F1IntService f1IntService, F1ExtService f1ExtService)
         {
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NNaF1cWWhOYVppR2Nbek51flZDal5QVBYiSV9jS3tTcEVqWHhddXZRQWdfUU90Vg==");
             this.intService = f1IntService;
             this.extService = f1ExtService;
             InitializeComponent();

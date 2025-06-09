@@ -7,6 +7,7 @@
     x:DataType="viewmodel:CurrSeasonRacesViewModel"
     x:Class="Formula1App.Views.RaceResultsView"
     Title=""
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     IsEnabled="{Binding NotInServerCall}">
     <RefreshView
         Command="{Binding RefreshCommand}"
@@ -119,14 +120,59 @@
                                         HeightRequest="70"
                                         Stroke="#67676D"/>
                                     <Label
-                                        Margin="5,0,0,0"
+                                        Margin="5,5,0,0"
                                         FontSize="17"
                                         FontFamily="F1Bold"
                                         Grid.Column="2"
                                         HorizontalOptions="Start"
                                         VerticalOptions="End"
-                                        Text="{Binding OffRaceName}"/>
-                                    <Label
+                                        Text="{Binding OffRaceName}" />
+                                    <HorizontalStackLayout
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Margin="5,0,5,0"
+                                            Source="first.png"
+                                            VerticalOptions="Center">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior
+                                                    TintColor="{Binding Winner.Constructor.TeamColor}" />
+                                            </Image.Behaviors>
+                                        </Image>
+                                        <Label
+                                            VerticalOptions="Center"
+                                            Text="{Binding Winner.Driver.OffCode}"
+                                            FontFamily="F1Reg" />
+                                        <Image
+                                            Margin="5,0,5,0"
+                                            VerticalOptions="Center"
+                                            Source="second.png">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior
+                                                    TintColor="{Binding SecondPlace.Constructor.TeamColor}" />
+                                            </Image.Behaviors>
+                                        </Image>
+                                        <Label
+                                            VerticalOptions="Center"
+                                            Text="{Binding SecondPlace.Driver.OffCode}"
+                                            FontFamily="F1Reg" />
+                                        <Image
+                                            Margin="15,0,0,0"
+                                            VerticalOptions="Center"
+                                            Source="third.png">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior
+                                                    TintColor="{Binding ThirdPlace.Constructor.TeamColor}" />
+                                            </Image.Behaviors>
+                                        </Image>
+                                        <Label
+                                            VerticalOptions="Center"
+                                            Text="{Binding ThirdPlace.Driver.OffCode}"
+                                            FontFamily="F1Reg" />
+                                    </HorizontalStackLayout>
+                                    <!--<Label
                                         VerticalOptions="Start"
                                         HorizontalOptions="Start"
                                         Margin="5,2,0,0"
@@ -149,7 +195,7 @@
                                                     Text=" 2025" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </Label>
+                                    </Label>-->
                                 </Grid>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
