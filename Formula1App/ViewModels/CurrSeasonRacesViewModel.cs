@@ -137,7 +137,7 @@ namespace Formula1App.ViewModels
                     if (((App)Application.Current).TeamColors.ContainsKey(rs.Constructor.constructorId))
                         rs.Constructor.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[rs.Constructor.constructorId]);
                     else
-                        rs.Constructor.TeamColor = Color.FromArgb("F7F4F1");
+                        rs.Constructor.TeamColor = Color.FromArgb("#F7F4F1");
                 }
             }
             PastRaces = new ObservableCollection<Race>(temp); // Update the ObservableCollection after

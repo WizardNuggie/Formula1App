@@ -783,7 +783,8 @@
                                 MaximumHeightRequest="175"
                                 SelectedItem="{Binding SelectedSeason}"
                                 SelectionMode="Single"
-                                VerticalScrollBarVisibility="Always">
+                                VerticalScrollBarVisibility="Always"
+                                SelectionChangedCommand="{Binding SeasonSelectionCommand}">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate x:DataType="modelext:Season">
                                         <Grid>
@@ -834,7 +835,8 @@
                                     MaximumHeightRequest="175"
                                     SelectedItem="{Binding SelectedCat}"
                                     SelectionMode="Single"
-                                    VerticalScrollBarVisibility="Always">
+                                    VerticalScrollBarVisibility="Always"
+                                    SelectionChangedCommand="{Binding CatSelectionCommand}">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate x:DataType="x:String">
                                             <Grid>
@@ -888,7 +890,8 @@
                                     MaximumHeightRequest="175"
                                     SelectedItem="{Binding SelectedRace}"
                                     SelectionMode="Single"
-                                    VerticalScrollBarVisibility="Always">
+                                    VerticalScrollBarVisibility="Always"
+                                    SelectionChangedCommand="{Binding RaceSelectionCommand}">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate x:DataType="modelext:Race">
                                             <Grid>
@@ -926,7 +929,8 @@
                                     MaximumHeightRequest="175"
                                     SelectedItem="{Binding SelectedDriver}"
                                     SelectionMode="Single"
-                                    VerticalScrollBarVisibility="Always">
+                                    VerticalScrollBarVisibility="Always"
+                                    SelectionChangedCommand="{Binding DriverSelectionCommand}">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate x:DataType="modelext:MyDriverStandings">
                                             <Grid>
@@ -964,7 +968,8 @@
                                     MaximumHeightRequest="175"
                                     SelectedItem="{Binding SelectedConst}"
                                     SelectionMode="Single"
-                                    VerticalScrollBarVisibility="Always">
+                                    VerticalScrollBarVisibility="Always"
+                                    SelectionChangedCommand="{Binding ConstSelectionCommand}">
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate x:DataType="modelext:Constructorstanding">
                                             <Grid>
@@ -1387,7 +1392,8 @@
                     <CollectionView
                         ItemsSource="{Binding RaceCatsObs}"
                         SelectedItem="{Binding SelectedRaceCat}"
-                        SelectionMode="Single">
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding RaceCatSelectionCommand}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout ItemSpacing="3" Orientation="Vertical" />
                         </CollectionView.ItemsLayout>

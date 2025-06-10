@@ -235,12 +235,15 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>
-                    <Button
+                    <!--<Button
                         Margin="20,25,20,50"
                         BackgroundColor="#EE0000"
                         Command="{Binding GoToPrevStandings}"
                         Text="SEE PREVIOUS SEASONS' RESULTS"
-                        TextColor="White" />
+                        TextColor="White" />-->
+                    <BoxView
+                        Color="#15151D"
+                        HeightRequest="40" />
                 </CollectionView.Footer>
             </CollectionView>
         </ScrollView>

@@ -38,21 +38,15 @@ namespace Formula1App.ViewModels
             }
         private Season selectedSeason;
         public Season SelectedSeason
+        {
+            get => selectedSeason;
+            set
             {
-                get => selectedSeason;
-                set
-                {
-                    selectedSeason = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    GetRaces();
-                    GetDrivers();
-                    GetConsts();
-                    GetCats();
-                    GetSeasonResults();
-                    InServerCall = false;
-                }
+                selectedSeason = value;
+                OnPropertyChanged();
+
             }
+        }
         private List<string> categories;
         public List<string> Categories
             {
@@ -75,43 +69,14 @@ namespace Formula1App.ViewModels
             }
         private string selectedCat;
         public string SelectedCat
+        {
+            get => selectedCat;
+            set
             {
-                get => selectedCat;
-                set
-                {
-                    selectedCat = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    switch (selectedCat)
-                    {
-                        case "Races":
-                            InRaces = true;
-                            InDrivers = false;
-                            InConsts = false;
-                            SelectedRace = Races.FirstOrDefault();
-                            SelectedDriver = OrderedDrivers.FirstOrDefault();
-                            SelectedConst = OrderedConsts.FirstOrDefault();
-                            break;
-                        case "Drivers":
-                            InRaces = false;
-                            InDrivers = true;
-                            InConsts = false;
-                            SelectedDriver = OrderedDrivers.FirstOrDefault();
-                            SelectedRace = Races.FirstOrDefault();
-                            SelectedConst = OrderedConsts.FirstOrDefault();
-                            break;
-                        case "Constructors":
-                            InRaces = false;
-                            InDrivers = false;
-                            InConsts = true;
-                            SelectedConst = OrderedConsts.FirstOrDefault();
-                            SelectedRace = Races.FirstOrDefault();
-                            SelectedDriver = OrderedDrivers.FirstOrDefault();
-                            break;
-                    }
-                    InServerCall = false;
-                }
+                selectedCat = value;
+                OnPropertyChanged();
             }
+        }
         private List<Race> races;
         public List<Race> Races
             {
@@ -140,26 +105,6 @@ namespace Formula1App.ViewModels
             {
                 selectedRace = value;
                 OnPropertyChanged();
-                InServerCall = true;
-                if (InRaces && SelectedRace.Circuit.Location.locality == "All")
-                {
-                    InAllRaces = true;
-                    InSpecRace = false;
-                    GetRaceResults();
-                }
-                else if (InRaces && !(SelectedRace.Circuit.Location.locality == "All"))
-                {
-                    InAllRaces = false;
-                    InSpecRace = true;
-                    GetRaceResults();
-                }
-                else
-                {
-                    InAllRaces = false;
-                    InSpecRace = false;
-                }
-                GetRaceCatsInit();
-                InServerCall = true;
             }
         }
         private List<string> raceCats;
@@ -184,81 +129,14 @@ namespace Formula1App.ViewModels
             }
         private string selectedRaceCat;
         public string SelectedRaceCat
+        {
+            get => selectedRaceCat;
+            set
             {
-                get => selectedRaceCat;
-                set
-                {
-                    selectedRaceCat = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    if (InSpecRace)
-                    {
-                        switch (selectedRaceCat)
-                        {
-                            case "Race Result":
-                                InResult = true;
-                                InLaps = false;
-                                InPit = false;
-                                InGrid = false;
-                                InQuali = false;
-                                InSprint = false;
-                                GetRaceResults();
-                                break;
-                            case "Fastest Laps":
-                                InResult = false;
-                                InLaps = true;
-                                InPit = false;
-                                InGrid = false;
-                                InQuali = false;
-                                InSprint = false;
-                                GetFastestLaps();
-                                break;
-                            case "Pit Stops":
-                                InResult = false;
-                                InLaps = false;
-                                InPit = true;
-                                InGrid = false;
-                                InQuali = false;
-                                InSprint = false;
-                                break;
-                            case "Starting Grid":
-                                InResult = false;
-                                InLaps = false;
-                                InPit = false;
-                                InGrid = true;
-                                InQuali = false;
-                                InSprint = false;
-                                break;
-                            case "Qualifying":
-                                InResult = false;
-                                InLaps = false;
-                                InPit = false;
-                                InGrid = false;
-                                InQuali = true;
-                                InSprint = false;
-                                break;
-                            case "Sprint":
-                                InResult = false;
-                                InLaps = false;
-                                InPit = false;
-                                InGrid = false;
-                                InQuali = false;
-                                InSprint = true;
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        InResult = false;
-                        InLaps = false;
-                        InPit = false;
-                        InGrid = false;
-                        InQuali = false;
-                        InSprint = false;
-                    }
-                    InServerCall = false;
-                }
+                selectedRaceCat = value;
+                OnPropertyChanged();
             }
+        }
         private List<MyDriverStandings> drivers;
         public List<MyDriverStandings> Drivers
             {
@@ -291,20 +169,14 @@ namespace Formula1App.ViewModels
             }
         private MyDriverStandings selectedDriver;
         public MyDriverStandings SelectedDriver
+        {
+            get => selectedDriver;
+            set
             {
-                get => selectedDriver;
-                set
-                {
-                    selectedDriver = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    if (InDrivers && SelectedDriver.FirstName == "All")
-                        InAllDrivers = true;
-                    else
-                        InAllDrivers = false;
-                    InServerCall = false;
-                }
+                selectedDriver = value;
+                OnPropertyChanged();
             }
+        }
         private List<Constructorstanding> consts;
         public List<Constructorstanding> Consts
             {
@@ -337,20 +209,14 @@ namespace Formula1App.ViewModels
             }
         private Constructorstanding selectedConst;
         public Constructorstanding SelectedConst
+        {
+            get => selectedConst;
+            set
             {
-                get => selectedConst;
-                set
-                {
-                    selectedConst = value;
-                    OnPropertyChanged();
-                    InServerCall = true;
-                    if (InConsts && SelectedConst.Constructor.name == "All")
-                        InAllConsts = true;
-                    else
-                        InAllConsts = false;
-                    InServerCall = false;
-                }
+                selectedConst = value;
+                OnPropertyChanged();
             }
+        }
         private List<Race> seasonResults;
         public List<Race> SeasonResults
             {
@@ -572,9 +438,12 @@ namespace Formula1App.ViewModels
             }
         }
 
-        public ICommand RacesAllCommand { get; set; }
-        public ICommand DriversAllCommand { get; set; }
-        public ICommand ConstsAllCommand { get; set; }
+        public ICommand DriverSelectionCommand { get; set; }
+        public ICommand ConstSelectionCommand { get; set; }
+        public ICommand SeasonSelectionCommand { get; set; }
+        public ICommand RaceCatSelectionCommand { get; set; }
+        public ICommand CatSelectionCommand { get; set; }
+        public ICommand RaceSelectionCommand { get; set; }
 
         public PrevSeasonsViewModel(IServiceProvider sp, F1IntService intService, F1ExtService extService)
         {
@@ -593,6 +462,12 @@ namespace Formula1App.ViewModels
             SeasonResultsObs = new();
             RaceResultsObs = new();
             PitStops = new();
+            DriverSelectionCommand = new Command(async () => await SelectedDriverChanged());
+            ConstSelectionCommand = new Command(async () => await SelectedConstChanged());
+            SeasonSelectionCommand = new Command(async () => await SelectedSeasonChanged());
+            RaceCatSelectionCommand = new Command(async () => await SelectedRaceCatChanged());
+            CatSelectionCommand = new Command(async () => await SelectedCatChanged());
+            RaceSelectionCommand = new Command(async () => await SelectedRaceChanged());
             InitData();
         }
         private async void InitData()
@@ -663,10 +538,6 @@ namespace Formula1App.ViewModels
             CategoriesObs = new(Categories);
             SelectedCat = Categories.FirstOrDefault();
         }
-        private async void GetRaceCatsInit()
-        {
-            await GetRaceCats();
-        }
         private async Task GetRaceCats()
         {
             await GetPitStopsRace();
@@ -684,7 +555,7 @@ namespace Formula1App.ViewModels
             RaceCatsObs = new(RaceCats);
             SelectedRaceCat = RaceCats.FirstOrDefault();
         }
-        private async void GetRaceResults()
+        private async Task GetRaceResults()
         {
             Race rs = await extService.GetRaceResultsAsync(SelectedSeason.season, SelectedRace.round);
             foreach (Result res in rs.Results)
@@ -717,7 +588,7 @@ namespace Formula1App.ViewModels
             else
                 HasLaps = false;
         }
-        private async void GetFastestLaps()
+        private async Task GetFastestLaps()
         {
             await GetFastestLapsRace();
         }
@@ -748,10 +619,6 @@ namespace Formula1App.ViewModels
             else
                 HasLaps = false;
         }
-        private async void GetPitStopsInit()
-        {
-            await GetPitStopsRace();
-        }
         private async Task GetPitStopsRace()
         {
             List<Pitstop> ps = new();
@@ -774,6 +641,159 @@ namespace Formula1App.ViewModels
                 HasPits = false;
                 PitStops = new();
             }
+        }
+        private async Task SelectedDriverChanged()
+        {
+            InServerCall = true;
+            if (InDrivers && SelectedDriver.FirstName == "All")
+                InAllDrivers = true;
+            else
+                InAllDrivers = false;
+            InServerCall = false;
+        }
+        private async Task SelectedConstChanged()
+        {
+            InServerCall = true;
+            if (InConsts && SelectedConst.Constructor.name == "All")
+                InAllConsts = true;
+            else
+                InAllConsts = false;
+            InServerCall = false;
+        }
+        private async Task SelectedSeasonChanged()
+        {
+            InServerCall = true;
+            await GetRaces();
+            await GetDrivers();
+            await GetConsts();
+            await GetCats();
+            await GetSeasonResults();
+            InServerCall = false;
+        }
+        private async Task SelectedRaceCatChanged()
+        {
+            InServerCall = true;
+            if (InSpecRace)
+            {
+                switch (SelectedRaceCat)
+                {
+                    case "Race Result":
+                        InResult = true;
+                        InLaps = false;
+                        InPit = false;
+                        InGrid = false;
+                        InQuali = false;
+                        InSprint = false;
+                        await GetRaceResults();
+                        break;
+                    case "Fastest Laps":
+                        InResult = false;
+                        InLaps = true;
+                        InPit = false;
+                        InGrid = false;
+                        InQuali = false;
+                        InSprint = false;
+                        await GetFastestLaps();
+                        break;
+                    case "Pit Stops":
+                        InResult = false;
+                        InLaps = false;
+                        InPit = true;
+                        InGrid = false;
+                        InQuali = false;
+                        InSprint = false;
+                        break;
+                    case "Starting Grid":
+                        InResult = false;
+                        InLaps = false;
+                        InPit = false;
+                        InGrid = true;
+                        InQuali = false;
+                        InSprint = false;
+                        break;
+                    case "Qualifying":
+                        InResult = false;
+                        InLaps = false;
+                        InPit = false;
+                        InGrid = false;
+                        InQuali = true;
+                        InSprint = false;
+                        break;
+                    case "Sprint":
+                        InResult = false;
+                        InLaps = false;
+                        InPit = false;
+                        InGrid = false;
+                        InQuali = false;
+                        InSprint = true;
+                        break;
+                }
+            }
+            else
+            {
+                InResult = false;
+                InLaps = false;
+                InPit = false;
+                InGrid = false;
+                InQuali = false;
+                InSprint = false;
+            }
+            InServerCall = false;
+        }
+        private async Task SelectedCatChanged()
+        {
+            InServerCall = true;
+            switch (SelectedCat)
+            {
+                case "Races":
+                    InRaces = true;
+                    InDrivers = false;
+                    InConsts = false;
+                    SelectedRace = Races.FirstOrDefault();
+                    SelectedDriver = OrderedDrivers.FirstOrDefault();
+                    SelectedConst = OrderedConsts.FirstOrDefault();
+                    break;
+                case "Drivers":
+                    InRaces = false;
+                    InDrivers = true;
+                    InConsts = false;
+                    SelectedDriver = OrderedDrivers.FirstOrDefault();
+                    SelectedRace = Races.FirstOrDefault();
+                    SelectedConst = OrderedConsts.FirstOrDefault();
+                    break;
+                case "Constructors":
+                    InRaces = false;
+                    InDrivers = false;
+                    InConsts = true;
+                    SelectedConst = OrderedConsts.FirstOrDefault();
+                    SelectedRace = Races.FirstOrDefault();
+                    SelectedDriver = OrderedDrivers.FirstOrDefault();
+                    break;
+            }
+            InServerCall = false;
+        }
+        private async Task SelectedRaceChanged()
+        {
+            InServerCall = true;
+            if (InRaces && SelectedRace.Circuit.Location.locality == "All")
+            {
+                InAllRaces = true;
+                InSpecRace = false;
+                await GetRaceResults();
+            }
+            else if (InRaces && !(SelectedRace.Circuit.Location.locality == "All"))
+            {
+                InAllRaces = false;
+                InSpecRace = true;
+                await GetRaceResults();
+            }
+            else
+            {
+                InAllRaces = false;
+                InSpecRace = false;
+            }
+            await GetRaceCats();
+            InServerCall = true;
         }
     }
 }
