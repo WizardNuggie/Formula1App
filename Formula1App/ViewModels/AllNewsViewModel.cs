@@ -15,8 +15,9 @@ namespace Formula1App.ViewModels
         private readonly IServiceProvider serviceProvider;
         private readonly F1IntService intService;
 
-        private List<Article> articles;
-        public ObservableCollection<Article> Articles { get; private set; }
+        private List<Article> _articles;
+        private ObservableCollection<Article> articles;
+        public ObservableCollection<Article> Articles { get => articles; set { articles = value; OnPropertyChanged(); } }
         private List<Subject> subjects;
         public List<Subject> Subjects
         {
@@ -70,7 +71,7 @@ namespace Formula1App.ViewModels
             this.serviceProvider = serviceProvider;
             this.intService = intService;
             Articles = new();
-            articles = new();
+            _articles = new();
             IsRefreshing = false;
             RefreshCommand = new Command(async () => await Refresh());
             ClearFilterCommand = new Command(async () => await Refresh(), () => SelectedSubject != null);
@@ -85,10 +86,10 @@ namespace Formula1App.ViewModels
         private async Task GetArticles()
         {
             List<Article> a = await intService.GetNews();
-            articles.Clear();
-            articles = new(a);
+            _articles.Clear();
+            _articles = new(a);
             Articles.Clear();
-            foreach (Article ar in articles)
+            foreach (Article ar in _articles)
             {
                 Articles.Add(ar);
             }

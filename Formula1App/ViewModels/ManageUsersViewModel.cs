@@ -253,6 +253,7 @@ namespace Formula1App.ViewModels
             {
                 Search();
             }
+            Users = new(Users.OrderBy(u => u.Id).ToList());
         }
         private async Task Search()
         {
@@ -287,6 +288,7 @@ namespace Formula1App.ViewModels
                 if (!inIdSearch)
                     await FilterByUt();
             }
+            Users = new(Users.OrderBy(u => u.Id).ToList());
         }
         private async Task IdSearch()
         {

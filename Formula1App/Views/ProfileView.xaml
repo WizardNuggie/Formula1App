@@ -90,6 +90,11 @@
                             WidthRequest="240" />
                     </Grid>
                 </Frame>
+                <Label
+                    IsVisible="{Binding ShowEmailErr}"
+                    HorizontalOptions="Center"
+                    Text="{Binding EmailErr}"
+                    TextColor="Red" />
                 <Frame
                     Margin="0,10,0,10"
                     Padding="0"
@@ -124,6 +129,11 @@
                             Command="{Binding ShowPassCommand}" />
                     </Grid>
             </Frame>
+                <Label
+                    IsVisible="{Binding ShowPassErr}"
+                    HorizontalOptions="Center"
+                    Text="{Binding PassErr}"
+                    TextColor="Red" />
                 <Frame
                     Margin="0,10,0,10"
                     Padding="0"

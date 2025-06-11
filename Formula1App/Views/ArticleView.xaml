@@ -35,13 +35,15 @@
             <Label
                 Margin="0,25,0,0"
                 FontSize="40"
-                Text="{Binding Article.Title}" />
+                Text="{Binding Article.Title}"
+                LineBreakMode="WordWrap" />
             <BoxView
                 Margin="0,0,0,20"
                 HeightRequest="1"
                 Color="Grey" />
             <Label
                 Text="{Binding Article.Writer.Name}"
+                LineBreakMode="WordWrap"
                 HorizontalOptions="End"/>
             <Border
                 Margin="0,15,0,5"
@@ -57,7 +59,9 @@
                     Source="{Binding Article.FullImagePath}"
                     WidthRequest="380" />
             </Border>
-            <Label Text="{Binding Article.Text}" />
+            <Label
+                Text="{Binding Article.Text}"
+                LineBreakMode="WordWrap"  />
         </StackLayout>
     </ScrollView>
 </ContentPage>

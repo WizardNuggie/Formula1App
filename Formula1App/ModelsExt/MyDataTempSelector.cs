@@ -41,4 +41,20 @@ namespace Formula1App.ModelsExt
             return NotLoggedTemplate; // Default fallback
         }
     }
+    public class MyDataTempSelectorIsBreaking : DataTemplateSelector
+    {
+        public DataTemplate BreakingTemplate { get; set; }
+        public DataTemplate NotBreakingTemplate { get; set; }
+        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
+        {
+            if (container is CollectionView collectionView && collectionView.ItemsSource is IEnumerable items)
+            {
+                var itemList = items.Cast<object>().ToList(); // Convert to List<object>
+
+                return (((Article)item).IsBreaking ? BreakingTemplate : NotBreakingTemplate);
+            }
+
+            return NotBreakingTemplate; // Default fallback
+        }
+    }
 }

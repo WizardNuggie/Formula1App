@@ -52,12 +52,12 @@ namespace Formula1App.ViewModels
             User u = await intService.EditUserDetails(UserToEdit);
             if (u != null)
             {
-                AppShell.Current.DisplayAlert("Information Changed Successfully", "Your information were changed successfully.", "OK");
+                AppShell.Current.DisplayAlert("Information Changed Successfully", $"{u.Username}'s information were changed successfully.", "OK");
                 await Refresh();
             }
             else
             {
-                AppShell.Current.DisplayAlert("Something Went Wrong", "Something went wrong while updating the selected user's information.\nPlease try again later.", "OK");
+                AppShell.Current.DisplayAlert("Something Went Wrong", $"Something went wrong while updating {u.Username}'s information.\nPlease try again later.", "OK");
             }
         }
         private async void CheckUserDiff()

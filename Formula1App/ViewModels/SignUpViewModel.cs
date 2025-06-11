@@ -128,20 +128,20 @@ namespace Formula1App.ViewModels
             get => name;
             set
             {
-                    name = value;
-                    NameError = "";
-                    OnPropertyChanged();
-                    if (!string.IsNullOrEmpty(Name))
+                name = value;
+                NameError = "";
+                OnPropertyChanged();
+                if (!string.IsNullOrEmpty(Name))
+                {
+                foreach(char c in Name)
+                    if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') && !(c == ' '))
                     {
-                    foreach(char c in Name)
-                        if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') && !(c == ' '))
-                        {
-                            NameError = "A name can only contain letters";
-                            OnPropertyChanged();
-                        }
+                        NameError = "A name can only contain letters";
+                        OnPropertyChanged();
                     }
-                    else
-                        NameError = "";
+                }
+                else
+                    NameError = "";
             }
         }
         private string nameError;
@@ -244,12 +244,7 @@ namespace Formula1App.ViewModels
         }
         private bool IsValidPassword(string pass)
         {
-            int sum = 0;
-            foreach (char c in pass)
-            {
-                sum++;
-            }
-            return sum >= 4;
+            return pass.Length >= 4;
         }
         private bool IsValidEmail()
         {

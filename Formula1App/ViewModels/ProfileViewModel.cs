@@ -59,6 +59,7 @@ namespace Formula1App.ViewModels
                 email = value;
                 OnPropertyChanged();
                 CheckUserDiff();
+                ShowEmailErr = !(IsValidEmail());
             }
         }
 
@@ -71,6 +72,7 @@ namespace Formula1App.ViewModels
                 password = value;
                 OnPropertyChanged();
                 CheckUserDiff();
+                ShowPassErr = !(IsValidPassword());
             }
         }
         private DateTime dob;
@@ -228,6 +230,50 @@ namespace Formula1App.ViewModels
                 ((Command)SubmitChangesCommand).ChangeCanExecute();
             }
         }
+        private bool showEmailErr;
+        public bool ShowEmailErr
+        {
+            get => showEmailErr;
+            set
+            {
+                showEmailErr = value;
+                OnPropertyChanged();
+                ((Command)CancelChangesCommand).ChangeCanExecute();
+                ((Command)SubmitChangesCommand).ChangeCanExecute();
+            }
+        }
+        private bool showPassErr;
+        public bool ShowPassErr
+        {
+            get => showPassErr;
+            set
+            {
+                showPassErr = value;
+                OnPropertyChanged();
+                ((Command)CancelChangesCommand).ChangeCanExecute();
+                ((Command)SubmitChangesCommand).ChangeCanExecute();
+            }
+        }
+        private string emailErr;
+        public string EmailErr
+        {
+            get => emailErr;
+            set
+            {
+                emailErr = value;
+                OnPropertyChanged();
+            }
+        }
+        private string passErr;
+        public string PassErr
+        {
+            get => passErr;
+            set
+            {
+                passErr = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand RefreshCommand { get; set; }
         public ICommand DriverSearchCommand { get; set; }
@@ -244,8 +290,8 @@ namespace Formula1App.ViewModels
             RefreshCommand = new Command(async () => await Refresh());
             DriverSearchCommand = new Command(async () => await SearchDrivers());
             ConstSearchCommand = new Command(async () => await SearchConstructors());
-            SubmitChangesCommand = new Command(async () => await SubmitChanges(), () => IsUserDiff);
-            CancelChangesCommand = new Command(async () => await Refresh(), () => IsUserDiff);
+            SubmitChangesCommand = new Command(async () => await SubmitChanges(), () => IsUserDiff && !ShowEmailErr && !ShowPassErr);
+            CancelChangesCommand = new Command(async () => await Refresh(), () => IsUserDiff && !ShowEmailErr && !ShowPassErr);
             ShowPassCommand = new Command(ShowPassword);
             _User = new(((App)Application.Current).LoggedUser);
             ShowPass = true;
@@ -290,6 +336,10 @@ namespace Formula1App.ViewModels
         {
             IsRefreshing = true;
             _User = new(((App)Application.Current).LoggedUser);
+            Username = _User.Username;
+            Name = _User.Name;
+            Email = _User.Email;
+            Password = _User.Password;
             Dob = new(_User.Birthday, new TimeOnly());
             SearchDriver = String.Empty;
             SearchConst = String.Empty;
@@ -436,6 +486,37 @@ namespace Formula1App.ViewModels
             }
             else
                 IsUserDiff = false;
+        }
+        private bool IsValidPassword()
+        {
+            if (Password.Length < 4)
+            {
+                PassErr = "Password must contain 4 or more characters";
+                return false;
+            }
+            else
+            {
+                PassErr = "";
+                return true;
+            }
+        }
+        private bool IsValidEmail()
+        {
+            if (!string.IsNullOrEmpty(Email))
+            {
+                //check if email is in the correct format using regular expression
+                if (!System.Text.RegularExpressions.Regex.IsMatch(Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                {
+                    EmailErr = "Email is invalid";
+                    return false;
+                }
+                else
+                {
+                    EmailErr = "";
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

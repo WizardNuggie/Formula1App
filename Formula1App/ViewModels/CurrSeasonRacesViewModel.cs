@@ -96,30 +96,12 @@ namespace Formula1App.ViewModels
             PastRaces.Clear();
             foreach (Race r in races)
             {
-                //foreach (Result rs in r.Results)
-                //{
-                //    rs.Constructor.TeamColor = Color.FromArgb(((App)Application.Current).TeamColors[rs.Constructor.constructorId]);
-                //}
                 int.TryParse(r.round, out int round);
                 if (round <= currRound)
                     PastRaces.Insert(0, r);
                 else if (round > currRound)
                     UpcomingRaces.Add(r);
             }
-            //List<Race> temp = new List<Race>();
-            //foreach (Race r in PastRaces)
-            //{
-            //    temp.Add(new Race(r));
-            //}
-            //foreach (Race r in PastRaces)
-            //{
-            //    Race rc = await extService.GetRaceResultsAsync("current", r.round);
-            //    if (temp.Where(rce => rce.round == r.round).FirstOrDefault() != null)
-            //    {
-            //        temp.Where(rce => rce.round == r.round).FirstOrDefault().Results = rc.Results;
-            //    }
-            //}
-            //PastRaces = new(temp);
             List<Race> temp = PastRaces.Select(r => new Race(r)).ToList(); // Create a copy of the races
             foreach (Race r in temp)
             {
