@@ -537,7 +537,7 @@ namespace Formula1App.Services
         #endregion
 
         #region Edit User Details
-        public async Task<User> EditUserDetails(User u)
+        public async Task<ResponseUser?> EditUserDetails(User u)
         {
             string url = $"{this.baseUrl}EditUserDetails";
             try
@@ -552,8 +552,20 @@ namespace Formula1App.Services
                     {
                         PropertyNameCaseInsensitive = true
                     };
-                    User? result = JsonSerializer.Deserialize<User>(resContent, options);
+                    ResponseUser? result = new()
+                    {
+                        User = JsonSerializer.Deserialize<User>(resContent, options),
+                        IsExist = false
+                    };
                     return result;
+                }
+                else if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    return new ResponseUser()
+                    {
+                        User = null,
+                        IsExist = true
+                    };
                 }
                 else
                 {

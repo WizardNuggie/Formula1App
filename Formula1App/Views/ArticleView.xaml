@@ -16,9 +16,9 @@
                             Margin="0"
                             Padding="0"
                             HeightRequest="25"
+                            MinimumWidthRequest="100"
                             Stroke="#E11900"
-                            StrokeThickness="2"
-                            WidthRequest="100">
+                            StrokeThickness="2">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
@@ -35,16 +35,16 @@
             <Label
                 Margin="0,25,0,0"
                 FontSize="40"
-                Text="{Binding Article.Title}"
-                LineBreakMode="WordWrap" />
+                LineBreakMode="WordWrap"
+                Text="{Binding Article.Title}" />
             <BoxView
                 Margin="0,0,0,20"
                 HeightRequest="1"
                 Color="Grey" />
             <Label
-                Text="{Binding Article.Writer.Name}"
+                HorizontalOptions="End"
                 LineBreakMode="WordWrap"
-                HorizontalOptions="End"/>
+                Text="{Binding Article.Writer.Name}" />
             <Border
                 Margin="0,15,0,5"
                 HorizontalOptions="Center"
@@ -59,9 +59,7 @@
                     Source="{Binding Article.FullImagePath}"
                     WidthRequest="380" />
             </Border>
-            <Label
-                Text="{Binding Article.Text}"
-                LineBreakMode="WordWrap"  />
+            <Label LineBreakMode="WordWrap" Text="{Binding Article.Text}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

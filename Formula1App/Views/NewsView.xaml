@@ -4,52 +4,48 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:Formula1App.Models"
-    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     xmlns:modelsExt="clr-namespace:Formula1App.ModelsExt"
-    x:DataType="viewmodel:NewsViewModel"
+    xmlns:viewmodel="clr-namespace:Formula1App.ViewModels"
     Title=""
+    x:DataType="viewmodel:NewsViewModel"
     IsEnabled="{Binding NotInServerCall}">
     <ContentPage.Resources>
-        <modelsExt:MyDataTempSelectorIsBreaking
-            x:Key="ColView">
+        <modelsExt:MyDataTempSelectorIsBreaking x:Key="ColView">
             <modelsExt:MyDataTempSelectorIsBreaking.BreakingTemplate>
-                <DataTemplate
-                    x:DataType="model:Article">
+                <DataTemplate x:DataType="model:Article">
                     <Border
                         Margin="8"
                         Padding="0"
                         Stroke="#ffb700"
                         StrokeThickness="2">
                         <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="15" />
+                            <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
                         <Grid
                             Padding="5"
+                            BackgroundColor="#171716"
                             ColumnDefinitions="*,1.3*"
-                            RowDefinitions="*,4*"
-                            BackgroundColor="#171716">
+                            RowDefinitions="*,4*">
                             <Border
                                 Grid.RowSpan="2"
                                 HeightRequest="100"
                                 HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Stroke="Transparent">
+                                Stroke="Transparent"
+                                VerticalOptions="Center">
                                 <Border
                                     Grid.RowSpan="2"
                                     HeightRequest="80"
-                                    MaximumWidthRequest="120"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center"
+                                    MaximumWidthRequest="120"
+                                    Stroke="#ffb700"
                                     StrokeThickness="2"
-                                    Stroke="#ffb700">
+                                    VerticalOptions="Center">
                                     <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="15" />
+                                        <RoundRectangle CornerRadius="15" />
                                     </Border.StrokeShape>
                                     <Image
-                                        HeightRequest="80"
                                         Aspect="AspectFill"
+                                        HeightRequest="80"
                                         Source="{Binding FullImagePath}" />
                                 </Border>
                             </Border>
@@ -62,41 +58,34 @@
                                 StrokeThickness="2"
                                 WidthRequest="150">
                                 <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="20" />
+                                    <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
                                 <Label
                                     FontAttributes="Bold"
                                     HorizontalOptions="Center"
                                     Text="Breaking News!"
-                                    TextTransform="Uppercase"
                                     TextColor="#ffb700"
+                                    TextTransform="Uppercase"
                                     VerticalOptions="Center" />
                             </Border>
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="20,0,0,0"
+                                LineBreakMode="WordWrap"
                                 Text="{Binding Title}"
-                                TextColor="White"
-                                LineBreakMode="WordWrap"/>
+                                TextColor="White" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState
-                                    Name="Selected">
+                                <VisualState Name="Selected">
                                     <VisualState.Setters>
-                                        <Setter
-                                            Property="BackgroundColor"
-                                            Value="Transparent" />
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
                                     </VisualState.Setters>
                                 </VisualState>
-                                <VisualState
-                                    Name="Normal">
+                                <VisualState Name="Normal">
                                     <VisualState.Setters>
-                                        <Setter
-                                            Property="BackgroundColor"
-                                            Value="Transparent" />
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -105,38 +94,31 @@
                 </DataTemplate>
             </modelsExt:MyDataTempSelectorIsBreaking.BreakingTemplate>
             <modelsExt:MyDataTempSelectorIsBreaking.NotBreakingTemplate>
-                <DataTemplate
-                    x:DataType="model:Article">
-                    <Border
-                        Margin="8"
-                        Padding="5">
+                <DataTemplate x:DataType="model:Article">
+                    <Border Margin="8" Padding="5">
                         <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="15" />
+                            <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
-                        <Grid
-                            ColumnDefinitions="*,1.3*"
-                            RowDefinitions="*,4*">
+                        <Grid ColumnDefinitions="*,1.3*" RowDefinitions="*,4*">
                             <Border
                                 Grid.RowSpan="2"
                                 HeightRequest="100"
                                 HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Stroke="Transparent">
+                                Stroke="Transparent"
+                                VerticalOptions="Center">
                                 <Border
                                     Grid.RowSpan="2"
                                     HeightRequest="80"
-                                    MaximumWidthRequest="120"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    Stroke="Transparent">
+                                    MaximumWidthRequest="120"
+                                    Stroke="Transparent"
+                                    VerticalOptions="Center">
                                     <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="15" />
+                                        <RoundRectangle CornerRadius="15" />
                                     </Border.StrokeShape>
                                     <Image
-                                        HeightRequest="80"
                                         Aspect="AspectFill"
+                                        HeightRequest="80"
                                         Source="{Binding FullImagePath}" />
                                 </Border>
                             </Border>
@@ -145,12 +127,11 @@
                                 Padding="0"
                                 HeightRequest="25"
                                 HorizontalOptions="Start"
+                                MinimumWidthRequest="100"
                                 Stroke="#E11900"
-                                StrokeThickness="2"
-                                WidthRequest="100">
+                                StrokeThickness="2">
                                 <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="20" />
+                                    <RoundRectangle CornerRadius="20" />
                                 </Border.StrokeShape>
                                 <Label
                                     FontAttributes="Bold"
@@ -163,25 +144,19 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="20,0,0,0"
-                                Text="{Binding Title}"
-                                LineBreakMode="WordWrap" />
+                                LineBreakMode="WordWrap"
+                                Text="{Binding Title}" />
                         </Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState
-                                    Name="Selected">
+                                <VisualState Name="Selected">
                                     <VisualState.Setters>
-                                        <Setter
-                                            Property="BackgroundColor"
-                                            Value="White" />
+                                        <Setter Property="BackgroundColor" Value="White" />
                                     </VisualState.Setters>
                                 </VisualState>
-                                <VisualState
-                                    Name="Normal">
+                                <VisualState Name="Normal">
                                     <VisualState.Setters>
-                                        <Setter
-                                            Property="BackgroundColor"
-                                            Value="White" />
+                                        <Setter Property="BackgroundColor" Value="White" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -191,49 +166,42 @@
             </modelsExt:MyDataTempSelectorIsBreaking.NotBreakingTemplate>
         </modelsExt:MyDataTempSelectorIsBreaking>
     </ContentPage.Resources>
-    <RefreshView
-        Command="{Binding RefreshCommand}"
-        IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView
-            x:Name="scrlview">
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView x:Name="scrlview">
             <StackLayout>
-                <Grid
-                    ColumnDefinitions="*,0.25*"
-                    RowDefinitions="*,0.25*,10*">
-                    <Grid
-    RowDefinitions="*,*,*">
+                <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,0.25*,10*">
+                    <Grid RowDefinitions="*,*,*">
                         <Border
-        Grid.RowSpan="3"
-        Margin="-12,0,0,0"
-        Stroke="#E11900"
-        StrokeThickness="3"
-        HeightRequest="60">
+                            Grid.RowSpan="3"
+                            Margin="-12,0,0,0"
+                            HeightRequest="60"
+                            Stroke="#E11900"
+                            StrokeThickness="3">
                             <Border.StrokeShape>
-                                <RoundRectangle
-                CornerRadius="15"/>
+                                <RoundRectangle CornerRadius="15" />
                             </Border.StrokeShape>
                         </Border>
                         <Label
-        Grid.Row="1"
-        FontAttributes="Bold"
-        FontSize="30"
-        Text="   Top Stories"
-        VerticalOptions="Start" />
+                            Grid.Row="1"
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            Text="   Top Stories"
+                            VerticalOptions="Start" />
                         <BoxView
-        Margin="0,-7,0,0"
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="12"
-        VerticalOptions="Start"
-        HorizontalOptions="End"/>
+                            Grid.Row="2"
+                            Margin="0,-7,0,0"
+                            HeightRequest="15"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            WidthRequest="12"
+                            Color="White" />
                         <BoxView
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="317"
-        VerticalOptions="Start"
-        HorizontalOptions="Start"/>
+                            Grid.Row="2"
+                            HeightRequest="15"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            WidthRequest="317"
+                            Color="White" />
                     </Grid>
 
                     <Label
@@ -244,8 +212,7 @@
                         HorizontalOptions="Center"
                         Text="All news &gt;">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                Command="{Binding NavToAllNewsCommand}" />
+                            <TapGestureRecognizer Command="{Binding NavToAllNewsCommand}" />
                         </Label.GestureRecognizers>
                     </Label>
                     <BoxView
@@ -259,12 +226,12 @@
                         x:Name="colview"
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
+                        ItemTemplate="{StaticResource ColView}"
                         ItemsSource="{Binding Articles}"
                         SelectedItem="{Binding SelectedArticle}"
-                        SelectionMode="Single"
-                        ItemTemplate="{StaticResource ColView}">
+                        SelectionMode="Single">
                         <!--<CollectionView.ItemTemplate>-->
-                            <!--<DataTemplate
+                        <!--<DataTemplate
                                 x:DataType="model:Article">
                                 <Border
                                     Margin="8"

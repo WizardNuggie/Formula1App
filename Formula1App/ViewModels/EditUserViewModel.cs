@@ -1,4 +1,5 @@
 ﻿using Formula1App.Models;
+using Formula1App.ModelsExt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,15 +50,15 @@ namespace Formula1App.ViewModels
         {
             UserToEdit.IsAdmin = IsAdmin;
             UserToEdit.UserTypeId = SelectedUTEdit.Id;
-            User u = await intService.EditUserDetails(UserToEdit);
-            if (u != null)
+            ResponseUser u = await intService.EditUserDetails(UserToEdit);
+            if (u != null && u.User != null)
             {
-                AppShell.Current.DisplayAlert("Information Changed Successfully", $"{u.Username}'s information were changed successfully.", "OK");
+                AppShell.Current.DisplayAlert("permissions Changed Successfully", $"{u.User.Username}'s permissions were changed successfully.", "OK");
                 await Refresh();
             }
             else
             {
-                AppShell.Current.DisplayAlert("Something Went Wrong", $"Something went wrong while updating {u.Username}'s information.\nPlease try again later.", "OK");
+                AppShell.Current.DisplayAlert("Something Went Wrong", $"Something went wrong while updating {u.User.Username}'s permissions.\nPlease try again later.", "OK");
             }
         }
         private async void CheckUserDiff()

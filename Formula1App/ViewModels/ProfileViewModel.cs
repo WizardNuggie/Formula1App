@@ -454,13 +454,17 @@ namespace Formula1App.ViewModels
             _User.Birthday = DateOnly.FromDateTime(Dob);
             _User.FavDriver = SelectedDriverHolder.FullName;
             _User.FavConstructor = SelectedConstHolder.OfficialConstructorName;
-            User u = await intService.EditUserDetails(_User);
-            if (u != null)
+            ResponseUser u = await intService.EditUserDetails(_User);
+            if (u != null && !u.IsExist)
             {
                 AppShell.Current.DisplayAlert("Information Changed Successfully", "Your information were changed successfully.", "OK");
-                ((App)Application.Current).LoggedUser = new(u);
+                ((App)Application.Current).LoggedUser = new(u.User);
                 _User = new(((App)Application.Current).LoggedUser);
                 await Refresh();
+            }
+            else if (u != null && u.IsExist)
+            {
+                AppShell.Current.DisplayAlert("Username Already Exists", "The username you entered is already in use by another account.\nPlease try a different username.", "OK");
             }
             else
             {

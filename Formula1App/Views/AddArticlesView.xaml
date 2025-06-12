@@ -11,40 +11,38 @@
     IsEnabled="{Binding NotInServerCall}">
     <ScrollView x:Name="scrlview">
         <Grid ColumnDefinitions="*,0.25*" RowDefinitions="*,*,*,*,*,*,10*">
-            <Grid
-    RowDefinitions="*,*,*">
+            <Grid RowDefinitions="*,*,*">
                 <Border
-        Grid.RowSpan="3"
-        Margin="-12,0,0,0"
-        Stroke="#E11900"
-        StrokeThickness="3"
-        HeightRequest="60">
+                    Grid.RowSpan="3"
+                    Margin="-12,0,0,0"
+                    HeightRequest="60"
+                    Stroke="#E11900"
+                    StrokeThickness="3">
                     <Border.StrokeShape>
-                        <RoundRectangle
-                CornerRadius="15"/>
+                        <RoundRectangle CornerRadius="15" />
                     </Border.StrokeShape>
                 </Border>
                 <Label
-        Grid.Row="1"
-        FontAttributes="Bold"
-        FontSize="30"
-        Text="  Add Article"
-        VerticalOptions="Start" />
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    Text="  Add Article"
+                    VerticalOptions="Start" />
                 <BoxView
-        Margin="0,-7,0,0"
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="12"
-        VerticalOptions="Start"
-        HorizontalOptions="End"/>
+                    Grid.Row="2"
+                    Margin="0,-7,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    WidthRequest="12"
+                    Color="White" />
                 <BoxView
-        Grid.Row="2"
-        Color="White"
-        HeightRequest="15"
-        WidthRequest="317"
-        VerticalOptions="Start"
-        HorizontalOptions="Start"/>
+                    Grid.Row="2"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    WidthRequest="317"
+                    Color="White" />
             </Grid>
             <Frame
                 Grid.Row="1"
@@ -133,9 +131,8 @@
                                 Margin="10,5,0,2"
                                 Padding="3"
                                 CornerRadius="10"
-                                MaximumHeightRequest="100">
+                                MinimumHeightRequest="100">
                                 <Editor
-                                    MaximumHeightRequest="100"
                                     Placeholder="Enter article's text"
                                     Text="{Binding Article.Text}" />
                             </Frame>
